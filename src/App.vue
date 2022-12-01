@@ -1,32 +1,34 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+    <mobile-nav v-if="screenSize" />
+    <app-nav v-else />
+
     <router-view />
+    <app-footer />
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style></style>
 
-nav {
-  padding: 30px;
-}
+<script>
+import AppFooter from "./components/static/AppFooter.vue";
+import AppNav from "./components/static/AppNav.vue";
+import MobileNav from "./components/static/mobileNav.vue";
+export default {
+  components: { AppFooter, AppNav, MobileNav },
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  computed: {
+    screenSize() {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+};
+</script>

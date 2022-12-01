@@ -1,0 +1,59 @@
+@media (max-width:990px) {
+    .app--header .carousel-caption h1 {
+        font-size: 1.5rem;
+    }
+    .carousel-caption p {
+        width: 100% !important;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px !important;
+        
+    }
+    .app--header img {
+        height: 500px;
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        opacity: 0.8;
+    }
+    .app--header .carousel-caption {
+        bottom: 15%;
+    }
+    .app--header .carousel-caption.right--side {
+        left: 15% !important;
+    }
+    .call--to_action  {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap:15px
+    }
+    .container--cover h1 {
+        color: #fff;
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .container--cover {
+        background: url('../img/about-page.jpeg');
+        height: 300px;
+        background-color: rgba(0, 0, 0, 0.5);
+        background-blend-mode: overlay;
+        display: grid;
+        place-items: center;
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .how-it-works-card:not(.how-it-works-card:last-child), .looking--card{
+        margin-bottom:20px ;
+    }
+
+    .mailing--list h1 {
+        font-size: 2rem;
+    }
+
+    .input--field input {
+        width: 100%;
+    }
+
+}

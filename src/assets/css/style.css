@@ -1,0 +1,203 @@
+@import url('./partials.css');
+
+.app--nav_items li a {
+    color: var(--primary-color);
+    font-weight: 600;
+    position: relative;
+}
+
+.app--header img {
+    height: 600px;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+}
+
+.app--header .carousel-caption {
+    bottom: 30%;
+}
+
+.app--header .carousel-caption.right--side {
+    left: 60% !important;
+}
+
+.app--header .carousel-caption h1 {
+    color: var(--primary-color);
+    font-size: 2.6rem;
+    font-weight: 700;
+}
+.app--nav_items li a:after+.app--nav_items li a:hover {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.app--nav_items li .router-link-exact-active::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+}
+
+.app--nav_items li .router-link-exact-active::before {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+}
+
+.app--nav_items li a::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    transition: transform 0.2s;
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+.app--nav_items li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+.looking-for-talent {
+    background-color: var(--primary-accent);
+}
+
+.how-it-works-card {
+    background: var(--primary-accent);
+    padding: 25px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.0225);
+}
+
+.how-it-works-card h4 {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.how-it-works-card .icon {
+    background-color: var(--primary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+}
+.how-it-works-card  p {
+    font-size: 13px;
+}
+
+.input--field {
+    display: flex;
+    border-radius: 40px;
+    justify-content: center;
+    /* width: 60%; */
+}
+
+.input--field input {
+    padding: 1rem 2rem;
+    border: transparent;
+    outline: none;
+    border-radius: 40px 0 0 40px;
+    width: 40%;
+}
+.input--field button {
+    border-radius: 0 40px 40px 0;
+    padding: 0 30px;
+    border: none;
+    background-color: var(--tertiary-color);
+}
+
+
+
+/* App Footer  */
+
+.footer {
+    /* background: var(--accent-color-dark); */
+    /* height: 400px; */
+    width: 100%;
+    background-size: cover;
+    background-position: bottom;
+    /* margin-top: 3.3rem; */
+    padding-top: 2rem;
+}
+
+.footer a,
+.footer p,
+.footer h6 {
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.footer a:hover {
+    color: var(--gray-800);
+}
+
+.footer h4 {
+    color: var(--tertiary-color);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* About Us Page  */
+.container--cover {
+    background: url('../img/about-page.jpeg');
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
+    display: grid;
+    place-items: center;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container--cover h1 {
+    color: #fff;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+/* Contact Us  */
+.contact--field input, .contact--field textarea {
+display: block;
+width: 100%;
+padding: 0.7rem;
+border: none;
+border-radius: 5px;
+outline: none;
+}
+
+.contact--field label {
+    font-size: 0.8rem;
+    color: var(--gray-600);
+    margin: 0;
+    }
