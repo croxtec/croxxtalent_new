@@ -1,11 +1,21 @@
 const Home = () => import("../pages/indexPage.vue");
 const Talents = () => import("../pages/talentsPage.vue");
+const Employers = () => import("../pages/employersPage.vue");
 
 const routes = [
   {
     path: "/",
     name: "home",
     component: Home,
+    meta: {
+      layout: "AppHomeLayout",
+    },
+  },
+
+  {
+    path: "/employers",
+    name: "home",
+    component: Employers,
     meta: {
       layout: "AppHomeLayout",
     },

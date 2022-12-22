@@ -12,7 +12,7 @@
           style="gap: 30px"
         >
           <li>
-            <router-link to="/">For Employers</router-link>
+            <router-link to="/employers">For Employers</router-link>
           </li>
           <li>
             <router-link to="/talents">For Talents</router-link>

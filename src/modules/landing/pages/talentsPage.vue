@@ -8,7 +8,7 @@
 
 <script>
 import HeroSection from "../components/talents/heroSection.vue";
-import FeaturedJobs from "../components/talents/featuredJobs.vue";
+import FeaturedJobs from "../components/featuredJobs.vue";
 import NewsLetter from "@/components/forms/newsLetter.vue";
 export default {
   components: { HeroSection, FeaturedJobs, NewsLetter },

@@ -119,3 +119,35 @@
     color: var(--gray-200);
     font-weight: 300;
 }
+
+/* HOME PAGE STYLING  */
+.home--hero_section {
+    height: 600px;
+    display: grid;
+    align-items:center ;
+}
+
+.home--hero_section .pivot--text {
+    width: 100%;
+}
+
+.right--side img {
+    border-radius: 100px;
+    height: 500px;
+    /* position: relative; */
+}
+
+.positioned--image img{
+    margin-bottom: -50px;
+}
+
+.trusted--by {
+    background: url('../img/hero-g-g.svg');
+    height: 300px;
+    display: grid;
+    place-items: center;
+    background-color: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}

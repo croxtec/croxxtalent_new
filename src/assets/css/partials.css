@@ -207,7 +207,7 @@ body {
 
 .primary--button_border {
     border:1px solid var(--primary-color);
-    padding: 0.4rem 0.8rem;
+    padding: 0.6rem 2rem;
     background-color: transparent;
     color: var(--primary-color);
     border-radius: 40px !important;
