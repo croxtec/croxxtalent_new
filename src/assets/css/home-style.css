@@ -1,6 +1,6 @@
 /* STYLING FOR TALENT HERO SECTION */
 .talent--hero_section {
-    height: 700px;
+    height: 100vh;
     display: grid;
     align-items:center ;
     background: url('../img/about.svg') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
@@ -122,7 +122,7 @@
 
 /* HOME PAGE STYLING  */
 .home--hero_section {
-    height: 600px;
+    height: 100vh;
     display: grid;
     align-items:center ;
 }
