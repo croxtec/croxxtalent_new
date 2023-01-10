@@ -2,8 +2,9 @@
 .talent--hero_section {
     height: 100vh;
     display: grid;
-    align-items:center ;
+    align-items: center ;
     background: url('../img/about.svg') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
+    background-size: auto 100%;
 }
 .pivot--text {
     width: 57%;
@@ -88,11 +89,14 @@
 /* Subscibe to Newsletter */
 .subscribe-to-newsletter {
     background-color: var(--primary-color);
-    padding: 5rem 0;
+    padding: 2rem 0;
+    height: 100vh;
+    display: grid;
+    place-items: center;
 }
 
 .subscribe-form {
-    background-color: #E6F2FF;
+    background-color: var(--light-accent);
     padding: 4rem;
     border-radius: 20px;text-align: center;
 }
@@ -150,4 +154,30 @@
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
+}
+
+
+/* How it works  */
+.how--it_works {
+    background-color: var(--light-accent);
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+.how-it-works-card {
+ background-color: #fff;
+ padding: 2rem;
+ border-radius: 20px;
+}
+
+.how-it-works-card p {
+    font-size: 14px;
+}
+
+.how-it-works-card h5 {
+    margin: 12px 0 !important;
+}
+
+.how-it-works-card .icon svg path {
+    color: var(--primary-color) ;
 }
