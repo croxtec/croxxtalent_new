@@ -164,6 +164,22 @@
     display: grid;
     place-items: center;
 }
+
+.how--it_works.employers {
+    background: url('../img/hero-g-g.svg');
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.how--it_works.employers h2 {
+    color: #fff !important;
+}
+
 .how-it-works-card {
  background-color: #fff;
  padding: 2rem;
@@ -262,3 +278,15 @@
 .data-driven .right--side_data {
     margin-top: 50px;
 }
+
+/* EMPLOYER PAGE STYLING  */
+
+/* Employer Hero Section */
+.talent--hero_section.employer {
+    height: 100vh;
+    display: grid;
+    align-items: center ;
+    background: url('../img/employers.png') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
+    background-size: auto 100%;
+}
+

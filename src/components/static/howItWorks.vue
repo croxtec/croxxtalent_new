@@ -1,5 +1,5 @@
 <template>
-  <div class="how--it_works">
+  <div class="how--it_works" :class="isEmployer ? 'employers' : ''">
     <div class="container py-5">
       <h2
         class="header--text text-center mb-5"
@@ -88,3 +88,9 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["isEmployer"],
+};
+</script>
