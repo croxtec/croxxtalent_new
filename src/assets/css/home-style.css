@@ -209,3 +209,11 @@
     grid-template-columns: 1fr 1fr;
     gap: 120px;
 }
+
+/* Why Croxxtalent  */
+.why--croxx {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: var(--gray-200);
+}
