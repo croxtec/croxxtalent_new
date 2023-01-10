@@ -181,3 +181,31 @@
 .how-it-works-card .icon svg path {
     color: var(--primary-color) ;
 }
+
+/* Meet talents  */
+
+.colored-card {
+    background-color: var(--light-accent);
+    border-radius: 20px;
+    padding: 3rem;
+}
+.colored-card img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    margin: 30px auto 0 auto;
+}
+
+.meet-talent {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.meet--talent_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+}
