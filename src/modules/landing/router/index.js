@@ -1,6 +1,7 @@
 const Home = () => import("../pages/indexPage.vue");
 const Talents = () => import("../pages/talentsPage.vue");
 const Employers = () => import("../pages/employersPage.vue");
+const Contact = () => import("../pages/contactPage.vue");
 
 const routes = [
   {
@@ -25,6 +26,15 @@ const routes = [
     path: "/talents",
     name: "talents",
     component: Talents,
+    meta: {
+      layout: "AppHomeLayout",
+    },
+  },
+
+  {
+    path: "/contact",
+    name: "contact",
+    component: Contact,
     meta: {
       layout: "AppHomeLayout",
     },

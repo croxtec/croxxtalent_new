@@ -358,3 +358,69 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
+
+
+/* Contact US  */
+.contact--us_page {
+    background: url(../img/contact-us.png);
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+}
+
+.contact--us_page h4 {
+    color: #fff;
+    text-decoration: underline !important;
+    font-size: 20px;
+    margin-bottom: 10px !important;
+}
+
+.contact--us_page p {
+    width: 60%;
+}
+
+.contact--us_section {
+    height: 100vh;
+    display: grid;
+    align-items: center ;
+    background: url('../img/contact.png') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
+    background-size: auto 100%;
+}
+
+.contact--us_form {
+    width: 55%;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.52);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(9.8px);
+-webkit-backdrop-filter: blur(9.8px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact--us_form form label {
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+.contact--us_form form input, .contact--us_form form textarea {
+    width: 100%;
+    padding: 0.4rem;
+    border: 0.13rem solid #D2D6DA;
+    border-radius: 5px;
+}
+
+.contact--us_form form input::placeholder, .contact--us_form form textarea::placeholder {
+    color: #D2D6DA;
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+.contact--us_form form textarea {
+    outline: none;
+}
