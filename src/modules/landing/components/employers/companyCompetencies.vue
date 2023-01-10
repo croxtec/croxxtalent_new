@@ -1,8 +1,10 @@
+import CxCompetencies from '@/components/cards/cxCompetencies.vue';
+
 <template>
-  <div class="top--talents">
+  <div class="competencies">
     <div class="container">
-      <div class="d-flex align-items-center justify-content-between">
-        <h4 class="header--text">Top Talents</h4>
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <h4 class="header--text">Competencies</h4>
         <router-link
           to="/"
           class="d-flex align-items-center"
@@ -16,16 +18,18 @@
         </router-link>
       </div>
 
-      <!-- Talents -->
+      <!-- Competencies Cards -->
       <div>
-        <CxTalents />
+        <cx-competencies />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import CxTalents from "@/components/cards/cxTalents.vue";
+import CxCompetencies from "@/components/cards/cxCompetencies.vue";
 
-export default { components: { CxTalents } };
+export default {
+  components: { CxCompetencies },
+};
 </script>

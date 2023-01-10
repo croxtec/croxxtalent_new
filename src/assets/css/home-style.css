@@ -290,3 +290,71 @@
     background-size: auto 100%;
 }
 
+.top--talents {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.top--talents_cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 400px;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.talent-card {
+    padding: 2rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.talent-card:first-child {
+    background: url('../img/talent1.png');
+    background-color: var(--light-accent);
+    background-size: cover;
+    background-position: center;
+}
+
+.talent-card:last-child {
+    background: url('../img/talent3.png');
+    background-color: var(--light-accent);
+    background-size: cover;
+    background-position: center;
+}
+
+.talent-card:nth-child(2) {
+    background: url('../img/talent2.png');
+    background-color: var(--green-100);
+    background-size: cover;
+    background-position: center;
+}
+
+.talent-card .talent--data {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* Competencies  */
+.competencies {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: var(--light-accent);
+}
+
+.competencies--card{
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.competencies--cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
