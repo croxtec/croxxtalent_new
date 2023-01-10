@@ -5,6 +5,7 @@
     <TrustedBy />
     <MeetTalents />
     <WhyCroxx />
+    <DataDriven />
     <news-letter />
   </div>
 </template>
@@ -16,6 +17,7 @@ import TrustedBy from "../components/home/trustedBy.vue";
 import MeetTalents from "../components/home/meetTalents.vue";
 import WhyCroxx from "../components/home/whyCroxx.vue";
 import NewsLetter from "@/components/forms/newsLetter.vue";
+import DataDriven from "../components/home/dataDriven.vue";
 export default {
   components: {
     heroSection,
@@ -24,6 +26,7 @@ export default {
     MeetTalents,
     WhyCroxx,
     NewsLetter,
+    DataDriven,
   },
 };
 </script>

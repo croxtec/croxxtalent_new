@@ -7,7 +7,7 @@
             <h3 class="header--text">Meet the talents you are looking for</h3>
             <img src="@/assets/img/meet_talents.png" width="100%" alt="" />
           </div>
-          <div class="mt-3 text-center">
+          <div class="mt-5 text-center">
             <cx-button> <slot>Get Started</slot> </cx-button>
           </div>
         </div>
@@ -16,7 +16,7 @@
             <h3 class="header--text">Find jobs, get hired and paid easily.</h3>
             <img src="@/assets/img/find_jobs.png" width="100%" alt="" />
           </div>
-          <div class="mt-3 text-center">
+          <div class="mt-5 text-center">
             <cx-button> <slot>Get Started</slot> </cx-button>
           </div>
         </div>
