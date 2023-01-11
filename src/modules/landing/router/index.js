@@ -2,6 +2,7 @@ const Home = () => import("../pages/indexPage.vue");
 const Talents = () => import("../pages/talentsPage.vue");
 const Employers = () => import("../pages/employersPage.vue");
 const Contact = () => import("../pages/contactPage.vue");
+const PrivacyPolicy = () => import("../pages/privacyPolicy.vue");
 
 const routes = [
   {
@@ -35,6 +36,15 @@ const routes = [
     path: "/contact",
     name: "contact",
     component: Contact,
+    meta: {
+      layout: "AppHomeLayout",
+    },
+  },
+
+  {
+    path: "/privacy-policy",
+    name: "privacy-policy",
+    component: PrivacyPolicy,
     meta: {
       layout: "AppHomeLayout",
     },

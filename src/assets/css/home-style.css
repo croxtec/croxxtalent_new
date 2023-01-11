@@ -2,6 +2,9 @@
 .talent--hero_section {
     height: 100vh;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     align-items: center ;
     background: url('../img/about.svg') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
     background-size: auto 100%;
@@ -25,6 +28,9 @@
     background-position: center;
     background-repeat: no-repeat;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     place-items: center;
 }
 
@@ -81,6 +87,9 @@
 
 .jobs--cards {
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
@@ -92,6 +101,9 @@
     padding: 2rem 0;
     height: 100vh;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     place-items: center;
 }
 
@@ -128,6 +140,9 @@
 .home--hero_section {
     height: 100vh;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     align-items:center ;
 }
 
@@ -149,6 +164,9 @@
     background: url('../img/hero-g-g.svg');
     height: 300px;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     place-items: center;
     background-color: var(--primary-color);
     background-size: cover;
@@ -162,6 +180,9 @@
     background-color: var(--light-accent);
     height: 100vh;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     place-items: center;
 }
 
@@ -169,6 +190,9 @@
     background: url('../img/hero-g-g.svg');
     height: 100vh;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     place-items: center;
     background-color: var(--primary-color);
     background-size: cover;
@@ -217,11 +241,17 @@
 .meet-talent {
     height: 100vh;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     place-items: center;
 }
 
 .meet--talent_content {
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     grid-template-columns: 1fr 1fr;
     gap: 120px;
 }
@@ -230,6 +260,9 @@
 .why--croxx {
     height: 100vh;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     place-items: center;
     background-color: var(--gray-200);
 }
@@ -237,11 +270,17 @@
 /* Data Driven  */
 /* .data-driven {
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     
 } */
 
 .data-driven .data--container {
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     grid-template-columns: 1fr 1fr;
     gap: 50px;
     padding: 80px 0;
@@ -285,6 +324,9 @@
 .talent--hero_section.employer {
     height: 100vh;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     align-items: center ;
     background: url('../img/employers.png') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
     background-size: auto 100%;
@@ -293,11 +335,17 @@
 .top--talents {
     height: 100vh;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     place-items: center;
 }
 
 .top--talents_cards {
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 400px;
     gap: 40px;
@@ -343,6 +391,9 @@
 .competencies {
     height: 100vh;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     place-items: center;
     background-color: var(--light-accent);
 }
@@ -355,6 +406,9 @@
 
 .competencies--cards {
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
@@ -386,6 +440,9 @@
 .contact--us_section {
     height: 100vh;
     display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    
     align-items: center ;
     background: url('../img/contact.png') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
     background-size: auto 100%;
@@ -423,4 +480,70 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 
 .contact--us_form form textarea {
     outline: none;
+}
+
+
+/* Privacy Policy  */
+.privacy--policy_page {
+    background: url(../img/privacy-policy.png);
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+}
+
+.privacy--policy_page h4 {
+    color: #fff;
+    text-decoration: underline !important;
+    font-size: 20px;
+    margin-bottom: 10px !important;
+}
+
+.privacy--policy_page p {
+    width: 60%;
+}
+
+.privacy--policy_content {
+    display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    grid-template-columns: 15% 1fr;
+}
+
+.privacy--policy_nav {
+    border-right: 2px solid #B4B4B4;
+}
+
+.privacy--policy_nav ul {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+}
+
+.privacy--policy_nav ul li {
+    font-weight: 500;
+    font-size: 14px;
+    position: relative;
+    padding: 0.4rem 0;
+}
+
+.privacy--policy_nav ul li.active {
+    color: var(--primary-color);
+}
+.privacy--policy_nav ul li.active::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: var(--primary-color);
+}
+
+.privacy--data {
+    padding-left: 30px;
 }
