@@ -117,3 +117,43 @@
 .header--text {
     font-weight: 600;
 }
+
+
+/* Footer  */
+
+.footer {
+    /* background: var(--accent-color-dark); */
+    /* height: 400px; */
+    width: 100%;
+    background-size: cover;
+    background-position: bottom;
+    /* margin-top: 3.3rem; */
+    padding-top: 2rem;
+}
+
+.footer a,
+.footer p,
+.footer h6 {
+    color: var(--dark-color);
+    font-size: 0.9rem;
+    font-weight: 400;
+    font-size: 0.8rem;
+}
+
+.footer a:hover {
+    /* color: var(--gray-100); */
+    text-decoration: underline !important;
+}
+
+.footer h4 {
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}

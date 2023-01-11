@@ -5,39 +5,54 @@
         <div class="py-3">
           <div class="footer--top">
             <div class="row">
-              <div class="col-md-4 mb-3">
+              <!-- <div class="col-md mb-3">
                 <router-link to="/"
                   ><img src="@/assets/img/logo.png" width="250" alt=""
                 /></router-link>
-              </div>
+              </div> -->
 
               <div class="col-md">
-                <h4 class="footer--header">COMPANY</h4>
+                <h4 class="footer--header">Company</h4>
                 <ul class="list-unstlyed">
                   <li>
-                    <router-link to="/"> Home</router-link>
+                    <router-link to="/partnerships"> Patnerships</router-link>
                   </li>
                   <li><router-link to="/about-us">About Us</router-link></li>
-                  <li><router-link to="/contact">Contact Us</router-link></li>
+                  <li><router-link to="/careers">Careers</router-link></li>
+                  <li><router-link to="/pricing">Pricing</router-link></li>
                 </ul>
               </div>
 
               <div class="col-md">
-                <h4 class="footer--header">LEGAL</h4>
+                <h4 class="footer--header">Resources</h4>
                 <ul class="list-unstlyed">
                   <li>
-                    <router-link to="/privacy-policy">
-                      Privacy Policy</router-link
-                    >
+                    <router-link to="/build-cv">Build CV</router-link>
                   </li>
+                  <li><router-link to="/affiliate">Affiliate</router-link></li>
                   <li>
-                    <router-link to="/terms-of-use">Terms of Use</router-link>
+                    <router-link to="/frequently-asked-questions"
+                      >FAQ</router-link
+                    >
                   </li>
                 </ul>
               </div>
 
               <div class="col-md">
-                <h4>CONNECT</h4>
+                <h4 class="footer--header">Learn</h4>
+                <ul class="list-unstlyed">
+                  <li>
+                    <router-link to="/case-studies">Case Studies</router-link>
+                  </li>
+                  <li><router-link to="/blog">Blog</router-link></li>
+                  <li>
+                    <router-link to="/how-it-works">How it Works</router-link>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- <div class="col-md">
+                <h4>Learn</h4>
                 <div class="mt-4">
                   <div class="d-flex align-items-center mt-2" style="gap: 10px">
                     <a target="_blank" href="https://croxxtalent.io">
@@ -76,14 +91,28 @@
                     </a>
                   </div>
                 </div>
+              </div> -->
+
+              <div class="col-md">
+                <h4 class="footer--header">Legal</h4>
+                <ul class="list-unstlyed">
+                  <li>
+                    <router-link to="/privacy-policy">
+                      Privacy Policy</router-link
+                    >
+                  </li>
+                  <li>
+                    <router-link to="/privacy-policy">Terms of Use</router-link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
 
           <div class="footer--copyright">
-            <hr class="w-50 mx-auto bg-secondary" />
+            <hr class="bg-secondary" />
             <p class="text-center small">
-              Copyright 2022 © CroxxTalent. All rights reserved.
+              Copyright {{ thisYear }} © CroxxTalent. All rights reserved.
             </p>
           </div>
         </div>
@@ -91,3 +120,17 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    thisYear() {
+      let yearToday = new Date().getFullYear();
+      return yearToday;
+    },
+  },
+};
+</script>

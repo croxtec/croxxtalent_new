@@ -3,6 +3,8 @@ const Talents = () => import("../pages/talentsPage.vue");
 const Employers = () => import("../pages/employersPage.vue");
 const Contact = () => import("../pages/contactPage.vue");
 const PrivacyPolicy = () => import("../pages/privacyPolicy.vue");
+const FrequentlyAskedQuestions = () =>
+  import("../pages/frequentlyAskedQuestions");
 
 const routes = [
   {
@@ -45,6 +47,15 @@ const routes = [
     path: "/privacy-policy",
     name: "privacy-policy",
     component: PrivacyPolicy,
+    meta: {
+      layout: "AppHomeLayout",
+    },
+  },
+
+  {
+    path: "/frequently-asked-questions",
+    name: "frequently-asked-questions",
+    component: FrequentlyAskedQuestions,
     meta: {
       layout: "AppHomeLayout",
     },
