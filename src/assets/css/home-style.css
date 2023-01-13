@@ -681,3 +681,33 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     flex-direction: column;
     justify-content: space-around;
 }
+
+/* Our Values  */
+.our-values-cards {
+    display: grid;
+    display: -ms-grid;
+    display: -moz-grid;
+    grid-template-columns: 1fr 1fr;
+    gap:30px;
+
+}
+
+.our-values-card {
+    background-color: var(--gray-200);
+    padding: 1rem;
+    border-radius: 20px;
+    display: flex;
+    gap: 30px;
+    /* width: 50%; */
+}
+
+.values--icon {
+    background-color: var(--primary-color);
+    width: 80px;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
