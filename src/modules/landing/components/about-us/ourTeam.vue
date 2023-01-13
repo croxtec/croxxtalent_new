@@ -6,7 +6,22 @@
         <div class="core-values">
           <div class="flip-card">
             <div class="card-front">
-              <div class="card-data">Leadership</div>
+              <div class="card-data d-flex flex-column justify-content-between">
+                <div class="text-center">
+                  <img
+                    src="@/assets/img/talent1.png"
+                    style="border-radius: 50px"
+                    width="90%"
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <h6 class="text-center">John Moyes</h6>
+                  <h6 class="text-center small" style="font-weight: 300">
+                    Chief Executive Officer
+                  </h6>
+                </div>
+              </div>
             </div>
             <div class="card-back">
               <div
