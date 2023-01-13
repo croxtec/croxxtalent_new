@@ -4,7 +4,6 @@
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     align-items: center ;
     background: url('../img/about.svg') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
     background-size: auto 100%;
@@ -326,7 +325,6 @@
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     align-items: center ;
     background: url('../img/employers.png') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
     background-size: auto 100%;
@@ -393,7 +391,6 @@
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     place-items: center;
     background-color: var(--light-accent);
 }
@@ -592,4 +589,68 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
     font-weight: 300;
     font-size: 0.8rem;
+}
+
+
+/* About Us Page  */
+.about_page {
+    background: url(../img/about-header.png);
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+}
+
+.about_page h4 {
+    color: #fff;
+    text-decoration: underline !important;
+    font-size: 20px;
+    margin-bottom: 10px !important;
+}
+
+.about_page p {
+    width: 60%;
+}
+
+.our-mission-img {
+    position: relative;
+}
+.numbers--card {
+    background: url('../img/hero-g-g.svg');
+    height: 200px;
+    display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    place-items: center;
+    background-color: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    width: 50%;
+    position: absolute;
+    border-radius: 20px;
+    right: 0;
+    bottom: -100px;
+}
+
+.numbers--card .numbers-content{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.numbers--card .numbers-content h1, .numbers--card .numbers-content h6 {
+    color: #fff;
+}
+
+.numbers--card .numbers-content h1 {
+    font-weight: 600;
+}
+
+.numbers--card .numbers-content h6 {
+    font-weight: 300;
+    font-size: 14px;
 }

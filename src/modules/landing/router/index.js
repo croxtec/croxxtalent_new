@@ -5,6 +5,7 @@ const Contact = () => import("../pages/contactPage.vue");
 const PrivacyPolicy = () => import("../pages/privacyPolicy.vue");
 const FrequentlyAskedQuestions = () =>
   import("../pages/frequentlyAskedQuestions");
+const AboutUs = () => import("../pages/aboutUs.vue");
 
 const routes = [
   {
@@ -38,6 +39,15 @@ const routes = [
     path: "/contact",
     name: "contact",
     component: Contact,
+    meta: {
+      layout: "AppHomeLayout",
+    },
+  },
+
+  {
+    path: "/about-us",
+    name: "about-us",
+    component: AboutUs,
     meta: {
       layout: "AppHomeLayout",
     },
