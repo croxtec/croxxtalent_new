@@ -17,7 +17,7 @@
           <div class="d-flex" style="gap: 20px">
             <div>
               <img
-                src="@/assets/img/croxh1.svg"
+                src="@/assets/img/croxh1.png"
                 loading="lazy"
                 style="background-color: var(--primary-color)"
                 alt=""
@@ -27,14 +27,14 @@
               <img
                 class=""
                 loading="lazy"
-                src="@/assets/img/croxh2.svg"
+                src="@/assets/img/croxh2.png"
                 style="background-color: var(--dark-color)"
                 alt=""
               />
             </div>
             <div>
               <img
-                src="@/assets/img/Croxh3.svg"
+                src="@/assets/img/Croxh3.png"
                 loading="lazy"
                 style="background-color: var(--secondary-color)"
                 alt=""
