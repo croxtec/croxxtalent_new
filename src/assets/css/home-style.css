@@ -137,7 +137,7 @@
 
 /* HOME PAGE STYLING  */
 .home--hero_section {
-    height: 100vh;
+    height: 85vh;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
