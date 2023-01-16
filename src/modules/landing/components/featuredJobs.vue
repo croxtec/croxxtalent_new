@@ -10,7 +10,7 @@
       </div>
 
       <!-- Featured Jobs -->
-      <cx-jobs />
+      <cx-jobs :jobsCount="numberOfItems" />
     </div>
   </div>
 </template>
@@ -18,6 +18,7 @@
 <script>
 import cxJobs from "@/components/cards/cxJobs.vue";
 export default {
+  props: ["numberOfItems"],
   components: { cxJobs },
 };
 </script>

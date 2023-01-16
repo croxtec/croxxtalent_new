@@ -9,7 +9,7 @@
               Driven
             </h4>
             <img src="@/assets/img/data-driven.png" alt="" />
-            <p class="small">
+            <p class="body--text">
               Leverage our extensive data on talent’s technical capacity, work
               preferences and growth potential
             </p>
@@ -20,7 +20,7 @@
               Hiring
             </h4>
             <img src="@/assets/img/hassle-free.png" alt="" />
-            <p class="small">
+            <p class="body--text">
               Leverage our extensive data on talent’s technical capacity, work
               preferences and growth potential
             </p>
@@ -33,7 +33,7 @@
               Fits
             </h4>
             <img src="@/assets/img/best-fits.png" alt="" />
-            <p class="small">
+            <p class="body--text">
               Leverage our extensive data on talent’s technical capacity, work
               preferences and growth potential
             </p>
@@ -44,7 +44,7 @@
               Efficiency
             </h4>
             <img src="@/assets/img/cost-efficiency.png" alt="" />
-            <p class="small">
+            <p class="body--text">
               Leverage our extensive data on talent’s technical capacity, work
               preferences and growth potential
             </p>

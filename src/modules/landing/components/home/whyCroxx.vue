@@ -9,7 +9,7 @@
         <div class="col-md-4">
           <div>
             <h3 class="header--text">Layered Smart Assessments</h3>
-            <p class="small mt-3">
+            <p class="body--text mt-3">
               By coupling smart assessment protocols with our tiered
               Work-Experience-Model, we are able to drive deep data profiling on
               every individual in our ecosystem, to make intelligent matching
@@ -24,7 +24,7 @@
 
         <div class="col-md-4">
           <h3 class="header--text text-right">Manage your competence</h3>
-          <p class="small mt-3 text-right">
+          <p class="body--text mt-3 text-right">
             High-growth companies like yours need to move at super speed.
             CroxxTalent supports your hiring needs every step of the way, so you
             can focus on what really matters.

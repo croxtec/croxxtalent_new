@@ -1,7 +1,7 @@
 <template>
   <div>
     <hero-section />
-    <featured-jobs />
+    <featured-jobs :numberOfItems="4" />
     <TrustedBy />
     <MeetTalents />
     <WhyCroxx />

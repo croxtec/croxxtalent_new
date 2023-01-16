@@ -18,6 +18,7 @@
             <div>
               <img
                 src="@/assets/img/croxh1.svg"
+                loading="lazy"
                 style="background-color: var(--primary-color)"
                 alt=""
               />
@@ -25,6 +26,7 @@
             <div class="positioned--image">
               <img
                 class=""
+                loading="lazy"
                 src="@/assets/img/croxh2.svg"
                 style="background-color: var(--dark-color)"
                 alt=""
@@ -33,6 +35,7 @@
             <div>
               <img
                 src="@/assets/img/Croxh3.svg"
+                loading="lazy"
                 style="background-color: var(--secondary-color)"
                 alt=""
               />

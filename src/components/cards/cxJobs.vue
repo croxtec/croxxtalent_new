@@ -1,6 +1,6 @@
 <template>
   <div class="jobs--cards">
-    <div class="job--card" v-for="item in 8" :key="item">
+    <div class="job--card" v-for="item in jobsCount" :key="item">
       <div class="top d-flex justify-content-between align-items-center">
         <CxAvatar />
         <CxBorderButton> <slot>Full Time</slot> </CxBorderButton>
@@ -46,6 +46,7 @@
 import CxBorderButton from "../buttons/cxBorderButton.vue";
 import CxAvatar from "../static/cxAvatar.vue";
 export default {
+  props: ["jobsCount"],
   components: {
     CxBorderButton,
     CxAvatar,

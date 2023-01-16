@@ -5,7 +5,7 @@
     display: -ms-inline-grid;
     display: -moz-grid;
     align-items: center ;
-    background: url('../img/about.svg') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
+    background: url('../img/about.png') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
     background-size: auto 100%;
 }
 .pivot--text {
