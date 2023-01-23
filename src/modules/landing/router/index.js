@@ -6,6 +6,7 @@ const PrivacyPolicy = () => import("../pages/privacyPolicy.vue");
 const FrequentlyAskedQuestions = () =>
   import("../pages/frequentlyAskedQuestions");
 const AboutUs = () => import("../pages/aboutUs.vue");
+const Resources = () => import("../pages/resourcesPage.vue");
 
 const routes = [
   {
@@ -66,6 +67,15 @@ const routes = [
     path: "/frequently-asked-questions",
     name: "frequently-asked-questions",
     component: FrequentlyAskedQuestions,
+    meta: {
+      layout: "AppHomeLayout",
+    },
+  },
+
+  {
+    path: "/resources",
+    name: "resources",
+    component: Resources,
     meta: {
       layout: "AppHomeLayout",
     },

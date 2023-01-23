@@ -711,3 +711,37 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     justify-content: center;
     height: 100%;
 }
+
+
+/* RESOURCES */
+.resource-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.resource-card img {
+    width: 100%;
+}
+
+.resources-card {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.resource-card div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.resource-card div h5 {
+    font-weight: 500;
+}
+
+.colored-resource-card {
+    background-color: #f5f5f5;
+    padding: 30px 0;
+}
