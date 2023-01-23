@@ -4,4 +4,7 @@
 @import url('./partials.css');
 @import url("../css/iconsax-css/style.css");
 @import url("../css/commons.css");
-@import url("../css/tags.css")
+@import url("../css/tags.css");
+
+/* Auth Routes  */
+@import url("../css/auth.css");

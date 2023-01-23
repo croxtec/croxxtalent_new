@@ -162,3 +162,7 @@
     font-weight: 300;
     font-size: 15px;
 }
+
+.el-divider {
+    background-color: var(--light-accent) !important;
+}
