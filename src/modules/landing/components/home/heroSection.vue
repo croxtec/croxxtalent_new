@@ -23,7 +23,7 @@
                 alt=""
               />
             </div>
-            <div class="positioned--image">
+            <div class="positioned--image mt-5">
               <img
                 class=""
                 loading="lazy"
