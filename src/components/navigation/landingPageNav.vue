@@ -24,7 +24,7 @@
             <router-link to="/about-us">About Us</router-link>
           </li>
           <li>
-            <cx-button><slot>Login</slot></cx-button>
+            <cx-button @buttonClicked="goToLogin"><slot>Login</slot></cx-button>
           </li>
         </ul>
       </div>
@@ -38,6 +38,11 @@ export default {
   components: { cxButton },
   data() {
     return {};
+  },
+  methods: {
+    goToLogin() {
+      this.$router.push("/login");
+    },
   },
 };
 </script>
