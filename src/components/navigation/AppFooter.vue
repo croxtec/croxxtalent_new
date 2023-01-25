@@ -15,7 +15,7 @@
                 <h4 class="footer--header">Company</h4>
                 <ul class="list-unstlyed">
                   <li>
-                    <router-link to="/partnerships"> Patnerships</router-link>
+                    <router-link to="/contact-us"> Contact Us</router-link>
                   </li>
                   <li><router-link to="/about-us">About Us</router-link></li>
                   <li><router-link to="/careers">Careers</router-link></li>
@@ -26,6 +26,9 @@
               <div class="col-md">
                 <h4 class="footer--header">Resources</h4>
                 <ul class="list-unstlyed">
+                  <li>
+                    <router-link to="/partnerships"> Partnerships</router-link>
+                  </li>
                   <li>
                     <router-link to="/build-cv">Build CV</router-link>
                   </li>
