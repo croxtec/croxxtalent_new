@@ -6,7 +6,7 @@
     display: -moz-grid;
     align-items: center ;
     background: url('../img/about.png') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
-    background-size: auto 100%;
+    /* background-size: auto auto; */
 }
 .pivot--text {
     width: 57%;
@@ -297,6 +297,10 @@
 .data-driven .data--card, .data-driven .data--bottom_card {
     padding: 3rem;
     border-radius: 20px;
+    height: 40em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 

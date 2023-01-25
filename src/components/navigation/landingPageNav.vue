@@ -21,7 +21,7 @@
             <router-link to="/resources">Resources</router-link>
           </li>
           <li>
-            <router-link to="/contactg-us">Contact Us</router-link>
+            <router-link to="/contact">Contact Us</router-link>
           </li>
           <li>
             <cx-button @buttonClicked="goToLogin"><slot>Login</slot></cx-button>
