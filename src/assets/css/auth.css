@@ -4,7 +4,7 @@
 }
 
 .auth-banner {
-    background-color: var(--light-accent);
+    background-color: var(--blue-100);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -41,4 +41,38 @@
 .auth-form h6 {
     font-weight: 300;
     color: var(--dark-color);
+}
+
+.auth-form form input[type="email"], .auth-form form input[type="password"] {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--blue-300);
+    padding: 12px 16px;
+    border-radius: 40px;
+}
+
+.auth-form form label {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.auth-form form #remember-me {
+    font-weight: 300;
+}
+
+.auth-form form input::placeholder {
+    color: var(--gray-300);
+    font-weight: 300;
+}
+
+.auth-text {
+    font-weight: 14px;
+    font-weight: 300;
+    color: var(--dark-color);
+}
+
+.auth-link {
+    color: var(--primary-color);
+    font-weight: 14px;
+    font-weight: 500;
 }

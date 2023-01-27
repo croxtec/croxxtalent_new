@@ -50,6 +50,7 @@ html {
     --dark-color: #282929;
     --light-accent: #E6F2FF;
 
+
     /* Cobalt Blue  */
     --blue-100: #ebf3ff;
     --blue-200: #d6e7ff;
@@ -219,6 +220,16 @@ body {
 
 .bordered-btn {
     border:1px solid var(--light-accent);
+    padding: 0.6rem 2rem;
+    background-color: transparent;
+    color: var(--primary-color);
+    border-radius: 40px !important;
+    font-size: 14px !important;
+    font-weight: 300;
+}
+
+.blue-border {
+    border:1px solid var(--blue-300);
     padding: 0.6rem 2rem;
     background-color: transparent;
     color: var(--primary-color);
