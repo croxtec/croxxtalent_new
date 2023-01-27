@@ -42,12 +42,12 @@
     height: 100vh;
 }
 
-.auth-form h6 {
+.auth-content h6 {
     font-weight: 300;
     color: var(--dark-color);
 }
 
-.auth-form form input[type="email"], .auth-form form input[type="password"], .auth-form form input[type="text"] {
+.auth-content form input[type="email"], .auth-content form input[type="password"], .auth-content form input[type="text"] {
     display: block;
     width: 100%;
     border: 1px solid var(--blue-300);
@@ -55,16 +55,16 @@
     border-radius: 40px;
 }
 
-.auth-form form label {
+.auth-content form label {
     margin-bottom: 0;
     font-size: 14px;
 }
 
-.auth-form form #remember-me {
+.auth-content form #remember-me {
     font-weight: 300;
 }
 
-.auth-form form input::placeholder {
+.auth-content form input::placeholder {
     color: var(--gray-300);
     font-weight: 200;
     font-size: 14px;
