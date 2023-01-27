@@ -13,6 +13,9 @@ import "element-ui/lib/theme-chalk/index.css";
 
 Vue.use(ElementUI);
 
+import { Icon } from "@iconify/vue2";
+Vue.component("i-icon", Icon);
+
 import Vuesax from "vuesax";
 
 import "vuesax/dist/vuesax.css"; //Vuesax styles

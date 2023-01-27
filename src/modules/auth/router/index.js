@@ -1,4 +1,8 @@
 const Login = () => import("../pages/loginPage.vue");
+const Register = () => import("../pages/registerPage.vue");
+const RegisterOptions = () => import("../pages/views/registerOptions.vue");
+const TalentRegister = () => import("../pages/views/talentRegister.vue");
+const EmployerRegister = () => import("../pages/views/employerRegister.vue");
 
 const routes = [
   {
@@ -8,6 +12,40 @@ const routes = [
     meta: {
       layout: "AppAuthLayout",
     },
+  },
+
+  {
+    path: "/register",
+    component: Register,
+    meta: {
+      layout: "AppAuthLayout",
+    },
+    children: [
+      {
+        path: "",
+        name: "register",
+        component: RegisterOptions,
+        meta: {
+          layout: "AppAuthLayout",
+        },
+      },
+      {
+        path: "talent-register",
+        name: "talent-register",
+        component: TalentRegister,
+        meta: {
+          layout: "AppAuthLayout",
+        },
+      },
+      {
+        path: "employer-register",
+        name: "employer-register",
+        component: EmployerRegister,
+        meta: {
+          layout: "AppAuthLayout",
+        },
+      },
+    ],
   },
 ];
 
