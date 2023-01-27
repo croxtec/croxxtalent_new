@@ -1,6 +1,6 @@
 <template>
   <div class="register-page auth-container">
-    <div class="register-content">
+    <div class="auth-content">
       <RegisterNav />
       <router-view />
     </div>

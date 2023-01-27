@@ -231,7 +231,7 @@ body {
 
 .blue-border {
     border:1px solid var(--blue-300);
-    padding: 0.6rem 2rem;
+    padding: 1rem 2rem;
     background-color: transparent;
     color: var(--primary-color);
     border-radius: 40px !important;

@@ -4,7 +4,7 @@
       <img src="@/assets/img/logo.png" width="250" alt="" />
     </div>
 
-    <div class="auth-form">
+    <div class="auth-content">
       <h4 class="text-center">Welcome Back</h4>
       <button
         class="blue-border justify-content-center d-flex align-items-center w-100 my-4"
