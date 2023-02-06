@@ -15,18 +15,18 @@
         <div
           class="option-image"
           role="button"
-          :class="{ active: activeEl === 1 }"
+          :class="{ active: activeEl === '1' }"
           @click="chooseSelection('1')"
         >
           <div class="text-right">
             <i-icon
               :icon="
-                activeEl === 1
+                activeEl === '1'
                   ? 'material-symbols:check-circle-rounded'
                   : 'ic:round-radio-button-unchecked'
               "
               class="cv-icon"
-              :class="{ active: activeEl === 1 }"
+              :class="{ active: activeEl === '1' }"
             />
             <!-- <i-icon icon="material-symbols:check-circle-rounded" /> -->
           </div>
@@ -41,7 +41,7 @@
         <div
           class="option-image"
           role="button"
-          :class="{ active: activeEl === 2 }"
+          :class="{ active: activeEl === '2' }"
           @click="chooseSelection('2')"
         >
           <div class="text-right">
@@ -52,7 +52,7 @@
                   : 'ic:round-radio-button-unchecked'
               "
               class="cv-icon"
-              :class="{ active: activeEl === 2 }"
+              :class="{ active: activeEl === '2' }"
             />
           </div>
           <img src="@/assets/img/uploadCv.png" alt="" />
@@ -64,7 +64,7 @@
       </div>
     </div>
     <div class="mt-4 text-center">
-      <button class="primary--button">Get Started</button>
+      <button class="primary--button" @click="getStarted">Get Started</button>
     </div>
   </div>
 </template>
@@ -72,12 +72,15 @@
 export default {
   data() {
     return {
-      activeEl: 1,
+      activeEl: "1",
     };
   },
   methods: {
     chooseSelection(value) {
-      this.activeEl = Number(value);
+      this.activeEl = value;
+    },
+    getStarted() {
+      this.$router.push(this.activeEl === "1" ? "/create-cv" : "upload-cv");
     },
   },
 };

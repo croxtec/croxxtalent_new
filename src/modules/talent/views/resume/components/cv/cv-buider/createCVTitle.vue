@@ -1,3 +1,3 @@
 <template>
-  <div>Create Title</div>
+  <div>Create Cv</div>
 </template>
