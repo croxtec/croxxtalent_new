@@ -14,6 +14,10 @@ html {
     transition: all 0.1s;
     -webkit-transition: all 0.1s;
     -o-transition: all 0.1s;
+    /* color: var(--dark-color); */
+}
+
+h1, h2, h3, h4, h5, h6, p, a {
     color: var(--dark-color);
 }
 

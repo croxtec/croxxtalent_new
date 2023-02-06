@@ -14,10 +14,11 @@
               <div class="col-md">
                 <h4 class="footer--header">Company</h4>
                 <ul class="list-unstlyed">
+                  <li><router-link to="/about-us">About Us</router-link></li>
                   <li>
                     <router-link to="/contact-us"> Contact Us</router-link>
                   </li>
-                  <li><router-link to="/about-us">About Us</router-link></li>
+
                   <li><router-link to="/careers">Careers</router-link></li>
                   <li><router-link to="/pricing">Pricing</router-link></li>
                 </ul>

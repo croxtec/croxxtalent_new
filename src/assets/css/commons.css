@@ -1,8 +1,8 @@
 /* STYLING FOR NAVIGATION AREA  */
-
 .navbar-transparent {
     border-bottom: 1px solid #93B7E3;
 }
+
 .app--nav_items li a {
     color: var(--dark-color);
     font-weight: 500;
@@ -30,14 +30,16 @@
     font-size: 2.6rem;
     font-weight: 700;
 }
-.app--nav_items li a:after+.app--nav_items li a:hover {
+.app--nav_items li a:after+.app--nav_items li a:not(.app--nav_items li .router-link-exact-active):hover {
     content: "";
     width: 80%;
-    height: 1px;
+    height: 3px;
+    border-radius: 5px;
     background-color: var(--dark-color);
     position: absolute;
     bottom: -5px;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .app--nav_items li .router-link-exact-active::after {
@@ -47,23 +49,27 @@
     background-color: var(--dark-color);
     position: absolute;
     bottom: -10px;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .app--nav_items li .router-link-exact-active::before {
     content: "";
     width: 80%;
-    height: 2px;
+    height: 3px;
+    border-radius: 5px;
     background-color: var(--dark-color);
     position: absolute;
     bottom: -10px;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .app--nav_items li a::after {
     content: "";
     width: 80%;
-    height: 2px;
+    height: 3px;
+    border-radius: 5px;
     background-color: var(--primary-color);
     position: absolute;
     bottom: -10px;
@@ -73,9 +79,9 @@
     transform-origin: right;
 }
 
-.app--nav_items li a:hover::after {
+.app--nav_items li a:not(.app--nav_items li .router-link-exact-active):hover::after {
     transform: scaleX(1);
-    transform-origin: left;
+    transform-origin: center;
 }
 
 

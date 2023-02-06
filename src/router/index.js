@@ -5,6 +5,7 @@ import VueRouter from "vue-router";
 import HomeRoutes from "@/modules/landing/router";
 import errorRoutes from "@/modules/errorPages/router";
 import AuthRoutes from "@/modules/auth/router";
+import TalentRoutes from "@/modules/talent/router";
 
 Vue.use(VueRouter);
 
@@ -13,7 +14,7 @@ const routes = [];
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes: routes.concat(HomeRoutes, errorRoutes, AuthRoutes),
+  routes: routes.concat(HomeRoutes, errorRoutes, AuthRoutes, TalentRoutes),
   scrollBehavior() {
     return window.scrollTo({ top: 0, behavior: "smooth" });
   },
