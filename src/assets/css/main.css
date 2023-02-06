@@ -6,8 +6,11 @@
 @import url("../css/commons.css");
 @import url("../css/tags.css");
 
-/* Auth Routes  */
+/* Auth CSS  */
 @import url("../css/auth.css");
 
-/* Dashboard Routes  */
+/* Dashboard CSS  */
 @import url("../css/dashboard.css");
+
+/* CV Css */
+@import url("../css/cv.css");

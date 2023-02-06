@@ -1,6 +1,6 @@
 <template>
   <div class="talent-nav">
-    <div class="container-fluid">
+    <div class="container">
       <ul class="mb-0">
         <li>
           <router-link to="/">

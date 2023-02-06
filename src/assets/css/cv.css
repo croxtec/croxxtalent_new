@@ -1,0 +1,60 @@
+.create-cv {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.linkedin {
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 3px;
+}
+
+.cv-option {
+    border: 3px solid var(--gray-300);
+    width: 45%;
+    border-radius: 15px;
+}
+
+.cv-option .option-image {
+    padding: 20px 20px 0 20px;
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+}
+
+.cv-option .option-image img {
+    width: 60%;
+    object-fit: cover;
+    -o-object-fit: cover;
+    object-position: center;
+    -o-object-position: center;
+}
+
+.cv-option .option-image:hover {
+    background-color: var(--blue-100);
+}
+
+.cv-option .option-image.active {
+    background-color: var(--blue-100);
+}
+
+.cv-option .details {
+   border-top: 3px solid var(--gray-300);
+   padding: 20px;
+   text-align: center;
+}
+
+.cv-option .details p {
+    font-weight: 300;
+    font-size: 15px;
+    margin-top: 5px !important;
+}
+
+.cv-option .option-image .cv-icon {
+    font-size: 24px;
+    color: var(--gray-300);
+}
+
+.cv-option .option-image .cv-icon.active {
+    color:var(--primary-color)
+}

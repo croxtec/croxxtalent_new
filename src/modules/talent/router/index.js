@@ -1,28 +1,7 @@
-const Home = () => import("../views/dashboard/pages/indexView.vue");
+import DashboardRoutes from "../views/dashboard/router";
+import ResumeRoutes from "../views/resume/router";
 
-const routes = [
-  {
-    path: "/dashboard",
-    name: "dashboard",
-    component: Home,
-    meta: {
-      layout: "AppDashboardLayout",
-    },
-  },
-];
+const routes = [];
+const router = routes.concat(DashboardRoutes, ResumeRoutes);
 
-// function guardMyroute(to, from, next) {
-//   var isAuthenticated = false;
-//   if (localStorage.getItem("token")) isAuthenticated = true;
-//   else isAuthenticated = false;
-//   if (isAuthenticated) {
-//     next();
-//   } else {
-//     next({
-//       name: "login",
-//       query: { redirectFrom: to.fullPath },
-//     });
-//   }
-// }
-
-export default routes;
+export default router;
