@@ -38,7 +38,7 @@
         </div>
 
         <div class="mb-2">
-          <router-link class="auth-text" to="/forgot-password"
+          <router-link class="auth-text" to="/forget-password"
             >Forgotten your password?</router-link
           >
         </div>
