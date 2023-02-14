@@ -12,45 +12,53 @@
     <div v-if="auth === true">
       <h4 class="py-3">RESET PASSWORD</h4>
       <p class="py-5 mt-2">Please enter the code sent to your email</p>
-      <div class="pb-5">
-        <input
-          type="number"
-          class="p-3 mr-2 rounded border-secondary border"
-          maxlength="1"
-          @keyup="tabChange(1)"
-        />
-        <input
-          type="number"
-          class="p-3 mr-2 rounded border-secondary border"
-          maxlength="1"
-          @keyup="tabChange(2)"
-        />
-        <input
-          type="number"
-          class="p-3 mr-2 rounded border-secondary border"
-          maxlength="1"
-          @keyup="tabChange(3)"
-        />
-        <input
-          type="number"
-          class="p-3 mr-2 rounded border-secondary border"
-          maxlength="1"
-          @keyup="tabChange(4)"
-        />
-        <input
-          type="number"
-          class="p-3 mr-2 rounded border-secondary border"
-          maxlength="1"
-          @keyup="tabChange(5)"
-        />
-        <input
-          type="number"
-          class="p-3 mr-2 rounded border-secondary border"
-          maxlength="1"
-          @keyup="tabChange(6)"
-        />
-      </div>
-      <button class="rounded-pill btns btn" @click="submit">Submit</button>
+      <form @submit.prevent="submit">
+        <div class="pb-5">
+          <input
+            v-model="token1"
+            type="text"
+            class="p-3 mr-2 rounded border-secondary border"
+            maxlength="1"
+            @keyup="tabChange(1)"
+          />
+          <input
+            v-model="token2"
+            type="text"
+            class="p-3 mr-2 rounded border-secondary border"
+            maxlength="1"
+            @keyup="tabChange(2)"
+          />
+          <input
+            v-model="token3"
+            type="text"
+            class="p-3 mr-2 rounded border-secondary border"
+            maxlength="1"
+            @keyup="tabChange(3)"
+          />
+          <input
+            v-model="token4"
+            type="text"
+            class="p-3 mr-2 rounded border-secondary border"
+            maxlength="1"
+            @keyup="tabChange(4)"
+          />
+          <input
+            v-model="token5"
+            type="text"
+            class="p-3 mr-2 rounded border-secondary border"
+            maxlength="1"
+            @keyup="tabChange(5)"
+          />
+          <input
+            v-model="token6"
+            type="text"
+            class="p-3 mr-2 rounded border-secondary border"
+            maxlength="1"
+            @keyup="tabChange(6)"
+          />
+        </div>
+        <button class="rounded-pill btns btn" >Submit</button>
+      </form>
     </div>
   </div>
 </template>
@@ -61,12 +69,26 @@ export default {
     return {
       auth: true,
       successAlert: false,
+      token: "",
+      token1: "",
+      token2: "",
+      token3: "",
+      token4: "",
+      token5: "",
+      token6: "",
     };
   },
   methods: {
     submit() {
       this.auth = false;
       this.successAlert = true;
+      this.token =
+        this.token1 +
+        this.token2 +
+        this.token3 +
+        this.token4 +
+        this.token5 +
+        this.token6;
       setTimeout(() => {
         this.$router.push({ name: "new-password" });
       }, 3000);
