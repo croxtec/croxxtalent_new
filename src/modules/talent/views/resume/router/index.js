@@ -22,6 +22,7 @@ const routes = [
     meta: {
       layout: "AppDashboardLayout",
       header: "Cv Previewer",
+      parent: "resume",
     },
     children: [
       {
@@ -31,6 +32,57 @@ const routes = [
         meta: {
           layout: "AppDashboardLayout",
           header: "Cv Previewer",
+          parent: "resume",
+        },
+      },
+      {
+        path: "work-history",
+        name: "work-history",
+        component: CreateCVTitle,
+        meta: {
+          layout: "AppDashboardLayout",
+          header: "Cv Previewer",
+          parent: "resume",
+        },
+      },
+      {
+        path: "contact-information",
+        name: "contact-information",
+        component: CreateCVTitle,
+        meta: {
+          layout: "AppDashboardLayout",
+          header: "Cv Previewer",
+          parent: "resume",
+        },
+      },
+      {
+        path: "educational-details",
+        name: "educational-details",
+        component: CreateCVTitle,
+        meta: {
+          layout: "AppDashboardLayout",
+          header: "Cv Previewer",
+          parent: "resume",
+        },
+      },
+      {
+        path: "competency",
+        name: "competency",
+        component: CreateCVTitle,
+        meta: {
+          layout: "AppDashboardLayout",
+          header: "Cv Previewer",
+          parent: "resume",
+        },
+      },
+      {
+        path: "professional-summary",
+        name: "professional-summary",
+        component: CreateCVTitle,
+        meta: {
+          layout: "AppDashboardLayout",
+          header: "Cv Previewer",
+          parent: "resume",
         },
       },
     ],
@@ -42,6 +94,7 @@ const routes = [
     meta: {
       layout: "AppDashboardLayout",
       header: "Cv Previewer",
+      parent: "resume",
     },
     children: [
       {
@@ -51,6 +104,7 @@ const routes = [
         meta: {
           layout: "AppDashboardLayout",
           header: "Cv Previewer",
+          parent: "resume",
         },
       },
     ],

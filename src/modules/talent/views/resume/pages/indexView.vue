@@ -80,7 +80,7 @@ export default {
       this.activeEl = value;
     },
     getStarted() {
-      this.$router.push(this.activeEl === "1" ? "/create-cv" : "upload-cv");
+      this.$router.push(this.activeEl === "1" ? "/create-cv" : "/upload-cv");
     },
   },
 };

@@ -2,8 +2,8 @@ const Home = () => import("../pages/indexView.vue");
 
 const routes = [
   {
-    path: "/dashboard",
-    name: "dashboard",
+    path: "/home",
+    name: "home",
     component: Home,
     meta: {
       layout: "AppDashboardLayout",

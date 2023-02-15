@@ -7,7 +7,7 @@
             <img src="@/assets/img/logo.png" width="180px" alt="" />
           </router-link>
         </li>
-        <li><router-link to="/dashboard">Home</router-link></li>
+        <li><router-link to="/home">Home</router-link></li>
         <li><router-link to="/resume">Resume</router-link></li>
         <li><router-link to="/competences">Competences</router-link></li>
         <li><router-link to="/jobs">Jobs</router-link></li>
