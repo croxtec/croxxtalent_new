@@ -10,8 +10,10 @@ Vue.config.productionTip = false;
 
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-
 Vue.use(ElementUI);
+
+import CountryFlag from "vue-country-flag";
+Vue.component("country-flag", CountryFlag);
 
 import { Icon } from "@iconify/vue2";
 Vue.component("i-icon", Icon);

@@ -11,10 +11,12 @@
       <input
         type="text"
         placeholder="Enter email address"
-        class="p-3  rounded-pill border-secondary border"
+        class="p-3 rounded-pill border-secondary border"
       />
     </div>
-    <router-link to="password-resetcode" class="rounded-pill btns btn" >Proceed</router-link>
+    <router-link to="password-resetcode" class="rounded-pill btns btn">
+      Proceed
+    </router-link>
   </div>
 </template>
 
@@ -37,7 +39,7 @@ input::placeholder {
   opacity: 1 !important;
   font-size: 10px;
 }
-.btn:hover{
-    color: white;
+.btn:hover {
+  color: white;
 }
 </style>

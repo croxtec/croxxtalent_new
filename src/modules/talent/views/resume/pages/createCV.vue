@@ -27,9 +27,9 @@
       </div>
     </div>
 
-    <div class="step-buttons mt-4">
+    <div class="step-buttons my-4">
       <button class="primary--button_border" @click="prev">Back</button>
-      <button class="primary--button" @click="next">Next</button>
+      <button class="primary--button" @click="next">Next Step</button>
     </div>
   </div>
 </template>

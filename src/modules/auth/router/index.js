@@ -7,7 +7,8 @@ const RegisterOptions = () => import("../pages/views/registerOptions.vue");
 const TalentRegister = () => import("../pages/views/talentRegister.vue");
 const EmployerRegister = () => import("../pages/views/employerRegister.vue");
 
-const routes = [{
+const routes = [
+  {
     path: "/login",
     name: "login",
     component: Login,
@@ -46,7 +47,8 @@ const routes = [{
     meta: {
       layout: "AppAuthLayout",
     },
-    children: [{
+    children: [
+      {
         path: "",
         name: "register",
         component: RegisterOptions,

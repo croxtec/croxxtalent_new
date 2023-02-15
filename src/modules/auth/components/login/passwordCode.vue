@@ -54,8 +54,8 @@
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 export default {
   data() {
     return {
@@ -82,7 +82,7 @@ export default {
   },
 };
 </script>
-  
+
 <style scoped>
 input {
   width: 50px;
@@ -120,4 +120,3 @@ input[type="number"] {
   font-weight: 500;
 }
 </style>
-  
