@@ -1,14 +1,40 @@
 const Login = () => import("../pages/loginPage.vue");
+const forgetPassword = () => import("../components/login/forgetPassword.vue");
+const newPassword = () => import("../components/login/newPassword.vue");
+const passwordCode = () => import("../components/login/passwordCode.vue");
 const Register = () => import("../pages/registerPage.vue");
 const RegisterOptions = () => import("../pages/views/registerOptions.vue");
 const TalentRegister = () => import("../pages/views/talentRegister.vue");
 const EmployerRegister = () => import("../pages/views/employerRegister.vue");
 
-const routes = [
-  {
+const routes = [{
     path: "/login",
     name: "login",
     component: Login,
+    meta: {
+      layout: "AppAuthLayout",
+    },
+  },
+  {
+    path: "/forget-password",
+    name: "forget-password",
+    component: forgetPassword,
+    meta: {
+      layout: "AppAuthLayout",
+    },
+  },
+  {
+    path: "/password-resetcode",
+    name: "password-resetcode",
+    component: passwordCode,
+    meta: {
+      layout: "AppAuthLayout",
+    },
+  },
+  {
+    path: "/new-password",
+    name: "new-password",
+    component: newPassword,
     meta: {
       layout: "AppAuthLayout",
     },
@@ -20,8 +46,7 @@ const routes = [
     meta: {
       layout: "AppAuthLayout",
     },
-    children: [
-      {
+    children: [{
         path: "",
         name: "register",
         component: RegisterOptions,
