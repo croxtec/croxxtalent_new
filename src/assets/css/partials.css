@@ -75,6 +75,7 @@ h1, h2, h3, h4, h5, h6, p, a {
     /* Gray Shades  */
     --gray-50: #f5f5f5;
     --gray-100: #ebebeb;
+    --gray-150: #d9d9d9;
     --gray-200: #e0e0e0;
     --gray-300: #c2c2c2;
     --gray-400: #979b9b;

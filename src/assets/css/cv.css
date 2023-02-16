@@ -172,7 +172,8 @@
     font-weight: 300;
 }
 
-.form-details input::placeholder {
+.form-details input::placeholder, 
+.form-details textarea::placeholder  {
     color: var(--gray-300);
     font-weight: 200;
     font-size: 14px;
@@ -207,4 +208,21 @@
 .form-details .phone-number-input #checkBox {
     /* accent-color: var(--blue-200); */
     accent-color: red;
+}
+
+.level-select {
+  border: 1px solid var(--blue-200);
+  border-radius: 30px;
+  padding: 16px 8px;
+  display: flex;
+  display: inline-flex;
+  display: -webkit-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.levels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;  
 }

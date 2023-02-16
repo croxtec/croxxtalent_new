@@ -115,9 +115,9 @@
 
 <script>
 import AddCertification from "./forms/addCertification.vue";
-import addEducation from "./forms/addEducation.vue";
+import AddEducation from "./forms/addEducation.vue";
 export default {
-  components: { addEducation, AddCertification },
+  components: { AddEducation, AddCertification },
   data: () => {
     return {
       add_education: false,
