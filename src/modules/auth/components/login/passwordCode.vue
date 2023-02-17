@@ -57,7 +57,7 @@
             @keyup="tabChange(6)"
           />
         </div>
-        <button class="rounded-pill btns btn" >Submit</button>
+        <button class="rounded-pill btns btn">Submit</button>
       </form>
     </div>
   </div>

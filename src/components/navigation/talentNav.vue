@@ -7,11 +7,47 @@
             <img src="@/assets/img/logo.png" width="180px" alt="" />
           </router-link>
         </li>
-        <li><router-link to="/home">Home</router-link></li>
-        <li><router-link to="/resume">Resume</router-link></li>
-        <li><router-link to="/competencies">Competencies</router-link></li>
-        <li><router-link to="/jobs">Jobs</router-link></li>
-        <li><router-link to="/training">Training</router-link></li>
+        <li>
+          <router-link to="/home">Home</router-link>
+        </li>
+        <li>
+          <router-link
+            to="/resume"
+            :class="{
+              'router-link-exact-active': this.$route.meta.parent === 'resume',
+            }"
+            >Resume</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="/competencies"
+            :class="{
+              'router-link-exact-active':
+                this.$route.meta.parent === 'competencies',
+            }"
+            >Competencies</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="/jobs"
+            :class="{
+              'router-link-exact-active': this.$route.meta.parent === 'jobs',
+            }"
+            >Jobs</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="/training"
+            :class="{
+              'router-link-exact-active':
+                this.$route.meta.parent === 'training',
+            }"
+            >Training</router-link
+          >
+        </li>
         <li>
           <div class="search">
             <i-icon icon="ri:search-2-line" class="nav-icon" />
@@ -40,3 +76,15 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data: () => {
+    return {};
+  },
+
+  // computed: {
+
+  // }
+};
+</script>

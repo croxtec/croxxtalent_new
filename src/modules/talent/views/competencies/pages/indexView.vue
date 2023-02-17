@@ -3,14 +3,7 @@
     <div class="container">
       <header class="d-flex justify-content-between">
         <div
-          class="
-            rounded-pill
-            border-secondary border
-            d-flex
-            justify-content-around
-            pt-2
-            option
-          "
+          class="rounded-pill border-secondary border d-flex justify-content-around pt-2 option"
         >
           <router-link to="competencies">Skills</router-link>
           <router-link to="experience">Experience</router-link>
@@ -27,20 +20,29 @@
       <!-- modal -->
       <div class="CompetenceModal" v-if="CompetenceModal === true">
         <!-- modal-content -->
-        <div class="insideModal ">
-          <span class="close m-4" @click="CompetenceModal = false">&times;</span>
+        <div class="insideModal">
+          <span class="close m-4" @click="CompetenceModal = false"
+            >&times;</span
+          >
           <header class="text-center p-4">
             <h5 class="font-weight-bold">Add competence</h5>
           </header>
           <hr />
           <div class="search text-center d-flex justify-content-center">
-            <img src="@/assets/img/search-normal.png" alt="">
-            <input type="text" class="search-input ml-3" placeholder="Search domain, core, skills">
+            <img src="@/assets/img/search-normal.png" alt="" />
+            <input
+              type="text"
+              class="search-input ml-3"
+              placeholder="Search domain, core, skills"
+            />
           </div>
           <form class="p-4" @click.prevent="addCompetence">
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Domain</label>
-              <select class="form-control rounded-pill border border-info text-black-50" id="exampleFormControlSelect1">
+              <select
+                class="form-control rounded-pill border border-info text-black-50"
+                id="exampleFormControlSelect1"
+              >
                 <option>Domain</option>
                 <option>2</option>
                 <option>3</option>
@@ -50,7 +52,10 @@
             </div>
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Core</label>
-              <select class="form-control rounded-pill border border-info text-black-50" id="exampleFormControlSelect1">
+              <select
+                class="form-control rounded-pill border border-info text-black-50"
+                id="exampleFormControlSelect1"
+              >
                 <option>Core</option>
                 <option>2</option>
                 <option>3</option>
@@ -60,7 +65,10 @@
             </div>
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Skills</label>
-              <select class="form-control rounded-pill border border-info text-black-50" id="exampleFormControlSelect1">
+              <select
+                class="form-control rounded-pill border border-info text-black-50"
+                id="exampleFormControlSelect1"
+              >
                 <option>Skills</option>
                 <option>2</option>
                 <option>3</option>
@@ -70,7 +78,10 @@
             </div>
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Level</label>
-              <select class="form-control rounded-pill border border-info text-black-50" id="exampleFormControlSelect1">
+              <select
+                class="form-control rounded-pill border border-info text-black-50"
+                id="exampleFormControlSelect1"
+              >
                 <option>Level</option>
                 <option>2</option>
                 <option>3</option>
@@ -79,7 +90,9 @@
               </select>
             </div>
             <div class="text-center my-5">
-              <button class="btn btn-primary rounded-pill text-center" >Add Competence</button>
+              <button class="btn btn-primary rounded-pill text-center">
+                Add Competence
+              </button>
             </div>
           </form>
         </div>
@@ -87,14 +100,7 @@
       <div v-show="$route.name == 'competencies'">
         <h4 class="pl-2">Well service</h4>
         <div
-          class="
-            d-flex
-            justify-content-around
-            rounded-pill
-            border-secondary border
-            py-2
-            mt-3
-          "
+          class="d-flex justify-content-around rounded-pill border-secondary border py-2 mt-3"
         >
           <small
             class="pt-2"
@@ -103,7 +109,9 @@
             >{{ wellService.name }}</small
           >
           <div>
-            <small class="btn bg-dark rounded-circle mx-3 text-white"><</small>
+            <small class="btn bg-dark rounded-circle mx-3 text-white">
+              &lt;
+            </small>
             <small class="btn bg-dark rounded-circle text-white">></small>
           </div>
         </div>
@@ -112,13 +120,7 @@
             <div class="card-body">
               <h6 class="card-title mb-3">Surface cementing</h6>
               <span
-                class="
-                  px-3
-                  py-1
-                  text-primary
-                  border border-primary
-                  rounded-pill
-                "
+                class="px-3 py-1 text-primary border border-primary rounded-pill"
                 >Intermediate</span
               >
               <div
@@ -140,13 +142,7 @@
             <div class="card-body">
               <h6 class="card-title mb-3">Production cementing</h6>
               <span
-                class="
-                  px-3
-                  py-1
-                  text-primary
-                  border border-primary
-                  rounded-pill
-                "
+                class="px-3 py-1 text-primary border border-primary rounded-pill"
                 >Basic</span
               >
               <div
@@ -168,13 +164,7 @@
             <div class="card-body">
               <h6 class="card-title mb-3">Production cementing</h6>
               <span
-                class="
-                  px-3
-                  py-1
-                  text-primary
-                  border border-primary
-                  rounded-pill
-                "
+                class="px-3 py-1 text-primary border border-primary rounded-pill"
                 >Expert</span
               >
               <div class="my-4">
@@ -193,14 +183,7 @@
         <hr class="border mt-4" />
         <h4 class="pl-2">Rig operations</h4>
         <div
-          class="
-            d-flex
-            justify-content-around
-            rounded-pill
-            border-secondary border
-            py-2
-            mt-3
-          "
+          class="d-flex justify-content-around rounded-pill border-secondary border py-2 mt-3"
         >
           <small
             class="pt-2"
@@ -209,7 +192,9 @@
             >{{ rigOperation.name }}</small
           >
           <div>
-            <small class="btn bg-dark rounded-circle mx-3 text-white"><</small>
+            <small class="btn bg-dark rounded-circle mx-3 text-white"
+              >&lt;</small
+            >
             <small class="btn bg-dark rounded-circle text-white">></small>
           </div>
         </div>
@@ -220,15 +205,7 @@
               <div class="my-4 d-flex justify-content-between">
                 <img src="@/assets/img/Croxx Badge.png" alt="" />
                 <div
-                  class="
-                    bg-percent
-                    my-4
-                    px-3
-                    py-1
-                    rounded-pill
-                    text-center
-                    d-flex
-                  "
+                  class="bg-percent my-4 px-3 py-1 rounded-pill text-center d-flex"
                 >
                   <img src="@/assets/img/alarm.png" alt="" />
                   <small>Expiring soon</small>
@@ -243,16 +220,7 @@
             <div class="card-body">
               <h6 class="card-title mb-3 font-weight-bold">BHA Handling</h6>
               <div
-                class="
-                  bg-percent
-                  my-4
-                  mb-5
-                  px-3
-                  py-2
-                  rounded-pill
-                  text-center
-                  d-flex
-                "
+                class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center d-flex"
               >
                 <img src="@/assets/img/refresh.png" class="mr-2" alt="" />
                 <small class="text-primary font-weight-bold"
@@ -359,17 +327,17 @@ export default {
   },
   methods: {
     addCompetenceModal() {
-      this.CompetenceModal = true
+      this.CompetenceModal = true;
     },
-    addCompetence () {
-      console.log("addCompetence")
-    }
+    addCompetence() {
+      console.log("addCompetence");
+    },
   },
 };
 </script>
 
 <style scoped>
-.search-input{
+.search-input {
   outline: 0;
   border-width: 0 0 2px;
 }
