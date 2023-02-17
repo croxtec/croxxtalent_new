@@ -19,7 +19,7 @@
 
       <div class="mb-3">
         <label for="">Email Address</label>
-        <input type="email" placeholder="Enter email address" />
+        <input type="email" placeholder="Enter Email Address" />
       </div>
 
       <div class="mb-3">

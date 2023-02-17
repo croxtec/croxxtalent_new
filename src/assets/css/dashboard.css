@@ -1,82 +1,81 @@
 .talent-nav {
-    background-color: var(--blue-100);
-    border-radius: 0px 0px 40px 40px;
+  background-color: var(--blue-100);
+  border-radius: 0px 0px 40px 40px;
 }
 
-.talent-nav  ul {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 80px;
+.talent-nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
 }
 
 .talent-nav ul .search {
-    border: 1px solid var(--blue-300);
-    background: #fff;
-    border-radius: 25px;
-    padding: 0 25px;
+  border: 1px solid var(--blue-300);
+  background: #fff;
+  border-radius: 25px;
+  padding: 0 25px;
 }
 
 .talent-nav ul li a {
-    color: var(--primary-color);
-    font-size: 14px;
-    position: relative;
-    font-weight: 400;
+  color: var(--primary-color);
+  font-size: 14px;
+  position: relative;
+  font-weight: 400;
 }
 
 .talent-nav ul li a.router-link-exact-active::before {
-    content: "";
-    position: absolute;
-    height: 3px;
-    width: 70%;
-    background-color: var(--primary-color);
-    bottom: -10px;
-    left: 50%;
-   transform: translate(-50%, -50%);
-   border-radius: 1px;
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 70%;
+  background-color: var(--primary-color);
+  bottom: -10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1px;
 }
 
-
-.talent-nav ul .search  input {
-    background-color: transparent;
-    border: transparent;
-    padding: 10px;
-    outline: none;
-    font-size: 14px;
+.talent-nav ul .search input {
+  background-color: transparent;
+  border: transparent;
+  padding: 10px;
+  outline: none;
+  font-size: 14px;
 }
 
-.talent-nav ul .search  input::placeholder{
-    color: var(--gray-300);
-    font-weight: 300;
-    font-size: 13px;
+.talent-nav ul .search input::placeholder {
+  color: var(--gray-300);
+  font-weight: 300;
+  font-size: 13px;
 }
 
 .nav-icon {
-    color: var(--gray-300);
-    font-size: 20px;
+  color: var(--gray-300);
+  font-size: 20px;
 }
 
 .menu-icon-container {
-    color: var(--primary-color);
-    width: 35px;
-    height: 35px;
-    background-color: #fff;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
+  color: var(--primary-color);
+  width: 35px;
+  height: 35px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
 }
 
 .menu-icon {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .user-avatar img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    -o-object-fit: cover;
-    object-position: center;
-    -o-object-position: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  -o-object-fit: cover;
+  object-position: center;
+  -o-object-position: center;
 }

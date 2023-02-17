@@ -28,8 +28,8 @@
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 export default {
   data() {
     return {
@@ -45,8 +45,8 @@ export default {
   },
 };
 </script>
-  
-  <style scoped>
+
+<style scoped>
 input {
   width: 408px;
 }
@@ -69,4 +69,3 @@ input::placeholder {
   font-weight: 500;
 }
 </style>
-  
