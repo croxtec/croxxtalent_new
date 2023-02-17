@@ -9,7 +9,7 @@
         </li>
         <li><router-link to="/dashboard">Home</router-link></li>
         <li><router-link to="/resume">Resume</router-link></li>
-        <li><router-link to="/competences">Competences</router-link></li>
+        <li><router-link to="/competencies">Competencies</router-link></li>
         <li><router-link to="/jobs">Jobs</router-link></li>
         <li><router-link to="/training">Training</router-link></li>
         <li>
