@@ -3,7 +3,7 @@
     <TalentNav />
     <div class="container">
       <div class="my-4">
-        <h4 class="" style="font-weight: 700">{{ headerName.header }}</h4>
+        <h4 class="text-capitalize" style="font-weight: 700">{{ headerName.header }}</h4>
       </div>
       <slot />
     </div>
