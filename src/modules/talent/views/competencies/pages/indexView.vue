@@ -254,7 +254,7 @@
                   d-flex
                 "
               >
-                <img src="@/assets/img/refresh.png" alt="" />
+                <img src="@/assets/img/refresh.png" class="mr-2" alt="" />
                 <small class="text-primary font-weight-bold"
                   >Pending Review</small
                 >
