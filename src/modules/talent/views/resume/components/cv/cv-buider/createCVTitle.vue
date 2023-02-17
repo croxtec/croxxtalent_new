@@ -45,7 +45,7 @@
 
       <div class="d-flex" style="gap: 20px">
         <div class="mb-3 w-100">
-          <label for="">First Name <span class="text-danger">*</span></label>
+          <label for="">Industry <span class="text-danger">*</span></label>
           <select type="text" placeholder="Enter your first name">
             <option value="" disabled selected>Pick Industry</option>
             <option value="Male">1</option>
@@ -54,7 +54,7 @@
         </div>
         <div class="mb-3 w-100">
           <label for="">Job Title<span class="text-danger">*</span></label>
-          <input type="text" placeholder="Enter your first name" />
+          <input type="text" placeholder="Enter your Job title" />
         </div>
       </div>
 

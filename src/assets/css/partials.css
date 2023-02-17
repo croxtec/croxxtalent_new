@@ -54,6 +54,7 @@ h1, h2, h3, h4, h5, h6, p, a {
     --dark-color: #282929;
     --light-accent: #E6F2FF;
     --muted-color: #7E7E7E;
+    --dark-primary-color: #002C6D;
 
 
     /* Cobalt Blue  */
@@ -77,8 +78,11 @@ h1, h2, h3, h4, h5, h6, p, a {
     --gray-100: #ebebeb;
     --gray-150: #d9d9d9;
     --gray-200: #e0e0e0;
+    --gray-250: #A9A9A9;
     --gray-300: #c2c2c2;
+    --gray-350: #E5E7E8;
     --gray-400: #979b9b;
+    --gray-450: #c4c4c4;
     --gray-500: #646b6b;
     --gray-600: #464949;
     --gray-700: #3c3e3e;
