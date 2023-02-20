@@ -23,7 +23,7 @@
         <ProfessionalSummary v-if="stepNum === 6" />
       </div>
       <div class="cv-preview">
-        <CvBuilderPreview />
+        <CvPreview />
       </div>
     </div>
 
@@ -42,7 +42,7 @@ import CreateCVSkills from "../components/cv/cv-buider/createCVSkills.vue";
 import CreateCVTitle from "../components/cv/cv-buider/createCVTitle.vue";
 import WorkHistory from "../components/cv/cv-buider/workHistory.vue";
 import ProfessionalSummary from "../components/cv/cv-buider/professionalSummary.vue";
-import CvBuilderPreview from "../components/cv/cv-buider/cv-builder-preview.vue";
+import CvPreview from "../components/cv/cv-templates/cvPreviewer.vue";
 
 export default {
   components: {
@@ -52,7 +52,7 @@ export default {
     CreateCVTitle,
     ProfessionalSummary,
     WorkHistory,
-    CvBuilderPreview,
+    CvPreview,
   },
 
   data: () => {

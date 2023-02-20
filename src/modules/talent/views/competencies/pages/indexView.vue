@@ -127,14 +127,7 @@
       <div v-show="$route.name == 'competencies'">
         <h4 class="pl-2">Well service</h4>
         <div
-          class="
-            d-flex
-            justify-content-around
-            rounded-pill
-            border-secondary border
-            py-2
-            mt-3
-          "
+          class="d-flex justify-content-around rounded-pill border-secondary border py-2 mt-3"
         >
           <small
             class="pt-2"
@@ -143,7 +136,9 @@
             >{{ wellService.name }}</small
           >
           <div>
-            <small class="btn bg-dark rounded-circle mx-3 text-white"><</small>
+            <small class="btn bg-dark rounded-circle mx-3 text-white">
+              &lt;
+            </small>
             <small class="btn bg-dark rounded-circle text-white">></small>
           </div>
         </div>
@@ -155,13 +150,7 @@
                 <img src="@/assets/img/warn.png" alt="" />
               </div>
               <span
-                class="
-                  px-3
-                  py-1
-                  text-primary
-                  border border-primary
-                  rounded-pill
-                "
+                class="px-3 py-1 text-primary border border-primary rounded-pill"
                 >Intermediate</span
               >
               <div
@@ -183,13 +172,7 @@
             <div class="card-body">
               <h6 class="card-title mb-3">Production cementing</h6>
               <span
-                class="
-                  px-3
-                  py-1
-                  text-primary
-                  border border-primary
-                  rounded-pill
-                "
+                class="px-3 py-1 text-primary border border-primary rounded-pill"
                 >Basic</span
               >
               <div
@@ -214,13 +197,7 @@
                 <img src="@/assets/img/warn.png" alt="" />
               </div>
               <span
-                class="
-                  px-3
-                  py-1
-                  text-primary
-                  border border-primary
-                  rounded-pill
-                "
+                class="px-3 py-1 text-primary border border-primary rounded-pill"
                 >Expert</span
               >
               <div class="my-4">
@@ -239,14 +216,7 @@
         <hr class="border mt-4" />
         <h4 class="pl-2">Rig operations</h4>
         <div
-          class="
-            d-flex
-            justify-content-around
-            rounded-pill
-            border-secondary border
-            py-2
-            mt-3
-          "
+          class="d-flex justify-content-around rounded-pill border-secondary border py-2 mt-3"
         >
           <small
             class="pt-2"
@@ -255,7 +225,9 @@
             >{{ rigOperation.name }}</small
           >
           <div>
-            <small class="btn bg-dark rounded-circle mx-3 text-white"><</small>
+            <small class="btn bg-dark rounded-circle mx-3 text-white"
+              >&lt;</small
+            >
             <small class="btn bg-dark rounded-circle text-white">></small>
           </div>
         </div>
@@ -266,15 +238,7 @@
               <div class="my-4 d-flex justify-content-between">
                 <img src="@/assets/img/Croxx Badge.png" alt="" class="img-fluid"/>
                 <div
-                  class="
-                    bg-percent
-                    my-4
-                    px-3
-                    py-1
-                    rounded-pill
-                    text-center
-                    d-flex
-                  "
+                  class="bg-percent my-4 px-3 py-1 rounded-pill text-center d-flex"
                 >
                   <img src="@/assets/img/alarm.png" class="img-fluid" alt="" />
                   <small>Expiring soon</small>
@@ -289,16 +253,7 @@
             <div class="card-body">
               <h6 class="card-title mb-3 font-weight-bold">BHA Handling</h6>
               <div
-                class="
-                  bg-percent
-                  my-4
-                  mb-5
-                  px-3
-                  py-2
-                  rounded-pill
-                  text-center
-                  d-flex
-                "
+                class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center d-flex"
               >
                 <img src="@/assets/img/refresh.png" class="mr-2" alt="" />
                 <small class="text-primary font-weight-bold"
