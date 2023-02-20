@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="container">
-      <header class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between">
         <div
           class="
             rounded-pill
             border-secondary border
             d-flex
             justify-content-around
-            pt-2
+            pt-1
             option
           "
         >
@@ -22,25 +22,39 @@
         >
           + Add competence
         </div>
-      </header>
+      </div>
       <hr class="border mt-4" />
       <!-- modal -->
       <div class="CompetenceModal" v-if="CompetenceModal === true">
         <!-- modal-content -->
-        <div class="insideModal ">
-          <span class="close m-4" @click="CompetenceModal = false">&times;</span>
+        <div class="insideModal">
+          <span class="close m-4" @click="CompetenceModal = false"
+            >&times;</span
+          >
           <header class="text-center p-4">
             <h5 class="font-weight-bold">Add competence</h5>
           </header>
           <hr />
           <div class="search text-center d-flex justify-content-center">
-            <img src="@/assets/img/search-normal.png" alt="">
-            <input type="text" class="search-input ml-3" placeholder="Search domain, core, skills">
+            <img src="@/assets/img/search-normal.png" alt="" />
+            <input
+              type="text"
+              class="search-input ml-3"
+              placeholder="Search domain, core, skills"
+            />
           </div>
           <form class="p-4" @click.prevent="addCompetence">
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Domain</label>
-              <select class="form-control rounded-pill border border-info text-black-50" id="exampleFormControlSelect1">
+              <select
+                class="
+                  form-control
+                  rounded-pill
+                  border border-info
+                  text-black-50
+                "
+                id="exampleFormControlSelect1"
+              >
                 <option>Domain</option>
                 <option>2</option>
                 <option>3</option>
@@ -50,7 +64,15 @@
             </div>
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Core</label>
-              <select class="form-control rounded-pill border border-info text-black-50" id="exampleFormControlSelect1">
+              <select
+                class="
+                  form-control
+                  rounded-pill
+                  border border-info
+                  text-black-50
+                "
+                id="exampleFormControlSelect1"
+              >
                 <option>Core</option>
                 <option>2</option>
                 <option>3</option>
@@ -60,7 +82,15 @@
             </div>
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Skills</label>
-              <select class="form-control rounded-pill border border-info text-black-50" id="exampleFormControlSelect1">
+              <select
+                class="
+                  form-control
+                  rounded-pill
+                  border border-info
+                  text-black-50
+                "
+                id="exampleFormControlSelect1"
+              >
                 <option>Skills</option>
                 <option>2</option>
                 <option>3</option>
@@ -70,7 +100,15 @@
             </div>
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Level</label>
-              <select class="form-control rounded-pill border border-info text-black-50" id="exampleFormControlSelect1">
+              <select
+                class="
+                  form-control
+                  rounded-pill
+                  border border-info
+                  text-black-50
+                "
+                id="exampleFormControlSelect1"
+              >
                 <option>Level</option>
                 <option>2</option>
                 <option>3</option>
@@ -79,7 +117,9 @@
               </select>
             </div>
             <div class="text-center my-5">
-              <button class="btn btn-primary rounded-pill text-center" >Add Competence</button>
+              <button class="btn btn-primary rounded-pill text-center">
+                Add Competence
+              </button>
             </div>
           </form>
         </div>
@@ -110,7 +150,10 @@
         <div class="row my-3">
           <div class="card col-sm m-3 rounded" style="width: 18rem">
             <div class="card-body">
-              <h6 class="card-title mb-3">Surface cementing</h6>
+              <div class="d-flex mb-3 justify-content-between">
+                <h6 class="card-title">Surface cementing</h6>
+                <img src="@/assets/img/warn.png" alt="" />
+              </div>
               <span
                 class="
                   px-3
@@ -166,7 +209,10 @@
           </div>
           <div class="card col-sm m-3 rounded" style="width: 18rem">
             <div class="card-body">
-              <h6 class="card-title mb-3">Production cementing</h6>
+              <div class="d-flex mb-3 justify-content-between">
+                <h6 class="card-title">Surface cementing</h6>
+                <img src="@/assets/img/warn.png" alt="" />
+              </div>
               <span
                 class="
                   px-3
@@ -178,7 +224,7 @@
                 >Expert</span
               >
               <div class="my-4">
-                <img src="@/assets/img/Croxx Badge.png" alt="" />
+                <img src="@/assets/img/Croxx Badge.png" alt=""  class="img-fluid"/>
               </div>
               <div class="d-flex">
                 <span class="btn btn-primary rounded-pill mr-2">Take Test</span>
@@ -218,7 +264,7 @@
             <div class="card-body">
               <h6 class="card-title mb-3 font-weight-bold">Drill a Stand</h6>
               <div class="my-4 d-flex justify-content-between">
-                <img src="@/assets/img/Croxx Badge.png" alt="" />
+                <img src="@/assets/img/Croxx Badge.png" alt="" class="img-fluid"/>
                 <div
                   class="
                     bg-percent
@@ -230,7 +276,7 @@
                     d-flex
                   "
                 >
-                  <img src="@/assets/img/alarm.png" alt="" />
+                  <img src="@/assets/img/alarm.png" class="img-fluid" alt="" />
                   <small>Expiring soon</small>
                 </div>
               </div>
@@ -272,7 +318,7 @@
             <div class="card-body">
               <h6 class="card-title mb-3 font-weight-bold">Coring rig</h6>
               <div class="my-4 d-flex">
-                <img src="@/assets/img/Croxx Badge.png" alt="" />
+                <img src="@/assets/img/Croxx Badge.png" alt="" class="img-fluid"/>
                 <div
                   class="bg-danger my-4 px-3 py-2 ml-2 rounded-pill text-center"
                 >
@@ -359,17 +405,17 @@ export default {
   },
   methods: {
     addCompetenceModal() {
-      this.CompetenceModal = true
+      this.CompetenceModal = true;
     },
-    addCompetence () {
-      console.log("addCompetence")
-    }
+    addCompetence() {
+      console.log("addCompetence");
+    },
   },
 };
 </script>
 
 <style scoped>
-.search-input{
+.search-input {
   outline: 0;
   border-width: 0 0 2px;
 }
@@ -408,12 +454,26 @@ small {
   cursor: pointer;
 }
 progress::-webkit-progress-value {
-  background-color: #c2dbff !important;
+  background: #ffc2c2 !important;
 }
 progress::before {
   background: red;
 }
 .bg-percent {
   background-color: #ebf3ff;
+}
+.option > .router-link-exact-active {
+  background-color: #ebf3ff;
+  border-radius: 10px;
+  padding: 4px 6px;
+}
+.card {
+  border-radius: 30px !important;
+}
+.btn-primary {
+  background-color: #0040a1 !important;
+}
+.text-primary {
+  color: #0040a1 !important;
 }
 </style>
