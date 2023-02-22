@@ -11,20 +11,42 @@
       <h6>or signup with email</h6>
     </el-divider>
 
-    <form action="">
-      <div class="mb-3">
-        <label for="">Full Name</label>
-        <input type="text" placeholder="Enter Full Name" />
+    <form action="" @submit.prevent="registerTalent()">
+      <div class="d-flex" style="gap: 20px">
+        <div class="mb-3 w-100">
+          <label for="">First Name</label>
+          <input
+            type="text"
+            placeholder="Enter First Name"
+            v-model="credentials.first_name"
+          />
+        </div>
+        <div class="mb-3 w-100">
+          <label for="">Last Name</label>
+          <input
+            type="text"
+            placeholder="Enter Last Name"
+            v-model="credentials.last_name"
+          />
+        </div>
       </div>
 
       <div class="mb-3">
         <label for="">Email Address</label>
-        <input type="email" placeholder="Enter Email Address" />
+        <input
+          type="email"
+          placeholder="Enter Email Address"
+          v-model="credentials.email"
+        />
       </div>
 
       <div class="mb-3">
         <label for="">Password</label>
-        <input type="password" placeholder="Enter password" />
+        <input
+          type="password"
+          placeholder="Enter password"
+          v-model="credentials.password"
+        />
       </div>
 
       <div class="mb-3">
@@ -52,3 +74,29 @@
     </form>
   </div>
 </template>
+
+<script>
+import { mapActions } from "vuex";
+export default {
+  data: () => {
+    return {
+      credentials: {
+        type: "talent",
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+      },
+    };
+  },
+
+  methods: {
+    ...mapActions("auth", ["registerUser"]),
+    registerTalent() {
+      // alert("hello world");
+      // this.$store.dispatch("auth/register", this.credentials);
+      this.registerUser(this.credentials);
+    },
+  },
+};
+</script>

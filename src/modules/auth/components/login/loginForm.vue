@@ -17,15 +17,23 @@
         <h6>or login with email</h6>
       </el-divider>
 
-      <form action="">
+      <form action="" @submit.prevent="userLogin">
         <div class="mb-3">
           <label for="">Email Address</label>
-          <input type="email" placeholder="Enter email address" />
+          <input
+            type="email"
+            placeholder="Enter email address"
+            v-model="credentials.login"
+          />
         </div>
 
         <div class="mb-3">
           <label for="">Password</label>
-          <input type="password" placeholder="Enter password" />
+          <input
+            type="password"
+            placeholder="Enter password"
+            v-model="credentials.password"
+          />
         </div>
 
         <div class="mb-3 d-flex align-items-center" style="gap: 10px">
@@ -51,3 +59,23 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapActions } from "vuex";
+export default {
+  data: () => {
+    return {
+      credentials: {
+        login: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    ...mapActions("auth", ["login"]),
+    userLogin() {
+      this.login(this.credentials);
+    },
+  },
+};
+</script>
