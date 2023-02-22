@@ -1,9 +1,16 @@
 <template>
   <div>
     <div class="container">
-      <header class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between">
         <div
-          class="rounded-pill border-secondary border d-flex justify-content-around pt-2 option"
+          class="
+            rounded-pill
+            border-secondary border
+            d-flex
+            justify-content-around
+            pt-1
+            option
+          "
         >
           <router-link to="competencies">Skills</router-link>
           <router-link to="experience">Experience</router-link>
@@ -15,7 +22,7 @@
         >
           + Add competence
         </div>
-      </header>
+      </div>
       <hr class="border mt-4" />
       <!-- modal -->
       <div class="CompetenceModal" v-if="CompetenceModal === true">
@@ -40,7 +47,12 @@
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Domain</label>
               <select
-                class="form-control rounded-pill border border-info text-black-50"
+                class="
+                  form-control
+                  rounded-pill
+                  border border-info
+                  text-black-50
+                "
                 id="exampleFormControlSelect1"
               >
                 <option>Domain</option>
@@ -53,7 +65,12 @@
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Core</label>
               <select
-                class="form-control rounded-pill border border-info text-black-50"
+                class="
+                  form-control
+                  rounded-pill
+                  border border-info
+                  text-black-50
+                "
                 id="exampleFormControlSelect1"
               >
                 <option>Core</option>
@@ -66,7 +83,12 @@
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Skills</label>
               <select
-                class="form-control rounded-pill border border-info text-black-50"
+                class="
+                  form-control
+                  rounded-pill
+                  border border-info
+                  text-black-50
+                "
                 id="exampleFormControlSelect1"
               >
                 <option>Skills</option>
@@ -79,7 +101,12 @@
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Level</label>
               <select
-                class="form-control rounded-pill border border-info text-black-50"
+                class="
+                  form-control
+                  rounded-pill
+                  border border-info
+                  text-black-50
+                "
                 id="exampleFormControlSelect1"
               >
                 <option>Level</option>
@@ -118,7 +145,10 @@
         <div class="row my-3">
           <div class="card col-sm m-3 rounded" style="width: 18rem">
             <div class="card-body">
-              <h6 class="card-title mb-3">Surface cementing</h6>
+              <div class="d-flex mb-3 justify-content-between">
+                <h6 class="card-title">Surface cementing</h6>
+                <img src="@/assets/img/warn.png" alt="" />
+              </div>
               <span
                 class="px-3 py-1 text-primary border border-primary rounded-pill"
                 >Intermediate</span
@@ -162,13 +192,16 @@
           </div>
           <div class="card col-sm m-3 rounded" style="width: 18rem">
             <div class="card-body">
-              <h6 class="card-title mb-3">Production cementing</h6>
+              <div class="d-flex mb-3 justify-content-between">
+                <h6 class="card-title">Surface cementing</h6>
+                <img src="@/assets/img/warn.png" alt="" />
+              </div>
               <span
                 class="px-3 py-1 text-primary border border-primary rounded-pill"
                 >Expert</span
               >
               <div class="my-4">
-                <img src="@/assets/img/Croxx Badge.png" alt="" />
+                <img src="@/assets/img/Croxx Badge.png" alt=""  class="img-fluid"/>
               </div>
               <div class="d-flex">
                 <span class="btn btn-primary rounded-pill mr-2">Take Test</span>
@@ -203,11 +236,11 @@
             <div class="card-body">
               <h6 class="card-title mb-3 font-weight-bold">Drill a Stand</h6>
               <div class="my-4 d-flex justify-content-between">
-                <img src="@/assets/img/Croxx Badge.png" alt="" />
+                <img src="@/assets/img/Croxx Badge.png" alt="" class="img-fluid"/>
                 <div
                   class="bg-percent my-4 px-3 py-1 rounded-pill text-center d-flex"
                 >
-                  <img src="@/assets/img/alarm.png" alt="" />
+                  <img src="@/assets/img/alarm.png" class="img-fluid" alt="" />
                   <small>Expiring soon</small>
                 </div>
               </div>
@@ -240,7 +273,7 @@
             <div class="card-body">
               <h6 class="card-title mb-3 font-weight-bold">Coring rig</h6>
               <div class="my-4 d-flex">
-                <img src="@/assets/img/Croxx Badge.png" alt="" />
+                <img src="@/assets/img/Croxx Badge.png" alt="" class="img-fluid"/>
                 <div
                   class="bg-danger my-4 px-3 py-2 ml-2 rounded-pill text-center"
                 >
@@ -376,12 +409,26 @@ small {
   cursor: pointer;
 }
 progress::-webkit-progress-value {
-  background-color: #c2dbff !important;
+  background: #ffc2c2 !important;
 }
 progress::before {
   background: red;
 }
 .bg-percent {
   background-color: #ebf3ff;
+}
+.option > .router-link-exact-active {
+  background-color: #ebf3ff;
+  border-radius: 10px;
+  padding: 4px 6px;
+}
+.card {
+  border-radius: 30px !important;
+}
+.btn-primary {
+  background-color: #0040a1 !important;
+}
+.text-primary {
+  color: #0040a1 !important;
 }
 </style>

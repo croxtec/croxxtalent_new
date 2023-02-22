@@ -28,9 +28,20 @@
             <div class="row my-3">
               <div class="card col-sm m-3 rounded" style="width: 18rem">
                 <div class="card-body">
-                  <h6 class="card-title mb-3">Surface cementing</h6>
+                  <div class="d-flex mb-3 justify-content-between">
+                    <h6 class="card-title">Surface cementing</h6>
+                    <img src="@/assets/img/warn.png" alt="" />
+                  </div>
                   <div
-                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
+                    class="
+                      bg-percent
+                      my-4
+                      mb-5
+                      px-3
+                      py-2
+                      rounded-pill
+                      text-center
+                    "
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
@@ -44,9 +55,20 @@
               </div>
               <div class="card col-sm m-3 rounded" style="width: 18rem">
                 <div class="card-body">
-                  <h6 class="card-title mb-3">Drilling</h6>
+                  <div class="d-flex mb-3 justify-content-between">
+                    <h6 class="card-title">Drilling</h6>
+                    <img src="@/assets/img/warn.png" alt="" />
+                  </div>
                   <div
-                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
+                    class="
+                      bg-percent
+                      my-4
+                      mb-5
+                      px-3
+                      py-2
+                      rounded-pill
+                      text-center
+                    "
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
@@ -60,9 +82,20 @@
               </div>
               <div class="card col-sm m-3 rounded" style="width: 18rem">
                 <div class="card-body">
-                  <h6 class="card-title mb-3">Surface cementing</h6>
+                  <div class="d-flex mb-3 justify-content-between">
+                    <h6 class="card-title">Surface cementing</h6>
+                    <img src="@/assets/img/warn.png" alt="" />
+                  </div>
                   <div
-                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
+                    class="
+                      bg-percent
+                      my-4
+                      mb-5
+                      px-3
+                      py-2
+                      rounded-pill
+                      text-center
+                    "
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
@@ -104,9 +137,20 @@
             <div class="row my-3">
               <div class="card col-sm m-3 rounded" style="width: 18rem">
                 <div class="card-body">
-                  <h6 class="card-title mb-3">Hydrology</h6>
+                  <div class="d-flex mb-3 justify-content-between">
+                    <h6 class="card-title">Hydrology</h6>
+                    <img src="@/assets/img/warn.png" alt="" />
+                  </div>
                   <div
-                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
+                    class="
+                      bg-percent
+                      my-4
+                      mb-5
+                      px-3
+                      py-2
+                      rounded-pill
+                      text-center
+                    "
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
@@ -120,9 +164,20 @@
               </div>
               <div class="card col-sm m-3 rounded" style="width: 18rem">
                 <div class="card-body">
-                  <h6 class="card-title mb-3">Production cementing</h6>
+                  <div class="d-flex mb-3 justify-content-between">
+                    <h6 class="card-title">Production cementing</h6>
+                    <img src="@/assets/img/warn.png" alt="" />
+                  </div>
                   <div
-                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
+                    class="
+                      bg-percent
+                      my-4
+                      mb-5
+                      px-3
+                      py-2
+                      rounded-pill
+                      text-center
+                    "
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
@@ -136,9 +191,20 @@
               </div>
               <div class="card col-sm m-3 rounded" style="width: 18rem">
                 <div class="card-body">
-                  <h6 class="card-title mb-3">Surface cementing</h6>
+                  <div class="d-flex mb-3 justify-content-between">
+                    <h6 class="card-title">Surface cementing</h6>
+                    <img src="@/assets/img/warn.png" alt="" />
+                  </div>
                   <div
-                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
+                    class="
+                      bg-percent
+                      my-4
+                      mb-5
+                      px-3
+                      py-2
+                      rounded-pill
+                      text-center
+                    "
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
