@@ -90,6 +90,7 @@ h1, h2, h3, h4, h5, h6, p, a {
     --gray-900: #282929;
 
     /* Alerts/Extras/Accents  */
+    --inactive-color: #C2DBFF;
     --error-color: #Ff6550;
     --error: #FC3030;
     --info-color: #Ffb836;
@@ -263,11 +264,11 @@ body {
     font-weight: 300;
 }
 
-button.inactive {
+button.in-active {
     background-color: var(--inactive-color);
     padding: 0.5rem 2rem;
     color: #fff;
-    border-radius: 5px !important;
+    border-radius: 40px !important;
     font-size: 13px !important;
     border: none;
     pointer-events: none;

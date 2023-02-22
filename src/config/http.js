@@ -5,10 +5,11 @@ export default function () {
   let token;
 
   //read and convert to object
-  let storeObj = JSON.parse(sessionStorage.getItem("vuex"));
-  if (storeObj && storeObj.auth) {
-    token = storeObj.auth.token;
-  }
+  //   let storeObj = JSON.parse(sessionStorage.getItem("vuex"));
+  //   if (storeObj && storeObj.auth) {
+  //     token = storeObj.auth.token;
+  //   }
+  token = "hello";
 
   // When sending a request, if there is a token, it needs to be attached to the request header
   let instance = axios;
@@ -57,11 +58,11 @@ export default function () {
       //  Invalid token, Not Authenticated.
       if (err.response && err.response.status === 401) {
         // console.log(9090);
-        if (storeObj.auth) {
-          // delete storeObj['auth'] //remove the key from object
-          // delete storeObj['user']
-          // localStorage.setItem('vuex', JSON.stringify(storeObj))
-        }
+        // if (storeObj.auth) {
+        // delete storeObj['auth'] //remove the key from object
+        // delete storeObj['user']
+        // localStorage.setItem('vuex', JSON.stringify(storeObj))
+        // }
         // window.location.href = '/login'
       }
 

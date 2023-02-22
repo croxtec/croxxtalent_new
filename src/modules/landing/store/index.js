@@ -1,7 +1,11 @@
 import request from "@/config/http";
 
 const getDefaultState = () => {
-  return {};
+  return {
+    result: null,
+    loading: false,
+    dataSet: null,
+  };
 };
 
 export default {
@@ -13,37 +17,37 @@ export default {
     // auth: (state) => state.auth,
   },
   mutations: {
-    SET_USER(state, data) {
+    SET_DATA(state, data) {
       // console.log(data);
-      state.user = data;
-      state.token = data.auth_token;
+      state.result = data.result;
+      state.loading = false;
+      state.dataSet = data.res;
     },
-    UPDATE_USER(state, data) {
+
+    SET_LOADING_STATUS(state, data) {
       // console.log(data);
-      state.user.user = data;
+      state.loading = data;
     },
-    async LOGOUT(state) {
-      state.user = null;
-      state.token = null;
-      localStorage.removeItem("vuex");
-      localStorage.clear();
-    },
-    RESET(state) {
-      Object.keys(state).forEach((key) => {
-        Object.assign(state[key], null);
-      });
+
+    REMOVE_ALERTS(state, data) {
+      state.result = data;
     },
   },
   actions: {
     // Newsleter request
-    async login({ commit }, data) {
+    async newsLetter({ commit }, data) {
+      commit("SET_LOADING_STATUS", true);
       try {
-        let res = await request().post(`/auth/login`, data);
-        commit("SET_USER", res);
-        sessionStorage.setItem("vuex", res);
-        console.log(res);
+        let res = await request().post(`/croxtec/newsletter`, data);
+        commit("SET_DATA", { res: res.data.message, result: "success" });
+        console.log(res.data.message);
         return res;
       } catch (error) {
+        commit("SET_DATA", {
+          res: error.response.data.errors.email,
+          result: "error",
+        });
+        console.log(error.response.data.errors.email);
         return error.response;
       }
     },
@@ -59,6 +63,10 @@ export default {
       } catch (error) {
         return error.response;
       }
+    },
+
+    removeAlerts({ commit }) {
+      commit("REMOVE_ALERTS", null);
     },
   },
 };

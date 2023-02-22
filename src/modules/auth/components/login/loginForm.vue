@@ -72,9 +72,9 @@ export default {
     };
   },
   methods: {
-    ...mapActions("auth", ["login"]),
+    ...mapActions("auth", ["loginUser"]),
     userLogin() {
-      this.login(this.credentials);
+      this.loginUser(this.credentials);
     },
   },
 };

@@ -93,8 +93,7 @@ export default {
   methods: {
     ...mapActions("auth", ["registerUser"]),
     registerTalent() {
-      // alert("hello world");
-      // this.$store.dispatch("auth/register", this.credentials);
+      // this.$store.dispatch("auth/registerUser", this.credentials);
       this.registerUser(this.credentials);
     },
   },

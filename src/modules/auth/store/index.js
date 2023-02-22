@@ -6,7 +6,6 @@ const getDefaultState = () => {
 
 export default {
   namespaced: true,
-  strict: true,
   // plugins: [createPersistedState()],
   state: getDefaultState(),
   getters: {
@@ -36,16 +35,25 @@ export default {
   },
   actions: {
     // Login request
-    async login({ commit }, data) {
-      try {
-        let res = await request().post(`/auth/login`, data);
-        commit("SET_USER", res);
-        sessionStorage.setItem("vuex", res);
-        console.log(res);
-        return res;
-      } catch (error) {
-        return error.response;
-      }
+    loginUser({ commit }, payload) {
+      alert("hello");
+      request()
+        .post(`/auth/login`, payload)
+        .then((res) => {
+          commit("SET_USER", res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      // try {
+      //   let res = await request().post(`/auth/login`, payload);
+      //   commit("SET_USER", res);
+      //   sessionStorage.setItem("vuex", res);
+      //   console.log(res);
+      //   return res;
+      // } catch (error) {
+      //   return error.response;
+      // }
     },
 
     // Talent register request
