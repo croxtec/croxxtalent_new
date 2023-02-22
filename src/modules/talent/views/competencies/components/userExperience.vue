@@ -33,15 +33,7 @@
                     <img src="@/assets/img/warn.png" alt="" />
                   </div>
                   <div
-                    class="
-                      bg-percent
-                      my-4
-                      mb-5
-                      px-3
-                      py-2
-                      rounded-pill
-                      text-center
-                    "
+                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
@@ -60,15 +52,7 @@
                     <img src="@/assets/img/warn.png" alt="" />
                   </div>
                   <div
-                    class="
-                      bg-percent
-                      my-4
-                      mb-5
-                      px-3
-                      py-2
-                      rounded-pill
-                      text-center
-                    "
+                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
@@ -87,15 +71,7 @@
                     <img src="@/assets/img/warn.png" alt="" />
                   </div>
                   <div
-                    class="
-                      bg-percent
-                      my-4
-                      mb-5
-                      px-3
-                      py-2
-                      rounded-pill
-                      text-center
-                    "
+                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
@@ -142,15 +118,7 @@
                     <img src="@/assets/img/warn.png" alt="" />
                   </div>
                   <div
-                    class="
-                      bg-percent
-                      my-4
-                      mb-5
-                      px-3
-                      py-2
-                      rounded-pill
-                      text-center
-                    "
+                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
@@ -169,15 +137,7 @@
                     <img src="@/assets/img/warn.png" alt="" />
                   </div>
                   <div
-                    class="
-                      bg-percent
-                      my-4
-                      mb-5
-                      px-3
-                      py-2
-                      rounded-pill
-                      text-center
-                    "
+                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
@@ -196,15 +156,7 @@
                     <img src="@/assets/img/warn.png" alt="" />
                   </div>
                   <div
-                    class="
-                      bg-percent
-                      my-4
-                      mb-5
-                      px-3
-                      py-2
-                      rounded-pill
-                      text-center
-                    "
+                    class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
                   >
                     <span>25% complete</span>
                     <progress value="25" max="100"></progress>
