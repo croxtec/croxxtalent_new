@@ -53,14 +53,20 @@ export default {
     },
 
     // Contact Us request
-    async registerUser({ commit }, payload) {
+    async contact({ commit }, payload) {
+      commit("SET_LOADING_STATUS", true);
       try {
-        let res = await request().post(`/auth/register`, payload);
-        commit("SET_USER", res);
-        // sessionStorage.setItem("vuex", res);
-        console.log(res);
+        let res = await request().post(`/croxtec/contact`, payload);
+        commit("SET_DATA", { res: res.data.message, result: "success" });
+        console.log(res.data.message);
+
         return res;
       } catch (error) {
+        commit("SET_DATA", {
+          res: error.response.data.errors,
+          result: "null",
+        });
+        console.log(error.response.data.errors.email);
         return error.response;
       }
     },
