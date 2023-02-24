@@ -1,29 +1,39 @@
 const Home = () => import("../pages/indexView.vue");
 
+import store from "@/store"; // import Vuex store logics
+
 const routes = [
   {
     path: "/home",
-    name: "home",
+    name: "talent-home",
     component: Home,
+    beforeEnter: guardMyroute,
     meta: {
+      requiresAuth: true,
       layout: "AppDashboardLayout",
       header: "Home",
+    },
+    acl: {
+      allowedUserTypes: ["talent"],
+      allowedPermissions: ["*"],
     },
   },
 ];
 
-// function guardMyroute(to, from, next) {
-//   var isAuthenticated = false;
-//   if (localStorage.getItem("token")) isAuthenticated = true;
-//   else isAuthenticated = false;
-//   if (isAuthenticated) {
-//     next();
-//   } else {
-//     next({
-//       name: "login",
-//       query: { redirectFrom: to.fullPath },
-//     });
-//   }
-// }
+function guardMyroute(to, from, next) {
+  var isAuthenticated = false;
+  if (store.getters["auth/isLoggedIn"]) isAuthenticated = true;
+  else isAuthenticated = false;
+  if (isAuthenticated) {
+    next();
+  } else {
+    next({
+      name: "login",
+      query: { redirectFrom: to.fullPath },
+    });
+  }
+}
+
+// Router event config
 
 export default routes;

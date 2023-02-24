@@ -3,6 +3,16 @@
     border-bottom: 1px solid #93B7E3;
 }
 
+.error-alert {
+    color: var(--error);
+    font-weight: 300;
+    font-size: 13px;
+    background-color: rgba(255, 0, 0, 0.1);
+    display: block;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
 .app--nav_items li a {
     color: var(--dark-color);
     font-weight: 500;
@@ -259,3 +269,11 @@
     color: var(--error);
 }
 
+
+
+/* N Progress  */
+
+#nprogress .bar {
+    height: 5px;
+    background-color: var(--primary-color);
+}

@@ -1,4 +1,5 @@
-import request from "@/config/http";
+/* eslint-disable no-undef */
+import $request from "@/axios";
 
 const getDefaultState = () => {
   return {
@@ -36,38 +37,45 @@ export default {
   actions: {
     // Newsleter request
     async newsLetter({ commit }, data) {
+      NProgress.start();
       commit("SET_LOADING_STATUS", true);
       try {
-        let res = await request().post(`/croxtec/newsletter`, data);
-        commit("SET_DATA", { res: res.data.message, result: "success" });
-        console.log(res.data.message);
+        let res = await $request.post(`/croxtec/newsletter`, data);
+        commit("SET_DATA", { res: res.message, result: "success" });
+        console.log(res.message);
         return res;
       } catch (error) {
+        console.log(error.data);
         commit("SET_DATA", {
-          res: error.response.data.errors.email,
+          res: error.data.errors.email,
           result: "error",
         });
-        console.log(error.response.data.errors.email);
-        return error.response;
+        console.log(error.data.errors.email);
+        return error;
+      } finally {
+        NProgress.done();
       }
     },
 
     // Contact Us request
     async contact({ commit }, payload) {
+      NProgress.start();
       commit("SET_LOADING_STATUS", true);
       try {
-        let res = await request().post(`/croxtec/contact`, payload);
-        commit("SET_DATA", { res: res.data.message, result: "success" });
-        console.log(res.data.message);
+        let res = await $request.post(`/croxtec/contact`, payload);
+        commit("SET_DATA", { res: res.message, result: "success" });
+        console.log(res.message);
 
         return res;
       } catch (error) {
         commit("SET_DATA", {
-          res: error.response.data.errors,
+          res: error.data.errors,
           result: "null",
         });
-        console.log(error.response.data.errors.email);
-        return error.response;
+        console.log(error.data.errors.email);
+        return error;
+      } finally {
+        NProgress.done();
       }
     },
 

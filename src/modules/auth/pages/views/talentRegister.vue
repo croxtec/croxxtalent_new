@@ -12,6 +12,7 @@
     </el-divider>
 
     <form action="" @submit.prevent="registerTalent()">
+      <span v-if="regError" class="mb-3 error-alert">{{ regError }}</span>
       <div class="d-flex" style="gap: 20px">
         <div class="mb-3 w-100">
           <label for="">First Name</label>
@@ -20,6 +21,12 @@
             placeholder="Enter First Name"
             v-model="credentials.first_name"
           />
+          <small
+            class="text-danger"
+            v-for="item in validationErrors.first_name"
+            :key="item"
+            >* {{ item }}</small
+          >
         </div>
         <div class="mb-3 w-100">
           <label for="">Last Name</label>
@@ -28,6 +35,12 @@
             placeholder="Enter Last Name"
             v-model="credentials.last_name"
           />
+          <small
+            class="text-danger"
+            v-for="item in validationErrors.last_name"
+            :key="item"
+            >* {{ item }}</small
+          >
         </div>
       </div>
 
@@ -38,6 +51,12 @@
           placeholder="Enter Email Address"
           v-model="credentials.email"
         />
+        <small
+          class="text-danger"
+          v-for="item in validationErrors.email"
+          :key="item"
+          >* {{ item }}</small
+        >
       </div>
 
       <div class="mb-3">
@@ -47,10 +66,27 @@
           placeholder="Enter password"
           v-model="credentials.password"
         />
+        <small
+          class="text-danger"
+          v-for="item in validationErrors.password"
+          :key="item"
+          >* {{ item }}</small
+        >
       </div>
 
       <div class="mb-3">
-        <button class="primary--button w-100">Continue</button>
+        <button
+          class="primary--button w-100 py-3"
+          style="font-weight: 500"
+          :class="{ 'in-active': loading }"
+          :disabled="loading"
+        >
+          <span v-if="loading">
+            <i-icon icon="eos-icons:bubble-loading" width="20px" />
+          </span>
+
+          <span v-else>Continue</span>
+        </button>
       </div>
 
       <div class="d-flex align-items-center mb-3" style="gap: 4px">
@@ -76,7 +112,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   data: () => {
     return {
@@ -95,7 +131,26 @@ export default {
     registerTalent() {
       // this.$store.dispatch("auth/registerUser", this.credentials);
       this.registerUser(this.credentials);
+
+      if (this.regSuccess !== false && this.regError === false) {
+        if (this.credentials.type == "talent") {
+          this.$router.replace({ name: "cvBuilder" });
+        }
+      }
     },
+  },
+
+  mounted() {
+    this.$store.commit("auth/REMOVE_ERROR_SUCCESS");
+  },
+
+  computed: {
+    ...mapState("auth", {
+      loading: (state) => state.loading,
+      regError: (state) => state.regError,
+      regSuccess: (state) => state.regSuccess,
+      validationErrors: (state) => state.validationErrors,
+    }),
   },
 };
 </script>

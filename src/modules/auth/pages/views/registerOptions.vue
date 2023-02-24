@@ -37,7 +37,7 @@
     </div>
 
     <div class="my-5" v-if="selected">
-      <button class="primary--button w-100" @click="continueToPage">
+      <button class="primary--button w-100 py-4" @click="continueToPage">
         Continue
       </button>
     </div>

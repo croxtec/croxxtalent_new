@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="mb-4 text-center">
+      <div>
+        {{ user }}
+      </div>
       <h6 style="font-weight: 700">Choose an option that best suits you</h6>
       <button
         class="primary--button mt-2 d-flex align-items-center mx-auto"
@@ -68,7 +71,9 @@
     </div>
   </div>
 </template>
+
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -82,6 +87,12 @@ export default {
     getStarted() {
       this.$router.push(this.activeEl === "1" ? "/create-cv" : "/upload-cv");
     },
+  },
+
+  computed: {
+    ...mapState("auth", {
+      user: (state) => state.user,
+    }),
   },
 };
 </script>
