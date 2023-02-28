@@ -11,7 +11,7 @@
                 /></router-link>
               </div> -->
 
-              <div class="col-md">
+              <div class="col-6 col-md-3">
                 <h4 class="footer--header">Company</h4>
                 <ul class="list-unstlyed">
                   <li><router-link to="/about-us">About Us</router-link></li>
@@ -24,7 +24,7 @@
                 </ul>
               </div>
 
-              <div class="col-md">
+              <div class="col-6 col-md-3">
                 <h4 class="footer--header">Resources</h4>
                 <ul class="list-unstlyed">
                   <li>
@@ -42,7 +42,7 @@
                 </ul>
               </div>
 
-              <div class="col-md">
+              <div class="col-6 col-md-3">
                 <h4 class="footer--header">Learn</h4>
                 <ul class="list-unstlyed">
                   <li>
@@ -97,7 +97,7 @@
                 </div>
               </div> -->
 
-              <div class="col-md">
+              <div class="col-6 col-md-3">
                 <h4 class="footer--header">Legal</h4>
                 <ul class="list-unstlyed">
                   <li>

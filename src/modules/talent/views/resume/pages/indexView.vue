@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="mb-4 text-center">
-      <div>
+      <!-- <div>
         {{ user }}
-      </div>
+      </div> -->
       <h6 style="font-weight: 700">Choose an option that best suits you</h6>
       <button
         class="primary--button mt-2 d-flex align-items-center mx-auto"

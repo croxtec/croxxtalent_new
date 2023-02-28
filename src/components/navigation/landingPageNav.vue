@@ -2,13 +2,13 @@
   <div class="navbar-transparent sticky-top bg-white">
     <div class="container py-4">
       <div class="d-flex align-items-center justify-content-between">
-        <div class="app-logo">
+        <div class="app-logo w-100">
           <router-link to="/"
-            ><img src="@/assets/img/logo.png" width="250" alt=""
+            ><img src="@/assets/img/logo.png" width="30%" alt=""
           /></router-link>
         </div>
         <ul
-          class="m-0 app--nav_items d-flex align-items-center"
+          class="m-0 app--nav_items d-flex align-items-center w-100 justify-content-end"
           style="gap: 30px"
         >
           <li>

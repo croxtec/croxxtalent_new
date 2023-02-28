@@ -11,6 +11,8 @@
 .pivot--text {
     width: 57%;
     display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
     align-items: center;
     justify-content: space-between;
 }
@@ -88,7 +90,6 @@
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
@@ -98,11 +99,10 @@
 .subscribe-to-newsletter {
     background-color: var(--primary-color);
     padding: 2rem 0;
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     place-items: center;
 }
 
@@ -137,11 +137,10 @@
 
 /* HOME PAGE STYLING  */
 .home--hero_section {
-    height: 85vh;
+    min-height: 85vh;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     align-items:center ;
 }
 
@@ -161,18 +160,26 @@
 
 .trusted--by {
     background: url('../img/hero-g-g.svg');
-    height: 300px;
+    min-height: 300px;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     place-items: center;
     background-color: var(--primary-color);
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
+    padding: 40px 20px;
 }
 
+.trusted-by-img {
+    width: 30px;
+    height: 100%;
+    object-fit: contain;
+    -o-object-fit: contain;
+    object-position: center;
+    -o-object-position: center;
+}
 
 /* How it works  */
 .how--it_works {
@@ -238,10 +245,11 @@
 }
 
 .meet-talent {
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
+    padding: 40px 0;
     
     place-items: center;
 }
@@ -250,18 +258,17 @@
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     grid-template-columns: 1fr 1fr;
     gap: 120px;
 }
 
 /* Why Croxxtalent  */
 .why--croxx {
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
+    padding: 30px 0;
     place-items: center;
     background-color: var(--gray-200);
 }
@@ -295,7 +302,7 @@
 }
 
 .data-driven .data--card, .data-driven .data--bottom_card {
-    padding: 3rem;
+    padding: 3em;
     border-radius: 20px;
     height: 40em;
     display: flex;

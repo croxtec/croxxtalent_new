@@ -1,8 +1,3 @@
-@media (max-width:990px) {
-   
-
-}
-
 
 @media (min-width: 1200px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl {
@@ -16,3 +11,83 @@
         max-width: 1320px;
     }
 }
+
+@media (max-width:990px) {
+    /* Landing Page Nav */
+     .app--nav_items {
+        display: none !important;
+    }   
+
+    /* hero Section  */
+    .pivot--text {
+        flex-direction: column;
+        align-items: unset;
+        gap: 50px;
+        padding: 40px 0;
+        width: 100%;
+    }
+
+    .left--pivot {
+        width: 100%;
+    }
+
+    .right--side img {
+        height: 600px;
+    }
+
+    .positioned--image img {
+        margin-bottom: 0;
+    }
+
+    /* Meet Talent  */
+    .meet--talent_content {
+        grid-template-columns: auto;
+        gap: 40px;
+    }
+
+    /* Data Driven  */
+    .data-driven .data--container {
+        grid-template-columns: auto;
+    }
+
+    .data-driven .right--side_data {
+        margin-top: 0
+    }
+
+.data-driven .data--card, .data-driven .data--bottom_card, .colored-card { 
+    padding: 1em;
+}
+
+
+    /* Jobs  */
+    .jobs--cards {
+        grid-template-columns: auto;
+    }
+
+}
+
+@media (max-width: 720px) {
+    /* hero Section  */
+    .right--side img {
+        height: 400px;
+    }
+
+}
+
+
+@media (max-width: 540px) {
+    /* hero Section  */
+    .right--side img {
+        height: 200px;
+    }
+
+
+    .data-driven img {
+        /* width: 200px;
+        height: 150px; */
+    }
+
+}
+
+
+
