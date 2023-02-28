@@ -33,7 +33,18 @@
       </div>
 
       <div class="mb-3">
-        <button class="primary--button w-100">Continue</button>
+        <button
+          class="primary--button w-100 py-3"
+          style="font-weight: 500"
+          :class="{ 'in-active': loading }"
+          :disabled="loading"
+        >
+          <span v-if="loading">
+            <i-icon icon="eos-icons:bubble-loading" width="20px" />
+          </span>
+
+          <span v-else>Continue</span>
+        </button>
       </div>
 
       <div class="d-flex align-items-center mb-3" style="gap: 4px">
@@ -57,3 +68,63 @@
     </form>
   </div>
 </template>
+
+<script>
+import { mapActions, mapState } from "vuex";
+export default {
+  data: () => {
+    return {
+      credentials: {
+        type: "talent",
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+      },
+    };
+  },
+
+  methods: {
+    ...mapActions("auth", ["registerUser"]),
+    registerTalent() {
+      // this.$store.dispatch("auth/registerUser", this.credentials);
+      this.registerUser(this.credentials);
+
+      if (this.regSuccess !== false && this.regError === false) {
+        if (this.credentials.type === "talent") {
+          this.$router.replace({ name: "resume" });
+        } else {
+          let msg =
+            "Thank you for registering with Croxxtalent. An admin will reach you by phone/email before your account is activated.";
+          this.$wal.fire("", msg, "info").then(function () {
+            // window.location.href = config.appUrl + "/app";
+            this.$router.replace({ name: "regards" });
+          });
+        }
+      }
+    },
+  },
+
+  mounted() {
+    this.$store.commit("auth/REMOVE_ERROR_SUCCESS");
+  },
+
+  computed: {
+    ...mapState("auth", {
+      loading: (state) => state.loading,
+      regError: (state) => state.regError,
+      regSuccess: (state) => state.regSuccess,
+      validationErrors: (state) => state.validationErrors,
+    }),
+  },
+};
+</script>
+
+<!-- if (this.regSuccess !== false && this.regError === false) {
+        let msg =
+          "Thank you for registering with Croxxtalent. An admin will reach you by phone/email before your account is activated.";
+        this.$toastify.fire("", msg, "info").then(function () {
+          window.location.href = config.appUrl + "/app";
+          // vm.$router.replace({ name: "regards" });
+        });
+      } -->

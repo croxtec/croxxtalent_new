@@ -3,6 +3,16 @@
     border-bottom: 1px solid #93B7E3;
 }
 
+.error-alert {
+    color: var(--error);
+    font-weight: 300;
+    font-size: 13px;
+    background-color: rgba(255, 0, 0, 0.1);
+    display: block;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
 .app--nav_items li a {
     color: var(--dark-color);
     font-weight: 500;
@@ -202,4 +212,68 @@
     display: -ms-grid;
     display: -moz-grid;
     place-items: center;
+}
+
+
+/* ALERTS  */
+.modal-mask {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: grid;
+    display: -ms-grid;
+    display: -moz-grid;
+    place-items: center;
+}
+
+.modal-content {
+    width: 25%;
+    padding: 2rem;
+    border-radius: 20px;
+   position: relative;
+}
+
+.modal-content.success {
+    border:  2px solid var(--success);
+}
+
+.modal-content.error {
+    border:  2px solid var(--error);
+}
+
+.modal-icon {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-content .modal-title {
+    text-align: center;
+    margin-top: 15px !important;
+    font-weight: 600;
+}
+
+.modal-content.success .modal-title {
+    color: var(--success);
+}
+
+.modal-content.error .modal-title {
+    color: var(--error);
+}
+
+
+
+/* N Progress  */
+
+#nprogress .bar {
+    height: 5px;
+    background-color: var(--primary-color);
 }

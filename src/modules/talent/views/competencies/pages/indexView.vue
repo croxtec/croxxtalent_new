@@ -3,14 +3,7 @@
     <div class="container">
       <div class="d-flex justify-content-between">
         <div
-          class="
-            rounded-pill
-            border-secondary border
-            d-flex
-            justify-content-around
-            pt-1
-            option
-          "
+          class="rounded-pill border-secondary border d-flex justify-content-around pt-1 option"
         >
           <router-link to="competencies">Skills</router-link>
           <router-link to="experience">Experience</router-link>
@@ -47,12 +40,7 @@
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Domain</label>
               <select
-                class="
-                  form-control
-                  rounded-pill
-                  border border-info
-                  text-black-50
-                "
+                class="form-control rounded-pill border border-info text-black-50"
                 id="exampleFormControlSelect1"
               >
                 <option>Domain</option>
@@ -65,12 +53,7 @@
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Core</label>
               <select
-                class="
-                  form-control
-                  rounded-pill
-                  border border-info
-                  text-black-50
-                "
+                class="form-control rounded-pill border border-info text-black-50"
                 id="exampleFormControlSelect1"
               >
                 <option>Core</option>
@@ -83,12 +66,7 @@
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Skills</label>
               <select
-                class="
-                  form-control
-                  rounded-pill
-                  border border-info
-                  text-black-50
-                "
+                class="form-control rounded-pill border border-info text-black-50"
                 id="exampleFormControlSelect1"
               >
                 <option>Skills</option>
@@ -101,12 +79,7 @@
             <div class="form-group px-5">
               <label for="exampleFormControlSelect1">Level</label>
               <select
-                class="
-                  form-control
-                  rounded-pill
-                  border border-info
-                  text-black-50
-                "
+                class="form-control rounded-pill border border-info text-black-50"
                 id="exampleFormControlSelect1"
               >
                 <option>Level</option>

@@ -6,16 +6,30 @@ const Register = () => import("../pages/registerPage.vue");
 const RegisterOptions = () => import("../pages/views/registerOptions.vue");
 const TalentRegister = () => import("../pages/views/talentRegister.vue");
 const EmployerRegister = () => import("../pages/views/employerRegister.vue");
+const Regards = () => import("../pages/RegisterRegards.vue");
+
+import store from "@/store"; // import Vuex store logics
 
 const routes = [
   {
     path: "/login",
     name: "login",
     component: Login,
+    beforeEnter: checkLoggedIn,
     meta: {
       layout: "AppAuthLayout",
     },
   },
+
+  {
+    path: "/regards",
+    name: "regards",
+    component: Regards,
+    meta: {
+      layout: "AppAuthLayout",
+    },
+  },
+
   {
     path: "/forget-password",
     name: "forget-password",
@@ -44,6 +58,7 @@ const routes = [
   {
     path: "/register",
     component: Register,
+    beforeEnter: checkLoggedIn,
     meta: {
       layout: "AppAuthLayout",
     },
@@ -76,18 +91,18 @@ const routes = [
   },
 ];
 
-// function guardMyroute(to, from, next) {
-//   var isAuthenticated = false;
-//   if (localStorage.getItem("token")) isAuthenticated = true;
-//   else isAuthenticated = false;
-//   if (isAuthenticated) {
-//     next();
-//   } else {
-//     next({
-//       name: "login",
-//       query: { redirectFrom: to.fullPath },
-//     });
-//   }
-// }
+function checkLoggedIn(to, from, next) {
+  var isAuthenticated = false;
+  if (store.getters["auth/isLoggedIn"]) isAuthenticated = true;
+  else isAuthenticated = false;
+  if (!isAuthenticated) {
+    next();
+  } else {
+    next({
+      query: { redirectFrom: to.fullPath },
+    });
+    // next();
+  }
+}
 
 export default routes;
