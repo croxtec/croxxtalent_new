@@ -14,7 +14,7 @@
             </cx-button>
 
             <cx-border-button> 
-              <router-link to="/employers" style="color: inherit;"><slot>Hire Talents</slot> </router-link> 
+              <router-link to="/register" style="color: inherit;"><slot>Hire Talents</slot> </router-link> 
             </cx-border-button>
           </div>
         </div>
