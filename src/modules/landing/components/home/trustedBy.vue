@@ -1,8 +1,8 @@
 <template>
   <div class="trusted--by">
     <h1 class="text-center text-white">
-      Trusted by high-perfoming companies <br />
-      around the world
+      The go-to platform for the elite <br />
+      <!-- around the world -->
     </h1>
     <div class="container mt-4">
       <div class="d-flex justify-content-between row align-items-center">

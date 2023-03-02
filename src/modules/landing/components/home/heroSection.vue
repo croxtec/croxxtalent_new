@@ -3,14 +3,19 @@
     <div class="container">
       <div class="pivot--text">
         <div class="left--pivot">
-          <h1 class="main--text">Build efficient teams easily</h1>
+          <h1 class="main--text"> The Ultimate Talent Management and Competence Vetting Platform</h1>
           <p class="desc--text w-100 mb-3">
-            We help hire top talents that boost productivity in the energy
-            sector.
+            Designed to help talents in the energy sector find their dream job
+            and help employers build efficient teams while managing them effectively.
           </p>
           <div class="d-flex align-items-center" style="gap: 15px">
-            <cx-button> <slot>Search Job</slot> </cx-button>
-            <cx-border-button> <slot>Hire Talents</slot> </cx-border-button>
+            <cx-button> 
+              <router-link to="/register" style="color: inherit;"> <slot>Find Jobs</slot> </router-link>
+            </cx-button>
+
+            <cx-border-button> 
+              <router-link to="/register" style="color: inherit;"><slot>Hire Talents</slot> </router-link> 
+            </cx-border-button>
           </div>
         </div>
         <div class="right--side">
@@ -18,7 +23,7 @@
             <div>
               <img
                 src="@/assets/img/croxh1.png"
-                loading="lazy"
+                loading="lazy" 
                 style="background-color: var(--primary-color)"
                 alt=""
               />
