@@ -35,6 +35,10 @@
         height: 600px;
     }
 
+    .right--side .d-flex {
+        justify-content: center;
+    }
+
     .positioned--image img {
         margin-bottom: 0;
     }
@@ -78,7 +82,7 @@
 @media (max-width: 540px) {
     /* hero Section  */
     .right--side img {
-        height: 200px;
+        height: 280px;
     }
 
 
