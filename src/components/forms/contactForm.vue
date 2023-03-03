@@ -127,3 +127,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+@media only screen and (max-width:430px) {
+  .contact--us_form {
+    width: 100% !important;
+  }
+}
+</style>
