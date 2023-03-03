@@ -12,9 +12,9 @@
 
 <script>
 import HeroSection from "../components/employers/heroSection.vue";
+import HowItWorks from "../components/employers/howItWorks.vue";
 import FeaturedJobs from "../components/featuredJobs.vue";
 import NewsLetter from "@/components/forms/newsLetter.vue";
-import HowItWorks from "@/components/static/howItWorks.vue";
 import TopTalents from "../components/employers/topTalents.vue";
 import TrustedBy from "../components/home/trustedBy.vue";
 import CompanyCompetencies from "../components/employers/companyCompetencies.vue";

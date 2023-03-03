@@ -3,10 +3,10 @@
     <div class="container">
       <div class="pivot--text">
         <div class="left--pivot">
-          <h1 class="main--text"> The Ultimate Talent Management and Competence Vetting Platform</h1>
+          <!-- <h1 class="main--text"> The Ultimate Talent Management and Competence Vetting Platform</h1> -->
+          <h1 class="main--text"> Build efficient teams easily</h1>
           <p class="desc--text w-100 mb-3">
-            Designed to help talents in the energy sector find their dream job
-            and help employers build efficient teams while managing them effectively.
+            We help hire top talents that boost productivity in the energy sector.
           </p>
           <div class="d-flex align-items-center" style="gap: 15px">
             <cx-button> 
