@@ -23,7 +23,7 @@
               <router-link to="/resources">Resources</router-link>
             </li>
             <li>
-              <router-link to="/contact">Contact Us</router-link>
+              <router-link to="/about">About Us</router-link>
             </li>
             <li>
               <cx-button @buttonClicked="goToLogin"
@@ -47,6 +47,7 @@
       direction="rtl"
       size="92%"
       :withHeader="false"
+      style="max-width: 400px;"
     >
       <div
         class="top container-fluid pt-4 pb-2 d-flex align-items-center justify-content-between"
@@ -64,7 +65,7 @@
           class="m-0 d-flex flex-column justify-content-end mt-5"
           style="gap: 30px"
         >
-          <li>
+          <li> 
             <router-link to="/employers">For Employers</router-link>
           </li>
           <li>
@@ -74,7 +75,7 @@
             <router-link to="/resources">Resources</router-link>
           </li>
           <li>
-            <router-link to="/contact">Contact Us</router-link>
+            <router-link to="/about">About Us</router-link>
           </li>
           <li>
             <cx-button @buttonClicked="goToLogin"><slot>Login</slot></cx-button>
