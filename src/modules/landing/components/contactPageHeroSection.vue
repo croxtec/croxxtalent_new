@@ -17,7 +17,7 @@
 <style scoped>
 @media only screen and (max-width:430px) {
   p {
-    width: 100% !important;
+    width: 110% !important;
   }
 }
 </style>

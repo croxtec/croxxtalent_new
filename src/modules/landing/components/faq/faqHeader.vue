@@ -11,3 +11,18 @@
     </div>
   </div>
 </template>
+<style scoped>
+@media only screen and (max-width:572px) {
+  .faq--filter {
+    width: 100%;
+  }
+  .container > h4 {
+    display: flex;
+    justify-content: left !important;
+    font-size: 15px;
+  }
+  .faq_page {
+    height: 200px;
+  }
+}
+</style>
