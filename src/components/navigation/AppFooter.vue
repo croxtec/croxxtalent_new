@@ -12,8 +12,9 @@
               </div> -->
 
               <div class="col-6 col-md-3">
-                <h4 class="footer--header">Company</h4>
-                <ul class="list-unstlyed">
+                <h4 class="footer--header">CroxxTalent</h4>
+                <p class="mt-2">The Ultimate Talent Management and  <br> Competence Vetting Platform</p>
+                <!-- <ul class="list-unstlyed">
                   <li><router-link to="/about-us">About Us</router-link></li>
                   <li>
                     <router-link to="/contact-us"> Contact Us</router-link>
@@ -21,17 +22,20 @@
 
                   <li><router-link to="/careers">Careers</router-link></li>
                   <li><router-link to="/pricing">Pricing</router-link></li>
-                </ul>
+                </ul> -->
               </div>
 
               <div class="col-6 col-md-3">
-                <h4 class="footer--header">Resources</h4>
+                <h4 class="footer--header">Company</h4>
                 <ul class="list-unstlyed">
                   <li>
-                    <router-link to="/partnerships"> Partnerships</router-link>
+                    <router-link to="/contact-us"> Contact Us</router-link>
                   </li>
+                  <!-- <li>
+                    <router-link to="/partnerships"> Partnerships</router-link>
+                  </li> -->
                   <li>
-                    <router-link to="/build-cv">Build CV</router-link>
+                    <router-link to="/build-cv">Build a CV</router-link>
                   </li>
                   <li><router-link to="/affiliate">Affiliate</router-link></li>
                   <li>
@@ -43,15 +47,22 @@
               </div>
 
               <div class="col-6 col-md-3">
-                <h4 class="footer--header">Learn</h4>
+                <h4 class="footer--header">Connect with us</h4>
                 <ul class="list-unstlyed">
-                  <li>
+                  <a target="_blank" href="https://croxxtalent.io">
+                      <i
+                        class="fa fa-facebook text-primary"
+                        style="font-size: 25px"
+                        aria-hidden="true"
+                      ></i>
+                    </a>
+                  <!-- <li>
                     <router-link to="/case-studies">Case Studies</router-link>
                   </li>
                   <li><router-link to="/blog">Blog</router-link></li>
                   <li>
                     <router-link to="/how-it-works">How it Works</router-link>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
 

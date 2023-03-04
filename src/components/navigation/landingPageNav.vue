@@ -23,7 +23,7 @@
               <router-link to="/resources">Resources</router-link>
             </li>
             <li>
-              <router-link to="/about">About Us</router-link>
+              <router-link to="/about-us">About Us</router-link>
             </li>
             <li>
               <cx-button @buttonClicked="goToLogin"
@@ -75,7 +75,7 @@
             <router-link to="/resources">Resources</router-link>
           </li>
           <li>
-            <router-link to="/about">About Us</router-link>
+            <router-link to="/about-us">About Us</router-link>
           </li>
           <li>
             <cx-button @buttonClicked="goToLogin"><slot>Login</slot></cx-button>

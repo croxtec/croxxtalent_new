@@ -66,16 +66,16 @@
         </div>
         <div class="col-sm">
           <div class="our-mission">
-            <h3 class="">Our Mission</h3>
+            <h3 class="">Our Why</h3>
             <p
               class="desc--text w-100 mt-3"
               style="line-height: 1.5; font-size: 14px"
             >
-              Our mission is to create a best-in-class recruitment and
-              onboarding experience aligned with the demands and work culture
-              for the benefit of all. We are enabling the local, regional, and
-              global work network with the underlying pillar of integrity and
-              customer satisfaction.
+            Croxx Talent was founded by a group of experienced professionals who recognized
+            the need for a more efficient and effective way for energy companies to vet, 
+            hire and manage their talent. With a deep understanding of the challenges 
+            faced by both job seekers and employers, our team set out to create a platform 
+            that could make a real difference in the world of talent acquisition and management.
             </p>
           </div>
         </div>
