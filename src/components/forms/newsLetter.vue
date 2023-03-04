@@ -81,7 +81,7 @@ export default {
 };
 </script>
 <style>
-@media only screen and (max-width:430px) {
+@media only screen and (max-width:572px) {
   .subscibe-input {
     width: 100% !important;
   }
