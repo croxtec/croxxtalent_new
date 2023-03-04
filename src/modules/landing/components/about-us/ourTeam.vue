@@ -1,7 +1,10 @@
 <template>
   <div class="container" style="margin-top: 8rem">
     <h3 class="">Our Team</h3>
-    <div class="core-values-div">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm text-center">
+          <div class="core-values-div">
       <div class="core-values-content">
         <div class="core-values">
           <div class="flip-card">
@@ -13,6 +16,7 @@
                     style="border-radius: 50px"
                     width="90%"
                     alt=""
+                    class="img-fluid"
                   />
                 </div>
                 <div>
@@ -45,10 +49,157 @@
         </div>
       </div>
     </div>
+        </div>
+        <div class="col-sm">
+          <div class="core-values-div">
+      <div class="core-values-content">
+        <div class="core-values">
+          <div class="flip-card">
+            <div class="card-front">
+              <div class="card-data d-flex flex-column justify-content-between">
+                <div class="text-center">
+                  <img
+                    src="@/assets/img/talent1.png"
+                    style="border-radius: 50px"
+                    width="90%"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </div>
+                <div>
+                  <h6 class="text-center">John Moyes</h6>
+                  <h6 class="text-center small" style="font-weight: 300">
+                    Chief Executive Officer
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div
+                class="card-data h-100 d-flex flex-column justify-content-between"
+                style="gap: 20px"
+              >
+                <p class="">
+                  Leadership gives direction. We believe that effective
+                  transformational leadership with knowledge-driven protocols is
+                  the elixir to our nation-building enterprise.
+                </p>
+                <div>
+                  <h6 class="text-center">John Moyes</h6>
+                  <h6 class="text-center small" style="font-weight: 300">
+                    Chief Executive Officer
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        </div>
+        <div class="col-sm">
+          <div class="core-values-div">
+      <div class="core-values-content">
+        <div class="core-values">
+          <div class="flip-card">
+            <div class="card-front">
+              <div class="card-data d-flex flex-column justify-content-between">
+                <div class="text-center">
+                  <img
+                    src="@/assets/img/talent1.png"
+                    style="border-radius: 50px"
+                    width="90%"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </div>
+                <div>
+                  <h6 class="text-center">John Moyes</h6>
+                  <h6 class="text-center small" style="font-weight: 300">
+                    Chief Executive Officer
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div
+                class="card-data h-100 d-flex flex-column justify-content-between"
+                style="gap: 20px"
+              >
+                <p class="">
+                  Leadership gives direction. We believe that effective
+                  transformational leadership with knowledge-driven protocols is
+                  the elixir to our nation-building enterprise.
+                </p>
+                <div>
+                  <h6 class="text-center">John Moyes</h6>
+                  <h6 class="text-center small" style="font-weight: 300">
+                    Chief Executive Officer
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        </div>
+        <div class="col-sm">
+          <div class="core-values-div">
+      <div class="core-values-content">
+        <div class="core-values">
+          <div class="flip-card">
+            <div class="card-front">
+              <div class="card-data d-flex flex-column justify-content-between">
+                <div class="text-center">
+                  <img
+                    src="@/assets/img/talent1.png"
+                    style="border-radius: 50px"
+                    width="90%"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </div>
+                <div>
+                  <h6 class="text-center">John Moyes</h6>
+                  <h6 class="text-center small" style="font-weight: 300">
+                    Chief Executive Officer
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <div
+                class="card-data h-100 d-flex flex-column justify-content-between"
+                style="gap: 20px"
+              >
+                <p class="">
+                  Leadership gives direction. We believe that effective
+                  transformational leadership with knowledge-driven protocols is
+                  the elixir to our nation-building enterprise.
+                </p>
+                <div>
+                  <h6 class="text-center">John Moyes</h6>
+                  <h6 class="text-center small" style="font-weight: 300">
+                    Chief Executive Officer
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
+img {
+  height: 200px;
+}
 .flip-card {
   transform-style: preserve-3d;
   transition: 0.5s 0.3s;
@@ -66,7 +217,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 290px;
   backface-visibility: hidden;
 }
 .card-front {

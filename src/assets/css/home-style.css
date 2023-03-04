@@ -631,7 +631,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .numbers--card {
     background: url('../img/hero-g-g.svg');
-    height: 200px;
+    height: 30%;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
@@ -640,11 +640,11 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
-    width: 50%;
+    width: 100%;
     position: absolute;
     border-radius: 20px;
-    right: 0;
-    bottom: -100px;
+    right: -60%;
+    bottom: -10px;
 }
 
 .numbers--card .numbers-content{
@@ -659,11 +659,12 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 
 .numbers--card .numbers-content h1 {
     font-weight: 600;
+    font-size: 4vw;
 }
 
 .numbers--card .numbers-content h6 {
     font-weight: 300;
-    font-size: 14px;
+    font-size: 1vw;
 }
 
 /* Core Services  */
@@ -673,14 +674,14 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     width: 100%;
 }
 
-.core-services {
+/* .core-services {
     display: grid;
     display: -ms-grid;
     display: -moz-grid;
     grid-template-columns: 1fr 1fr;
     gap:30px;
     align-items: center;
-}
+} */
 
 .core-services-card {
     border: 1px solid rgba(0, 0, 0, 0.125);
@@ -694,14 +695,14 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Our Values  */
-.our-values-cards {
+/* .our-values-cards {
     display: grid;
     display: -ms-grid;
     display: -moz-grid;
     grid-template-columns: 1fr 1fr;
     gap:30px;
 
-}
+} */
 
 .our-values-card {
     background-color: var(--gray-200);

@@ -1,6 +1,6 @@
 <template>
   <div class="contact--us_page">
-    <div class="container">
+    <div class="container pt-5">
       <h4>Contact Us</h4>
       <p class="small text-white">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore amet
@@ -14,3 +14,10 @@
     </div>
   </div>
 </template>
+<style scoped>
+@media only screen and (max-width:430px) {
+  p {
+    width: 100% !important;
+  }
+}
+</style>

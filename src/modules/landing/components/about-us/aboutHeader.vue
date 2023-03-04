@@ -9,3 +9,10 @@
     </div>
   </div>
 </template>
+<style scoped>
+@media only screen and (max-width:430px) {
+  p {
+    width: 100% !important;
+  }
+}
+</style>
