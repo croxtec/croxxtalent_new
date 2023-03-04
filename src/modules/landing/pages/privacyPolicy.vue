@@ -50,3 +50,24 @@ export default {
   components: { TermsOfUse, PrivacyPolicy, PrivacyPolicyHeader },
 };
 </script>
+<style scoped>
+@media only screen and (max-width:572px) {
+ .privacy--policy_content {
+  display: block;
+  justify-content: center;
+ }
+ .privacy--policy_nav {
+  justify-content: center;
+  margin-left: 30px ;
+  margin-bottom: 30px;
+ }
+ li {
+  font-size: 25px !important;
+ }
+ li.active {
+  background-color: var(--primary-color);
+  color: white !important;
+  padding: 10px;
+ }
+}
+</style>

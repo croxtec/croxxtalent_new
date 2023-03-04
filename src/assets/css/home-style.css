@@ -760,9 +760,9 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 
 /* FAQ  */
 .faq-cards {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 30px; */
     margin-top: -30px;
     margin-bottom: 30px;
 }
