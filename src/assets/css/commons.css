@@ -94,6 +94,14 @@
     transform-origin: center;
 }
 
+.app-nav  .el-drawer__body {
+    background-color: var(--primary-color);
+}
+
+.app-nav  .el-drawer__body ul li a {
+    color: #fff;
+}
+
 
 /* Hero Search fieldset */
 .hero--search {

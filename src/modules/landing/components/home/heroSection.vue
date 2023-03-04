@@ -9,12 +9,16 @@
             We help hire top talents that boost productivity in the energy sector.
           </p>
           <div class="d-flex align-items-center" style="gap: 15px">
-            <cx-button> 
-              <router-link to="/register" style="color: inherit;"> <slot>Find Jobs</slot> </router-link>
+            <cx-button>
+              <router-link to="/register" style="color: inherit">
+                <slot>Find Jobs</slot>
+              </router-link>
             </cx-button>
 
-            <cx-border-button> 
-              <router-link to="/register" style="color: inherit;"><slot>Hire Talents</slot> </router-link> 
+            <cx-border-button>
+              <router-link to="/register" style="color: inherit"
+                ><slot>Hire Talents</slot>
+              </router-link>
             </cx-border-button>
           </div>
         </div>
@@ -23,7 +27,7 @@
             <div>
               <img
                 src="@/assets/img/croxh1.png"
-                loading="lazy" 
+                loading="lazy"
                 style="background-color: var(--primary-color)"
                 alt=""
               />
