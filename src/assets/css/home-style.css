@@ -173,12 +173,16 @@
 }
 
 .trusted-by-img {
-    width: 30px;
+    /* width: 30px; */
     height: 100%;
     object-fit: contain;
     -o-object-fit: contain;
     object-position: center;
     -o-object-position: center;
+    /* Kaybee */
+    max-width: 120px;
+    min-width: 80px;
+    margin: 0 20px;
 }
 
 /* How it works  */

@@ -34,6 +34,12 @@
           </p>
         </div>
       </div>
+
+      <!-- <div class="mb-5 text-center">
+        <utton><slot>Get Started</slot></utton>
+      </div> -->
     </div>
   </div>
 </template>
+
+

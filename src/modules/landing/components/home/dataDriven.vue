@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="mb-5 text-center">
-        <cx-button><slot>Get Started</slot></cx-button>
+        <cx-button @buttonClicked="goToRegister"><slot>Get Started</slot></cx-button>
       </div>
     </div>
   </div>
@@ -61,5 +61,11 @@
 import cxButton from "@/components/buttons/cxButton.vue";
 export default {
   components: { cxButton },
+ 
+  methods: {
+    goToRegister() {
+      this.$router.push("/register");
+    },
+  }
 };
 </script>

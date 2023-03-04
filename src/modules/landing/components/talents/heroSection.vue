@@ -3,10 +3,9 @@
     <div class="container">
       <div class="pivot--text">
         <div class="left--pivot">
-          <h1 class="main--text">Find the right job & Get hired</h1>
+          <h1 class="main--text">Accelerate Your Career in the Energy Industry</h1>
           <p class="desc--text">
-            Millions of jobs. Search by what matters to you and find the one
-            that's right for you.
+            The platform is designed to connect talented individuals with the best opportunities.
           </p>
         </div>
         <div class="right--pivot">

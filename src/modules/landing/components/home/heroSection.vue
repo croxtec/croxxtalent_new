@@ -3,13 +3,9 @@
     <div class="container">
       <div class="pivot--text">
         <div class="left--pivot">
-          <h1 class="main--text">
-            The Ultimate Talent Management and Competence Vetting Platform
-          </h1>
-          <p class="desc--text w-100 mb-3">
-            Designed to help talents in the energy sector find their dream job
-            and help employers build efficient teams while managing them
-            effectively.
+          <h1 class="main--text" v-text="hero.title"> </h1>
+          <p class="desc--text w-100 mb-3" v-text="hero.description">
+           
           </p>
           <div class="d-flex align-items-center" style="gap: 15px">
             <cx-button>
@@ -69,5 +65,38 @@ import CxButton from "@/components/buttons/cxButton.vue";
 import CxBorderButton from "@/components/buttons/cxBorderButton.vue";
 export default {
   components: { CxButton, CxBorderButton },
+
+  data() {
+    return {
+      heroes: [
+        {
+          title: 'Competence Vetting Platform',
+          description: 'Designed to help talents in the energy sector find their dream job and help employers build efficient teams.'
+        },
+        {
+          title: 'Build Efficient Teams Easily',
+          description: 'We help hire top talents that boost productivity in the energy sector.'
+        },
+        {
+          title: 'Simplify team management',
+          description: '​​Our talent management tools make it easy to manage your team, track performance, and identify areas for improvement. '
+        }
+      ],
+      hero: {
+          title: 'Build Efficient Teams Easily',
+          description: 'We help hire top talents that boost productivity in the energy sector.'
+      },
+    }
+  },
+
+  methods: {
+    selectRandomHero: function(){
+     return this.hero = this.heroes[Math.floor(Math.random()*this.heroes.length)]
+    }
+  },
+
+  mounted() {
+    this.selectRandomHero()
+  }
 };
 </script>

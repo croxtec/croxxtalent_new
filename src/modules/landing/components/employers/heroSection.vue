@@ -4,11 +4,10 @@
       <div class="pivot--text">
         <div class="left--pivot">
           <h1 class="main--text">
-            Find the right talents for your organisation
+            Energize your team with the best talent in the industry
           </h1>
           <p class="desc--text">
-            Millions of jobs. Search by what matters to you and find the one
-            that's right for you.
+            We assist businesses in realising their full potential by assembling teams that drive revenue and facilitate growth
           </p>
         </div>
         <div class="right--pivot">

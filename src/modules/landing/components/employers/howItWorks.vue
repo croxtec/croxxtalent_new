@@ -19,7 +19,7 @@
           </div>
           <h5>Register</h5>
           <p class="text-dark">
-            Create an account in less than 1 minute. Join CroxxTalent and find opportunities.
+            Join the Croxx Talent community of top employers and start finding the best talent in the energy sector.
           </p>
         </router-link>
 
@@ -33,7 +33,7 @@
             </svg>
           </div>
           <h5>Setup Profile</h5>
-          <p class="text-dark">Set up your profile in a few clicks and customize your settings.</p>
+          <p class="text-dark">Customize your company profile and showcase your brand to top talent in the energy sector.</p>
         </router-link>
 
         <router-link to="/register" class="col-md-3 how-it-works-card">
@@ -61,7 +61,7 @@
               </g>
             </svg>
           </div>
-          <h5>Build CV</h5>
+          <h5>Manage Competencies</h5>
           <p class="text-dark">
             Build your CV using our live web cv builder – showcase relevant skills for employers.
           </p>
@@ -76,9 +76,10 @@
               />
             </svg>
           </div>
-          <h5>Apply</h5>
+          <h5>Sit back and relax!</h5>
           <p class="text-dark"> 
-            Apply for multiple roles and get matched with your dream job.
+            Let our team do the heavy lifting for you and find the perfect talent match for your business. 
+            <!-- You can focus on running your business while we take care of sourcing and screening the best match for your business.  -->
           </p>
         </router-link>
       </div>

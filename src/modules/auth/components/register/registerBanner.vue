@@ -10,8 +10,9 @@
     </div>
 
     <p class="body--text">
-      Leverage our extensive data on talent’s technical capacity, work
-      preferences and growth potential
+      Whether you're a talented professional looking for your next career 
+      move or an employer seeking top talent, CroxxTalent has everything 
+      you need to make it happen. 
     </p>
   </div>
 </template>

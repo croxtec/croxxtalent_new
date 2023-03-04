@@ -9,9 +9,9 @@
 
 <script>
 import HeroSection from "../components/talents/heroSection.vue";
+import HowItWorks from "../components/talents/howItWorks.vue";
 import FeaturedJobs from "../components/featuredJobs.vue";
 import NewsLetter from "@/components/forms/newsLetter.vue";
-import HowItWorks from "@/components/static/howItWorks.vue";
 export default {
   components: { HeroSection, FeaturedJobs, NewsLetter, HowItWorks },
 };
