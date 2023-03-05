@@ -1,7 +1,6 @@
 <template>
   <div>
     <hero-section />
-    <FeaturedJobs />
     <how-it-works :isEmployer="employer" />
     <TopTalents />
     <trusted-by />

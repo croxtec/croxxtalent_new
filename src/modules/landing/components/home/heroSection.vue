@@ -70,7 +70,7 @@ export default {
     return {
       heroes: [
         {
-          title: 'Competence Vetting Platform',
+          title: 'The Ultimate Competence Vetting Platform',
           description: 'Designed to help talents in the energy sector find their dream job and help employers build efficient teams.'
         },
         {
@@ -78,7 +78,7 @@ export default {
           description: 'We help hire top talents that boost productivity in the energy sector.'
         },
         {
-          title: 'Simplify team management',
+          title: 'Simplify team management with our tools',
           description: '​​Our talent management tools make it easy to manage your team, track performance, and identify areas for improvement. '
         }
       ],

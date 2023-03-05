@@ -54,7 +54,8 @@
 }
 
 .main--text {
-    font-size: 54px;
+    /* font-size: 54px; */
+    font-size: 50;
     font-weight: 700;
     margin-bottom: 15px !important;
 }
