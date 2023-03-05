@@ -1,4 +1,8 @@
 /* STYLING FOR TALENT HERO SECTION */
+.mobile-hamburger{
+    display:  none;
+}
+
 .talent--hero_section {
     height: 100vh;
     display: grid;
@@ -54,7 +58,8 @@
 }
 
 .main--text {
-    font-size: 54px;
+    /* font-size: 54px; */
+    font-size: 50;
     font-weight: 700;
     margin-bottom: 15px !important;
 }

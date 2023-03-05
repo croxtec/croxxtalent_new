@@ -29,15 +29,12 @@
                 <h4 class="footer--header">Company</h4>
                 <ul class="list-unstlyed">
                   <li>
-                    <router-link to="/contact-us"> Contact Us</router-link>
+                    <router-link to="/contact"> Contact Us</router-link>
                   </li>
+                  <li><router-link to="/about-us">About Us</router-link></li>
                   <!-- <li>
                     <router-link to="/partnerships"> Partnerships</router-link>
                   </li> -->
-                  <li>
-                    <router-link to="/build-cv">Build a CV</router-link>
-                  </li>
-                  <li><router-link to="/affiliate">Affiliate</router-link></li>
                   <li>
                     <router-link to="/frequently-asked-questions"
                       >FAQ</router-link
@@ -47,15 +44,12 @@
               </div>
 
               <div class="col-6 col-md-3">
-                <h4 class="footer--header">Connect with us</h4>
+                <h4 class="footer--header">Learn</h4>
                 <ul class="list-unstlyed">
-                  <a target="_blank" href="https://croxxtalent.io">
-                      <i
-                        class="fa fa-facebook text-primary"
-                        style="font-size: 25px"
-                        aria-hidden="true"
-                      ></i>
-                    </a>
+                  <li>
+                    <router-link to="/build-cv">Build a CV</router-link>
+                  </li>
+                  <li><router-link to="/affiliate">Affiliate</router-link></li>
                   <!-- <li>
                     <router-link to="/case-studies">Case Studies</router-link>
                   </li>

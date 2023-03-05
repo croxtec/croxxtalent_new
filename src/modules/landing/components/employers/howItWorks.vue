@@ -61,9 +61,10 @@
               </g>
             </svg>
           </div>
-          <h5>Manage Competencies</h5>
+          <h5>Manage employees</h5>
           <p class="text-dark">
-            Build your CV using our live web cv builder – showcase relevant skills for employers.
+              Empower your workforce with comprehensive competency management tools designed to unlock 
+              their full potential – develop your team's strengths, track progress and drive success
           </p>
         </router-link>
 

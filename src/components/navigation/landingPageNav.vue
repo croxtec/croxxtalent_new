@@ -32,7 +32,7 @@
             </li>
           </ul>
 
-          <div>
+          <div class="mobile-hamburger">
             <span role="button" @click="drawer = true">
               <i-icon icon="material-symbols:menu-sharp" width="30px" />
             </span>
@@ -47,8 +47,8 @@
       direction="rtl"
       size="92%"
       :withHeader="false"
-      style="max-width: 400px;"
     >
+    <!-- style="max-width: 400px;" -->
       <div
         class="top container-fluid pt-4 pb-2 d-flex align-items-center justify-content-between"
       >
