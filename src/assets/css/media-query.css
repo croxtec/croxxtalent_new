@@ -14,6 +14,9 @@
 
 @media (max-width:990px) {
     /* Landing Page Nav */
+    .mobile-hamburger{
+        display:  block;
+    }
      .app--nav_items {
         display: none !important;
     }   
@@ -79,12 +82,12 @@
     .right--side img {
         height: 400px;
     }
-
 }
 
 
 @media (max-width: 540px) {
     /* hero Section  */
+  
     .main--text {
         font-size: 32;
         margin-bottom: 10px !important;

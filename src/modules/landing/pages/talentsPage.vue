@@ -1,7 +1,7 @@
 <template>
   <div>
     <hero-section />
-    <FeaturedJobs />
+    <FeaturedJobs :numberOfItems="4" />
     <how-it-works />
     <news-letter />
   </div>
