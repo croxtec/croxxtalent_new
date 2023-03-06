@@ -10,6 +10,11 @@
     overflow-y: hidden;
     /* background-size: auto auto; */
 }
+
+.talent--hero_section .left--pivot {
+    width: 70%;
+}
+
 .pivot--text {
     /* width: 100%; */
     display: grid;
@@ -20,9 +25,7 @@
     justify-content: space-between;
 }
 
-.left--pivot {
-    width: 70%;
-}
+
 
 .star-image {
     position: absolute;
@@ -66,8 +69,8 @@
 .main--text {
     font-size: 54px;
     font-weight: 700;
-    margin-bottom: 1f5px !important;
-    width: 80%;
+    margin-bottom: 15px !important;
+    /* width: 80%; */
 }
 
 .desc--text {
@@ -155,6 +158,10 @@
     display: -ms-inline-grid;
     display: -moz-grid;
     align-items:center ;
+}
+
+.home--hero_section .left--pivot {
+    width: 90%;
 }
 
 .home--hero_section .pivot--text {
@@ -491,7 +498,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     margin-bottom: 0;
 }
 
-.contact--us_form form input, .contact--us_form form textarea {
+.contact--us_form form, .contact--us_form form textarea {
     width: 100%;
     padding: 0.4rem;
     border: 0.13rem solid #D2D6DA;
