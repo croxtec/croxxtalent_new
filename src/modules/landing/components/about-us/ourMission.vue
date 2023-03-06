@@ -96,6 +96,18 @@
   .numbers--card {
     width: 80%;
     right: 0;
+    height: 7em;
+    bottom: 0;
+  }
+
+  .numbers--card .numbers-content h1 {
+    font-weight: 600;
+    font-size: 24px;
+  }
+
+  .numbers--card .numbers-content h6 {
+    font-weight: 300;
+    font-size: 12px;
   }
 }
 </style>

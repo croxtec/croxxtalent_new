@@ -1,8 +1,4 @@
 /* STYLING FOR TALENT HERO SECTION */
-.mobile-hamburger{
-    display:  none;
-}
-
 .talent--hero_section {
     min-height: 100vh;
     display: grid;
@@ -68,8 +64,7 @@
 }
 
 .main--text {
-    /* font-size: 54px; */
-    font-size: 50;
+    font-size: 54px;
     font-weight: 700;
     margin-bottom: 1f5px !important;
     width: 80%;
@@ -191,16 +186,12 @@
 }
 
 .trusted-by-img {
-    /* width: 30px; */
+    width: 30px;
     height: 100%;
     object-fit: contain;
     -o-object-fit: contain;
     object-position: center;
     -o-object-position: center;
-    /* Kaybee */
-    max-width: 120px;
-    min-width: 80px;
-    margin: 0 20px;
 }
 
 /* How it works  */
@@ -658,7 +649,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .numbers--card {
     background: url('../img/hero-g-g.svg');
-    height: 30%;
+    height: 200px;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
@@ -670,8 +661,8 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     width: 100%;
     position: absolute;
     border-radius: 20px;
-    right: -60%;
-    bottom: -10px;
+    right: -50%;
+    bottom: -100px;
 }
 
 .numbers--card .numbers-content{
@@ -686,12 +677,11 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 
 .numbers--card .numbers-content h1 {
     font-weight: 600;
-    font-size: 4vw;
 }
 
 .numbers--card .numbers-content h6 {
     font-weight: 300;
-    font-size: 1vw;
+    font-size: 14px;
 }
 
 /* Core Services  */
@@ -701,14 +691,14 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     width: 100%;
 }
 
-/* .core-services {
+.core-services {
     display: grid;
     display: -ms-grid;
     display: -moz-grid;
     grid-template-columns: 1fr 1fr;
     gap:30px;
     align-items: center;
-} */
+}
 
 .core-services-card {
     border: 1px solid rgba(0, 0, 0, 0.125);
@@ -722,14 +712,14 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Our Values  */
-/* .our-values-cards {
+.our-values-cards {
     display: grid;
     display: -ms-grid;
     display: -moz-grid;
     grid-template-columns: 1fr 1fr;
     gap:30px;
 
-} */
+}
 
 .our-values-card {
     background-color: var(--gray-200);
@@ -787,9 +777,9 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 
 /* FAQ  */
 .faq-cards {
-    /* display: grid;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px; */
+    gap: 30px;
     margin-top: -30px;
     margin-bottom: 30px;
 }
