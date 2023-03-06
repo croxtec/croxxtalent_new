@@ -11,8 +11,8 @@
     /* background-size: auto auto; */
 }
 
-.talent--hero_section .left--pivot {
-    width: 70%;
+.talent--hero_section .main--text {
+    width: 85%;
 }
 
 .pivot--text {
@@ -357,7 +357,7 @@
 .employer-hero-bg {
     position: absolute;
     right: 0;
-    height: 100vh;
+        height: 100vh;
   }
   
   .employer-hero-bg img {
@@ -397,21 +397,21 @@
     background: url('../img/talent1.png');
     background-color: var(--light-accent);
     background-size: cover;
-    background-position: center;
+    background-position: top;
 }
 
 .talent-card:last-child {
     background: url('../img/talent3.png');
     background-color: var(--light-accent);
     background-size: cover;
-    background-position: center;
+    background-position: top;
 }
 
 .talent-card:nth-child(2) {
     background: url('../img/talent2.png');
     background-color: var(--green-100);
     background-size: cover;
-    background-position: center;
+    background-position: top;
 }
 
 .talent-card .talent--data {
@@ -751,19 +751,32 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 
 /* RESOURCES */
 .resource-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
+    gap: 50px;
     align-items: center;
 }
 
+.resource-card div {
+    width: 50%;
+}
+
 .resource-card img {
-    width: 100%;
+    width: 50%;
+    height: 400px;
+    object-fit: cover;
+    -o-object-fit: cover;
+    object-position: center;
+    -o-object-position: center;
+    border-radius: 20px;
 }
 
 .resources-card {
     display: flex;
     flex-direction: column;
+    display: inline-flex;
+    display: -webkit-flex;
     gap: 30px;
 }
 

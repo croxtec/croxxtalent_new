@@ -18,6 +18,7 @@
         padding-left: 1rem !important; 
         padding-right: 1rem !important;
     }
+
     /* Landing Page Nav */
     .mobile-hamburger{
         display:  block;
@@ -32,9 +33,15 @@
 
     /* hero Section  */
     .main--text {
-        font-size: 40;
+        width: 100%;
+        font-size: 40px;
         margin-bottom: 10px !important;
     }
+
+    .employer-hero-bg {
+        height: auto;
+    }
+
     .pivot--text {
         grid-template-columns: auto;
         align-items: unset;
@@ -147,6 +154,7 @@
     /* TOP TALENTS  */
     .top--talents_cards {
         grid-template-columns: auto;
+        grid-template-rows: 400px 400px 400px;
     }
 
     .top--talents {
@@ -161,6 +169,27 @@
     .competencies--cards {
         grid-template-columns: 1fr 1fr;
     }
+
+    /* RESOURCE CARD  */
+    .resource-card {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .resource-card:nth-child(2),  .resource-card:nth-child(4),  .resource-card:last-child {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+    
+    .resource-card div {
+        width: 100%;
+    }
+    
+    .resource-card img {
+        width: 100%;
+        height: 300px;
+    }
+    
 
     /* AUTH  */
     .auth-container {
@@ -196,11 +225,12 @@
 
 @media (max-width: 540px) {
     /* hero Section  */
-  
-    .main--text {
+    .talent--hero_section .main--text {
+        width: 100%;
         font-size: 32;
         margin-bottom: 10px !important;
     }
+    
     .right--side img {
         height: 280px;
     }

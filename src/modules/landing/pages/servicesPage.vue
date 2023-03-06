@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ResourcesHeader />
+    <ServicesHeader />
     <section class="py-5">
       <div class="resources-card">
         <div class="resource-card container">
@@ -96,10 +96,10 @@
 
 <script>
 import NewsLetter from "@/components/forms/newsLetter.vue";
-import ResourcesHeader from "../components/resourcesHeader.vue";
+import ServicesHeader from "../components/servicesHeader.vue";
 export default {
   components: {
-    ResourcesHeader,
+    ServicesHeader,
     NewsLetter,
   },
 };
