@@ -2,6 +2,7 @@
   <div>
     <hero-section />
     <how-it-works :isEmployer="employer" />
+    <!-- <FeaturedJobs :numberOfItems="8" /> -->
     <TopTalents />
     <trusted-by />
     <company-competencies />
@@ -12,7 +13,7 @@
 <script>
 import HeroSection from "../components/employers/heroSection.vue";
 import HowItWorks from "../components/employers/howItWorks.vue";
-import FeaturedJobs from "../components/featuredJobs.vue";
+// import FeaturedJobs from "../components/featuredJobs.vue";
 import NewsLetter from "@/components/forms/newsLetter.vue";
 import TopTalents from "../components/employers/topTalents.vue";
 import TrustedBy from "../components/home/trustedBy.vue";
@@ -25,7 +26,7 @@ export default {
   },
   components: {
     HeroSection,
-    FeaturedJobs,
+    // FeaturedJobs,
     NewsLetter,
     HowItWorks,
     TopTalents,

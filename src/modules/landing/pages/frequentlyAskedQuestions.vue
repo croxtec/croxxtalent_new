@@ -36,7 +36,11 @@
           <div class="row">
             <div class="col-sm">
               <div class="faq-card">
-                <img src="@/assets/icons/application.png" alt=""  class="img-fluid"/>
+                <img
+                  src="@/assets/icons/application.png"
+                  alt=""
+                  class="img-fluid"
+                />
                 <div>
                   <h5>Application Management</h5>
                   <p class="body--text">
@@ -48,7 +52,11 @@
             </div>
             <div class="col-sm">
               <div class="faq-card">
-                <img src="@/assets/icons/recruitment.png" alt="" class="img-fluid"/>
+                <img
+                  src="@/assets/icons/recruitment.png"
+                  alt=""
+                  class="img-fluid"
+                />
                 <div>
                   <h5>Recruiting Process</h5>
                   <p class="body--text">
@@ -64,7 +72,7 @@
           <div class="row">
             <div class="col-sm">
               <div class="faq-card">
-                <img src="@/assets/icons/cv-d.png" alt="" class="img-fluid"/>
+                <img src="@/assets/icons/cv-d.png" alt="" class="img-fluid" />
                 <div>
                   <h5>Skill Assessment</h5>
                   <p class="body--text">
@@ -76,7 +84,7 @@
             </div>
             <div class="col-sm">
               <div class="faq-card">
-                <img src="@/assets/icons/cv-d.png" alt="" class="img-fluid"/>
+                <img src="@/assets/icons/cv-d.png" alt="" class="img-fluid" />
                 <div>
                   <h5>Staffing</h5>
                   <p class="body--text">
@@ -95,108 +103,136 @@
       <h5 class="mb-4">Frequently asked questions</h5>
       <el-collapse accordion>
         <el-collapse-item name="1">
-          <template slot="title"> <h6>What is CroxxTalent, and what services do you offer?</h6> </template>
+          <template slot="title">
+            <h6>What is CroxxTalent, and what services do you offer?</h6>
+          </template>
           <div class="mr-5">
             <p>
-              CroxxTalent is a talent management and competence vetting platform that 
-              connects qualified talent with top employers in the industry. We offer a range of services, 
-              including job postings, talent management tools, CV builder, and a competent vetting system.
+              CroxxTalent is a talent management and competence vetting platform
+              that connects qualified talent with top employers in the industry.
+              We offer a range of services, including job postings, talent
+              management tools, CV builder, and a competent vetting system.
             </p>
           </div>
         </el-collapse-item>
 
         <el-collapse-item name="2">
-          <template slot="title"> <h6>How do I create an account with CroxxTalent?</h6> </template>
+          <template slot="title">
+            <h6>How do I create an account with CroxxTalent?</h6>
+          </template>
           <div class="mr-5">
             <p>
-              Creating an account with CroxxTalent is easy. Simply visit our website 
-              and click on the "Sign Up" button in the top right corner of the page. 
-              Follow the instructions to complete the registration process.
+              Creating an account with CroxxTalent is easy. Simply visit our
+              website and click on the "Sign Up" button in the top right corner
+              of the page. Follow the instructions to complete the registration
+              process.
             </p>
           </div>
         </el-collapse-item>
 
         <el-collapse-item name="3">
-          <template slot="title"> <h6>Is CroxxTalent free to use?</h6> </template>
+          <template slot="title">
+            <h6>Is CroxxTalent free to use?</h6>
+          </template>
           <div class="mr-5">
             <p>
-              Creating an account with CroxxTalent is free. However, some of our 
-              services, such as our competent vetting system, may require payment
+              Creating an account with CroxxTalent is free. However, some of our
+              services, such as our competent vetting system, may require
+              payment
             </p>
           </div>
         </el-collapse-item>
 
         <el-collapse-item name="4">
-          <template slot="title"> <h6>How does the competent vetting system work?</h6> </template>
+          <template slot="title">
+            <h6>How does the competent vetting system work?</h6>
+          </template>
           <div class="mr-5">
             <p>
-              Our competent vetting system evaluates a candidate's skills and experience to ensure they
-              meet the requirements for a specific job. Candidates are assessed using a range of tests 
-              and assessments, and the results are used to determine their suitability for the job.
+              Our competent vetting system evaluates a candidate's skills and
+              experience to ensure they meet the requirements for a specific
+              job. Candidates are assessed using a range of tests and
+              assessments, and the results are used to determine their
+              suitability for the job.
             </p>
           </div>
         </el-collapse-item>
 
         <el-collapse-item name="5">
-          <template slot="title"> <h6>How do I post a job on CroxxTalent?</h6> </template>
+          <template slot="title">
+            <h6>How do I post a job on CroxxTalent?</h6>
+          </template>
           <div class="mr-5">
             <p>
-              Posting a job on CroxxTalent is easy. Simply log in to your account as an employer, click on the "Campaign" button in the left side menu, 
-              and follow the instructions to complete the job posting process.
+              Posting a job on CroxxTalent is easy. Simply log in to your
+              account as an employer, click on the "Campaign" button in the left
+              side menu, and follow the instructions to complete the job posting
+              process.
             </p>
           </div>
         </el-collapse-item>
 
         <el-collapse-item name="6">
-          <template slot="title"> <h6>How do I search for candidate on CroxxTalent?</h6> </template>
+          <template slot="title">
+            <h6>How do I search for candidate on CroxxTalent?</h6>
+          </template>
           <div class="mr-5">
             <p>
-              Searching for candidates on CroxxTalent is easy. Simply log in to your account, 
-              click on the "Search Candidates" button, and use our advanced search filters to find the best candidates for your job.
+              Searching for candidates on CroxxTalent is easy. Simply log in to
+              your account, click on the "Search Candidates" button, and use our
+              advanced search filters to find the best candidates for your job.
             </p>
           </div>
         </el-collapse-item>
 
         <el-collapse-item name="7">
-          <template slot="title"> <h6>How do I contact a candidate on CroxxTalent?</h6> </template>
+          <template slot="title">
+            <h6>How do I contact a candidate on CroxxTalent?</h6>
+          </template>
           <div class="mr-5">
             <p>
-              Once you've found a candidate you're interested in, you can contact them directly 
-              through our messaging system
+              Once you've found a candidate you're interested in, you can
+              contact them directly through our messaging system
             </p>
           </div>
         </el-collapse-item>
 
         <el-collapse-item name="8">
-          <template slot="title"> <h6>How do I use the CV builder on CroxxTalent?</h6> </template>
+          <template slot="title">
+            <h6>How do I use the CV builder on CroxxTalent?</h6>
+          </template>
           <div class="mr-5">
             <p>
-              Using our CV builder is easy. Simply visit our Build Your CV page, enter your details, 
-              choose a template, and customize your CV to suit your needs.
+              Using our CV builder is easy. Simply visit our Build Your CV page,
+              enter your details, choose a template, and customize your CV to
+              suit your needs.
             </p>
           </div>
         </el-collapse-item>
 
         <el-collapse-item name="9">
-          <template slot="title"> <h6>How can I contact CroxxTalent if I have any questions or concerns?</h6> </template>
+          <template slot="title">
+            <h6>
+              How can I contact CroxxTalent if I have any questions or concerns?
+            </h6>
+          </template>
           <div class="mr-5">
             <p>
-              If you have any questions or concerns, you can contact us through our contact form, 
-              and one of our dedicated customer service representatives will get back to you as soon 
-              as possible.
+              If you have any questions or concerns, you can contact us through
+              our contact form, and one of our dedicated customer service
+              representatives will get back to you as soon as possible.
             </p>
-            <p> 
-              At Croxx Talent, we're committed to providing our users with the best possible service. 
-              If you have any additional questions or concerns, please don't hesitate to contact us.
+            <p>
+              At Croxx Talent, we're committed to providing our users with the
+              best possible service. If you have any additional questions or
+              concerns, please don't hesitate to contact us.
             </p>
           </div>
         </el-collapse-item>
-
       </el-collapse>
     </section>
 
     <news-letter />
-    
   </div>
 </template>
 
@@ -209,7 +245,7 @@ export default {
 </script>
 
 <style scoped>
-@media only screen and (max-width:572px) {
+@media only screen and (max-width: 572px) {
   .body--text {
     font-size: 10px;
   }

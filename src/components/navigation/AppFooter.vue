@@ -13,7 +13,10 @@
 
               <div class="col-6 col-md-3">
                 <h4 class="footer--header">CroxxTalent</h4>
-                <p class="mt-2">The Ultimate Talent Management and  <br> Competence Vetting Platform</p>
+                <p class="mt-2">
+                  The Ultimate Talent Management and <br />
+                  Competence Vetting Platform
+                </p>
                 <!-- <ul class="list-unstlyed">
                   <li><router-link to="/about-us">About Us</router-link></li>
                   <li>

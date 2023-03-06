@@ -3,10 +3,8 @@
     <div class="container">
       <div class="pivot--text">
         <div class="left--pivot">
-          <h1 class="main--text" v-text="hero.title"> </h1>
-          <p class="desc--text w-100 mb-3" v-text="hero.description">
-           
-          </p>
+          <h1 class="main--text" v-text="hero.title"></h1>
+          <p class="desc--text w-100 mb-3" v-text="hero.description"></p>
           <div class="d-flex align-items-center" style="gap: 15px">
             <cx-button>
               <router-link to="/register" style="color: inherit">
@@ -70,33 +68,38 @@ export default {
     return {
       heroes: [
         {
-          title: 'The Ultimate Competence Vetting Platform',
-          description: 'Designed to help talents in the energy sector find their dream job and help employers build efficient teams.'
+          title: "The Ultimate Competence Vetting Platform",
+          description:
+            "Designed to help talents in the energy sector find their dream job and help employers build efficient teams.",
         },
         {
-          title: 'Build Efficient Teams Easily',
-          description: 'We help hire top talents that boost productivity in the energy sector.'
+          title: "Build Efficient Teams Easily",
+          description:
+            "We help hire top talents that boost productivity in the energy sector.",
         },
         {
-          title: 'Simplify team management with our tools',
-          description: '​​Our talent management tools make it easy to manage your team, track performance, and identify areas for improvement. '
-        }
+          title: "Simplify team management with our tools",
+          description:
+            "​​Our talent management tools make it easy to manage your team, track performance, and identify areas for improvement. ",
+        },
       ],
       hero: {
-          title: 'Build Efficient Teams Easily',
-          description: 'We help hire top talents that boost productivity in the energy sector.'
+        title: "Build Efficient Teams Easily",
+        description:
+          "We help hire top talents that boost productivity in the energy sector.",
       },
-    }
+    };
   },
 
   methods: {
-    selectRandomHero: function(){
-     return this.hero = this.heroes[Math.floor(Math.random()*this.heroes.length)]
-    }
+    selectRandomHero: function () {
+      return (this.hero =
+        this.heroes[Math.floor(Math.random() * this.heroes.length)]);
+    },
   },
 
   mounted() {
-    this.selectRandomHero()
-  }
+    this.selectRandomHero();
+  },
 };
 </script>

@@ -1,13 +1,12 @@
 <template>
   <div class="auth-form-container container-fluid">
     <div>
-      <router-link style="color: inherit"  to="/">
-        <nav class="text-center" >
+      <router-link style="color: inherit" to="/">
+        <nav class="text-center">
           <img width="250" src="@/assets/img/logo.png" alt="" />
         </nav>
       </router-link>
     </div>
-
 
     <div class="auth-content">
       <h4 class="text-center">Welcome Back</h4>

@@ -19,7 +19,8 @@
           </div>
           <h5>Register</h5>
           <p class="text-dark">
-            Create an account in less than 1 minute. Join CroxxTalent and find opportunities.
+            Create an account in less than 1 minute. Join CroxxTalent and find
+            opportunities.
           </p>
         </router-link>
 
@@ -33,7 +34,9 @@
             </svg>
           </div>
           <h5>Setup Profile</h5>
-          <p class="text-dark">Set up your profile in a few clicks and customize your settings.</p>
+          <p class="text-dark">
+            Set up your profile in a few clicks and customize your settings.
+          </p>
         </router-link>
 
         <router-link to="/register" class="col-md-3 how-it-works-card">
@@ -63,7 +66,8 @@
           </div>
           <h5>Build CV</h5>
           <p class="text-dark">
-            Build your CV using our live web cv builder – showcase relevant skills for employers.
+            Build your CV using our live web cv builder – showcase relevant
+            skills for employers.
           </p>
         </router-link>
 
@@ -77,7 +81,7 @@
             </svg>
           </div>
           <h5>Apply</h5>
-          <p class="text-dark"> 
+          <p class="text-dark">
             Apply for multiple roles and get matched with your dream job.
           </p>
         </router-link>

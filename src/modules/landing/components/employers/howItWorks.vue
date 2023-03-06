@@ -19,7 +19,8 @@
           </div>
           <h5>Register</h5>
           <p class="text-dark">
-            Join the Croxx Talent community of top employers and start finding the best talent in the energy sector.
+            Join the Croxx Talent community of top employers and start finding
+            the best talent in the energy sector.
           </p>
         </router-link>
 
@@ -33,7 +34,10 @@
             </svg>
           </div>
           <h5>Setup Profile</h5>
-          <p class="text-dark">Customize your company profile and showcase your brand to top talent in the energy sector.</p>
+          <p class="text-dark">
+            Customize your company profile and showcase your brand to top talent
+            in the energy sector.
+          </p>
         </router-link>
 
         <router-link to="/register" class="col-md-3 how-it-works-card">
@@ -63,8 +67,9 @@
           </div>
           <h5>Manage employees</h5>
           <p class="text-dark">
-              Empower your workforce with comprehensive competency management tools designed to unlock 
-              their full potential – develop your team's strengths, track progress and drive success
+            Empower your workforce with comprehensive competency management
+            tools designed to unlock their full potential – develop your team's
+            strengths, track progress and drive success
           </p>
         </router-link>
 
@@ -78,8 +83,9 @@
             </svg>
           </div>
           <h5>Sit back and relax!</h5>
-          <p class="text-dark"> 
-            Let our team do the heavy lifting for you and find the perfect talent match for your business. 
+          <p class="text-dark">
+            Let our team do the heavy lifting for you and find the perfect
+            talent match for your business.
             <!-- You can focus on running your business while we take care of sourcing and screening the best match for your business.  -->
           </p>
         </router-link>

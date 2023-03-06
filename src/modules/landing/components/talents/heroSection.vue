@@ -3,9 +3,12 @@
     <div class="container">
       <div class="pivot--text">
         <div class="left--pivot">
-          <h1 class="main--text">Accelerate Your Career in the Energy Industry</h1>
+          <h1 class="main--text">
+            Accelerate Your Career in the Energy Industry
+          </h1>
           <p class="desc--text">
-            The platform is designed to connect talented individuals with the best opportunities.
+            The platform is designed to connect talented individuals with the
+            best opportunities.
           </p>
         </div>
         <!-- <div class="right--pivot">

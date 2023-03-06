@@ -9,39 +9,46 @@
               <div>
                 <h5 class="mb-3">We take the pressure off you</h5>
                 <p class="body--text">
-                  Through years of research and development, we created a unique and innovative system that uses smart assessments and a tiered Work-Experience Model to drive deep data profiling on every individual in our ecosystem. This enables us to make intelligent matching decisions for energy companies across the world, ensuring that the right people are in the right roles, driving business success.
+                  Through years of research and development, we created a unique
+                  and innovative system that uses smart assessments and a tiered
+                  Work-Experience Model to drive deep data profiling on every
+                  individual in our ecosystem. This enables us to make
+                  intelligent matching decisions for energy companies across the
+                  world, ensuring that the right people are in the right roles,
+                  driving business success.
                 </p>
               </div>
               <div class="text-center">
-                <CxButton  @buttonClicked="goToRegister">
+                <CxButton @buttonClicked="goToRegister">
                   <slot>Find talents</slot>
                 </CxButton>
               </div>
             </div>
           </div>
           <div class="col-sm">
-              <img src="@/assets/img/find-you-talents.png" alt="" class="mt-3"/>
+            <img src="@/assets/img/find-you-talents.png" alt="" class="mt-3" />
           </div>
         </div>
       </div>
       <div class="container mt-3">
         <div class="row">
           <div class="col-sm">
-              <img src="@/assets/img/get-you-hired.png" alt="" />
+            <img src="@/assets/img/get-you-hired.png" alt="" />
           </div>
           <div class="col-sm">
             <div class="core-services-card mt-3">
               <div>
                 <h5 class="mb-3">Productivity/Results oriented:</h5>
                 <p class="body--text">
-                  We understand that our clients are result-oriented, and we 
-                  strive to meet their needs by providing high-quality output 
-                  in a timely manner. By focusing on results and maximizing resources, 
-                  we can ensure that our clients are satisfied and our services are in demand.
+                  We understand that our clients are result-oriented, and we
+                  strive to meet their needs by providing high-quality output in
+                  a timely manner. By focusing on results and maximizing
+                  resources, we can ensure that our clients are satisfied and
+                  our services are in demand.
                 </p>
               </div>
               <div class="text-center">
-                <CxButton  @buttonClicked="goToRegister">
+                <CxButton @buttonClicked="goToRegister">
                   <slot>Get Hired</slot>
                 </CxButton>
               </div>
@@ -57,12 +64,12 @@
 import CxButton from "@/components/buttons/cxButton.vue";
 
 export default {
-   components: { CxButton } ,
+  components: { CxButton },
 
-   methods: {
+  methods: {
     goToRegister() {
       this.$router.push("/register");
     },
-   }
+  },
 };
 </script>

@@ -1,4 +1,3 @@
-
 <template>
   <div class="app-nav">
     <div class="navbar-transparent sticky-top bg-white">
@@ -32,11 +31,7 @@
             </li>
           </ul>
 
-<<<<<<< HEAD
           <div class="mobile-menu">
-=======
-          <div class="mobile-hamburger">
->>>>>>> 123b86c92b6a52f084d27e6dffe61dc2876cb581
             <span role="button" @click="drawer = true">
               <i-icon icon="material-symbols:menu-sharp" width="30px" />
             </span>
@@ -52,7 +47,7 @@
       size="92%"
       :withHeader="false"
     >
-    <!-- style="max-width: 400px;" -->
+      <!-- style="max-width: 400px;" -->
       <div
         class="top container-fluid pt-4 pb-2 d-flex align-items-center justify-content-between"
       >
@@ -69,7 +64,7 @@
           class="m-0 d-flex flex-column justify-content-end mt-5"
           style="gap: 30px"
         >
-          <li> 
+          <li>
             <router-link to="/employers">For Employers</router-link>
           </li>
           <li>

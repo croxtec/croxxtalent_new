@@ -5,11 +5,12 @@
         <div class="left--pivot container">
           <div class="">
             <h1 class="main--text">
-            Energize your team with the best talent in the industry
-          </h1>
-          <p class="desc--text">
-            We assist businesses in realising their full potential by assembling teams that drive revenue and facilitate growth
-          </p>
+              Energize your team with the best talent in the industry
+            </h1>
+            <p class="desc--text">
+              We assist businesses in realising their full potential by
+              assembling teams that drive revenue and facilitate growth
+            </p>
 
             <!-- Hero Search Area  -->
             <div class="talent--search">

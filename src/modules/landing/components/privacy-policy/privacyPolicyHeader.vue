@@ -16,9 +16,9 @@
 </template>
 
 <style scoped>
-@media only screen and (max-width:572px) {
- p {
-  width: 110%;
- }
+@media only screen and (max-width: 572px) {
+  p {
+    width: 110%;
+  }
 }
 </style>
