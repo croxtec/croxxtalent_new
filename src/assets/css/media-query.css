@@ -13,6 +13,11 @@
 }
 
 @media (max-width:990px) {
+    /* COMMONS  */
+    .container-fluid {
+        padding-left: 1rem !important; 
+        padding-right: 1rem !important;
+    }
     /* Landing Page Nav */
     .mobile-hamburger{
         display:  block;
@@ -155,6 +160,29 @@
 
     .competencies--cards {
         grid-template-columns: 1fr 1fr;
+    }
+
+    /* AUTH  */
+    .auth-container {
+        display: grid;
+        grid-template-columns: auto;
+        background: url('../img/hero-g-g.svg') center center no-repeat;
+        background-color: #F8F8F8;
+    } 
+
+    .auth-banner {
+        display: none;
+    }
+
+    .auth-form-container, .auth-content {
+        justify-content: center;
+    }
+
+    .auth-content {
+        width: 90%;
+    }
+    .register-options {
+        background-color: #fff;
     }
 }
 

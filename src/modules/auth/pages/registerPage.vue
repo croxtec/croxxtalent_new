@@ -1,7 +1,7 @@
 <template>
   <div class="register-page auth-container">
     <div class="auth-content">
-      <RegisterNav />
+      <RegisterNav class="mb-3" />
       <router-view />
     </div>
     <RegisterBanner />
