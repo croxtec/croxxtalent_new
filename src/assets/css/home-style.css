@@ -186,7 +186,7 @@
 }
 
 .trusted-by-img {
-    width: 30px;
+    width:50px;
     height: 100%;
     object-fit: contain;
     -o-object-fit: contain;
@@ -691,14 +691,14 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     width: 100%;
 }
 
-.core-services {
+/* .core-services {
     display: grid;
     display: -ms-grid;
     display: -moz-grid;
     grid-template-columns: 1fr 1fr;
     gap:30px;
     align-items: center;
-}
+} */
 
 .core-services-card {
     border: 1px solid rgba(0, 0, 0, 0.125);
@@ -712,14 +712,14 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Our Values  */
-.our-values-cards {
+/* .our-values-cards {
     display: grid;
     display: -ms-grid;
     display: -moz-grid;
     grid-template-columns: 1fr 1fr;
     gap:30px;
 
-}
+} */
 
 .our-values-card {
     background-color: var(--gray-200);
@@ -777,9 +777,9 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 
 /* FAQ  */
 .faq-cards {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 30px; */
     margin-top: -30px;
     margin-bottom: 30px;
 }

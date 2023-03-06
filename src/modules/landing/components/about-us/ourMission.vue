@@ -89,6 +89,7 @@
 .our-mission {
   margin-top: 200px;
 }
+
 @media only screen and (max-width: 572px) {
   .our-mission {
     margin-top: 20px;
