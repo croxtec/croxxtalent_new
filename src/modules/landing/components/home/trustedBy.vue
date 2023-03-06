@@ -45,6 +45,25 @@
             <div class="slide">
               <img src="@/assets/icons/6.png" alt="" width="130" class="mr-5" />
             </div>
+
+            <div class="slide">
+              <img src="@/assets/icons/1.png" alt="" width="130" class="mr-5" />
+            </div>
+            <div class="slide">
+              <img src="@/assets/icons/2.png" alt="" width="100" class="mr-5" />
+            </div>
+            <div class="slide">
+              <img src="@/assets/icons/3.png" alt="" width="130" class="mr-5" />
+            </div>
+            <div class="slide">
+              <img src="@/assets/icons/4.png" alt="" width="130" class="mr-5" />
+            </div>
+            <div class="slide">
+              <img src="@/assets/icons/5.png" alt="" width="130" class="mr-5" />
+            </div>
+            <div class="slide">
+              <img src="@/assets/icons/6.png" alt="" width="130" class="mr-5" />
+            </div>
           </div>
         </div>
       </div>
@@ -84,7 +103,7 @@
   margin: auto;
   overflow: hidden;
   position: relative;
-  width: auto;
+  width: 100%;
 }
 
 .slider img {

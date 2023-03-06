@@ -10,7 +10,7 @@
           </p>
         </div>
         <div class="mt-3">
-          <form action="" @submit.prevent="submit">
+          <form @submit.prevent="submit">
             <div class="mb-3 w-100">
               <label for="">Full Name</label>
               <input
@@ -20,7 +20,7 @@
               />
             </div>
 
-            <div class="d-flex w-100" style="gap: 20px">
+            <div class="d-lg-flex w-100" style="gap: 20px">
               <div class="mb-3 w-100">
                 <label for="">Email</label>
                 <input

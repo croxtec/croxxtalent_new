@@ -19,7 +19,7 @@
               <router-link to="/talents">For Talents</router-link>
             </li>
             <li>
-              <router-link to="/resources">Resources</router-link>
+              <router-link to="/services">Services</router-link>
             </li>
             <li>
               <router-link to="/about-us">About Us</router-link>
@@ -71,7 +71,7 @@
             <router-link to="/talents">For Talents</router-link>
           </li>
           <li>
-            <router-link to="/resources">Resources</router-link>
+            <router-link to="/services">Services</router-link>
           </li>
           <li>
             <router-link to="/about-us">About Us</router-link>

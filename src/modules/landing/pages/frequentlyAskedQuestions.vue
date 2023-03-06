@@ -4,96 +4,64 @@
 
     <section class="container">
       <div class="faq-cards">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm">
-              <div class="faq-card">
-                <img src="@/assets/icons/cv-d.png" alt="" />
-                <div>
-                  <h5>C.V Downloads</h5>
-                  <p class="body--text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc vulputate libero et
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="faq-card">
-                <img src="@/assets/icons/competency.png" alt="" />
-                <div>
-                  <h5>Competency Test</h5>
-                  <p class="body--text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc vulputate libero et
-                  </p>
-                </div>
-              </div>
-            </div>
+        <div class="faq-card">
+          <img src="@/assets/icons/cv-d.png" alt="" />
+          <div>
+            <h5>C.V Downloads</h5>
+            <p class="body--text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et
+            </p>
           </div>
         </div>
-        <div class="container my-3">
-          <div class="row">
-            <div class="col-sm">
-              <div class="faq-card">
-                <img
-                  src="@/assets/icons/application.png"
-                  alt=""
-                  class="img-fluid"
-                />
-                <div>
-                  <h5>Application Management</h5>
-                  <p class="body--text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc vulputate libero et
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="faq-card">
-                <img
-                  src="@/assets/icons/recruitment.png"
-                  alt=""
-                  class="img-fluid"
-                />
-                <div>
-                  <h5>Recruiting Process</h5>
-                  <p class="body--text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc vulputate libero et
-                  </p>
-                </div>
-              </div>
-            </div>
+        <div class="faq-card">
+          <img src="@/assets/icons/competency.png" alt="" />
+          <div>
+            <h5>Competency Test</h5>
+            <p class="body--text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et
+            </p>
           </div>
         </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm">
-              <div class="faq-card">
-                <img src="@/assets/icons/cv-d.png" alt="" class="img-fluid" />
-                <div>
-                  <h5>Skill Assessment</h5>
-                  <p class="body--text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc vulputate libero et
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="faq-card">
-                <img src="@/assets/icons/cv-d.png" alt="" class="img-fluid" />
-                <div>
-                  <h5>Staffing</h5>
-                  <p class="body--text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc vulputate libero et
-                  </p>
-                </div>
-              </div>
-            </div>
+        <div class="faq-card">
+          <img src="@/assets/icons/application.png" alt="" class="img-fluid" />
+          <div>
+            <h5>Application Management</h5>
+            <p class="body--text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et
+            </p>
+          </div>
+        </div>
+        <div class="faq-card">
+          <img src="@/assets/icons/recruitment.png" alt="" class="img-fluid" />
+          <div>
+            <h5>Recruiting Process</h5>
+            <p class="body--text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et
+            </p>
+          </div>
+        </div>
+        <div class="faq-card">
+          <img src="@/assets/icons/cv-d.png" alt="" class="img-fluid" />
+          <div>
+            <h5>Skill Assessment</h5>
+            <p class="body--text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et
+            </p>
+          </div>
+        </div>
+        <div class="faq-card">
+          <img src="@/assets/icons/cv-d.png" alt="" class="img-fluid" />
+          <div>
+            <h5>Staffing</h5>
+            <p class="body--text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              vulputate libero et
+            </p>
           </div>
         </div>
       </div>

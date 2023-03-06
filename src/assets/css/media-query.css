@@ -14,6 +14,15 @@
 
 @media (max-width:990px) {
     /* COMMONS  */
+    .col-sm-8 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .modal-content  {
+        width: 80%;
+    }
+
     .container-fluid {
         padding-left: 1rem !important; 
         padding-right: 1rem !important;
@@ -190,6 +199,47 @@
         height: 300px;
     }
     
+    /* CORE SERVICE  */
+    .core-services {
+        flex-direction: column;
+        gap: 20px;
+        height: unset;
+    }
+
+    .core-services-card {
+        width: 100%;
+    }
+
+    .core-services:last-child {
+        flex-direction: column-reverse;
+    }
+
+    /* OUR VALUES  */
+    .our-values-cards {
+        flex-direction: column;
+    }
+
+    /* OUR MISSION  */
+    .our-mission-container {
+        flex-direction: column;
+    }
+
+    /* OUR TEAM  */
+    .our-team {
+        flex-direction: column;
+        padding:0 2rem;
+        align-items: center;
+    }
+
+    /* FAQ  */
+    .faq-cards {
+        grid-template-columns: auto;
+        gap: 20px;
+    }
+
+    .faq-list h6 {
+        font-size: 14px;
+    }
 
     /* AUTH  */
     .auth-container {
