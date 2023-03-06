@@ -18,9 +18,13 @@
         display: none !important;
     }   
 
+    .app-nav .mobile-menu {
+        display: block;
+    }
+
     /* hero Section  */
     .pivot--text {
-        flex-direction: column;
+        grid-template-columns: auto;
         align-items: unset;
         gap: 50px;
         padding: 40px 0;
@@ -29,6 +33,48 @@
 
     .left--pivot {
         width: 100%;
+       
+    }
+
+    .desc--text  {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main--text {
+        text-align: center;
+        font-size: 40px;
+        width: 100%;
+    }
+
+    .talent--search {
+       position: static;
+       width: 100%;
+       margin-bottom: 80px;
+    }
+
+    .hero--search {
+        flex-direction: column;
+        padding: 30px ;
+        border-radius: 40px;
+    }
+
+    .hero--search .primary--button {
+        width: 100%;
+    }
+
+    .right--pivot {
+       left: 50%;
+    }
+
+    /* Employer Hero Section  */
+    .employer-hero-bg {
+        position: unset !important;
+        right: unset !important;
+    }
+
+    .employer-hero-bg img {
+        width: 100%;
     }
 
     .right--side img {
@@ -36,6 +82,10 @@
     }
 
     .right--side .d-flex {
+        justify-content: center;
+    }
+
+    .left--pivot .d-flex {
         justify-content: center;
     }
 
@@ -58,16 +108,46 @@
         margin-top: 0
     }
 
-.data-driven .data--card, .data-driven .data--bottom_card, .colored-card { 
-    padding: 1em;
-}
-
+    .data-driven .data--card, .data-driven .data--bottom_card, .colored-card { 
+        padding: 1em;
+    }
 
     /* Jobs  */
     .jobs--cards {
         grid-template-columns: auto;
     }
 
+    /* HOW IT WORks  */
+    .how-it-works-card {
+        width: 100%;
+        display: block;
+    }
+
+    .how--it_works .d-lg-flex {
+        display: flex;
+        display: inline-flex;
+        display: -webkit-flex;
+        flex-direction: column;
+        gap: 30px !important;
+    }
+
+    /* TOP TALENTS  */
+    .top--talents_cards {
+        grid-template-columns: auto;
+    }
+
+    .top--talents {
+        padding: 3em 0;
+    }
+
+    /* COMPETENCIES  */
+    .competencies {
+        padding: 3em 0;
+    }
+
+    .competencies--cards {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (max-width: 720px) {

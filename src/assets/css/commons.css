@@ -102,6 +102,9 @@
     color: #fff;
 }
 
+.app-nav .mobile-menu {
+    display: none;
+}
 
 /* Hero Search fieldset */
 .hero--search {
@@ -125,6 +128,7 @@
 
 .line--input {
     border: none;
+    background-color: transparent;
     border-bottom: 1px solid var(--blue-300);
     width: 100%;
     padding: 0.54em;

@@ -31,7 +31,7 @@
             </li>
           </ul>
 
-          <div>
+          <div class="mobile-menu">
             <span role="button" @click="drawer = true">
               <i-icon icon="material-symbols:menu-sharp" width="30px" />
             </span>

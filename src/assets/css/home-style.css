@@ -1,24 +1,31 @@
 /* STYLING FOR TALENT HERO SECTION */
 .talent--hero_section {
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
     align-items: center ;
-    background: url('../img/about.png') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
+    background: url('../img/hero-g-g.svg') center center no-repeat;
+    position: relative;
+    overflow-y: hidden;
     /* background-size: auto auto; */
 }
 .pivot--text {
-    width: 57%;
-    display: flex;
-    display: inline-flex;
-    display: -webkit-flex;
+    /* width: 100%; */
+    display: grid;
+    display: -ms-grid;
+    display: -moz-grid;
+   grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: space-between;
 }
 
 .left--pivot {
-    width: 65%;
+    width: 70%;
+}
+
+.star-image {
+    position: absolute;
 }
 
 .right--pivot {
@@ -31,8 +38,11 @@
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     place-items: center;
+    position: absolute;
+    right: 80%;
+    bottom: 30%;
+    transform: translate(-50%, -50%);
 }
 
 .right--pivot h5, .right--pivot h6 {
@@ -56,7 +66,8 @@
 .main--text {
     font-size: 54px;
     font-weight: 700;
-    margin-bottom: 15px !important;
+    margin-bottom: 1f5px !important;
+    width: 80%;
 }
 
 .desc--text {
@@ -66,6 +77,8 @@
 
 .talent--search {
     width: 72%;
+    position: absolute;
+    z-index: 22;
 }
 
 /* FEATURED JOBS  */
@@ -184,22 +197,15 @@
 /* How it works  */
 .how--it_works {
     background-color: var(--light-accent);
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     place-items: center;
 }
 
 .how--it_works.employers {
     background: url('../img/hero-g-g.svg');
-    height: 100vh;
-    display: grid;
-    display: -ms-inline-grid;
-    display: -moz-grid;
-    
-    place-items: center;
     background-color: var(--primary-color);
     background-size: cover;
     background-position: center;
@@ -332,21 +338,34 @@
 
 /* Employer Hero Section */
 .talent--hero_section.employer {
-    height: 100vh;
+    /* min-height: 100vh; */
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
     align-items: center ;
-    background: url('../img/employers.png') right center no-repeat, url('../img/hero-g-g.svg') center center no-repeat;
+    background: url('../img/hero-g-g.svg') center center no-repeat;
     /* background-size: auto 100%; */
 }
 
-.top--talents {
+.employer-hero-bg {
+    position: absolute;
+    right: 0;
     height: 100vh;
+  }
+  
+  .employer-hero-bg img {
+    object-fit: cover;
+    object-position: top;
+    -o-object-fit: cover;
+    -o-object-position: top;
+    /* min-height: 100vh !important; */
+  }
+
+.top--talents {
+    min-height: 100vh;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     place-items: center;
 }
 
@@ -354,7 +373,6 @@
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
-    
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 400px;
     gap: 40px;
@@ -398,7 +416,7 @@
 
 /* Competencies  */
 .competencies {
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;

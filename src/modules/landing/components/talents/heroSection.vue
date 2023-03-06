@@ -9,7 +9,7 @@
             that's right for you.
           </p>
         </div>
-        <div class="right--pivot">
+        <!-- <div class="right--pivot">
           <div>
             <h6>100%</h6>
             <h5>
@@ -17,7 +17,11 @@
               Offers
             </h5>
           </div>
-        </div>
+        </div> -->
+
+        <!-- <div>
+          <img src="@/assets/img/employers.png" alt="" />
+        </div> -->
       </div>
 
       <!-- Hero Search Area  -->
