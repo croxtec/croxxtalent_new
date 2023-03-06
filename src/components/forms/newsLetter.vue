@@ -3,12 +3,11 @@
     <div class="container">
       <div class="subscribe-form">
         <h4 class="mb-3 font-weight-bolder">
-          Subscribe to our <br />
-          monthly newsletter
+          Let’s bring the jobs <br /> to you
+
         </h4>
         <p class="desc--text w-100">
-          Be the first to know what's new in the energy industry. <br />
-          Subscribe to our newsletter now!
+          We know you're busy. Join our newsletter and we'll send you a <br> fresh batch of new jobs every day.
         </p>
         <div class="subscibe-input">
           <input
@@ -80,3 +79,10 @@ export default {
   },
 };
 </script>
+<style>
+@media only screen and (max-width:572px) {
+  .subscibe-input {
+    width: 100% !important;
+  }
+}
+</style>
