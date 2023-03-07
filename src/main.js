@@ -3,6 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import "@/assets/css/main.css";
 import "@/assets/css/media-query.css";
 
@@ -46,5 +49,8 @@ Vue.use(Vuesax, {
 new Vue({
   router,
   store,
+  mounted() {
+    AOS.init();
+  },
   render: (h) => h(App),
 }).$mount("#app");
