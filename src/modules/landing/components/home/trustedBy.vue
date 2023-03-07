@@ -9,60 +9,60 @@
         <div class="slider">
           <div class="slide-track">
             <div class="slide">
-              <img src="@/assets/icons/1.png" alt="" width="130" class="mr-5" />
+              <img src="@/assets/icons/1.png" alt="" width="130" />
             </div>
             <div class="slide">
-              <img src="@/assets/icons/2.png" alt="" width="100" class="mr-5" />
+              <img src="@/assets/icons/2.png" alt="" width="100" />
             </div>
             <div class="slide">
-              <img src="@/assets/icons/3.png" alt="" width="130" class="mr-5" />
+              <img src="@/assets/icons/3.png" alt="" width="130" />
             </div>
             <div class="slide">
-              <img src="@/assets/icons/4.png" alt="" width="130" class="mr-5" />
+              <img src="@/assets/icons/4.png" alt="" width="130" />
             </div>
             <div class="slide">
-              <img src="@/assets/icons/5.png" alt="" width="130" class="mr-5" />
+              <img src="@/assets/icons/5.png" alt="" width="130" />
             </div>
             <div class="slide">
-              <img src="@/assets/icons/6.png" alt="" width="150" class="mr-5" />
-            </div>
-
-            <div class="slide">
-              <img src="@/assets/icons/1.png" alt="" width="130" class="mr-5" />
-            </div>
-            <div class="slide">
-              <img src="@/assets/icons/2.png" alt="" width="100" class="mr-5" />
-            </div>
-            <div class="slide">
-              <img src="@/assets/icons/3.png" alt="" width="130" class="mr-5" />
-            </div>
-            <div class="slide">
-              <img src="@/assets/icons/4.png" alt="" width="130" class="mr-5" />
-            </div>
-            <div class="slide">
-              <img src="@/assets/icons/5.png" alt="" width="130" class="mr-5" />
-            </div>
-            <div class="slide">
-              <img src="@/assets/icons/6.png" alt="" width="130" class="mr-5" />
+              <img src="@/assets/icons/6.png" alt="" width="150" />
             </div>
 
             <div class="slide">
-              <img src="@/assets/icons/1.png" alt="" width="130" class="mr-5" />
+              <img src="@/assets/icons/1.png" alt="" width="130" />
             </div>
             <div class="slide">
-              <img src="@/assets/icons/2.png" alt="" width="100" class="mr-5" />
+              <img src="@/assets/icons/2.png" alt="" width="100" />
             </div>
             <div class="slide">
-              <img src="@/assets/icons/3.png" alt="" width="130" class="mr-5" />
+              <img src="@/assets/icons/3.png" alt="" width="130" />
             </div>
             <div class="slide">
-              <img src="@/assets/icons/4.png" alt="" width="130" class="mr-5" />
+              <img src="@/assets/icons/4.png" alt="" width="130" />
             </div>
             <div class="slide">
-              <img src="@/assets/icons/5.png" alt="" width="130" class="mr-5" />
+              <img src="@/assets/icons/5.png" alt="" width="130" />
             </div>
             <div class="slide">
-              <img src="@/assets/icons/6.png" alt="" width="130" class="mr-5" />
+              <img src="@/assets/icons/6.png" alt="" width="130" />
+            </div>
+
+            <div class="slide">
+              <img src="@/assets/icons/1.png" alt="" width="130" />
+            </div>
+            <div class="slide">
+              <img src="@/assets/icons/2.png" alt="" width="100" />
+            </div>
+            <div class="slide">
+              <img src="@/assets/icons/3.png" alt="" width="130" />
+            </div>
+            <div class="slide">
+              <img src="@/assets/icons/4.png" alt="" width="130" />
+            </div>
+            <div class="slide">
+              <img src="@/assets/icons/5.png" alt="" width="130" />
+            </div>
+            <div class="slide">
+              <img src="@/assets/icons/6.png" alt="" width="130" />
             </div>
           </div>
         </div>
@@ -72,6 +72,9 @@
 </template>
 
 <style scoped>
+.slide img {
+  margin-right: 5rem;
+}
 .body {
   align-items: center;
   /* background: #E3E3E3; */

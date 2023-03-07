@@ -344,8 +344,8 @@ floater
 .floater {
     animation-name: floater;
     -webkit-animation-name: floater;
-    animation-duration: 4s;
-    -webkit-animation-duration: 4s;
+    animation-duration: 10s;
+    -webkit-animation-duration: 10s;
     animation-iteration-count: infinite;
     -webkit-animation-iteration-count: infinite;
     visibility: visible !important;
@@ -356,7 +356,7 @@ floater
         transform: translateY(0%);
     }
     50% {
-        transform: translateY(5%);
+        transform: translateY(10%);
     }
     100% {
         transform: translateY(0%);
@@ -368,7 +368,7 @@ floater
         -webkit-transform: translateY(0%);
     }
     50% {
-        -webkit-transform: translateY(5%);
+        -webkit-transform: translateY(10%);
     }
     100% {
         -webkit-transform: translateY(0%);
@@ -378,8 +378,8 @@ floater
 .floater2 {
     animation-name: floater2;
     -webkit-animation-name: floater2;
-    animation-duration: 4s;
-    -webkit-animation-duration: 4s;
+    animation-duration: 10s;
+    -webkit-animation-duration: 10s;
     animation-iteration-count: infinite;
     -webkit-animation-iteration-count: infinite;
     visibility: visible !important;
@@ -387,25 +387,25 @@ floater
 
 @keyframes floater2 {
     0% {
-        transform: translateY(5%);
+        transform: translateY(10%);
     }
     50% {
         transform: translateY(0%);
     }
     100% {
-        transform: translateY(5%);
+        transform: translateY(10%);
     }
 }
 
 @-webkit-keyframes floater2 {
     0% {
-        -webkit-transform: translateY(5%);
+        -webkit-transform: translateY(10%);
     }
     50% {
         -webkit-transform: translateY(0%);
     }
     100% {
-        -webkit-transform: translateY(5%);
+        -webkit-transform: translateY(10%);
     }
 }
 
