@@ -3,8 +3,14 @@
     <div class="container">
       <div class="pivot--text">
         <div class="left--pivot">
-          <h1 class="main--text" v-text="hero.title"></h1>
-          <p class="desc--text w-100 mb-3" v-text="hero.description"></p>
+          <h1
+            class="main--text animate__animated animate__fadeInUp animate__slow"
+            v-text="hero.title"
+          ></h1>
+          <p
+            class="desc--text w-100 mb-3 animate__animated animate__fadeInUp animate__slow animate__delay-1s"
+            v-text="hero.description"
+          ></p>
           <div class="d-flex align-items-center" style="gap: 15px">
             <cx-button>
               <router-link to="/register" style="color: inherit">

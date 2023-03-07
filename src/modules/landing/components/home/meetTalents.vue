@@ -7,7 +7,20 @@
             <h3 class="header--text">
               Find jobs, get hired and get paid - on one platform
             </h3>
-            <img src="@/assets/img/meet_talents.png" width="100%" alt="" />
+            <!-- <img
+              class="floater-z"
+              src="@/assets/img/meet_talents.png"
+              width="100%"
+              alt=""
+            /> -->
+            <div class="meet-talents-img p-3 mt-3">
+              <!-- <img src="@/assets/img/Interviewed.png" width="100%" alt="" /> -->
+              <img
+                class="floater-z"
+                src="@/assets/img/Find 3d 1.png"
+                width="300px"
+              />
+            </div>
           </div>
           <div class="mt-5 text-center">
             <cx-button>
@@ -43,3 +56,13 @@ export default {
   components: { cxButton },
 };
 </script>
+
+<style scoped>
+.meet-talents-img {
+  background: url("@/assets/img/Interviewed.png");
+  width: 60%;
+  height: 320px;
+  margin: 0 auto;
+  background-size: cover;
+}
+</style>
