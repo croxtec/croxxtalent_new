@@ -356,7 +356,7 @@ floater
         transform: translateY(0%);
     }
     50% {
-        transform: translateY(10%);
+        transform: translateY(5%);
     }
     100% {
         transform: translateY(0%);
@@ -368,7 +368,7 @@ floater
         -webkit-transform: translateY(0%);
     }
     50% {
-        -webkit-transform: translateY(10%);
+        -webkit-transform: translateY(5%);
     }
     100% {
         -webkit-transform: translateY(0%);
@@ -387,25 +387,25 @@ floater
 
 @keyframes floater2 {
     0% {
-        transform: translateY(10%);
+        transform: translateY(5%);
     }
     50% {
         transform: translateY(0%);
     }
     100% {
-        transform: translateY(10%);
+        transform: translateY(5%);
     }
 }
 
 @-webkit-keyframes floater2 {
     0% {
-        -webkit-transform: translateY(10%);
+        -webkit-transform: translateY(5%);
     }
     50% {
         -webkit-transform: translateY(0%);
     }
     100% {
-        -webkit-transform: translateY(10%);
+        -webkit-transform: translateY(5%);
     }
 }
 
