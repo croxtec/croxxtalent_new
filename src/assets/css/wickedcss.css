@@ -344,8 +344,8 @@ floater
 .floater {
     animation-name: floater;
     -webkit-animation-name: floater;
-    animation-duration: 1.5s;
-    -webkit-animation-duration: 1.5s;
+    animation-duration: 4s;
+    -webkit-animation-duration: 4s;
     animation-iteration-count: infinite;
     -webkit-animation-iteration-count: infinite;
     visibility: visible !important;
@@ -356,7 +356,7 @@ floater
         transform: translateY(0%);
     }
     50% {
-        transform: translateY(8%);
+        transform: translateY(5%);
     }
     100% {
         transform: translateY(0%);
@@ -368,10 +368,44 @@ floater
         -webkit-transform: translateY(0%);
     }
     50% {
-        -webkit-transform: translateY(8%);
+        -webkit-transform: translateY(5%);
     }
     100% {
         -webkit-transform: translateY(0%);
+    }
+}
+
+.floater2 {
+    animation-name: floater2;
+    -webkit-animation-name: floater2;
+    animation-duration: 4s;
+    -webkit-animation-duration: 4s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    visibility: visible !important;
+}
+
+@keyframes floater2 {
+    0% {
+        transform: translateY(5%);
+    }
+    50% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(5%);
+    }
+}
+
+@-webkit-keyframes floater2 {
+    0% {
+        -webkit-transform: translateY(5%);
+    }
+    50% {
+        -webkit-transform: translateY(0%);
+    }
+    100% {
+        -webkit-transform: translateY(5%);
     }
 }
 
@@ -415,6 +449,8 @@ wiggle
         -webkit-transform: rotate(-4deg);
     }
 }
+
+
 
 
 /*

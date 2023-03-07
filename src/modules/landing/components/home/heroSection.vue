@@ -21,7 +21,7 @@
         </div>
         <div class="right--side">
           <div class="d-flex" style="gap: 20px">
-            <div>
+            <div class="floater2">
               <img
                 src="@/assets/img/croxh1.png"
                 loading="lazy"
@@ -29,7 +29,7 @@
                 alt=""
               />
             </div>
-            <div class="positioned--image mt-5">
+            <div class="positioned--image mt-4 floater">
               <img
                 class=""
                 loading="lazy"
@@ -38,7 +38,7 @@
                 alt=""
               />
             </div>
-            <div>
+            <div class="floater2">
               <img
                 src="@/assets/img/Croxh3.png"
                 loading="lazy"
