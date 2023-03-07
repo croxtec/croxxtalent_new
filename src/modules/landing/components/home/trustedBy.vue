@@ -84,7 +84,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-250px * 7));
+    transform: translateX(calc(-250px * 2));
   }
 }
 @keyframes scroll {
@@ -92,7 +92,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-250px * 7));
+    transform: translateX(calc(-250px * 2));
   }
 }
 .slider {
