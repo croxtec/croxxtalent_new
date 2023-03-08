@@ -4,10 +4,14 @@
       <div class="pivot--text container">
         <div class="left--pivot container">
           <div class="">
-            <h1 class="main--text">
+            <h1
+              class="main--text animate__animated animate__fadeInUp animate__slow"
+            >
               Accelerate Your Career in the Energy Industry
             </h1>
-            <p class="desc--text">
+            <p
+              class="desc--text animate__animated animate__fadeInUp animate__slow animate__delay-1s"
+            >
               The platform is designed to connect talented individuals with the
               best opportunities.
             </p>

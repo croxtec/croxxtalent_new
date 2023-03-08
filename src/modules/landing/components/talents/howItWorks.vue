@@ -4,11 +4,16 @@
       <h2
         class="header--text text-center mb-5"
         style="color: var(--primary-color)"
+        data-aos="fade-up"
       >
         How it Works
       </h2>
       <div class="d-lg-flex" style="gap: 10px">
-        <router-link class="col-md-3 how-it-works-card" to="/register">
+        <router-link
+          class="col-md-3 how-it-works-card"
+          to="/register"
+          data-aos="fade-left"
+        >
           <div class="icon">
             <svg width="32" height="32" viewBox="0 0 15 15">
               <path
@@ -24,7 +29,11 @@
           </p>
         </router-link>
 
-        <router-link to="/register" class="col-md-3 how-it-works-card">
+        <router-link
+          to="/register"
+          class="col-md-3 how-it-works-card"
+          data-aos="fade-up"
+        >
           <div class="icon">
             <svg width="32" height="32" viewBox="0 0 2048 2048">
               <path
@@ -39,7 +48,11 @@
           </p>
         </router-link>
 
-        <router-link to="/register" class="col-md-3 how-it-works-card">
+        <router-link
+          to="/register"
+          class="col-md-3 how-it-works-card"
+          data-aos="fade-up"
+        >
           <div class="icon">
             <svg width="32" height="32" viewBox="0 0 20 20">
               <g fill="currentColor">
@@ -71,7 +84,11 @@
           </p>
         </router-link>
 
-        <router-link to="/register" class="col-md-3 how-it-works-card">
+        <router-link
+          to="/register"
+          class="col-md-3 how-it-works-card"
+          data-aos="fade-right"
+        >
           <div class="icon">
             <svg width="32" height="32" viewBox="0 0 2048 2048">
               <path

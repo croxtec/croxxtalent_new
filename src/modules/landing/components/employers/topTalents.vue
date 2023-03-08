@@ -2,7 +2,7 @@
   <div class="top--talents">
     <div class="container">
       <div class="d-flex align-items-center justify-content-between">
-        <h4 class="header--text">Top Talents</h4>
+        <h4 class="header--text" data-aos="fade-up">Top Talents</h4>
         <router-link
           to="/"
           class="d-flex align-items-center"

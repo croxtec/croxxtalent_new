@@ -1,6 +1,6 @@
 <template>
   <div class="top--talents_cards">
-    <div class="talent-card">
+    <div class="talent-card" data-aos="fade-left">
       <div class="talent--data">
         <h6 class="talent--name" style="color: var(--primary-color)">
           Titi Badmus
@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="talent-card">
+    <div class="talent-card" data-aos="fade-up">
       <div class="talent--data">
         <h6 class="talent--name" style="color: var(--primary-color)">
           Titi Badmus
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="talent-card">
+    <div class="talent-card" data-aos="fade-right">
       <div class="talent--data">
         <h6 class="talent--name" style="color: var(--primary-color)">
           Titi Badmus

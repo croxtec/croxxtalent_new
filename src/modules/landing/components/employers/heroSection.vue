@@ -4,10 +4,14 @@
       <div class="pivot--text container">
         <div class="left--pivot container">
           <div class="">
-            <h1 class="main--text">
+            <h1
+              class="main--text animate__animated animate__fadeInUp animate__slow"
+            >
               Energize your team with the best talent in the industry
             </h1>
-            <p class="desc--text">
+            <p
+              class="desc--text animate__animated animate__fadeInUp animate__slow animate__delay-1s"
+            >
               We assist businesses in realising their full potential by
               assembling teams that drive revenue and facilitate growth
             </p>

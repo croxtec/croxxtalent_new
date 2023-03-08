@@ -1,6 +1,11 @@
 <template>
   <div class="competencies--cards">
-    <div class="competencies--card" v-for="item in 8" :key="item">
+    <div
+      class="competencies--card"
+      data-aos="fade-up"
+      v-for="item in 8"
+      :key="item"
+    >
       <div class="">
         <div class="icon">
           <img src="@/assets/img/logoicon.png" width="25" alt="" />
