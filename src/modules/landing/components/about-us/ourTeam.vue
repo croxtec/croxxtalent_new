@@ -1,9 +1,9 @@
 <template>
   <div class="container our-team-container">
-    <h3 class="">Our Team</h3>
+    <h3 class="" data-aos="fade-in">Our Team</h3>
     <div class="mt-3">
       <div class="our-team justify-content-center">
-        <div class="core-values">
+        <div class="core-values" data-aos="zoom-in-right" data-aos-duration="3000">
           <div class="flip-card">
             <div class="card-front">
               <div class="card-data d-flex flex-column justify-content-between">
@@ -44,7 +44,7 @@
             </div>
           </div>
         </div>
-        <div class="core-values">
+        <div class="core-values" data-aos="fade-up"  data-aos-duration="3000">
           <div class="flip-card">
             <div class="card-front">
               <div class="card-data d-flex flex-column justify-content-between">
@@ -85,7 +85,7 @@
             </div>
           </div>
         </div>
-        <div class="core-values">
+        <div class="core-values" data-aos="fade-down"  data-aos-easing="linear"  data-aos-duration="1500">
           <div class="flip-card">
             <div class="card-front">
               <div class="card-data d-flex flex-column justify-content-between">
@@ -126,7 +126,7 @@
             </div>
           </div>
         </div>
-        <div class="core-values">
+        <div class="core-values" data-aos="zoom-in-left" data-aos-duration="3000">
           <div class="flip-card">
             <div class="card-front">
               <div class="card-data d-flex flex-column justify-content-between">

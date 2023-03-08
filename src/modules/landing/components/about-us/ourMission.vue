@@ -8,6 +8,8 @@
             src="@/assets/img/mission-img.png"
             alt=""
             class="img-fluid"
+            data-aos="zoom-in"
+            data-aos-duration="3000"
           />
           <div class="numbers--card">
             <div class="numbers-content">
@@ -27,7 +29,7 @@
           </div>
         </div>
 
-        <div class="our-mission w-100">
+        <div class="our-mission w-100" data-aos="fade-left" data-aos-duration="3000">
           <h3 class="">Our Why</h3>
           <p
             class="desc--text text-left w-100 mt-3"
