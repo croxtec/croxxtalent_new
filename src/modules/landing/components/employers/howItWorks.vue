@@ -24,7 +24,7 @@
           </div>
           <h5>Register</h5>
           <p class="text-dark">
-            Join the Croxx Talent community of top employers and start finding
+            Join the CroxxTalent community of top employers and start finding
             the best talent in the energy sector.
           </p>
         </router-link>
