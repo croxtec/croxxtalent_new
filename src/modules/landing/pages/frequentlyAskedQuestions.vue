@@ -193,7 +193,7 @@
               representatives will get back to you as soon as possible.
             </p>
             <p>
-              At Croxx Talent, we're committed to providing our users with the
+              At CroxxTalent, we're committed to providing our users with the
               best possible service. If you have any additional questions or
               concerns, please don't hesitate to contact us.
             </p>

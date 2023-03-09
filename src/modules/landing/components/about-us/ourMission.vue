@@ -35,7 +35,7 @@
             class="desc--text text-left w-100 mt-3"
             style="line-height: 1.5; font-size: 14px"
           >
-            Croxx Talent was founded by a group of experienced professionals who
+            CroxxTalent was founded by a group of experienced professionals who
             recognized the need for a more efficient and effective way for
             energy companies to vet, hire and manage their talent. With a deep
             understanding of the challenges faced by both job seekers and
