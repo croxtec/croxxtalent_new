@@ -14,15 +14,30 @@
           <div class="numbers--card">
             <div class="numbers-content">
               <div class="text-center">
-                <h1>200+</h1>
+                <animated-number
+                  :value="value"
+                  :formatValue="formatToPrice"
+                  :duration="2000"
+                />
+                <!-- <h1>200+</h1> -->
                 <h6>Talents</h6>
               </div>
               <div class="text-center">
-                <h1>120+</h1>
+                <!-- <h1>120+</h1> -->
+                <animated-number
+                  :value="value2"
+                  :formatValue="formatToPrice"
+                  :duration="2000"
+                />
                 <h6>Contractors</h6>
               </div>
               <div class="text-center">
-                <h1>300+</h1>
+                <!-- <h1>300+</h1> -->
+                <animated-number
+                  :value="value3"
+                  :formatValue="formatToPrice"
+                  :duration="2000"
+                />
                 <h6>Happy Clients</h6>
               </div>
             </div>
@@ -51,6 +66,27 @@
     </div>
   </div>
 </template>
+
+<script>
+import AnimatedNumber from "animated-number-vue";
+export default {
+  components: {
+    AnimatedNumber,
+  },
+  data() {
+    return {
+      value: 200,
+      value2: 120,
+      value3: 300,
+    };
+  },
+  methods: {
+    formatToPrice(value) {
+      return `<h1>${Number(value).toFixed(0)}+</h1>`;
+    },
+  },
+};
+</script>
 
 <style scoped>
 .our-mission {
