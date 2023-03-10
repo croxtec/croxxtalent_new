@@ -28,6 +28,19 @@
         padding-right: 1rem !important;
     }
 
+    /* FOOTER  */
+    .footer .footer--copyright .footer-links {
+        flex-direction: column-reverse;
+    }
+
+    .footer .footer--copyright .footer-links a {
+       margin-bottom: 14px;
+    }
+
+    .footer .footer--copyright .footer-links a.recruitment {
+        margin-bottom: 40px;
+    }
+
     /* Landing Page Nav */
     .mobile-hamburger{
         display:  block;

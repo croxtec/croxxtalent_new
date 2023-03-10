@@ -17,7 +17,7 @@
                 <animated-number
                   :value="value"
                   :formatValue="formatToPrice"
-                  :duration="2000"
+                  :duration="duration"
                 />
                 <!-- <h1>200+</h1> -->
                 <h6>Talents</h6>
@@ -27,7 +27,7 @@
                 <animated-number
                   :value="value2"
                   :formatValue="formatToPrice"
-                  :duration="2000"
+                  :duration="duration"
                 />
                 <h6>Contractors</h6>
               </div>
@@ -36,7 +36,7 @@
                 <animated-number
                   :value="value3"
                   :formatValue="formatToPrice"
-                  :duration="2000"
+                  :duration="duration"
                 />
                 <h6>Happy Clients</h6>
               </div>
@@ -68,16 +68,13 @@
 </template>
 
 <script>
-import AnimatedNumber from "animated-number-vue";
 export default {
-  components: {
-    AnimatedNumber,
-  },
   data() {
     return {
       value: 200,
       value2: 120,
       value3: 300,
+      duration: 5000,
     };
   },
   methods: {

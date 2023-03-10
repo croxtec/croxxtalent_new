@@ -123,9 +123,25 @@
 
           <div class="footer--copyright">
             <hr class="bg-secondary" />
-            <p class="text-center small">
-              Copyright {{ thisYear }} © CroxxTalent. All rights reserved.
-            </p>
+            <div class="footer-links">
+              <p class="text-center small">
+                Copyright {{ thisYear }} © CroxxTalent. All rights reserved.
+              </p>
+              <a href="mailto:recruitment@croxxtalent.io" class="recruitment"
+                >recruitment@croxxtalent.io
+              </a>
+              <div class="d-flex align-items-center" style="gap: 14px">
+                <a href="#">
+                  <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="#">
+                  <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>

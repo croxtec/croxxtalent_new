@@ -186,6 +186,25 @@
     margin-top: 8px;
 }
 
+.footer .footer--copyright .footer-links {
+    display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer .footer--copyright .footer-links a {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.footer .footer--copyright .footer-links .d-flex a .fa {
+    color: var(--primary-color);
+}
+
+/* OTHERS  */
+
 .body--text {
     font-weight: 300;
     font-size: 15px;

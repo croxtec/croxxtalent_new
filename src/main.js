@@ -47,8 +47,9 @@ Vue.use(Vuesax, {
 });
 
 // Animated Number
+import AnimatedNumber from "animated-number-vue";
 // Vue.use(AnimatedNumber);
-// Vue.component("AnimatedNumber", AnimatedNumber);
+Vue.component("AnimatedNumber", AnimatedNumber);
 
 new Vue({
   router,
