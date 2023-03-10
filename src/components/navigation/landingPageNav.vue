@@ -1,6 +1,6 @@
 <template>
-  <div class="app-nav">
-    <div class="navbar-transparent sticky-top bg-white">
+  <div class="app-nav sticky-top">
+    <div class="navbar-transparent bg-white">
       <div class="container py-4">
         <div class="d-flex align-items-center justify-content-between">
           <div class="app-logo w-100">
