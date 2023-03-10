@@ -4,8 +4,12 @@
     <section class="py-5">
       <div class="resources-card">
         <div class="resource-card container">
-          <img src="@/assets/img/resources/1.png" alt="" />
-          <div>
+          <img
+            src="@/assets/img/resources/1.png"
+            alt=""
+            data-aos="zoom-in-up"
+          />
+          <div data-aos="zoom-in-left">
             <h5>Competency Management</h5>
             <p class="body--text">
               Employers often struggle to find qualified workers with the
@@ -19,7 +23,7 @@
         </div>
         <div class="colored-resource-card">
           <div class="container resource-card">
-            <div>
+            <div data-aos="fade-right">
               <h5>Global Mobility</h5>
               <p class="body--text">
                 In addition to supplying our highly competent professionals who
@@ -29,12 +33,20 @@
                 into their new job.
               </p>
             </div>
-            <img src="@/assets/img/resources/3.png" alt="" />
+            <img
+              src="@/assets/img/resources/3.png"
+              alt=""
+              data-aos="fade-left"
+            />
           </div>
         </div>
         <div class="resource-card container">
-          <img src="@/assets/img/resources/4.png" alt="" />
-          <div>
+          <img
+            src="@/assets/img/resources/4.png"
+            alt=""
+            data-aos="fade-up-right"
+          />
+          <div data-aos="fade-up-left">
             <h5>Talent Acquisition</h5>
             <p class="body--text">
               Our platform helps you find the best talent for your organization.
@@ -47,7 +59,7 @@
         </div>
         <div class="colored-resource-card">
           <div class="container resource-card">
-            <div>
+            <div data-aos="fade-down-right">
               <h5>Talent Development</h5>
               <p class="body--text">
                 We aim to enhance employees' knowledge, skills, and attitudes to
@@ -58,12 +70,16 @@
                 provide professional training to our talents.
               </p>
             </div>
-            <img src="@/assets/img/resources/4.png" alt="" />
+            <img
+              src="@/assets/img/resources/4.png"
+              alt=""
+              data-aos="fade-down-left"
+            />
           </div>
         </div>
         <div class="resource-card container">
-          <img src="@/assets/img/resources/5.png" alt="" />
-          <div>
+          <img src="@/assets/img/resources/5.png" alt="" data-aos="flip-left" />
+          <div data-aos="fade-left">
             <h5>Payroll Management</h5>
             <p class="body--text">
               We provide comprehensive payroll management services to help you
@@ -76,7 +92,7 @@
         </div>
         <div class="colored-resource-card">
           <div class="container resource-card">
-            <div>
+            <div data-aos="fade-right">
               <h5>Build a CV</h5>
               <p class="body--text">
                 Create a stunning CV that highlights your skills and experience
@@ -85,7 +101,11 @@
                 potential employers and land your dream job.
               </p>
             </div>
-            <img src="@/assets/img/resources/2.png" alt="" />
+            <img
+              src="@/assets/img/resources/2.png"
+              alt=""
+              data-aos="flip-right"
+            />
           </div>
         </div>
       </div>

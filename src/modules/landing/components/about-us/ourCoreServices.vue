@@ -3,7 +3,11 @@
     <h3 class="my-5">What do we do?</h3>
     <div class="d-flex flex-column" style="gap: 20px">
       <div class="core-services">
-        <div class="core-services-card">
+        <div
+          class="core-services-card"
+          data-aos="fade-right"
+          data-aos-duration="3000"
+        >
           <div>
             <h5 class="mb-3">We take the pressure off you</h5>
             <p class="body--text">
@@ -22,15 +26,19 @@
             </CxButton>
           </div>
         </div>
-        <div class="w-100">
+        <div class="w-100" data-aos="fade-left" data-aos-duration="3000">
           <img src="@/assets/img/find-you-talents.png" alt="" class="mt-3" />
         </div>
       </div>
       <div class="core-services">
-        <div class="w-100">
+        <div class="w-100" data-aos="fade-right" data-aos-duration="3000">
           <img src="@/assets/img/get-you-hired.png" alt="" />
         </div>
-        <div class="core-services-card mt-3">
+        <div
+          class="core-services-card mt-3"
+          data-aos="fade-left"
+          data-aos-duration="3000"
+        >
           <div>
             <h5 class="mb-3">Productivity/Results oriented:</h5>
             <p class="body--text">

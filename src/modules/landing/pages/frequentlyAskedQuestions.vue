@@ -9,8 +9,9 @@
           <div>
             <h5>C.V Downloads</h5>
             <p class="body--text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et
+              Learn more on how you can download free and customizable C.V.
+              templates to showcase your skills and experience to potential
+              employers.
             </p>
           </div>
         </div>
@@ -19,8 +20,9 @@
           <div>
             <h5>Competency Test</h5>
             <p class="body--text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et
+              Explore our competency test options and learn how they can ensure
+              you find the best fit for the job as an employer, as well as
+              assessing your skills and knowledge as a job seeker.
             </p>
           </div>
         </div>
@@ -29,8 +31,9 @@
           <div>
             <h5>Application Management</h5>
             <p class="body--text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et
+              See how you can streamline your job or talent search by managing
+              all of your job applications in one place with our application
+              management system.
             </p>
           </div>
         </div>
@@ -39,8 +42,8 @@
           <div>
             <h5>Recruiting Process</h5>
             <p class="body--text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et
+              Get insider tips on how to navigate the recruiting process, from
+              crafting the perfect resume to acing the interview.
             </p>
           </div>
         </div>
@@ -49,8 +52,9 @@
           <div>
             <h5>Skill Assessment</h5>
             <p class="body--text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et
+              Find out how you can identify the strengths and weaknesses of
+              talents with our skill assessments and how jobseekers can receive
+              customized training and development plans.
             </p>
           </div>
         </div>
@@ -59,8 +63,9 @@
           <div>
             <h5>Staffing</h5>
             <p class="body--text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et
+              See how we handle your staffing needs with our comprehensive
+              staffing services, including recruitment, onboarding, and
+              performance management.
             </p>
           </div>
         </div>
@@ -191,7 +196,7 @@
               representatives will get back to you as soon as possible.
             </p>
             <p>
-              At Croxx Talent, we're committed to providing our users with the
+              At CroxxTalent, we're committed to providing our users with the
               best possible service. If you have any additional questions or
               concerns, please don't hesitate to contact us.
             </p>

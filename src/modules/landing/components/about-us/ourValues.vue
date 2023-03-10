@@ -3,7 +3,11 @@
     <h3>Our Values</h3>
     <div class="our-values-cards-container mt-4">
       <div class="our-values-cards">
-        <div class="our-values-card">
+        <div
+          class="our-values-card"
+          data-aos="zoom-in"
+          data-aos-duration="3000"
+        >
           <div class="values--icon">
             <img src="@/assets/img/innovation.svg" alt="" class="img-fluid" />
           </div>
@@ -16,7 +20,11 @@
             </p>
           </div>
         </div>
-        <div class="our-values-card">
+        <div
+          class="our-values-card"
+          data-aos="zoom-in"
+          data-aos-duration="3000"
+        >
           <div class="values--icon">
             <img src="@/assets/img/teamwork.svg" alt="" class="img-fluid" />
           </div>
@@ -31,7 +39,11 @@
         </div>
       </div>
       <div class="our-values-cards">
-        <div class="our-values-card">
+        <div
+          class="our-values-card"
+          data-aos="zoom-in"
+          data-aos-duration="3000"
+        >
           <div class="values--icon">
             <img src="@/assets/img/excellence.svg" alt="" class="img-fluid" />
           </div>
@@ -44,7 +56,11 @@
             </p>
           </div>
         </div>
-        <div class="our-values-card">
+        <div
+          class="our-values-card"
+          data-aos="zoom-in"
+          data-aos-duration="3000"
+        >
           <div class="values--icon">
             <img
               src="@/assets/img/reponsibility.svg"
