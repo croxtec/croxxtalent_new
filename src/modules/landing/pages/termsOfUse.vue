@@ -1,15 +1,20 @@
 <template>
   <div>
-    <PrivacyPolicyHeader />
-    <div class="container mt-5">
-      <PrivacyPolicy />
+    <TermsHeader />
+    <div class="container">
+      <div class="mt-5">
+        <div class="">
+          <TermsOfUse />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import PrivacyPolicy from "../components/privacy-policy/privacyPolicy.vue";
-import PrivacyPolicyHeader from "../components/privacy-policy/privacyPolicyHeader.vue";
+// import Terms from "../components/privacy-policy/Terms.vue";
+import TermsOfUse from "../components/privacy-policy/termsOfUse.vue";
+import TermsHeader from "../components/privacy-policy/TermsHeader.vue";
 
 export default {
   data() {
@@ -22,7 +27,7 @@ export default {
       this.activeEl = value;
     },
   },
-  components: { PrivacyPolicy, PrivacyPolicyHeader },
+  components: { TermsOfUse, TermsHeader },
 };
 </script>
 <style scoped>

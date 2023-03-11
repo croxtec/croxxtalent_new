@@ -53,6 +53,22 @@
         display: block;
     }
 
+    /* Why Croxxtalent  */
+
+    .why-croxx-solid-bg {
+        background-color: var(--primary-color);
+        height: 350px;
+        width: 60%;
+        border-radius: 45%;
+        margin: 40px auto 120px auto;
+    }
+
+    .why-croxx-solid-bg img {
+        width: 100%;
+        height: 350px;
+        margin-top: 80px;
+    }
+
     /* hero Section  */
     .main--text {
         width: 100%;

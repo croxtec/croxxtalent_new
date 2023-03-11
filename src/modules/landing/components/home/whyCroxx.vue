@@ -19,7 +19,10 @@
         </div>
 
         <div class="col-md-4">
-          <img src="@/assets/img/why-croxx.png" width="100%" alt="" />
+          <!-- <img src="@/assets/img/why-croxx.png" width="100%" alt="" /> -->
+          <div class="why-croxx-solid-bg">
+            <img src="@/assets/img/whyy-croxx.png" class="floater" alt="" />
+          </div>
         </div>
 
         <div class="col-md-4">
@@ -38,6 +41,14 @@
       <!-- <div class="mb-5 text-center">
         <utton><slot>Get Started</slot></utton>
       </div> -->
+    </div>
+    <div class="mt-5">
+      <button
+        class="primary--button"
+        style="background-color: var(--dark-color)"
+      >
+        Get Started
+      </button>
     </div>
   </div>
 </template>

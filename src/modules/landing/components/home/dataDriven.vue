@@ -3,7 +3,7 @@
     <div class="container">
       <div class="data--container">
         <div class="left--side_data">
-          <div class="data--card">
+          <div class="data--card" data-aos="fade-up">
             <h4 class="header--text">
               Data <br />
               Driven
@@ -15,7 +15,7 @@
               everything you need to make it happen.
             </p>
           </div>
-          <div class="data--card">
+          <div class="data--card" data-aos="fade-up">
             <h4 class="header--text">
               Hassle Free <br />
               Hiring
@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="right--side_data">
-          <div class="data--bottom_card">
+          <div class="data--bottom_card" data-aos="fade-up">
             <h4 class="header--text">
               Best <br />
               Fits
@@ -40,7 +40,7 @@
               personalized job matching services.
             </p>
           </div>
-          <div class="data--bottom_card">
+          <div class="data--bottom_card" data-aos="fade-up">
             <h4 class="header--text">
               Cost <br />
               Efficiency

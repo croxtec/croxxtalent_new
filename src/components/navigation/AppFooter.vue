@@ -114,7 +114,7 @@
                     >
                   </li>
                   <li>
-                    <router-link to="/privacy-policy">Terms of Use</router-link>
+                    <router-link to="/terms-of-use">Terms of Use</router-link>
                   </li>
                 </ul>
               </div>

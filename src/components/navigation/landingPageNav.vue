@@ -25,9 +25,12 @@
               <router-link to="/about-us">About Us</router-link>
             </li>
             <li>
-              <cx-button @buttonClicked="goToLogin"
+              <button class="primary--button" @click="buttonClick">
+                {{ loggedIn ? "Home" : "Login" }}
+              </button>
+              <!-- <cx-button @buttonClicked="goToLogin"
                 ><slot>Login</slot></cx-button
-              >
+              > -->
             </li>
           </ul>
 
@@ -77,7 +80,10 @@
             <router-link to="/about-us">About Us</router-link>
           </li>
           <li>
-            <cx-button @buttonClicked="goToLogin"><slot>Login</slot></cx-button>
+            <!-- <cx-button @buttonClicked="goToLogin"><slot>Login</slot></cx-button> -->
+            <button class="primary--button" @click="buttonClick">
+              {{ loggedIn ? "Home" : "Login" }}
+            </button>
           </li>
         </ul>
       </div>
@@ -86,17 +92,29 @@
 </template>
 
 <script>
-import cxButton from "../buttons/cxButton.vue";
+import Cookies from "js-cookie";
+import config from "@/config";
 export default {
-  components: { cxButton },
   data() {
     return {
       drawer: false,
     };
   },
   methods: {
+    buttonClick() {
+      this.loggedIn ? this.goToDashboard() : this.goToLogin();
+    },
     goToLogin() {
       this.$router.push("/login");
+    },
+    goToDashboard() {
+      this.$router.push("/home");
+    },
+  },
+  computed: {
+    loggedIn() {
+      const accessToken = Cookies.get(config.accessTokenStorageKey);
+      return accessToken;
     },
   },
 };

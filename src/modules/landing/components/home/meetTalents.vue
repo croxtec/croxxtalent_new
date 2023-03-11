@@ -39,7 +39,7 @@
               <img
                 src="@/assets/img/Offer 3d 1.png"
                 id="floater"
-                class="floater-z"
+                class="floater-z-2"
                 alt=""
               />
               <img
@@ -98,9 +98,9 @@ export default {
 
 .meet-talents-2 #floater {
   width: 100%;
-  height: 320px;
+  height: 200px;
   position: absolute;
-  top: 0;
+  top: 10%;
   left: 50%;
   right: 50%;
   /* transform: translate(-50%); */
