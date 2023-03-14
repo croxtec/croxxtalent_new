@@ -134,12 +134,12 @@
                 <a href="https://www.linkedin.com/company/croxxtalent-io/">
                   <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.facebook.com/profile.php?id=100087462910677">
-                  <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
-                </a>
                 <a href="https://www.instagram.com/croxxtalent/">
                   <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
                 </a>
+                <!-- <a href="https://www.facebook.com/profile.php?id=100087462910677/">
+                  <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+                </a> -->
                 <a href="https://twitter.com/croxxtalent/">
                   <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
                 </a>
