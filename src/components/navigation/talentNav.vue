@@ -31,6 +31,16 @@
         </li>
         <li>
           <router-link
+            to="/competencies2"
+            :class="{
+              'router-link-exact-active':
+                this.$route.meta.parent === 'competencies2',
+            }"
+            >Competencies2</router-link
+          >
+        </li>
+        <li>
+          <router-link
             to="/jobs"
             :class="{
               'router-link-exact-active': this.$route.meta.parent === 'jobs',

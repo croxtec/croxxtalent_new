@@ -214,29 +214,6 @@
     background-color: var(--blue-300) !important;
 }
 
-.el-collapse  {
-    border-top: unset !important;
-    border-bottom: unset !important;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.el-collapse-item {
-    box-shadow: 4px 4px 8px 3px rgba(0, 0, 0, 0.1) ;
-    border-radius: 5px;
-    padding: 25px;
-}
-.el-collapse-item__header {
-    border-bottom: unset !important;
-    /* padding: 25px; */
-    height: 30px !important;
-}
-
-.el-collapse-item__wrap {
-    border-bottom: unset !important;
-}
-
 .error-404 {
     max-height: 100vh;
     display: grid;

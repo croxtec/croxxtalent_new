@@ -895,3 +895,28 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     font-weight: 400;
     font-size: 16px;
 }
+
+/* FAQ  */
+.faq-list .el-collapse  {
+    border-top: unset !important;
+    border-bottom: unset !important;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.faq-list .el-collapse-item {
+    box-shadow: 4px 4px 8px 3px rgba(0, 0, 0, 0.1) ;
+    border-radius: 5px;
+    padding: 25px;
+}
+
+.faq-list .el-collapse-item__header {
+    border-bottom: unset !important;
+    /* padding: 25px; */
+    height: 30px !important;
+}
+
+.faq-list .el-collapse-item__wrap {
+    border-bottom: unset !important;
+}
