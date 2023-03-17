@@ -89,6 +89,7 @@ export default {
         this.token4 +
         this.token5 +
         this.token6;
+        console.log(this.token)
       setTimeout(() => {
         this.$router.push({ name: "new-password" });
       }, 3000);
