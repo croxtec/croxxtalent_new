@@ -133,7 +133,7 @@
                 <progress value="0" max="100"></progress>
               </div>
               <div class="d-flex">
-                <span class="btn btn-primary rounded-pill mr-2">Take Test</span>
+                <span class="btn btn-primary rounded-pill mr-2" @click.prevent="assessment()">Take Test</span>
                 <span
                   class="btn border border-primary text-primary rounded-pill"
                   >Preview</span
@@ -155,7 +155,7 @@
                 <progress value="25" max="100"></progress>
               </div>
               <div class="d-flex">
-                <span class="btn btn-primary rounded-pill mr-2">Take Test</span>
+                <span class="btn btn-primary rounded-pill mr-2" @click.prevent="assessment()">Take Test</span>
                 <span
                   class="btn border border-primary text-primary rounded-pill"
                   >Interview</span
@@ -181,7 +181,7 @@
                 />
               </div>
               <div class="d-flex">
-                <span class="btn btn-primary rounded-pill mr-2">Take Test</span>
+                <span class="btn btn-primary rounded-pill mr-2" @click.prevent="assessment()">Take Test</span>
                 <span
                   class="btn border border-primary text-primary rounded-pill"
                   >Interview</span
@@ -242,7 +242,7 @@
                 >
               </div>
               <div class="d-flex">
-                <span class="btn btn-primary rounded-pill mr-2">Take Test</span>
+                <span class="btn btn-primary rounded-pill mr-2" @click.prevent="assessment()">Take Test</span>
                 <span
                   class="btn border border-primary text-primary rounded-pill"
                   >Interview</span
@@ -344,6 +344,9 @@ export default {
     };
   },
   methods: {
+    assessment () {
+      this.$router.push("/assessment")
+    },
     addCompetenceModal() {
       this.CompetenceModal = true;
     },
