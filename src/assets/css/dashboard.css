@@ -197,3 +197,27 @@
   border-radius: 25px;
   width: 100%;
 }
+
+.competence-search {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 30px ;
+  gap: 10px;
+}
+
+.competence-search input {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--blue-300);
+  padding: 6px 4px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.competence-search input::placeholder {
+  font-weight: 200;
+  color: var(--gray-300);
+  font-size: 13px;
+} 

@@ -245,6 +245,10 @@
    position: relative;
 }
 
+.modal-content.add-competence {
+    width: 30%;
+}
+
 .modal-content.success {
     border:  2px solid var(--success);
 }
@@ -263,9 +267,14 @@
     transform: translate(-50%, -50%);
 }
 
-.modal-content .modal-title {
+.modal-content .modal-title  {
     text-align: center;
     margin-top: 15px !important;
+    font-weight: 600;
+}
+
+.modal-content .modal-title h5 {
+    text-align: center;
     font-weight: 600;
 }
 
@@ -276,6 +285,24 @@
 .modal-content.error .modal-title {
     color: var(--error);
 }
+
+.modal-content form input[type="email"], modal-content form input[type="text"], .modal-content form select {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--blue-300);
+    padding: 12px 16px;
+    border-radius: 40px;
+    font-size: 14px;
+    outline: none;
+    font-weight: 400;
+}
+
+.modal-content form label {
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: 400;
+}
+
 
 
 
