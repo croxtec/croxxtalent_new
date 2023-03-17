@@ -221,3 +221,43 @@
   color: var(--gray-300);
   font-size: 13px;
 } 
+
+.manager-data {
+  display: grid;
+  display: -ms-grid;
+  display: -moz-grid;
+  grid-template-columns:repeat(4, 1fr) ;
+  gap:20px
+}
+
+.manager-info {
+  border: 1px solid var(--primary-color);
+  padding: 25px 15px;
+  border-radius: 35px;
+}
+
+.manager-count {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 500;
+  display: grid;
+  display: -moz-grid;
+  display: -ms-grid;
+  place-items: center;
+  font-size: 12px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.manager-tag {
+  background-color: #7b61ff1b;
+  color: #7B61FF;
+  border-radius: 25px;
+  padding: 2px 15px;
+}
+
+.manager-name {
+  font-size: 15px;
+  color: var(--primary-color);
+}
