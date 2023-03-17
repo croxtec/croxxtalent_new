@@ -1,10 +1,12 @@
 <template>
   <div>
-    <span @click.prevent="goBack()" class="back"><i class="fa fa-solid fa-arrow-left"></i> Back</span>
+    <span @click.prevent="goBack()" class="back"
+      ><i class="fa fa-solid fa-arrow-left"></i> Back</span
+    >
     <div class="center text-center">
       <div class="m-5">
         <div class="assessment my-4">
-            <span class="mb-4 py-2 px-3 rounded-pill">Assessment</span>
+          <span class="mb-4 py-2 px-3 rounded-pill">Assessment</span>
         </div>
         <h5 class="mb-4 font-weight-bold">Surface Cementing</h5>
         <p class="mb-5 text-left content">
@@ -37,7 +39,9 @@
           </div>
         </div>
         <div class="my-5">
-          <span class="btn btn-dark rounded-pill" @click="startAssessment">Start assessment</span>
+          <span class="btn btn-dark rounded-pill" @click="startAssessment"
+            >Start assessment</span
+          >
         </div>
       </div>
     </div>
@@ -46,19 +50,17 @@
 
 <script>
 export default {
-    data () {
-        return {
-
-        }
+  data() {
+    return {};
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
     },
-    methods: {
-        goBack() {
-            this.$router.go(-1)
-        },
-        startAssessment () {
-          this.$router.push('/quiz')
-        }
-    }
+    startAssessment() {
+      this.$router.push("/quiz");
+    },
+  },
 };
 </script>
 
@@ -72,23 +74,23 @@ export default {
   border-radius: 40px;
 }
 .content {
-    font-size: 13px;
+  font-size: 13px;
 }
-.credentials{ 
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    justify-content:space-around
+.credentials {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  justify-content: space-around;
 }
 .credential > h6 {
-    font-size: 13px !important;
+  font-size: 13px !important;
 }
 .credential > small {
-    font-size: 10px !important;
+  font-size: 10px !important;
 }
 .assessment > span {
-    background-color: #C2DBFF;
+  background-color: #c2dbff;
 }
 .back {
-    cursor: pointer;
+  cursor: pointer;
 }
 </style>

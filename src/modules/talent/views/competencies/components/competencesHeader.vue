@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="d-flex align-items-center justify-content-between">
     <div class="competences-header-container">
       <span
         role="button"
@@ -23,6 +23,18 @@
         >Manager</span
       >
     </div>
+    <button
+      v-if="activeEl === '1'"
+      class="primary--button d-flex align-items-center"
+      style="
+        gap: 10px;
+        background-color: var(--dark-color);
+        border-color: var(--dark-color);
+      "
+    >
+      <i-icon icon="ic:baseline-plus" />
+      <span>Add Competence</span>
+    </button>
   </div>
 </template>
 

@@ -1,38 +1,38 @@
 <template>
   <div class="text-center">
     <div class="modal-mask" v-if="errorMessage">
-    <div class="modal-content error">
-      <img src="@/assets/icons/error.svg" class="modal-icon" alt="" />
-      <h5 class="text-center modal-title">Error</h5>
-      <div class="modal-body text-center">
-        <h5>{{ messageError }}</h5>
-      </div>
+      <div class="modal-content error">
+        <img src="@/assets/icons/error.svg" class="modal-icon" alt="" />
+        <h5 class="text-center modal-title">Error</h5>
+        <div class="modal-body text-center">
+          <h5>{{ messageError }}</h5>
+        </div>
 
-      <div
-        class="mt-2 modal-actions d-flex align-items-center justify-content-center"
-        style="gap: 10px"
-      >
-        <button class="primary--button_border" @click="closeError">
-          Cancel
-        </button>
+        <div
+          class="mt-2 modal-actions d-flex align-items-center justify-content-center"
+          style="gap: 10px"
+        >
+          <button class="primary--button_border" @click="closeError">
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="modal-mask" v-if="success">
-    <div class="modal-content success">
-      <img src="@/assets/icons/success.svg" class="modal-icon" alt="" />
-      <h5 class="text-center modal-title">Success</h5>
-      <div class="modal-body text-center">
-        <h5>{{ successMessage }}</h5>
-      </div>
+    <div class="modal-mask" v-if="success">
+      <div class="modal-content success">
+        <img src="@/assets/icons/success.svg" class="modal-icon" alt="" />
+        <h5 class="text-center modal-title">Success</h5>
+        <div class="modal-body text-center">
+          <h5>{{ successMessage }}</h5>
+        </div>
 
-      <div class="modal-actions mt-2 text-center">
-        <button class="primary--button_border" @click="proceed">
-          Continue
-        </button>
+        <div class="modal-actions mt-2 text-center">
+          <button class="primary--button_border" @click="proceed">
+            Continue
+          </button>
+        </div>
       </div>
     </div>
-  </div>
     <div class="text-center py-5">
       <img src="@/assets/img/logo.png" width="250" alt="" />
     </div>
@@ -42,54 +42,55 @@
     </p>
     <form @submit.prevent="sendEmail">
       <div class="pb-5">
-      <input
-        type="email"
-        placeholder="Enter email address"
-        class="p-3 rounded-pill border-secondary border"
-        v-model="resetEmail"
-        required
-      />
-    </div>
-    <input type="submit" class="rounded-pill btns btn"  value="Proceed"/>
+        <input
+          type="email"
+          placeholder="Enter email address"
+          class="p-3 rounded-pill border-secondary border"
+          v-model="resetEmail"
+          required
+        />
+      </div>
+      <input type="submit" class="rounded-pill btns btn" value="Proceed" />
     </form>
   </div>
 </template>
 
 <script>
-import $request from '@/axios'
+import $request from "@/axios";
 export default {
-  data () {
+  data() {
     return {
-      resetEmail: '',
+      resetEmail: "",
       errorMessage: false,
-      messageError:'',
-      successMessage: '',
-      success: false
-    }
+      messageError: "",
+      successMessage: "",
+      success: false,
+    };
   },
   methods: {
-   async sendEmail () {
+    async sendEmail() {
       try {
-        let res = await $request.post(`/auth/forgot-passwword`, {"email": this.resetEmail})
-        if(res.data.status === true) {
-          this.successMessage = res.data.message
-          this.success = true
+        let res = await $request.post(`/auth/forgot-passwword`, {
+          email: this.resetEmail,
+        });
+        if (res.data.status === true) {
+          this.successMessage = res.data.message;
+          this.success = true;
         }
-      }
-      catch(error) {
-        this.errorMessage = true
-        this.messageError = error.data.message
-        console.log(error.data.message)
+      } catch (error) {
+        this.errorMessage = true;
+        this.messageError = error.data.message;
+        console.log(error.data.message);
       }
     },
-    closeError () {
-      this.errorMessage = false
-      this.resetEmail = ''
+    closeError() {
+      this.errorMessage = false;
+      this.resetEmail = "";
     },
-    proceed () {
-      this.$router.push('/password-resetcode')
-    }
-  }
+    proceed() {
+      this.$router.push("/password-resetcode");
+    },
+  },
 };
 </script>
 

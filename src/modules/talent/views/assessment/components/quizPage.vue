@@ -107,7 +107,11 @@
           <small class="muted">SVG, PNG, JPG or GIF (max. 400 x 400px) </small>
         </div>
         <div class="majorInput text-center my-5" v-if="textInput">
-          <input type="text" class="textInput" placeholder="Enter your job description">
+          <input
+            type="text"
+            class="textInput"
+            placeholder="Enter your job description"
+          />
         </div>
         <div class="text-center mt-3">
           <div class="btn mx-2 rounded-pill back px-4">Back</div>
@@ -125,8 +129,7 @@ export default {
       selected: null,
       questions: true,
       fileUpload: false,
-      questions: true,
-      textInput: false
+      textInput: false,
     };
   },
   methods: {
@@ -137,7 +140,7 @@ export default {
 };
 </script>
 
-<style scooped>
+<style scoped>
 .center {
   margin: auto;
   margin-top: 130px;
@@ -208,15 +211,15 @@ export default {
   height: 150px;
   width: 400px;
   border-radius: 20px;
-  background: #FFFFFF;
-  border: 1px solid #C2DBFF;
+  background: #ffffff;
+  border: 1px solid #c2dbff;
   padding: 20px;
 }
 .back {
-  color: #0040A1;
-  border: 1px solid #0040A1;
+  color: #0040a1;
+  border: 1px solid #0040a1;
 }
 .next {
-  background-color: #0040A1;
+  background-color: #0040a1;
 }
 </style>
