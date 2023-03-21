@@ -39,13 +39,7 @@
           </div>
         </div>
         <div class="my-5">
-<<<<<<< HEAD
           <span class=" btn-dark rounded-pill start-assessment" @click="startAssessment">Start assessment</span>
-=======
-          <span class="btn btn-dark rounded-pill" @click="startAssessment"
-            >Start assessment</span
-          >
->>>>>>> 2c6e459cfe558b628e0e3f46a9177660b71ca621
         </div>
       </div>
     </div>
