@@ -214,29 +214,6 @@
     background-color: var(--blue-300) !important;
 }
 
-.el-collapse  {
-    border-top: unset !important;
-    border-bottom: unset !important;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.el-collapse-item {
-    box-shadow: 4px 4px 8px 3px rgba(0, 0, 0, 0.1) ;
-    border-radius: 5px;
-    padding: 25px;
-}
-.el-collapse-item__header {
-    border-bottom: unset !important;
-    /* padding: 25px; */
-    height: 30px !important;
-}
-
-.el-collapse-item__wrap {
-    border-bottom: unset !important;
-}
-
 .error-404 {
     max-height: 100vh;
     display: grid;
@@ -268,6 +245,10 @@
    position: relative;
 }
 
+.modal-content.add-competence {
+    width: 30%;
+}
+
 .modal-content.success {
     border:  2px solid var(--success);
 }
@@ -286,9 +267,14 @@
     transform: translate(-50%, -50%);
 }
 
-.modal-content .modal-title {
+.modal-content .modal-title  {
     text-align: center;
     margin-top: 15px !important;
+    font-weight: 600;
+}
+
+.modal-content .modal-title h5 {
+    text-align: center;
     font-weight: 600;
 }
 
@@ -299,6 +285,24 @@
 .modal-content.error .modal-title {
     color: var(--error);
 }
+
+.modal-content form input[type="email"], modal-content form input[type="text"], .modal-content form select {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--blue-300);
+    padding: 12px 16px;
+    border-radius: 40px;
+    font-size: 14px;
+    outline: none;
+    font-weight: 400;
+}
+
+.modal-content form label {
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: 400;
+}
+
 
 
 

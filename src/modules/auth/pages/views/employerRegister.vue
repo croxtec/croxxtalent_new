@@ -12,24 +12,47 @@
     </el-divider> -->
 
     <form action="">
-      <div class="mb-3">
-        <label for="">Full Name</label>
-        <input type="text" placeholder="Enter Full Name" />
+      <div class="d-lg-flex" style="gap: 20px">
+        <div class="mb-3 w-100">
+          <label for="">Organization Name</label>
+          <input type="text" placeholder="Enter name of your organization" />
+        </div>
+
+        <div class="mb-3 w-100">
+          <label for="">Email Address</label>
+          <input type="email" placeholder="Enter email address" />
+        </div>
       </div>
 
-      <div class="mb-3">
-        <label for="">Email Address</label>
-        <input type="email" placeholder="Enter email address" />
+      <div class="d-lg-flex" style="gap: 20px">
+        <div class="mb-3 w-100">
+          <label for="">Industry</label>
+          <select name="" id="">
+            <option value="" selected disabled>Type of Company</option>
+            <option value="">Option 1</option>
+            <option value="">Option 2</option>
+          </select>
+        </div>
+
+        <div class="mb-3 w-100">
+          <label for="">Core Service</label>
+          <input type="text" placeholder="What is your service?" />
+        </div>
       </div>
 
-      <div class="mb-3">
-        <label for="">Company Name</label>
-        <input type="text" placeholder="Enter Company Name" />
-      </div>
+      <div class="d-lg-flex" style="gap: 20px">
+        <div class="mb-4 w-100">
+          <label for="">Organization Size</label>
+          <input type="text" placeholder="Number of staffs" />
+        </div>
 
-      <div class="mb-3">
-        <label for="">Password</label>
-        <input type="password" placeholder="Enter password" />
+        <div class="mb-4 w-100">
+          <label for="">Guarantor's Number</label>
+          <input
+            type="text"
+            placeholder="Phone number of someone we can reach"
+          />
+        </div>
       </div>
 
       <div class="mb-3">

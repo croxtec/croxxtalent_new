@@ -44,8 +44,12 @@
     </div>
     <div class="mt-5">
       <button
+        @click="$router.push('/register')"
         class="primary--button"
-        style="background-color: var(--dark-color)"
+        style="
+          background-color: var(--dark-color);
+          border-color: var(--dark-color);
+        "
       >
         Get Started
       </button>

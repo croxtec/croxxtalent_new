@@ -1,6 +1,8 @@
 const Home = () => import("../pages/indexView.vue");
 const userExperience = () => import("../components/userExperience.vue");
 
+const Competences = () => import("../pages/competenciesPage");
+
 const routes = [
   {
     path: "/competencies",
@@ -17,6 +19,16 @@ const routes = [
         },
       },
     ],
+    meta: {
+      layout: "AppDashboardLayout",
+      header: "competencies",
+    },
+  },
+
+  {
+    path: "/competencies2",
+    name: "competencies2",
+    component: Competences,
     meta: {
       layout: "AppDashboardLayout",
       header: "competencies",

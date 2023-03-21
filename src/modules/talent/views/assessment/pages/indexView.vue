@@ -1,10 +1,12 @@
 <template>
   <div>
-    <span @click.prevent="goBack()" class="back"><i class="fa fa-solid fa-arrow-left"></i> Back</span>
+    <span @click.prevent="goBack()" class="back"
+      ><i class="fa fa-solid fa-arrow-left"></i> Back</span
+    >
     <div class="center text-center">
       <div class="m-5">
         <div class="assessment my-4">
-            <span class="mb-4 py-2 px-3 rounded-pill">Assessment</span>
+          <span class="mb-4 py-2 px-3 rounded-pill">Assessment</span>
         </div>
         <h5 class="mb-4 ">Surface Cementing</h5>
         <p class="mb-5 text-left content">
@@ -37,7 +39,13 @@
           </div>
         </div>
         <div class="my-5">
+<<<<<<< HEAD
           <span class=" btn-dark rounded-pill start-assessment" @click="startAssessment">Start assessment</span>
+=======
+          <span class="btn btn-dark rounded-pill" @click="startAssessment"
+            >Start assessment</span
+          >
+>>>>>>> 2c6e459cfe558b628e0e3f46a9177660b71ca621
         </div>
       </div>
     </div>
@@ -46,19 +54,17 @@
 
 <script>
 export default {
-    data () {
-        return {
-
-        }
+  data() {
+    return {};
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
     },
-    methods: {
-        goBack() {
-            this.$router.go(-1)
-        },
-        startAssessment () {
-          this.$router.push('/quiz')
-        }
-    }
+    startAssessment() {
+      this.$router.push("/quiz");
+    },
+  },
 };
 </script>
 
@@ -89,10 +95,10 @@ line-height: 120%;
     font-weight: 400;
     /* width: 1006px; */
 }
-.credentials{ 
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    justify-content:space-around
+.credentials {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  justify-content: space-around;
 }
 .credential > h6 {
   font-family: 'Poppins';
@@ -115,7 +121,7 @@ line-height: 160%;
     font-family: 'Poppins', sans-serif !important;
 }
 .back {
-    cursor: pointer;
+  cursor: pointer;
 }
 .start-assessment {
   width: 195px;
