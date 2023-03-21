@@ -1,37 +1,31 @@
 <template>
   <div>
     <div class="center">
-      <div class="stepper-progress-bar"></div>
-      <div class="stepper">
-        <div class="stepper-item-counter mt-5 mx-4">
-          <span>1</span>
-        </div>
-        <div class="stepper-item-counter mt-5 mx-4">
-          <span>2</span>
-        </div>
-        <div class="stepper-item-counter mt-5 mx-4">
-          <span>3</span>
-        </div>
-        <div class="stepper-item-counter mt-5 mx-4">
-          <span>4</span>
-        </div>
-        <div class="stepper-item-counter mt-5 mx-4">
-          <span>5</span>
+      <div class="stepper-progress-bar" :style="'width:' + stepProgress"></div>
+      <div class="stepper my-5">
+        <div
+        :class="{'current': step == steps, 'current': step > steps -1 }"
+          class="stepper-item-counter mt-5 mx-4 "
+          v-for="steps in stepper.length"
+          :key="steps"
+        >
+          <span>{{ steps }}</span>
         </div>
       </div>
       <div class="quiz-card">
-        <h6 class="text-center mt-5">What is surface cementing</h6>
+        <h6 class="text-center my-5">What is surface cementing</h6>
         <div class="questions" v-if="questions">
           <div class="container mt-4">
             <div class="row">
               <div class="col-sm-6">
                 <div
-                  class="mb-4 register-options"
+                  class="mb-4 registration-options"
                   :class="selected === '1' ? 'active' : ''"
                   role="button"
                   @click="selectItem('1')"
                 >
                   <i-icon
+                    class="mr-4"
                     :icon="
                       selected === '1'
                         ? 'material-symbols:check-circle-rounded'
@@ -39,17 +33,18 @@
                     "
                     width="20px"
                   />
-                  <span>I'm looking for work (Talent)</span>
+                  <span>I'm hiring (Employer)</span>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div
-                  class="mb-4 register-options"
+                  class="mb-4 registration-options"
                   :class="selected === '2' ? 'active' : ''"
                   role="button"
                   @click="selectItem('2')"
                 >
                   <i-icon
+                    class="mr-4"
                     :icon="
                       selected === '2'
                         ? 'material-symbols:check-circle-rounded'
@@ -57,19 +52,20 @@
                     "
                     width="20px"
                   />
-                  <span>I'm looking for work (Talent)</span>
+                  <span>I'm hiring (Employer)</span>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
                 <div
-                  class="mb-4 register-options"
+                  class="mb-4 registration-options"
                   :class="selected === '3' ? 'active' : ''"
                   role="button"
                   @click="selectItem('3')"
                 >
                   <i-icon
+                    class="mr-4"
                     :icon="
                       selected === '3'
                         ? 'material-symbols:check-circle-rounded'
@@ -77,17 +73,18 @@
                     "
                     width="20px"
                   />
-                  <span>I'm looking for work (Talent)</span>
+                  <span>I want to refer talents (Affiliate)</span>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div
-                  class="mb-4 register-options"
+                  class="mb-4 registration-options"
                   :class="selected === '4' ? 'active' : ''"
                   role="button"
                   @click="selectItem('4')"
                 >
                   <i-icon
+                    class="mr-4"
                     :icon="
                       selected === '4'
                         ? 'material-symbols:check-circle-rounded'
@@ -95,7 +92,7 @@
                     "
                     width="20px"
                   />
-                  <span>I'm looking for work (Talent)</span>
+                  <span>I'm hiring (Employer)</span>
                 </div>
               </div>
             </div>
@@ -107,11 +104,28 @@
           <small class="muted">SVG, PNG, JPG or GIF (max. 400 x 400px) </small>
         </div>
         <div class="majorInput text-center my-5" v-if="textInput">
-          <input type="text" class="textInput" placeholder="Enter your job description">
+          <input
+            type="text"
+            class="textInput"
+            placeholder="Enter your job description"
+          />
         </div>
-        <div class="text-center mt-3">
-          <div class="btn mx-2 rounded-pill back px-4">Back</div>
-          <div class="btn mx-2 rounded-pill text-white next px-4">Next</div>
+        <div class="text-center mt-3 d-flex justify-content-center">
+          <div
+            class="rounded-pill back mr-3"
+            @click="previousPage"
+            id="backButton"
+            :disabled="step === 1"
+          >
+            Back
+          </div>
+          <div
+            class="rounded-pill text-white next "
+            @click="nextPage"
+            :disabled="step === 5"
+          >
+            Next
+          </div>
         </div>
       </div>
     </div>
@@ -126,23 +140,69 @@ export default {
       questions: true,
       fileUpload: false,
       questions: true,
-      textInput: false
+      textInput: false,
+      step: 1,
+      stepper: [
+        { count: 1, id: 1 },
+        { count: 2, id: 2 },
+        { count: 3, id: 3 },
+        { count: 4, id: 4 },
+        { count: 5, id: 5 },
+      ],
     };
   },
   methods: {
     selectItem(value) {
       this.selected = value;
     },
+    nextPage () {
+      this.step++
+      if (this.step === 3) {
+        this.questions = false
+        this.fileUpload = true
+      } else if (this.step === 4) {
+        this.fileUpload = false
+        this.textInput = true
+      }
+    },
+    previousPage () {
+      this.step--
+      if (this.step === 4) {
+        this.fileUpload = false
+        this.textInput = true
+      } else if (this.step === 3) {
+        this.textInput = false
+        this.fileUpload = true
+      } else if (this.step === 1){
+        document.querySelector('#backButton').disabled = true;
+      } else {
+        this.fileUpload = false
+        this.questions = true
+      }
+    }
+  },
+  computed: {
+    stepProgress() {
+      console.log(this.step)
+      return (100 / 20) * (this.step - 0.28) + "%";
+    },
   },
 };
 </script>
 
 <style scooped>
+.next, .back {
+  width: 73px;
+height: 42px;
+display: flex;
+padding: 10px 21px;
+cursor: pointer;
+}
 .center {
   margin: auto;
   margin-top: 130px;
   width: 80%;
-  height: 500px;
+  height: 600px;
   border: 1px solid #080808;
   padding: 10px;
   border-radius: 40px;
@@ -152,25 +212,30 @@ export default {
   padding-right: 100px !important;
 }
 .stepper-progress-bar {
-  border-top: 5px solid #ebfff6;
-  margin-top: 67px;
+  border-top: 5px solid #00ec83;
+  margin-top: 114.5px;
   position: absolute;
-  width: 170px;
+  width: 350px;
   left: 600px;
 }
 .stepper-item-counter {
+  border: 2px solid #c2ffe4;
   padding: 10px;
-  background-color: #00ec83;
+  background-color: #ebfff6;
   width: 40px;
   height: 40px;
   border-radius: 100%;
   text-align: center;
   z-index: 9;
-  color: white;
+  color: black;
 }
 .stepper {
   display: flex;
   justify-content: center;
+}
+.current {
+  background-color: #00ec83 !important;
+  color: white !important;
 }
 .register-options {
   padding: 10px;
@@ -205,18 +270,31 @@ export default {
   color: #282929;
 }
 .textInput {
-  height: 150px;
-  width: 400px;
+  width: 495px;
+height: 152px;
   border-radius: 20px;
-  background: #FFFFFF;
-  border: 1px solid #C2DBFF;
+  background: #ffffff;
+  border: 1px solid #c2dbff;
   padding: 20px;
 }
 .back {
-  color: #0040A1;
-  border: 1px solid #0040A1;
+  color: #0040a1;
+  border: 1px solid #0040a1;
 }
 .next {
-  background-color: #0040A1;
+  background-color: #0040a1;
+}
+.registration-options.active {
+  background-color: var(--blue-100);
+  border: 1px solid var(--primary-color);
+}
+
+.registration-options {
+  border: 1px solid var(--gray-200);
+  padding: 13px 27px 13px 14px;
+  border-radius: 40px;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
 }
 </style>
