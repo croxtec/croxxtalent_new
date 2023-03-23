@@ -1,6 +1,5 @@
 const Home = () => import("../pages/indexView.vue");
 const userExperience = () => import("../components/userExperience.vue");
-
 const Competences = () => import("../pages/competenciesPage");
 
 const routes = [
