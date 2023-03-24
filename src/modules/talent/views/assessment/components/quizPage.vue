@@ -1,11 +1,12 @@
 <template>
   <div>
+    <span class="closeQuiz" @click="closeQuiz">X</span>
     <div class="center">
       <div class="stepper-progress-bar" :style="'width:' + stepProgress"></div>
       <div class="stepper my-5">
         <div
-        :class="{'current': step == steps, 'current': step > steps -1 }"
-          class="stepper-item-counter mt-5 mx-4 "
+          :class="{ current: step == steps, current: step > steps - 1 }"
+          class="stepper-item-counter mt-5 mx-4"
           v-for="steps in stepper.length"
           :key="steps"
         >
@@ -112,7 +113,7 @@
         </div>
         <div class="text-center mt-3 d-flex justify-content-center">
           <button
-            class="rounded-pill back mr-3"
+            class="back mr-3"
             @click="previousPage"
             id="backButton"
             :disabled="step === 1"
@@ -120,7 +121,7 @@
             Back
           </button>
           <button
-            class="rounded-pill text-white next "
+            class="rounded-pill text-white next"
             @click="nextPage"
             :disabled="step === 5"
           >
@@ -152,36 +153,39 @@ export default {
     };
   },
   methods: {
+    closeQuiz () {
+      this.$router.go(-1)
+    },
     selectItem(value) {
       this.selected = value;
     },
-    nextPage () {
-      this.step++
+    nextPage() {
+      this.step++;
       if (this.step === 3) {
-        this.questions = false
-        this.fileUpload = true
+        this.questions = false;
+        this.fileUpload = true;
       } else if (this.step === 4) {
-        this.fileUpload = false
-        this.textInput = true
+        this.fileUpload = false;
+        this.textInput = true;
       }
     },
-    previousPage () {
-      this.step--
+    previousPage() {
+      this.step--;
       if (this.step === 4) {
-        this.fileUpload = false
-        this.textInput = true
+        this.fileUpload = false;
+        this.textInput = true;
       } else if (this.step === 3) {
-        this.textInput = false
-        this.fileUpload = true
-      }  else {
-        this.fileUpload = false
-        this.questions = true
+        this.textInput = false;
+        this.fileUpload = true;
+      } else {
+        this.fileUpload = false;
+        this.questions = true;
       }
-    }
+    },
   },
   computed: {
     stepProgress() {
-      console.log(this.step)
+      console.log(this.step);
       return (100 / 20) * (this.step - 0.28) + "%";
     },
   },
@@ -189,13 +193,6 @@ export default {
 </script>
 
 <style scooped>
-.next, .back {
-  width: 73px;
-height: 42px;
-display: flex;
-padding: 10px 21px;
-cursor: pointer;
-}
 .center {
   margin: auto;
   margin-top: 130px;
@@ -269,17 +266,23 @@ cursor: pointer;
 }
 .textInput {
   width: 495px;
-height: 152px;
+  height: 152px;
   border-radius: 20px;
   background: #ffffff;
   border: 1px solid #c2dbff;
   padding: 20px;
 }
 .back {
+  padding: 10px 21px;
+  gap: 10px;
   color: #0040a1;
   border: 1px solid #0040a1;
+  border-radius: 40px;
 }
 .next {
+  padding: 10px 21px;
+  border-radius: 40px;
+  gap: 10px;
   background-color: #0040a1;
 }
 .registration-options.active {
@@ -294,5 +297,13 @@ height: 152px;
   display: flex;
   /* justify-content: space-between; */
   align-items: center;
+}
+.closeQuiz {
+  position: absolute;
+  right: 90px;
+  top: 40px;
+  font-size: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
 }
 </style>
