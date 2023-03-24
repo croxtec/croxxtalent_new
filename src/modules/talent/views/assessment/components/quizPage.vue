@@ -111,21 +111,21 @@
           />
         </div>
         <div class="text-center mt-3 d-flex justify-content-center">
-          <div
+          <button
             class="rounded-pill back mr-3"
             @click="previousPage"
             id="backButton"
             :disabled="step === 1"
           >
             Back
-          </div>
-          <div
+          </button>
+          <button
             class="rounded-pill text-white next "
             @click="nextPage"
             :disabled="step === 5"
           >
             Next
-          </div>
+          </button>
         </div>
       </div>
     </div>
@@ -173,9 +173,7 @@ export default {
       } else if (this.step === 3) {
         this.textInput = false
         this.fileUpload = true
-      } else if (this.step === 1){
-        document.querySelector('#backButton').disabled = true;
-      } else {
+      }  else {
         this.fileUpload = false
         this.questions = true
       }

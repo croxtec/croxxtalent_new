@@ -157,8 +157,7 @@
                 ></i>
                 <div
                   class="option-modal py-2"
-                  v-if="optionModal == true"
-                  :key="job.id"
+                  v-if="optionModal === job.id"
                 >
                   <span>Apply</span>
                   <hr />
@@ -198,7 +197,7 @@ export default {
       categories:true,
       jobLevel: true,
       salaryRange: true,
-      optionModal: false,
+      optionModal: null,
       show1: false,
       show2: false,
       show3: false,
@@ -406,8 +405,8 @@ export default {
     };
   },
   methods: {
-    showOptionModal() {
-      this.optionModal = true;
+    showOptionModal(item) {
+      this.optionModal = this.optionModal === item ? null:item;
     },
     showVertical () {
       this.vertical = true
