@@ -19,7 +19,7 @@
             >Resume</router-link
           >
         </li>
-        <li>
+        <!-- <li>
           <router-link
             to="/competencies"
             :class="{
@@ -28,15 +28,15 @@
             }"
             >Competencies</router-link
           >
-        </li>
+        </li> -->
         <li>
           <router-link
-            to="/competencies2"
+            to="/competencies"
             :class="{
               'router-link-exact-active':
-                this.$route.meta.parent === 'competencies2',
+                this.$route.meta.parent === 'competencies',
             }"
-            >Competencies2</router-link
+            >Competencies</router-link
           >
         </li>
         <li>
