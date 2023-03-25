@@ -28,6 +28,7 @@ export default {
     switchData(value) {
       this.sectionName = value;
     },
+
   },
 };
 </script>
