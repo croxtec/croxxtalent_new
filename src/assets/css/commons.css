@@ -246,7 +246,7 @@
 }
 
 .modal-content.add-competence {
-    width: 30%;
+    width: 40%;
 }
 
 .modal-content.success {
@@ -311,4 +311,33 @@
 #nprogress .bar {
     height: 5px;
     background-color: var(--primary-color);
+}
+
+/* CV  */
+.cv-data-header {
+    font-weight: 600;
+    font-size: 16px;
+} 
+
+.cv-data-subheader {
+    color: #787878;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.cv-date-range {
+    color: #787878;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.edit-icon {
+    background-color: var(--primary-color);
+    display: grid;
+    place-items: center;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 22px;
 }

@@ -100,7 +100,6 @@ export default {
       let formData = new FormData();
       formData.append("login", this.credentials.login);
       formData.append("password", this.credentials.password);
-
       this.loginUser(formData).then(() => {
         if (this.success !== false && this.error === false) {
           // console.log(this.$route.query.returnTo);

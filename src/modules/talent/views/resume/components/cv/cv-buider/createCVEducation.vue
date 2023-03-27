@@ -3,12 +3,16 @@
     <div>
       <h5 style="font-size: 18px; font-weight: 600">Education</h5>
       <p class="small text-muted">Add your education history</p>
+      <div class="mt-2">
+        <cv-education @edit="editData" />
+      </div>
+
       <div class="mt-2" v-if="add_education">
         <AddEducation />
       </div>
 
       <hr />
-      <button class="add-item-button" @click="add_education = !add_education">
+      <button class="add-item-button" @click="create('education')">
         <span> <i-icon icon="clarity:plus-line" /> </span>
         <span>Add Education</span>
       </button>
@@ -19,110 +23,72 @@
       <p class="small text-muted">
         Add all certifications with their expiration dates
       </p>
+
+      <div class="mt-2">
+        <cv-certification />
+      </div>
       <div class="mt-2" v-if="add_certification">
         <AddCertification />
       </div>
       <hr />
 
-      <button
-        class="add-item-button"
-        @click="add_certification = !add_certification"
-      >
+      <button class="add-item-button" @click="create('certification')">
         <span> <i-icon icon="clarity:plus-line" /> </span>
         <span>Add Certification</span>
       </button>
-    </div>
-
-    <div class="form-details mt-4">
-      <!-- <div class="d-flex" style="gap: 20px">
-        <div class="mb-3 w-100">
-          <label for="">Employer <span class="text-danger">*</span></label>
-          <div class="phone-number-input">
-            <el-dropdown>
-              <span class="el-dropdown-link">
-                <country-flag country="NG" size="small" />
-                <i class="el-icon-arrow-down el-icon--right"></i>
-              </span>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>Action 1</el-dropdown-item>
-                <el-dropdown-item>Action 2</el-dropdown-item>
-                <el-dropdown-item>Action 3</el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
-            <input type="tel" placeholder="Enter phone number" />
-          </div>
-        </div>
-        <div class="mb-3 w-100">
-          <label for="">Job Title <span class="text-danger">*</span></label>
-          <input type="text" placeholder="Enter your last name" />
-        </div>
-      </div>
-
-      <div class="d-flex" style="gap: 20px">
-        <div class="mb-3 w-100">
-          <label for="">Country <span class="text-danger">*</span></label>
-          <select type="text" placeholder="Enter your first name">
-            <option value="" disabled selected class="font-weight-light">
-              Select Country
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-          </select>
-        </div>
-        <div class="mb-3 w-100">
-          <label for="">State <span class="text-danger">*</span></label>
-          <select type="text" placeholder="Enter your first name">
-            <option value="" disabled selected class="font-weight-light">
-              Select State
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <div class="d-flex" style="gap: 20px">
-          <div class="w-100">
-            <label for="">City <span class="text-danger">*</span></label>
-            <input type="date" name="" id="" />
-          </div>
-          <div class="w-100">
-            <label for="">End Date<span class="text-danger">*</span></label>
-            <input type="date" name="" id="" />
-          </div>
-        </div>
-        <div class="d-flex align-items-center mt-2" style="gap: 8px">
-          <input type="checkbox" name="" id="checkBox" />
-          <span
-            style="color: var(--gray-300); font-weight: 300; font-size: 13px"
-            >I currently work here</span
-          >
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label for="">Decription <span class="text-danger">*</span></label>
-        <textarea name="" id="" cols="30" rows="4"></textarea>
-      </div> -->
-
-      <!-- <div class="text-center">
-        <button class="primary--button">Save</button>
-      </div> -->
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
+import CvCertification from "./cv-existing-data/CvCertification.vue";
+import CvEducation from "./cv-existing-data/CvEducation.vue";
 import AddCertification from "./forms/addCertification.vue";
 import AddEducation from "./forms/addEducation.vue";
+
 export default {
-  components: { AddEducation, AddCertification },
+  components: { AddEducation, AddCertification, CvEducation, CvCertification },
   data: () => {
     return {
       add_education: false,
       add_certification: false,
+      editEducation: false,
     };
+  },
+  methods: {
+    ...mapActions("cvEducation", ["list"]),
+    create(value) {
+      if (value === "education") {
+        this.add_education = !this.add_education;
+        if (this.error) {
+          this.$store.commit("cvEducation/REMOVE_ERROR_SUCCESS");
+        }
+      } else {
+        this.add_certification = !this.add_certification;
+      }
+    },
+
+    editData(value) {
+      if (value === "education") {
+        this.add_education = !this.add_education;
+        this.editEducation = true;
+        // if (this.error) {
+        //   this.$store.commit("cvEducation/REMOVE_ERROR_SUCCESS");
+        // }
+      } else {
+        this.add_certification = !this.add_certification;
+      }
+    },
+  },
+  beforeMount() {
+    this.list();
+  },
+  computed: {
+    ...mapState("cvEducation", {
+      success: (state) => state.success,
+      error: (state) => state.error,
+    }),
   },
 };
 </script>

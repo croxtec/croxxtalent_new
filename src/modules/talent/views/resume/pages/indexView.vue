@@ -1,9 +1,6 @@
 <template>
-  <div>
+  <div class="d-flex flex-column justify-content-between h-100">
     <div class="mb-4 text-center">
-      <!-- <div>
-        {{ user }}
-      </div> -->
       <h6 style="font-weight: 700">Choose an option that best suits you</h6>
       <button
         class="primary--button mt-2 d-flex align-items-center mx-auto"
@@ -50,7 +47,7 @@
           <div class="text-right">
             <i-icon
               :icon="
-                activeEl === 2
+                activeEl === '2'
                   ? 'material-symbols:check-circle-rounded'
                   : 'ic:round-radio-button-unchecked'
               "
