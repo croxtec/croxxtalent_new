@@ -76,10 +76,12 @@
         </li>
         <li>
           <div class="user-avatar">
-            <img
+            <router-link to="userProfilePage">
+              <img
               src="https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/10-1024.png"
               alt=""
             />
+            </router-link>
           </div>
         </li>
       </ul>

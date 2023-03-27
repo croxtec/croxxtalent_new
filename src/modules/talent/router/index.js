@@ -3,6 +3,7 @@ import ResumeRoutes from "../views/resume/router";
 import CompetenciesRoutes from "../views/competencies/router";
 import AssessmentRoutes from "../views/assessment/router";
 import JobsRoutes from "../views/jobs/router";
+import userProfilePage from "../views/userProfilePage/router";
 
 const routes = [];
 const router = routes.concat(
@@ -10,7 +11,8 @@ const router = routes.concat(
   ResumeRoutes,
   CompetenciesRoutes,
   AssessmentRoutes,
-  JobsRoutes
+  JobsRoutes,
+  userProfilePage
 );
 
 export default router;
