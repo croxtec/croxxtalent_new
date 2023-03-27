@@ -22,7 +22,7 @@
               ></el-progress>
             </div>
             <div class="mt-3 d-flex align-items-center" style="gap: 20px">
-              <button class="primary--button">Take Test</button>
+              <button class="primary--button"  @click.prevent="assessment()">Take Test</button>
               <button class="primary--button_border">Preview</button>
             </div>
           </div>
@@ -40,7 +40,7 @@
               ></el-progress>
             </div>
             <div class="mt-3 d-flex align-items-center" style="gap: 20px">
-              <button class="primary--button">Take Test</button>
+              <button class="primary--button"  @click.prevent="assessment()">Take Test</button>
               <button class="primary--button_border">Interview</button>
             </div>
           </div>
@@ -56,12 +56,13 @@
               class="mt-2"
             />
             <div class="mt-3 d-flex align-items-center" style="gap: 20px">
-              <button class="primary--button">Download Badge</button>
+              <!-- <button class="primary--button">Download Badge</button> -->
               <button class="primary--button_border">Preview</button>
             </div>
-          </div>
+          </div> 
         </div>
       </el-collapse-item>
+
       <el-collapse-item title="Rig Operations" name="2">
         <div>
           <div class="skill-header">
@@ -80,7 +81,7 @@
                 alt=""
                 class="mt-2"
               />
-              <span class="expiring-soon w-100">
+              <span class="expiring-soon">
                 <span>
                   <i-icon
                     class="text-danger"
@@ -121,7 +122,7 @@
                 alt=""
                 class="mt-2"
               />
-              <span class="expiring-soon bg-danger w-100">
+              <span class="expiring-soon bg-danger">
                 <span>
                   <i-icon
                     class="text-white"
@@ -162,6 +163,9 @@ export default {
   methods: {
     handleChange(val) {
       console.log(val);
+    },
+    assessment() {
+      this.$router.push("/assessment");
     },
   },
 };
