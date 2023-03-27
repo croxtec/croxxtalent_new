@@ -16,7 +16,7 @@ function initialState() {
     statesDataSet: [],
     statesDataSetTotal: 0,
     statesDataSetLastPage: 1,
-    loadingStatesDataSet: false
+    loadingStatesDataSet: false,
   };
 }
 
@@ -26,9 +26,9 @@ const storeModule = {
   state: initialState,
 
   getters: {
-    isLoading: state => state.loading,
-    isLoadingDataSet: state => state.loadingDataSet,
-    getData: state => state.data
+    isLoading: (state) => state.loading,
+    isLoadingDataSet: (state) => state.loadingDataSet,
+    getData: (state) => state.data,
   },
 
   mutations: {
@@ -88,7 +88,7 @@ const storeModule = {
 
     SET_LOADING_STATES_DATASET(state) {
       state.loadingStatesDataSet = true;
-    }
+    },
   },
 
   actions: {
@@ -97,7 +97,7 @@ const storeModule = {
       try {
         commit("SET_LOADING_DATASET");
         let response = await $http.get("/settings/countries", {
-          params: payload
+          params: payload,
         });
         let responsePayload = response.data;
         commit("SET_DATASET", responsePayload);
@@ -234,14 +234,14 @@ const storeModule = {
       try {
         commit("SET_LOADING_STATES_DATASET");
         let response = await $http.get(`/settings/countries/${id}/states`, {
-          params: payload
+          params: payload,
         });
         let responsePayload = response.data;
         commit("SET_STATES_DATASET", responsePayload);
       } catch (error) {
         //
       }
-    }
-  }
+    },
+  },
 };
 export default storeModule;
