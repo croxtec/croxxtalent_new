@@ -4,14 +4,14 @@ import store from "@/store"; // import Vuex store logics
 
 const routes = [
   {
-    path: "/home",
-    name: "talent-home",
+    path: "/training",
+    name: "training",
     component: Home,
     beforeEnter: guardMyroute,
     meta: {
       requiresAuth: true,
       layout: "AppDashboardLayout",
-      header: "home",
+      header: "Training",
       isBackground: true,
     },
     acl: {
