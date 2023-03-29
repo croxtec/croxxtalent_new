@@ -69,6 +69,7 @@ export default {
   },
   methods: {
     async sendEmail() {
+      localStorage.setItem('email', this.resetEmail)
       try {
         let res = await $request.post(`/auth/forgot-passwword`, {
           email: this.resetEmail,
