@@ -261,3 +261,104 @@
   font-size: 15px;
   color: var(--primary-color);
 }
+
+
+/* HOME  */
+.home-page {
+  background-color: var(--gray-200);
+  min-height: 100vh;
+}
+
+/* Profile Card  */
+#profile-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  -o-object-fit: cover;
+  -o-object-position: top;
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.profile-profession {
+  font-size: 14px;
+}
+
+.sidebar-card h6, .sidebar-card2 h6 {
+  font-weight: 600;
+}
+
+.sidebar-card h1, .sidebar-card2 h1 {
+  font-weight: 600;
+}
+
+.sidebar-card {
+  background: url('../icons/text.png');
+  background-size: 30% 47%;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.sidebar-card2 {
+  background: url('../icons/user.png');
+  background-size: 30% 47%;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+#side-bar {
+  display: flex;
+  display: inline-flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-icon {
+  color: var(--blue-300);
+}
+
+.settings-dropdown{
+  border: 1px solid var(--blue-300) !important;
+  box-shadow: unset !important;
+  width: 15% !important;
+  border-radius: 35px !important;
+  padding: 12px !important;
+}
+
+.settings-dropdown .popper__arrow {
+  border-top-color:var(--blue-300) !important ;
+} 
+
+.settings-dropdown  .el-dropdown-menu__item {
+  display: flex;
+  display: -webkit-flex;
+  display: inline-flex;
+ justify-content: space-between;
+  align-items: center;
+  line-height: unset !important;
+  width: 100%;
+  padding: 10px 20px;
+  color: #000;
+}
+
+.settings-dropdown  .el-dropdown-menu__item:hover {
+  background-color: var(--blue-100) !important;
+  border-radius: 25px;
+}
+
+.info-card {
+  background-color: var(--primary-color);
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 600;
+}

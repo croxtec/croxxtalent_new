@@ -132,7 +132,7 @@
     border-bottom: 1px solid var(--blue-300);
     width: 100%;
     padding: 0.54em;
-    font-size: 0.8re;
+    font-size: 0.8rem;
 }
 
 .line--input::placeholder {
@@ -144,6 +144,14 @@
 /* header */
 .header--text {
     font-weight: 600;
+}
+
+/* BORDERED  */
+.bordered {
+    border: 1px solid var(--blue-300);
+    background: #fff;
+    padding: 18px;
+    border-radius: 25px;
 }
 
 
@@ -340,4 +348,29 @@
     height: 40px;
     border-radius: 50%;
     font-size: 22px;
+}
+
+.input-field {
+    display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
+    align-items: center;
+    border: 1px solid var(--blue-300);
+    border-radius: 20px;
+    padding: 3px 8px;
+    width: max-content
+}
+
+.input-field input {
+    width: 100%;
+    background-color: transparent;
+    border: transparent;
+    padding:6px 5px;
+    display: block;
+    font-size: 14px;
+}
+
+.input-field input::placeholder {
+    font-weight: 300;
+    font-size: 12px;
 }

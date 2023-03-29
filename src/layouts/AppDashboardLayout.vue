@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{'home-page': headerName.isBackground}">
     <TalentNav />
     <div class="container">
       <div class="my-4">
