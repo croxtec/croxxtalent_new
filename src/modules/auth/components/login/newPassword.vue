@@ -44,7 +44,6 @@ export default {
     async submitPassword() {
       let email = localStorage.getItem("email");
       let password_reset_code = localStorage.getItem("password_reset_code");
-      console.log(email, password_reset_code, this.new_password);
       try {
         let res = await $request.post(`/auth/reset-password`, {
           email: email,
