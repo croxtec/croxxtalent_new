@@ -3,8 +3,9 @@
    <div class="d-flex pb-4" style="gap:20px">
     <div class="w-75 d-flex flex-column" style="gap:20px">
       <ProfileCard/>
-      <div>
-        <CompetenciesCard/>
+      <div class="d-flex" style="gap:20px">
+        <CompetenciesCard class="w-100"/>
+        <CompetenciesCard class="w-100"/>
       </div>
       <div class="d-flex" style="gap:20px">
         <CompetenciesCard class="w-100"/>

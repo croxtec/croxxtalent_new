@@ -7,7 +7,7 @@ const routes = [
     path: "/home",
     name: "talent-home",
     component: Home,
-    beforeEnter: guardMyroute,
+    // beforeEnter: guardMyroute,
     meta: {
       requiresAuth: true,
       layout: "AppDashboardLayout",

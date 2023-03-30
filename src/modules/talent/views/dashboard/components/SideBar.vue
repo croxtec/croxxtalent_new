@@ -1,23 +1,23 @@
 <template>
   <div id="side-bar" class="bordered">
-    <div class="bordered sidebar-card">
+    <div class="bordered sidebar-card icon-text">
       <h6>Applied</h6>
-      <h1 class="mt-2">45</h1>
+      <h1 class="">45</h1>
     </div>
 
-    <div class="bordered sidebar-card2">
+    <div class="bordered sidebar-card icon-user">
       <h6>Saved</h6>
-      <h1 class="mt-2">45</h1>
+      <h1 class="">45</h1>
     </div>
 
-    <div class="bordered sidebar-card">
+    <div class="bordered sidebar-card icon-text">
       <h6>CroxxTalent Invitations</h6>
-      <h1 class="mt-2">45</h1>
+      <h1 class="">45</h1>
     </div>
 
-    <div class="bordered sidebar-card2">
+    <div class="bordered sidebar-card icon-user">
       <h6>In Progress</h6>
-      <h1 class="mt-2">45</h1>
+      <h1 class="">45</h1>
     </div>
 
     <el-dropdown trigger="click">

@@ -1,6 +1,6 @@
 <template>
   <div id="profile-card" class="bordered">
-   <div class="d-flex align-items-center justify-content-between w-100" style="gap:20px">
+   <div class="d-flex align-items-center justify-content-between w-100 py-2" style="gap:20px; ">
     
     <div class="d-flex align-items-center" style="gap:20px">
       <img
