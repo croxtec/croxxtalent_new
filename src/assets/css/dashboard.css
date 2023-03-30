@@ -102,12 +102,12 @@
 }
 
 .skills .el-collapse-item__header, .skills .el-collapse-item__wrap {
-  border-bottom: 1px solid var(--blue-300);
+  border-bottom: 1px solid var(--blue-100);
 }
 
 .skills .el-collapse {
-  border-bottom: 1px solid var(--blue-300);
-  border-top: 1px solid var(--blue-300);
+  border-bottom: 1px solid var(--blue-100);
+  border-top: 1px solid var(--blue-100);
 }
 
 .skills .el-collapse-item__header {
@@ -159,18 +159,63 @@
 }
 
 .assesement-level {
-  background-color: var(--blue-300);
+  background-color: var(--blue-100);
   padding: 25px 20px; 
   border-radius: 25px;
 }
+.assesement-completed{
+  padding: 8px 20px; 
+  border-radius: 25px;
+}
+.level-excellent{
+  background-color: var(--green-200);
+}
+.level-poor{
+  background-color: var(--orange-200);
+}
+.level-average{
+  
+}
+.split-excellent{
+  background-color: var(--green-600);
+  width: 2px;
+  height: 35px;
+}
+.assesement-grade{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+}
+.assement-score {
+    margin: 4px;
+    padding: 12px 8px;
+    border-radius: 15px;
+}
+.score-excellent{
+  background-color: var(--green-600);
+  color: #fff;
+}
+.score-poor{
+  background-color: var(--orange-600);
+  color: #fff;
+}
+
+
 
 .assesement-level span {
   font-size: 15px;
   font-weight: 500;
 }
 
+.assesement-completed .info {
+  font-size: 16px;
+  margin-right: 6rem;
+  font-weight: bold;
+}
+
 .expiring-soon {
-  background-color: var(--blue-300);
+  background-color: var(--blue-100);
   padding: 12px;
   display: flex;
   display: inline-flex;
@@ -210,7 +255,7 @@
   width: 100%;
   outline: none;
   border: none;
-  border-bottom: 1px solid var(--blue-300);
+  border-bottom: 1px solid var(--blue-100);
   padding: 6px 4px;
   font-size: 13px;
   font-weight: 400;
@@ -289,26 +334,34 @@
   font-size: 14px;
 }
 
-.sidebar-card h6, .sidebar-card2 h6 {
-  font-weight: 600;
+.sidebar-card h6 {
+  padding: 6px 4px !important;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-size: 16px;
 }
 
-.sidebar-card h1, .sidebar-card2 h1 {
-  font-weight: 600;
+.sidebar-card h1 {
+  padding: 6px 4px !important;
+  font-family: 'Poppins';
+  font-style: inherit;
+  font-size: 48px; 
+  font-weight: 400;
 }
 
 .sidebar-card {
-  background: url('../icons/text.png');
+  height: 140px;
   background-size: 30% 47%;
   background-repeat: no-repeat;
   background-position: bottom right;
+  background-position: 95% 90%;
+}
+.icon-text{
+  background-image: url('../icons/text.png');
 }
 
-.sidebar-card2 {
-  background: url('../icons/user.png');
-  background-size: 30% 47%;
-  background-repeat: no-repeat;
-  background-position: bottom right;
+.icon-user {
+  background-image: url('../icons/user.png');
 }
 
 #side-bar {
@@ -320,11 +373,11 @@
 }
 
 .sidebar-icon {
-  color: var(--blue-300);
+  color: var(--blue-100);
 }
 
 .settings-dropdown{
-  border: 1px solid var(--blue-300) !important;
+  border: 1px solid var(--blue-100) !important;
   box-shadow: unset !important;
   width: 15% !important;
   border-radius: 35px !important;
@@ -332,7 +385,7 @@
 }
 
 .settings-dropdown .popper__arrow {
-  border-top-color:var(--blue-300) !important ;
+  border-top-color:var(--blue-100) !important ;
 } 
 
 .settings-dropdown  .el-dropdown-menu__item {
