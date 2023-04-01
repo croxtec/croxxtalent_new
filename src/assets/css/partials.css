@@ -70,7 +70,10 @@ h1, h2, h3, h4, h5, h6, p, a {
      --green-400: #99ffd1;
      --green-500: #70ffbf;
      --green-600: #06E594;
-   
+
+     /*  Orange Shade */
+    --orange-200: #FDB3A9;
+    --orange-600: #FF6550;
 
     /* Gray Shades  */
     --gray-50: #f5f5f5;

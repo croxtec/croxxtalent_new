@@ -167,17 +167,18 @@
   padding: 8px 20px; 
   border-radius: 25px;
 }
+
 .level-excellent{
   background-color: var(--green-200);
+}
+.level-average{
+  background-color: var(--blue-200);
 }
 .level-poor{
   background-color: var(--orange-200);
 }
-.level-average{
-  
-}
-.split-excellent{
-  background-color: var(--green-600);
+
+.assesement-grade .split{
   width: 2px;
   height: 35px;
 }
@@ -192,15 +193,19 @@
     padding: 12px 8px;
     border-radius: 15px;
 }
+
 .score-excellent{
   background-color: var(--green-600);
-  color: #fff;
+  color: #D6FFED;
 }
 .score-poor{
   background-color: var(--orange-600);
-  color: #fff;
+  color: #FDB3A9;
 }
-
+.score-average{
+  background: #0040A1;
+  color: #C2DBFF;
+}
 
 
 .assesement-level span {
@@ -210,7 +215,7 @@
 
 .assesement-completed .info {
   font-size: 16px;
-  margin-right: 6rem;
+  margin-right: 6.5rem;
   font-weight: bold;
 }
 

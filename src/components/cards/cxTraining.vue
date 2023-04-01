@@ -46,16 +46,17 @@
   
   <style>
   .training--card .top img {
-    width: 100%;
-    height: 200px;
+    /* width: 100%; */
+    width: 275px;
+    height: 240px;
     object-position: center;
     -o-object-position: center;
     object-fit: cover;
     -o-object-fit: cover;
     border-radius: 10px 10px 0 0;
-
   }
 .training--card .middle {
+    width: 275px;
     border: 1px solid var(--blue-300);
     background: #fff;
     padding: 15px;
