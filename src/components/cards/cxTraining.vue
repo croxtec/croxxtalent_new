@@ -48,7 +48,7 @@
   .training--card .top img {
     /* width: 100%; */
     width: 275px;
-    height: 240px;
+    height: 230px;
     object-position: center;
     -o-object-position: center;
     object-fit: cover;

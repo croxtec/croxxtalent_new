@@ -21,7 +21,7 @@ const routes = [
     component: CreateCV,
     meta: {
       layout: "AppDashboardLayout",
-      header: "Cv Previewer",
+      header: "CV Previewer",
       parent: "resume",
     },
     children: [
