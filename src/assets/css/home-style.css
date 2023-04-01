@@ -96,10 +96,11 @@
 }
 
 .job--card {
-    border: 1px solid #D6DDEB;
     background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 30px;
+    border: 1px solid #C2DBFF;
+    width: 275px;
 }
 
 .jobs--cards {

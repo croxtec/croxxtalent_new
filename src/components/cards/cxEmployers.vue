@@ -6,7 +6,7 @@
          <span class="tag" style="background-color: var(--blue-100); color: var(--primary-color); font-weight: 500;">20 Jobs</span>
         </div>
         <div class="middle mt-3">
-          <h6 class="font-weight-bolder">Oando</h6>
+          <h6 class="font-weight-bolder">Oando</h6> 
           <div
             class="d-flex align-items-center mt-1"
             style="font-weight: 300; gap: 3px; font-size: 12px"
