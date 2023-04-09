@@ -11,7 +11,7 @@ const routes = [
     component: Home,
     meta: {
       layout: "AppDashboardLayout",
-      header: "Cv Previewer",
+      header: "CV Previewer",
     },
   },
 
@@ -31,7 +31,7 @@ const routes = [
         component: CreateCVTitle,
         meta: {
           layout: "AppDashboardLayout",
-          header: "Cv Previewer",
+          header: "CV Previewer",
           parent: "resume",
         },
       },
@@ -41,7 +41,7 @@ const routes = [
         component: CreateCVTitle,
         meta: {
           layout: "AppDashboardLayout",
-          header: "Cv Previewer",
+          header: "CV Previewer",
           parent: "resume",
         },
       },
@@ -51,7 +51,7 @@ const routes = [
         component: CreateCVTitle,
         meta: {
           layout: "AppDashboardLayout",
-          header: "Cv Previewer",
+          header: "CV Previewer",
           parent: "resume",
         },
       },
@@ -61,7 +61,7 @@ const routes = [
         component: CreateCVTitle,
         meta: {
           layout: "AppDashboardLayout",
-          header: "Cv Previewer",
+          header: "CV Previewer",
           parent: "resume",
         },
       },
@@ -71,7 +71,7 @@ const routes = [
         component: CreateCVTitle,
         meta: {
           layout: "AppDashboardLayout",
-          header: "Cv Previewer",
+          header: "CV Previewer",
           parent: "resume",
         },
       },
@@ -81,7 +81,7 @@ const routes = [
         component: CreateCVTitle,
         meta: {
           layout: "AppDashboardLayout",
-          header: "Cv Previewer",
+          header: "CV Previewer",
           parent: "resume",
         },
       },
@@ -93,7 +93,7 @@ const routes = [
     component: UploadCV,
     meta: {
       layout: "AppDashboardLayout",
-      header: "Cv Previewer",
+      header: "CV Previewer",
       parent: "resume",
     },
     children: [
@@ -103,7 +103,7 @@ const routes = [
         component: UploadCVHome,
         meta: {
           layout: "AppDashboardLayout",
-          header: "Cv Previewer",
+          header: "CV Previewer",
           parent: "resume",
         },
       },
