@@ -94,6 +94,10 @@
     transform-origin: center;
 }
 
+.app--nav_items li a.router-link-border-active{
+    border: 1px solid  var(--primary-color);
+}
+
 .app-nav  .el-drawer__body {
     background-color: var(--primary-color);
 }

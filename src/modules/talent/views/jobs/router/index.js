@@ -1,5 +1,6 @@
 const Home = () => import("../pages/indexView.vue");
 const Recommended = () => import("../components/recommended.vue")
+const MyJobs = () => import("../pages/myJobs.vue");
 const Rows = () => import("../components/rows.vue")
 
 
@@ -17,6 +18,15 @@ const routes = [
     path: "/recommended",
     name: "recommended",
     component: Recommended,
+    meta: {
+      layout: "AppDashboardLayout",
+      // header: "assessment",
+    },
+  },
+  {
+    path: "/myjobs",
+    name: "my-jobs",
+    component: MyJobs,
     meta: {
       layout: "AppDashboardLayout",
       // header: "assessment",

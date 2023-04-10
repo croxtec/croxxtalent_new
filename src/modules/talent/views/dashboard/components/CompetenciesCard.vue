@@ -14,7 +14,7 @@
         ></el-progress>
       </div>
       <div class="mt-3 d-flex align-items-center" style="gap: 20px">
-        <button class="primary--button">Take Test</button>
+        <button class="primary--button"  @click.prevent="gotoAssessment()">Take Test</button>
         <button class="primary--button_border">Preview</button>
       </div>
     </div>
@@ -24,6 +24,12 @@
 <script>
 export default {
 
+
+  methods: {
+    gotoAssessment(){
+      this.$router.push("/assessment");
+    }
+  }
 }
 </script>
 

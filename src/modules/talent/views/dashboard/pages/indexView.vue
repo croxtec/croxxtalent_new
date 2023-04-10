@@ -19,20 +19,44 @@
 
    <!-- Recommended Jobs -->
    <div class="my-4">
-    <h5 class="header--text">Recommended Jobs</h5>
+    <div class="top d-flex align-items-center justify-content-between mb-4">
+        <h5 class="header--text">Recommended Jobs</h5>
+        <div class="d-lg-flex align-items-center see--all linker"  
+          @click.prevent="$router.push('/recommended')"
+          style="gap: 4px; margin-right: 3em;">
+          <span>Show all</span>
+          <i class="isax isax-arrow-right-1"></i>
+        </div>
+    </div>
     <CxJobs class="mt-3" :jobsCount="4"/>
     <!-- <CxJobGrid class="mt-3" /> -->
    </div>
 
    <!-- Top Employers  -->
    <div class="my-4">
-    <h5 class=" header--text">Top Employers</h5>
+    <div class="top d-flex align-items-center justify-content-between mb-4">
+        <h5 class=" header--text">Top Employers</h5>
+        <div class="d-lg-flex align-items-center see--all linker" 
+          @click.prevent="$router.push('/jobs')"
+          style="gap: 4px; margin-right: 3em;">
+          <span>Show all </span>
+          <i class="isax isax-arrow-right-1"></i>
+        </div>
+    </div>
     <CxEmployers class="mt-3" :employersCount="4"/>
    </div>
 
     <!-- Courses  -->
-    <div class="my-4">
-    <h5 class=" header--text">Recommended Courses</h5>
+  <div class="my-4">
+    <div class="top d-flex align-items-center justify-content-between mb-4">
+        <h5 class=" header--text">Recommended Courses</h5>
+        <div class="d-lg-flex align-items-center see--all linker" 
+          @click.prevent="$router.push('/training')"
+          style="gap: 4px; margin-right: 3em;">
+          <span>Show all </span>
+          <i class="isax isax-arrow-right-1"></i>
+        </div>
+    </div>
     <!-- <CxEmployers class="mt-3" :employersCount="4"/> -->
     <CxTraining class="mt-3" :trainingCount="4"/>
    </div>

@@ -66,17 +66,27 @@
         </li>
         <li>
           <div class="menu-icon-container">
-            <i-icon icon="tabler:message-2" class="menu-icon" />
+            <router-link  to="/messages" >
+              <i-icon icon="tabler:message-2" class="menu-icon" />
+            </router-link>
           </div>
         </li>
+
         <li>
           <div class="menu-icon-container">
+            <router-link
+            to="/notifications"
+            :class="{ 'router-link-border-active':
+                this.$route.meta.parent === 'notifications',
+            }"
+            >
             <i-icon icon="nimbus:notification" class="menu-icon" />
+            </router-link>
           </div>
         </li>
         <li>
           <div class="user-avatar">
-            <router-link to="userProfilePage">
+            <router-link to="/profile">
               <img
               src="https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/10-1024.png"
               alt=""

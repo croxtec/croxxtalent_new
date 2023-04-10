@@ -1,6 +1,7 @@
 <template>
     <div class="jobs--cards">
-      <div class="job--card" v-for="item in employersCount" :key="item">
+      <div class="job--card" @click.prevent="gotoJobs()"
+        v-for="item in employersCount" :key="item">
         <div class="top d-flex justify-content-between align-items-center">
           <CxAvatar />
          <span class="tag" style="background-color: var(--blue-100); color: var(--primary-color); font-weight: 500;">20 Jobs</span>
@@ -22,7 +23,7 @@
           </div>
   
          
-        </div>
+        </div> 
       </div>
     </div>
   </template>
@@ -36,6 +37,11 @@
       CxBorderButton,
       CxAvatar,
     },
+    methods: {
+      gotoJobs(){
+        this.$router.push("/jobs"); 
+      }
+    }
   };
   </script>
   
