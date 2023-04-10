@@ -21,7 +21,7 @@
    <div class="my-4">
     <div class="top d-flex align-items-center justify-content-between mb-4">
         <h5 class="header--text">Recommended Jobs</h5>
-        <div class="d-lg-flex align-items-center see--all"  
+        <div class="d-lg-flex align-items-center see--all linker"  
           @click.prevent="$router.push('/recommended')"
           style="gap: 4px; margin-right: 3em;">
           <span>Show all</span>
@@ -36,7 +36,7 @@
    <div class="my-4">
     <div class="top d-flex align-items-center justify-content-between mb-4">
         <h5 class=" header--text">Top Employers</h5>
-        <div class="d-lg-flex align-items-center see--all" 
+        <div class="d-lg-flex align-items-center see--all linker" 
           @click.prevent="$router.push('/jobs')"
           style="gap: 4px; margin-right: 3em;">
           <span>Show all </span>
@@ -50,7 +50,7 @@
   <div class="my-4">
     <div class="top d-flex align-items-center justify-content-between mb-4">
         <h5 class=" header--text">Recommended Courses</h5>
-        <div class="d-lg-flex align-items-center see--all" 
+        <div class="d-lg-flex align-items-center see--all linker" 
           @click.prevent="$router.push('/training')"
           style="gap: 4px; margin-right: 3em;">
           <span>Show all </span>

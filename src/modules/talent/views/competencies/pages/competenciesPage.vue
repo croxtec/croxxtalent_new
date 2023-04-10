@@ -9,13 +9,12 @@
 </template>
 
 <script>
+// import ManagerData from "../components/managerData.vue";
 import competencesHeader from "../components/competencesHeader.vue";
-
-import ManagerData from "../components/managerData.vue";
 import SkillsData from "../components/skillsData.vue";
 
 export default {
-  components: { competencesHeader, SkillsData, ManagerData },
+  components: { competencesHeader, SkillsData },
   data: () => {
     return {
       sectionName: "competencies",
@@ -26,7 +25,6 @@ export default {
     switchData(value) {
       this.sectionName = value;
     },
-
   },
 };
 </script>

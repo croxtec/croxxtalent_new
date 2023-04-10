@@ -1,183 +1,178 @@
 <template>
   <div>
-    <header class="d-flex justify-content-between">
-      <h6>Jobs</h6>
-      <div class="sorting d-flex">
-        <div class="sortBy mr-2 d-flex mt-2">
-          <small class="muted mt-1 mr-2">Sort by:</small>
-          <span class="mr-2">Most relevant</span>
-        </div>
-        <span class="vertical">|</span>
-        <div class="images">
-          <router-link to="jobs">
-            <img
-            src="@/assets/img/vertical.png"
-            alt=""
-            srcset=""
-            class="img-fluid mx-3"
-          />
-          </router-link>
-          <router-link to="rows">
-            <img
-            src="@/assets/img/horizontal.png"
-            alt=""
-            srcset=""
-            class="img-fluid"
-            @click="showHorizontal"
-          />
-          </router-link>
-        </div>
-      </div>
-    </header>
-    <p class="mb-3">Showing 73 results</p>
-    <div class="job-grid">
-      <div class="job-filter">
-        <span @click="showEmployment">
-          <h6 class="my-3">
-          Type of Employment <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
-        </h6>
-        </span>
-        <div class="employment-card" v-if="employment">
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Full-time (3)</span>
+  
+    <div>
+      <job-header />
+      <header class="d-flex justify-content-between">
+        <div></div>
+
+        <div class="sorting d-flex">
+          <div class="sortBy mr-2 d-flex mt-2">
+            <small class="muted mt-1 mr-2">Sort by:</small>
+            <span class="mr-2">Most relevant</span>
           </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">part-time (5)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Remote (2)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Internship (24)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Contract (3)</span>
+          <span class="vertical">|</span>
+          <div class="images">
+            <router-link to="jobs">
+              <img
+              src="@/assets/img/vertical.png"
+              alt=""
+              srcset=""
+              class="img-fluid mx-3"
+            />
+            </router-link>
+            <router-link to="rows">
+              <img
+              src="@/assets/img/horizontal.png"
+              alt=""
+              srcset=""
+              class="img-fluid"
+              @click="showHorizontal"
+            />
+            </router-link>
           </div>
         </div>
-        <span @click="showCategories">
-          <h6 class="my-3">Categories <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i></h6>
-        </span>
-        <div class="employment-card" v-if="categories">
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Design (24)</span>
+      </header>
+      <p class="mb-3">Showing 73 results</p>
+      <div class="job-grid">
+        <div class="job-filter">
+          <span @click="showEmployment">
+            <h6 class="my-3">
+            Type of Employment <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
+          </h6>
+          </span>
+          <div class="employment-card" v-if="employment">
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Full-time (3)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">part-time (5)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Remote (2)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Internship (24)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Contract (3)</span>
+            </div>
           </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">sales (3)</span>
+          <span @click="showCategories">
+            <h6 class="my-3">Categories <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i></h6>
+          </span>
+          <div class="employment-card" v-if="categories">
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Design (24)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">sales (3)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Marketing (3)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Human Resource (6)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Finance (4)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Engineering (4)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Technology (5)</span>
+            </div>
           </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Marketing (3)</span>
+          <span @click="showJobLevel">
+            <h6 class="my-3">Job Level <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i></h6>
+          </span>
+          <div class="employment-card" v-if="jobLevel">
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Entry Level (57)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">mid level (3)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Senior Level (5)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Director (6)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">Vp or Above (4)</span>
+            </div>
           </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Human Resource (6)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Finance (4)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Engineering (4)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Technology (5)</span>
+          <span @click="showSalaryRange">
+            <h6 class="my-3">Salary Range <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i></h6>
+          </span>
+          <div class="employment-card" v-if="salaryRange">
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">N700 - N1000 (57)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">N100 - N1500 (3)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">N1500 - N2000 (5)</span>
+            </div>
+            <div class="my-3">
+              <input type="checkbox" name="" id="" />
+              <span class="ml-3">N3000 or Above (6)</span>
+            </div>
           </div>
         </div>
-        <span @click="showJobLevel">
-          <h6 class="my-3">Job Level <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i></h6>
-        </span>
-        <div class="employment-card" v-if="jobLevel">
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Entry Level (57)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">mid level (3)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Senior Level (5)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Director (6)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Vp or Above (4)</span>
-          </div>
-        </div>
-        <span @click="showSalaryRange">
-          <h6 class="my-3">Salary Range <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i></h6>
-        </span>
-        <div class="employment-card" v-if="salaryRange">
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">N700 - N1000 (57)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">N100 - N1500 (3)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">N1500 - N2000 (5)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">N3000 or Above (6)</span>
-          </div>
-        </div>
-      </div>
-      <div class="job-list">
-        <div class="jobs grid-job">
-          <div class="floter" v-for="job in jobs" :key="job.id">
-            <div class="job-card mx-2">
-              <div class="d-flex justify-content-between">
-                <img
-                  src="@/assets/img/box.png"
-                  alt=""
-                  srcset=""
-                  class="img-fluid"
-                  style="width: 40px"
-                />
-                <i
-                  class="fa fa-ellipsis-h"
-                  @click="showOptionModal(job.id)"
-                ></i>
-                <div
-                  class="option-modal py-2"
-                  v-if="optionModal === job.id"
-                >
-                  <span>Apply</span>
-                  <hr />
-                  <span>Save</span>
-                  <hr />
-                  <span>Archive</span>
+        <div class="job-list">
+          <div class="list">
+            <div class="list-job my-3 d-flex" v-for="job in jobs" :key="job.id">
+              <img
+                src="@/assets/img/round-logo.png"
+                alt=""
+                class="img-fluid m-3"
+                style="width: 64px; height: 64px"
+              />
+              <div>
+                <div class="job-content">
+                  <div class="job-container">
+                    <h5 class="content-header">{{ job.title }}</h5>
+                    <i class="fa fa-ellipsis-h"></i>
+                  </div>
+                  <div class="location">
+                    <span>Rain Oil</span> . <span>Paris, France</span>
+                  </div>
+                  <div class="options d-flex justify-content-between">
+                    <div class="option-tags mt-3">
+                      <span class="full-time">Full-Time</span> |
+                      <span class="off-shore mr-2">Off-shore</span>
+                      <span class="design">Design</span>
+                    </div>
+                    <div class="option-progress">
+                      <progress value="45" max="100"></progress><br />
+                      <span>5 applied of 10 capacity</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="my-3">
-                <h5>{{ job.title }}</h5>
-                <span>Agency</span> . <span>San Fransisco, US</span>
-              </div>
-              <p class="d-block text-truncate content">
-                Dropbox is looking for Brand <br />
-                Designer to help the team to be able to access all of the
-                required state
-              </p>
-              <div class="d-flex mt-4 justify-content-between">
-                <span class="drilling">Drilling</span>
-                <span class="Management">Management</span>
               </div>
             </div>
           </div>
@@ -188,7 +183,13 @@
 </template>
 
 <script>
+
+import JobHeader from '../components/myJobsHeader.vue';
+
+
 export default {
+  components: { JobHeader },
+
   data() {
     return {
       vertical: false,
@@ -404,6 +405,7 @@ export default {
       ],
     };
   },
+
   methods: {
     showOptionModal(item) {
       this.optionModal = this.optionModal === item ? null:item;
@@ -432,7 +434,8 @@ export default {
       this.salaryRange = !this.salaryRange
       this.show4 = !this.show4
     }
-  },
+  }
+
 };
 </script>
 
