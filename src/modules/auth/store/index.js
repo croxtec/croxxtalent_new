@@ -60,23 +60,9 @@ export default {
       state.validationErrors = {};
     },
 
-    SET_REG_ERROR(state, message) {
-      state.regError = message;
-      state.regSuccess = false;
-      state.loading = false;
-      state.validationErrors = {};
-    },
-
     SET_SUCCESS(state, message) {
       state.success = message;
       state.error = false;
-      state.validationErrors = {};
-      state.loading = false;
-    },
-
-    SET_REG_SUCCESS(state, message) {
-      state.regSuccess = message;
-      state.regError = false;
       state.validationErrors = {};
       state.loading = false;
     },
