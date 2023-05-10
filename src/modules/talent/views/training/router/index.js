@@ -1,4 +1,4 @@
-const Home = () => import("../pages/indexView.vue");
+const Training = () => import("../pages/indexView.vue");
 
 import store from "@/store"; // import Vuex store logics
 
@@ -6,8 +6,8 @@ const routes = [
   {
     path: "/training",
     name: "training",
-    component: Home,
-    beforeEnter: guardMyroute,
+    component: Training,
+    // beforeEnter: guardMyroute,
     meta: {
       requiresAuth: true,
       layout: "AppDashboardLayout",

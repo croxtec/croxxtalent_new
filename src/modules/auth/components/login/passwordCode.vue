@@ -60,13 +60,34 @@
         <button class="rounded-pill btns btn">Submit</button>
       </form>
     </div>
+    <div class="modal-mask" v-if="errorMessage">
+      <div class="modal-content error">
+        <img src="@/assets/icons/error.svg" class="modal-icon" alt="" />
+        <h5 class="text-center modal-title">Error</h5>
+        <div class="modal-body text-center">
+          <h5>{{ messageError }}</h5>
+        </div>
+
+        <div
+          class="mt-2 modal-actions d-flex align-items-center justify-content-center"
+          style="gap: 10px"
+        >
+          <button class="primary--button_border" @click="closeError">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import $request from "@/axios";
 export default {
   data() {
     return {
+      errorMessage: false,
+      messageError: "",
       auth: true,
       successAlert: false,
       token: "",
@@ -79,9 +100,7 @@ export default {
     };
   },
   methods: {
-    submit() {
-      this.auth = false;
-      this.successAlert = true;
+    async submit() {
       this.token =
         this.token1 +
         this.token2 +
@@ -89,10 +108,39 @@ export default {
         this.token4 +
         this.token5 +
         this.token6;
-      console.log(this.token);
-      setTimeout(() => {
-        this.$router.push({ name: "new-password" });
-      }, 3000);
+      let userEmail = localStorage.getItem("email");
+      localStorage.setItem('password_reset_code', this.token);
+      try {
+        let res = await $request.get(
+          `auth/confirm-code?email=${userEmail}&code=${this.token}`
+        );
+        if (res.data.status == true) {
+          this.auth = false;
+          this.successAlert = true;
+          this.token1 = "";
+          this.token2 = "";
+          this.token3 = "";
+          this.token4 = "";
+          this.token5 = "";
+          this.token6 = "";
+          setTimeout(() => {
+            this.$router.push({ name: "new-password" });
+          }, 3000);
+        }
+      } catch (error) {
+        this.errorMessage = true;
+        this.messageError = error.data.message;
+        console.log(error.data.message);
+        this.token1 = "";
+        this.token2 = "";
+        this.token3 = "";
+        this.token4 = "";
+        this.token5 = "";
+        this.token6 = "";
+      }
+    },
+    closeError() {
+      this.errorMessage = false;
     },
     tabChange(val) {
       let ele = document.querySelectorAll("input");

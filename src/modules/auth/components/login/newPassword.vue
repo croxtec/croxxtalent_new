@@ -18,6 +18,7 @@
       <div class="pb-5">
         <input
           type="password"
+          v-model="new_password"
           placeholder="Enter a new password"
           class="p-2 rounded-pill border-secondary border"
         />
@@ -30,17 +31,32 @@
 </template>
 
 <script>
+import $request from "@/axios";
 export default {
   data() {
     return {
+      new_password: "",
       password: true,
       successAlert: false,
     };
   },
   methods: {
-    submitPassword() {
-      this.password = false;
-      this.successAlert = true;
+    async submitPassword() {
+      let email = localStorage.getItem("email");
+      let password_reset_code = localStorage.getItem("password_reset_code");
+      try {
+        let res = await $request.post(`/auth/reset-password`, {
+          email: email,
+          password_reset_code: password_reset_code,
+          new_password: this.new_password,
+        });
+        this.password = false;
+        this.successAlert = true;
+        localStorage.removeItem('email')
+        localStorage.removeItem('password_reset_code')
+      } catch (error) {
+        console.log(error.data.message);
+      }
     },
   },
 };

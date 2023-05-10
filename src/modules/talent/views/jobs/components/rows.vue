@@ -551,7 +551,7 @@
     font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 160%;
     color: #646868;
   }

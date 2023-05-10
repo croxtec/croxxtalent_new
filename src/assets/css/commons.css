@@ -94,6 +94,10 @@
     transform-origin: center;
 }
 
+.app--nav_items li a.router-link-border-active{
+    border: 1px solid  var(--primary-color);
+}
+
 .app-nav  .el-drawer__body {
     background-color: var(--primary-color);
 }
@@ -129,7 +133,7 @@
 .line--input {
     border: none;
     background-color: transparent;
-    border-bottom: 1px solid var(--blue-300);
+    border-bottom: 1px solid var(--blue-100);
     width: 100%;
     padding: 0.54em;
     font-size: 0.8rem;
@@ -219,7 +223,7 @@
 }
 
 .el-divider {
-    background-color: var(--blue-300) !important;
+    background-color: var(--blue-100) !important;
 }
 
 .error-404 {
