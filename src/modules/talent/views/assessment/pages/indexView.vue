@@ -8,7 +8,7 @@
         <div class="assessment my-4">
           <span class="assess">Assessment</span>
         </div>
-        <h5 class="surface my-3">Surface Cementing</h5>
+        <h5 class="surface my-3">{{ assessment.name }}</h5>
         <p class="mb-5 text-left content">
           Dropbox is looking for Brand Designer to help the team By coupling
           smart assessment protocols with our tiered Work-Experience-Model, we
@@ -19,7 +19,7 @@
         <div class="credentials mb-5 text-left">
           <div class="credential">
             <h6>Level</h6>
-            <small>Intermediate</small>
+            <small>{{ assessment.level }}</small>
           </div>
           <div class="credential">
             <h6>Date</h6>
@@ -35,7 +35,7 @@
           </div>
           <div class="credential">
             <h6>Delivery type</h6>
-            <small>Classroom</small>
+            <small>{{ assessment.delivery_type }}</small>
           </div>
         </div>
         <div class="mt-">
@@ -49,11 +49,23 @@
 </template>
 
 <script>
+import $request from "@/axios";
 export default {
   data() {
-    return {};
+    return {
+      assessment: ''
+    };
   },
   methods: {
+     getAssessment() {
+      $request.get(`/assesments/${this.$route.params.id}`).then((res) => {
+        this.assessment = res.data.data
+        const getQuestions = res.data.data.questions
+        const assessmentQuestions = JSON.stringify(getQuestions)
+        localStorage.setItem('assessmentQuestions', assessmentQuestions)
+        let que = localStorage.getItem('assessmentQuestions')
+      })
+    },
     goBack() {
       this.$router.go(-1);
     },
@@ -61,6 +73,9 @@ export default {
       this.$router.push("/quiz");
     },
   },
+  mounted () {
+    this.getAssessment()
+  }
 };
 </script>
 

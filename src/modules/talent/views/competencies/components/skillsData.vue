@@ -23,7 +23,11 @@
             </div>
 
             <div class="mt-3 d-flex align-items-center" style="gap: 20px">
-              <button class="primary--button"  @click.prevent="assessment()">Take Test</button>
+              <!-- <button class="primary--button"  @click.prevent="assessment()">Take Test</button> -->
+              <router-link :to="{ name: 'assessment', params: { id: '1382fbf7fe59bfe6bd0d297979a9853025' }}"
+                  class="primary--button"
+                  >Take Test</router-link
+                >
               <button class="primary--button_border">Preview</button>
             </div>
           </div>

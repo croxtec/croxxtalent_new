@@ -7,108 +7,108 @@
         <div
           :class="{ current: step == steps, current: step > steps - 1 }"
           class="stepper-item-counter mt-5 mx-4"
-          v-for="steps in stepper.length"
+          v-for="steps in questions.length"
           :key="steps"
         >
           <span>{{ steps }}</span>
         </div>
       </div>
-      <div class="quiz-card">
-        <h6 class="text-center my-5">What is surface cementing</h6>
-        <div class="questions" v-if="questions">
+      <div class="quiz-card" v-if="currentQuestion" :key="currentQuestion.id">
+        <h6 class="text-center my-5">{{ currentQuestion.question }}</h6>
+        <div class="questions" v-if="currentQuestion.type === 'radio'">
           <div class="container mt-4">
-            <div class="row">
-              <div class="col-sm-6">
-                <div
-                  class="mb-4 registration-options"
-                  :class="selected === '1' ? 'active' : ''"
-                  role="button"
-                  @click="selectItem('1')"
-                >
-                  <i-icon
-                    class="mr-4"
-                    :icon="
-                      selected === '1'
-                        ? 'material-symbols:check-circle-rounded'
-                        : 'mdi:checkbox-blank-circle-outline'
-                    "
-                    width="20px"
-                  />
-                  <span>I'm hiring (Employer)</span>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div
+                    class="mb-4 registration-options"
+                    :class="selected === '1' ? 'active' : ''"
+                    role="button"
+                    @click="selectItem('1')"
+                  >
+                    <i-icon
+                      class="mr-4"
+                      :icon="
+                        selected === '1'
+                          ? 'material-symbols:check-circle-rounded'
+                          : 'mdi:checkbox-blank-circle-outline'
+                      "
+                      width="20px"
+                    />
+                    <span>{{ currentQuestion.option1 }}</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div
+                    class="mb-4 registration-options"
+                    :class="selected === '2' ? 'active' : ''"
+                    role="button"
+                    @click="selectItem('2')"
+                  >
+                    <i-icon
+                      class="mr-4"
+                      :icon="
+                        selected === '2'
+                          ? 'material-symbols:check-circle-rounded'
+                          : 'mdi:checkbox-blank-circle-outline'
+                      "
+                      width="20px"
+                    />
+                    <span>{{ currentQuestion.option2 }}</span>
+                  </div>
                 </div>
               </div>
-              <div class="col-sm-6">
-                <div
-                  class="mb-4 registration-options"
-                  :class="selected === '2' ? 'active' : ''"
-                  role="button"
-                  @click="selectItem('2')"
-                >
-                  <i-icon
-                    class="mr-4"
-                    :icon="
-                      selected === '2'
-                        ? 'material-symbols:check-circle-rounded'
-                        : 'mdi:checkbox-blank-circle-outline'
-                    "
-                    width="20px"
-                  />
-                  <span>I'm hiring (Employer)</span>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div
+                    class="mb-4 registration-options"
+                    :class="selected === '3' ? 'active' : ''"
+                    role="button"
+                    @click="selectItem('3')"
+                  >
+                    <i-icon
+                      class="mr-4"
+                      :icon="
+                        selected === '3'
+                          ? 'material-symbols:check-circle-rounded'
+                          : 'mdi:checkbox-blank-circle-outline'
+                      "
+                      width="20px"
+                    />
+                    <span>{{ currentQuestion.option3 }}</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div
+                    class="mb-4 registration-options"
+                    :class="selected === '4' ? 'active' : ''"
+                    role="button"
+                    @click="selectItem('4')"
+                  >
+                    <i-icon
+                      class="mr-4"
+                      :icon="
+                        selected === '4'
+                          ? 'material-symbols:check-circle-rounded'
+                          : 'mdi:checkbox-blank-circle-outline'
+                      "
+                      width="20px"
+                    />
+                    <span>{{ currentQuestion.option4 ? currentQuestion.option4 : 'N/A'}}</span>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div
-                  class="mb-4 registration-options"
-                  :class="selected === '3' ? 'active' : ''"
-                  role="button"
-                  @click="selectItem('3')"
-                >
-                  <i-icon
-                    class="mr-4"
-                    :icon="
-                      selected === '3'
-                        ? 'material-symbols:check-circle-rounded'
-                        : 'mdi:checkbox-blank-circle-outline'
-                    "
-                    width="20px"
-                  />
-                  <span>I want to refer talents (Affiliate)</span>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div
-                  class="mb-4 registration-options"
-                  :class="selected === '4' ? 'active' : ''"
-                  role="button"
-                  @click="selectItem('4')"
-                >
-                  <i-icon
-                    class="mr-4"
-                    :icon="
-                      selected === '4'
-                        ? 'material-symbols:check-circle-rounded'
-                        : 'mdi:checkbox-blank-circle-outline'
-                    "
-                    width="20px"
-                  />
-                  <span>I'm hiring (Employer)</span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <div class="fileUpload text-center" v-if="fileUpload">
           <input type="file" name="" id="" class="input-file" />
           <p class="mt-5 font-weight-bold">Click or Drag and Drop</p>
           <small class="muted">SVG, PNG, JPG or GIF (max. 400 x 400px) </small>
         </div>
-        <div class="majorInput text-center my-5" v-if="textInput">
+        <div class="majorInput text-center my-5" v-if="currentQuestion.type === 'text'">
           <input
             type="text"
             class="textInput"
-            placeholder="Enter your job description"
+            placeholder="Enter your Answer here"
           />
         </div>
         <div class="text-center mt-3 d-flex justify-content-center">
@@ -123,7 +123,7 @@
           <button
             class="rounded-pill text-white next"
             @click="nextPage"
-            :disabled="step === 5"
+            :disabled="step === questions.length"
           >
             Next
           </button>
@@ -137,19 +137,21 @@
 export default {
   data() {
     return {
+      questions: '',
       selected: null,
       questions: true,
       fileUpload: false,
       questions: true,
       textInput: false,
       step: 1,
-      stepper: [
-        { count: 1, id: 1 },
-        { count: 2, id: 2 },
-        { count: 3, id: 3 },
-        { count: 4, id: 4 },
-        { count: 5, id: 5 },
-      ],
+      // stepper: [
+      //   { count: 1, id: 1 },
+      //   { count: 2, id: 2 },
+      //   { count: 3, id: 3 },
+      //   { count: 4, id: 4 },
+      //   { count: 5, id: 5 },
+      // ],
+      currentQuestionIndex: 0,
     };
   },
   methods: {
@@ -161,34 +163,47 @@ export default {
     },
     nextPage() {
       this.step++;
-      if (this.step === 3) {
-        this.questions = false;
-        this.fileUpload = true;
-      } else if (this.step === 4) {
-        this.fileUpload = false;
-        this.textInput = true;
+      this.currentQuestionIndex++;
+      if  (this.currentQuestionIndex === this.questions.length) {
+        this.currentQuestionIndex = 0
       }
+      // if (this.step === 3) {
+      //   this.questions = false;
+      //   this.fileUpload = true;
+      // } else if (this.step === 4) {
+      //   this.fileUpload = false;
+      //   this.textInput = true;
+      // }
     },
     previousPage() {
       this.step--;
-      if (this.step === 4) {
-        this.fileUpload = false;
-        this.textInput = true;
-      } else if (this.step === 3) {
-        this.textInput = false;
-        this.fileUpload = true;
-      } else {
-        this.fileUpload = false;
-        this.questions = true;
+      // if (this.step === 4) {
+      //   this.fileUpload = false;
+      //   this.textInput = true;
+      // } else if (this.step === 3) {
+      //   this.textInput = false;
+      //   this.fileUpload = true;
+      // } else {
+      //   this.fileUpload = false;
+      //   this.questions = true;
+      // }
+      this.currentQuestionIndex++;
+      if  (this.currentQuestionIndex === this.questions.length) {
+        this.currentQuestionIndex = 0
       }
     },
   },
   computed: {
     stepProgress() {
-      console.log(this.step);
       return (100 / 20) * (this.step - 0.28) + "%";
     },
+    currentQuestion () {
+      return this.questions[this.currentQuestionIndex]
+    }
   },
+  mounted () {
+    this.questions = JSON.parse(localStorage.getItem("assessmentQuestions"))
+  }
 };
 </script>
 
