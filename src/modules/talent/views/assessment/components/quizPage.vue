@@ -259,6 +259,7 @@ export default {
   },
   mounted() {
     const assessment = JSON.parse(localStorage.getItem("assessmentQuestions"));
+    console.log(assessment);
     this.questions = assessment.questions;
     this.assessments = assessment;
   },
@@ -266,10 +267,10 @@ export default {
 </script>
 
 <style scooped>
-html,
+/* html,
 body {
   overflow: hidden;
-}
+} */
 .overlayBackground {
   position: fixed;
   top: 0;
