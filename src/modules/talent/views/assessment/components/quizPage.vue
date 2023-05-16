@@ -13,102 +13,151 @@
           <span>{{ steps }}</span>
         </div>
       </div>
+      <!-- confirmation Modal -->
+      <div class="confirm-modal-overlay" v-if="confirmSubmission">
+        <div class="confirm-modal">
+          <img
+            src="@/assets/img/question.png"
+            alt=""
+            srcset=""
+            class="img-fluid modal-img"
+          />
+          <h4>Are you sure you want to submit?</h4>
+          <div class="button-container my-3">
+            <button class="confirm-button bg-primary" @click="confirmSubmit">
+              Submit
+            </button>
+            <button class="cancel-button bg-danger" @click="cancelSubmit">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- end of confirmation -->
+      <div class="overlayBackground" v-if="step > questions.length">
+        <div class="modalShow text-center">
+          <h4>You have gotten to the end of the assessment</h4>
+          <p class="my-3">Do you want to submit this assessment?</p>
+          <div class="text-center mt-3 d-flex justify-content-center">
+            <button
+              class="back mr-3"
+              @click="previousPage"
+              id="backButton"
+              :disabled="step === 1"
+            >
+              Back
+            </button>
+            <button
+              class="rounded-pill text-white next"
+              @click="submitAssessment"
+            >
+              Submit Assessment
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="quiz-card" v-if="currentQuestion" :key="currentQuestion.id">
         <h6 class="text-center my-5">{{ currentQuestion.question }}</h6>
         <div class="questions" v-if="currentQuestion.type === 'radio'">
           <div class="container mt-4">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div
-                    class="mb-4 registration-options"
-                    :class="selected === '1' ? 'active' : ''"
-                    role="button"
-                    @click="selectItem('1')"
-                  >
-                    <i-icon
-                      class="mr-4"
-                      :icon="
-                        selected === '1'
-                          ? 'material-symbols:check-circle-rounded'
-                          : 'mdi:checkbox-blank-circle-outline'
-                      "
-                      width="20px"
-                    />
-                    <span>{{ currentQuestion.option1 }}</span>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div
-                    class="mb-4 registration-options"
-                    :class="selected === '2' ? 'active' : ''"
-                    role="button"
-                    @click="selectItem('2')"
-                  >
-                    <i-icon
-                      class="mr-4"
-                      :icon="
-                        selected === '2'
-                          ? 'material-symbols:check-circle-rounded'
-                          : 'mdi:checkbox-blank-circle-outline'
-                      "
-                      width="20px"
-                    />
-                    <span>{{ currentQuestion.option2 }}</span>
-                  </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div
+                  class="mb-4 registration-options"
+                  :class="selected === 'option1' ? 'active' : '1'"
+                  role="button"
+                  @click="selectItem('option1')"
+                >
+                  <i-icon
+                    class="mr-4"
+                    :icon="
+                      selected === 'option1'
+                        ? 'material-symbols:check-circle-rounded'
+                        : 'mdi:checkbox-blank-circle-outline'
+                    "
+                    width="20px"
+                  />
+                  <span>{{ currentQuestion.option1 }}</span>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div
-                    class="mb-4 registration-options"
-                    :class="selected === '3' ? 'active' : ''"
-                    role="button"
-                    @click="selectItem('3')"
-                  >
-                    <i-icon
-                      class="mr-4"
-                      :icon="
-                        selected === '3'
-                          ? 'material-symbols:check-circle-rounded'
-                          : 'mdi:checkbox-blank-circle-outline'
-                      "
-                      width="20px"
-                    />
-                    <span>{{ currentQuestion.option3 }}</span>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div
-                    class="mb-4 registration-options"
-                    :class="selected === '4' ? 'active' : ''"
-                    role="button"
-                    @click="selectItem('4')"
-                  >
-                    <i-icon
-                      class="mr-4"
-                      :icon="
-                        selected === '4'
-                          ? 'material-symbols:check-circle-rounded'
-                          : 'mdi:checkbox-blank-circle-outline'
-                      "
-                      width="20px"
-                    />
-                    <span>{{ currentQuestion.option4 ? currentQuestion.option4 : 'N/A'}}</span>
-                  </div>
+              <div class="col-sm-6">
+                <div
+                  class="mb-4 registration-options"
+                  :class="selected === 'option2' ? 'active' : ''"
+                  role="button"
+                  @click="selectItem('option2')"
+                >
+                  <i-icon
+                    class="mr-4"
+                    :icon="
+                      selected === 'option2'
+                        ? 'material-symbols:check-circle-rounded'
+                        : 'mdi:checkbox-blank-circle-outline'
+                    "
+                    width="20px"
+                  />
+                  <span>{{ currentQuestion.option2 }}</span>
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div
+                  class="mb-4 registration-options"
+                  :class="selected === 'option3' ? 'active' : ''"
+                  role="button"
+                  @click="selectItem('option3')"
+                >
+                  <i-icon
+                    class="mr-4"
+                    :icon="
+                      selected === 'option3'
+                        ? 'material-symbols:check-circle-rounded'
+                        : 'mdi:checkbox-blank-circle-outline'
+                    "
+                    width="20px"
+                  />
+                  <span>{{ currentQuestion.option3 }}</span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div
+                  class="mb-4 registration-options"
+                  :class="selected === 'option4' ? 'active' : ''"
+                  role="button"
+                  @click="selectItem('option4')"
+                >
+                  <i-icon
+                    class="mr-4"
+                    :icon="
+                      selected === 'option4'
+                        ? 'material-symbols:check-circle-rounded'
+                        : 'mdi:checkbox-blank-circle-outline'
+                    "
+                    width="20px"
+                  />
+                  <span>{{
+                    currentQuestion.option4 ? currentQuestion.option4 : "N/A"
+                  }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="fileUpload text-center" v-if="fileUpload">
           <input type="file" name="" id="" class="input-file" />
           <p class="mt-5 font-weight-bold">Click or Drag and Drop</p>
           <small class="muted">SVG, PNG, JPG or GIF (max. 400 x 400px) </small>
         </div>
-        <div class="majorInput text-center my-5" v-if="currentQuestion.type === 'text'">
+        <div
+          class="majorInput text-center my-5"
+          v-if="currentQuestion.type === 'text'"
+        >
           <input
             type="text"
             class="textInput"
             placeholder="Enter your Answer here"
+            v-model="answer"
           />
         </div>
         <div class="text-center mt-3 d-flex justify-content-center">
@@ -123,7 +172,7 @@
           <button
             class="rounded-pill text-white next"
             @click="nextPage"
-            :disabled="step === questions.length"
+            :disabled="step === questions.length + 1"
           >
             Next
           </button>
@@ -134,80 +183,116 @@
 </template>
 
 <script>
+import $request from "@/axios";
 export default {
   data() {
     return {
-      questions: '',
+      confirmSubmission: false,
+      assessments: "",
+      answer: "",
+      selectedOption: "",
+      questions: [],
       selected: null,
-      questions: true,
       fileUpload: false,
-      questions: true,
       textInput: false,
       step: 1,
-      // stepper: [
-      //   { count: 1, id: 1 },
-      //   { count: 2, id: 2 },
-      //   { count: 3, id: 3 },
-      //   { count: 4, id: 4 },
-      //   { count: 5, id: 5 },
-      // ],
       currentQuestionIndex: 0,
     };
   },
   methods: {
-    closeQuiz () {
-      this.$router.go(-1)
+    closeQuiz() {
+      this.$router.go(-1);
     },
     selectItem(value) {
       this.selected = value;
     },
     nextPage() {
-      this.step++;
-      this.currentQuestionIndex++;
-      if  (this.currentQuestionIndex === this.questions.length) {
-        this.currentQuestionIndex = 0
+      this.submitQuestion();
+    },
+    submitAssessment() {
+      this.confirmSubmission = true;
+    },
+    confirmSubmit() {
+      this.closeQuiz();
+    },
+    cancelSubmit() {
+      this.previousPage()
+      this.confirmSubmission = false
+    },
+    async submitQuestion() {
+      if (this.currentQuestion.type === "radio") {
+        this.selectedOption = this.selected;
+      } else if (this.currentQuestion.type === "text") {
+        this.selectedOption = this.answer;
+      } else if (this.currentQuestion.type === "fileUpload") {
+        this.selectedOption = this.answer;
       }
-      // if (this.step === 3) {
-      //   this.questions = false;
-      //   this.fileUpload = true;
-      // } else if (this.step === 4) {
-      //   this.fileUpload = false;
-      //   this.textInput = true;
-      // }
+      const payload = {
+        assesment_id: this.assessments.id,
+        question_id: this.currentQuestion.id,
+        answer: this.selectedOption,
+      };
+      try {
+        let response = await $request.post(
+          `/assesments/talent/answer`,
+          payload
+        );
+        this.step++;
+        this.currentQuestionIndex++;
+      } catch (error) {
+        alert('please select an option')
+        console.error(error.data.message);
+      }
     },
     previousPage() {
       this.step--;
-      // if (this.step === 4) {
-      //   this.fileUpload = false;
-      //   this.textInput = true;
-      // } else if (this.step === 3) {
-      //   this.textInput = false;
-      //   this.fileUpload = true;
-      // } else {
-      //   this.fileUpload = false;
-      //   this.questions = true;
-      // }
-      this.currentQuestionIndex++;
-      if  (this.currentQuestionIndex === this.questions.length) {
-        this.currentQuestionIndex = 0
-      }
+      this.currentQuestionIndex--;
     },
   },
   computed: {
     stepProgress() {
       return (100 / 20) * (this.step - 0.28) + "%";
     },
-    currentQuestion () {
-      return this.questions[this.currentQuestionIndex]
-    }
+    currentQuestion() {
+      return this.questions[this.currentQuestionIndex];
+    },
   },
-  mounted () {
-    this.questions = JSON.parse(localStorage.getItem("assessmentQuestions"))
-  }
+  mounted() {
+    const assessment = JSON.parse(localStorage.getItem("assessmentQuestions"));
+    this.questions = assessment.questions;
+    this.assessments = assessment;
+  },
 };
 </script>
 
 <style scooped>
+html,
+body {
+  overflow: hidden;
+}
+.overlayBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modalShow {
+  background-color: #fff;
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
 .center {
   margin: auto;
   margin-top: 130px;
@@ -318,7 +403,61 @@ export default {
   right: 90px;
   top: 40px;
   font-size: 30px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
+}
+.confirm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999999;
+}
+
+.confirm-modal {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  /* background-color: #007bff; */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  /* background-color: #0056b3; */
+}
+.modal-img {
+  height: 100px;
 }
 </style>

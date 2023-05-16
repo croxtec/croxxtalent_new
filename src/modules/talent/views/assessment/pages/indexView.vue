@@ -60,7 +60,7 @@ export default {
      getAssessment() {
       $request.get(`/assesments/${this.$route.params.id}`).then((res) => {
         this.assessment = res.data.data
-        const getQuestions = res.data.data.questions
+        const getQuestions = res.data.data
         const assessmentQuestions = JSON.stringify(getQuestions)
         localStorage.setItem('assessmentQuestions', assessmentQuestions)
         let que = localStorage.getItem('assessmentQuestions')
