@@ -287,9 +287,8 @@ export default {
     },
     confirmSubmit() {
       let id = this.assessments.id
-      console.log(id)
       $request.patch(`/assesments/${id}/talent/publish`)
-      // this.closeQuiz();
+      this.closeQuiz();
     },
     cancelSubmit() {
       this.previousPage();
