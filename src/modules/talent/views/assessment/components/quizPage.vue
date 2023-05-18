@@ -144,10 +144,19 @@
             </div>
           </div>
         </div>
-        <div class="fileUpload text-center" v-if="fileUpload">
-          <input type="file" name="" id="" class="input-file" />
+        <div
+          class="fileUpload text-center"
+          v-if="currentQuestion.type === 'file'"
+        >
+          <input
+            type="file"
+            accept="*/*"
+            class="input-file"
+            @change="handleFileUpload"
+          />
           <p class="mt-5 font-weight-bold">Click or Drag and Drop</p>
           <small class="muted">SVG, PNG, JPG or GIF (max. 400 x 400px) </small>
+          <h4 v-if="fileName">{{ fileName }}</h4>
         </div>
         <div
           class="majorInput text-center my-5"
@@ -160,7 +169,52 @@
             v-model="answer"
           />
         </div>
-        <div class="text-center mt-3 d-flex justify-content-center">
+        <div
+          class="majorInput text-center my-5"
+          v-if="currentQuestion.type === 'reference'"
+        >
+          <input
+            type="url"
+            class="textInput"
+            placeholder="Enter link here"
+            v-model="urlLink"
+          />
+        </div>
+        <div v-if="currentQuestion.type === 'checkbox'">
+          <div class="grid-container">
+            <div
+              v-for="(option, index) in options"
+              :key="index"
+              class="grid-item"
+              @click="toggleCheckbox(index)"
+            >
+              <div :class="['checkbox', { checked: option.checked }]">
+                <input
+                  type="checkbox"
+                  :id="option.id"
+                  :name="option.name"
+                  v-model="option.checked"
+                />
+              </div>
+              <label :for="option.id" class="checkbox-label">{{
+                option.id === "option1"
+                  ? currentQuestion.option1
+                  : option.id === "option2"
+                  ? currentQuestion.option2
+                  : option.id === "option3"
+                  ? currentQuestion.option3
+                  : option.id === "option4"
+                  ? currentQuestion.option4
+                  : "no option"
+              }}</label>
+            </div>
+          </div>
+        </div>
+        <div class="text--center justify-content-center d-flex align-items-center" v-if="loader">
+          <img src="@/assets/img/loaderSession.gif" class="nextLoader" />
+          loading next question
+        </div>
+        <div class="text-center mt-3 d-flex justify-content-center" v-if="loader == false">
           <button
             class="back mr-3"
             @click="previousPage"
@@ -187,21 +241,40 @@ import $request from "@/axios";
 export default {
   data() {
     return {
+      options: [
+        { id: "option1", name: "option1", label: "Option 1", checked: false },
+        { id: "option2", name: "option2", label: "Option 2", checked: false },
+        { id: "option3", name: "option3", label: "Option 3", checked: false },
+        { id: "option4", name: "option4", label: "Option 4", checked: false },
+      ],
       confirmSubmission: false,
       assessments: "",
       answer: "",
-      selectedOption: "",
+      selectedOption: [],
       questions: [],
       selected: null,
-      fileUpload: false,
-      textInput: false,
+      fileName: "",
+      fileUpload: [],
+      urlLink: "",
       step: 1,
       currentQuestionIndex: 0,
+      checkedOptions: [],
+      loader: false,
     };
   },
   methods: {
+    handleFileUpload(event) {
+      const file = event.target.files[0];
+      this.fileName = file.name;
+      const formData = new FormData();
+      formData.append('file', file)
+      this.fileUpload = formData.get('file');
+    },
     closeQuiz() {
       this.$router.go(-1);
+    },
+    toggleCheckbox(index) {
+      this.options[index].checked = !this.options[index].checked;
     },
     selectItem(value) {
       this.selected = value;
@@ -213,19 +286,26 @@ export default {
       this.confirmSubmission = true;
     },
     confirmSubmit() {
-      this.closeQuiz();
+      let id = this.assessments.id
+      console.log(id)
+      $request.patch(`/assesments/${id}/talent/publish`)
+      // this.closeQuiz();
     },
     cancelSubmit() {
-      this.previousPage()
-      this.confirmSubmission = false
+      this.previousPage();
+      this.confirmSubmission = false;
     },
     async submitQuestion() {
       if (this.currentQuestion.type === "radio") {
         this.selectedOption = this.selected;
       } else if (this.currentQuestion.type === "text") {
         this.selectedOption = this.answer;
-      } else if (this.currentQuestion.type === "fileUpload") {
-        this.selectedOption = this.answer;
+      } else if (this.currentQuestion.type === "file") {
+        this.selectedOption = this.fileUpload;
+      } else if (this.currentQuestion.type === "reference") {
+        this.selectedOption = this.urlLink;
+      } else if (this.currentQuestion.type === "checkbox") {
+        this.selectedOption = this.checkedOptions;
       }
       const payload = {
         assesment_id: this.assessments.id,
@@ -233,14 +313,16 @@ export default {
         answer: this.selectedOption,
       };
       try {
+        this.loader = true;
         let response = await $request.post(
           `/assesments/talent/answer`,
-          payload
+          payload, { headers: { 'Content-Type': 'multipart/form-data'}}
         );
         this.step++;
         this.currentQuestionIndex++;
+        this.loader = false
       } catch (error) {
-        alert('please select an option')
+        alert("please select an option");
         console.error(error.data.message);
       }
     },
@@ -263,14 +345,24 @@ export default {
     this.questions = assessment.questions;
     this.assessments = assessment;
   },
+  watch: {
+    options: {
+      handler(newOptions) {
+        const selectedOptionNames = newOptions
+          .filter((option) => option.checked)
+          .map((option) => option.name);
+        this.checkedOptions = selectedOptionNames;
+      },
+      deep: true,
+    },
+  },
 };
 </script>
 
 <style scooped>
-/* html,
-body {
-  overflow: hidden;
-} */
+.nextLoader {
+  height: 100px;
+}
 .overlayBackground {
   position: fixed;
   top: 0;
@@ -445,7 +537,6 @@ p {
 }
 
 button {
-  /* background-color: #007bff; */
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -455,10 +546,59 @@ button {
   margin-right: 10px;
 }
 
-button:hover {
-  /* background-color: #0056b3; */
-}
 .modal-img {
   height: 100px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 20px;
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.grid-item:hover {
+  background-color: #e8e8e8;
+}
+
+.checkbox-label {
+  margin-left: 10px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+}
+.checkbox.checked {
+  background-color: #2196f3;
+  border-color: #2196f3;
+}
+
+.checkbox.checked::after {
+  content: "\2713";
+  font-size: 14px;
+  color: #fff;
+  position: absolute;
+  top: 1px;
+  left: 4px;
 }
 </style>
