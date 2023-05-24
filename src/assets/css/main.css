@@ -18,6 +18,9 @@
 /* Profile CSS  */
 @import url("../css/profile.css");
 
+/* Profile CSS  */
+@import url("../css/components.css");
+
 /* Animations  */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 @import url("../css/wickedcss.css");
