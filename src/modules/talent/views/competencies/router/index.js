@@ -47,7 +47,7 @@ const routes = [
   },
 
   {
-    path: "/manage-assessment",
+    path: "/manage-assessment/:id",
     component: ManageAssesment,
     name: "manage-assessment",
     meta: {

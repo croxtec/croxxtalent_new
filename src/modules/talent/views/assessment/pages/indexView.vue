@@ -10,11 +10,12 @@
         </div>
         <h5 class="surface my-3">{{ assessment.name }}</h5>
         <p class="mb-5 text-left content">
-          Dropbox is looking for Brand Designer to help the team By coupling
+          {{ assessment.description  }}
+          <!-- Dropbox is looking for Brand Designer to help the team By coupling
           smart assessment protocols with our tiered Work-Experience-Model, we
           are able to drive deep data profiling on every individual in our
           ecosystem, to make intelligent matching decisions for companies across
-          the world. ...
+          the world. ... -->
         </p>
         <div class="credentials mb-5 text-left">
           <div class="credential">

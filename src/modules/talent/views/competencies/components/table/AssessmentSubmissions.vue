@@ -47,6 +47,12 @@
                   <h6 class="cell-header">Mon, 12/02/ 2023</h6>
                 </div>
               </td>
+              <td>
+                <div class="td">
+                  <h6 class="cell-content">Status</h6>
+                  <h6 class="cell-header">20% Completed</h6>
+                </div>
+              </td>
               <td class="text-right">
                 <button
                   class="button primary-btn py-2"
