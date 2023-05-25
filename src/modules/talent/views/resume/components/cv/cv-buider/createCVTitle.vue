@@ -88,7 +88,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState("configurations", {
+    ...mapState("config", {
       industries: (state) => state.industries,
       job_titles: (state) => state.job_titles,
     }),
