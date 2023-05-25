@@ -177,7 +177,6 @@ export default {
         console.log(error);
       }
     },
-
    
 
     // get Countries

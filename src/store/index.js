@@ -7,6 +7,9 @@ import Vuex from "vuex";
 import auth from "@/modules/auth/store/index";
 import home from "@/modules/landing/store/index";
 
+// 
+import manager from "@/modules/talent//views/competencies/store/manager"
+
 // Configurations
 import config from "./configurations";
 
@@ -28,6 +31,10 @@ export default new Vuex.Store({
     auth,
     home,
     config,
+
+    // CV
     cvEducation,
+    manager
+
   },
 });

@@ -177,7 +177,7 @@ export default {
     },
   },
   computed: {
-    ...mapState("configurations", {
+    ...mapState("config", {
       degrees: (state) => state.degrees,
       course_of_studies: (state) => state.course_of_studies,
       countries: (state) => state.countries,
