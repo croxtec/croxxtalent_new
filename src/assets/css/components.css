@@ -1,0 +1,254 @@
+/* CONTAINERS  */
+.spacer {
+    padding: 1.4rem 1.4rem;
+}
+
+.gapper {
+    padding: 1rem 1rem;
+}
+
+/* FORMS  */
+/* Search Field  */
+.search-area {
+    border: 1px solid var(--blue-200);
+    border-radius: 20px;
+    display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
+    gap: 5px;
+    align-items: center;
+    padding-left: 20px;
+    width: 100%;
+}
+
+.search-area input {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    padding: 8px 10px;
+    outline: none;
+    font-size: 14px;
+    color: var(--gray-800);
+    font-weight: 400;
+}
+
+.search-field label {
+    font-size: 14.5px;
+}
+
+
+.search-area input::placeholder {
+    color: var(--gray-500);
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.search-icon {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--gray-500);
+}
+
+.input-field {
+    border: 1px solid var(--gray-400);
+    display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
+    /* gap: 5px; */
+    padding-left: 10px;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    font-weight: 400;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.input-field input::placeholder {
+    color: var(--gray-500);
+    font-weight: 300;
+    font-size: 14.5px;
+}
+
+.input-field .form-icon {
+    color: var(--gray-500);
+    font-size: 20px;
+}
+
+label {
+    font-size: 13px;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+select,
+input, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font-weight: 400;
+    outline: none;
+    border: 1px solid var(--blue-200);
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: 14px;
+}
+
+input::placeholder, textarea::placeholder {
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.form-data {
+    display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 60%;
+    /* align-items: center; */
+    margin: 30px auto;
+}
+
+option:disabled {
+    /* color:  red; */
+}
+
+
+/* Filter  */
+#filter-data {
+    width: 280px;
+    background-color: var(--white-50);
+    box-shadow: var(--elevation-1);
+    height: 90vh;
+    overflow-y: auto;
+
+}
+
+#filter-data input,
+#filter-data select {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--gray-400);
+    border-radius: 6px;
+    background-color: var(--white-50);
+    outline: none;
+    color: var(--gray-700);
+    font-weight: 400;
+    font-size: 15px;
+}
+
+#filter-data input::placeholder #filter-data label {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 3px;
+}
+
+#filter-data input {
+    padding: 8px 10px;
+}
+
+#filter-data select {
+    padding: 11px 10px;
+}
+
+/* TABLE  */
+.table td,
+.table th {
+    /* border-top: none; */
+    /* border-bottom: none; */
+    font-size: 14px;
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+.table td {
+    color: var(--gray-800);
+    font-weight: 300;
+    border-bottom: 0.5px solid var(--gray-300);
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.table thead th {
+    border-bottom: none;
+    color: var(--white-50) !important;
+    background-color: var(--blue-500);
+}
+
+.table-data {
+    border: 1px solid var(--blue-200);
+    border-radius: 35px;
+}
+
+.t-info {
+    border-color: var(--blue-200);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 35px;
+    padding: 30px 20px;
+}
+
+/* .t-body {
+    display: flex;
+    display: -webkit-flex;
+    display: inline-flex;
+    gap: 20px;
+    flex-direction: column;
+} */
+
+.t-row {
+    display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.t-row .main-table,
+.t-row .table-details {
+    width: 100%;
+    display: grid;
+    display: -ms-grid;
+    display: -moz-grid;
+    gap: 20px;
+}
+
+.t-row .main-table {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.t-row .table-details {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.t-body img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -o-object-fit: contain;
+    object-fit: cover;
+    object-position: center;
+    -o-object-position: center;
+}
+
+.cell-header {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray-500);
+}
+
+.cell-content {
+    font-size: 14px;
+    font-weight: 500;
+    
+}
+
+
+

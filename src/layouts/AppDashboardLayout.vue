@@ -20,7 +20,7 @@ export default {
   name: "DashboardLayout",
   components: { TalentNav },
   methods: {
-    ...mapActions("configurations", [
+    ...mapActions("config", [
       "getCountries",
       "getCourses",
       "getJobTitles",

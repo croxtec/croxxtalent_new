@@ -19,37 +19,41 @@
         <form @submit.prevent="alert('Form Submitted')">
           <div class="mb-3">
             <label for="">Domain</label>
-            <select name="" id="">
-              <option value="" selected disabled>Domain</option>
-              <option value="">Value 1</option>
-              <option value="">Value 2</option>
+            <select @change="selectDomain()" v-model="form.domain_id">
+              <option value="" selected >Select Doamin</option>
+              <option :value="item.id" v-for="item in domains" :key="item.id">
+                {{ item.name }}
+              </option>
             </select>
           </div>
 
           <div class="mb-3">
             <label for="">Core</label>
-            <select name="" id="">
-              <option value="" selected disabled>Core</option>
-              <option value="">Value 1</option>
-              <option value="">Value 2</option>
+            <select @change="selectCore()" v-model="form.core_id">
+              <option value="" selected >Select Core</option>
+              <option :value="item.id" v-for="item in cores" :key="item.id">
+                {{ item.name }}
+              </option>
             </select>
           </div>
 
           <div class="mb-3">
             <label for="">Skills</label>
-            <select name="" id="">
-              <option value="" selected disabled>Skills</option>
-              <option value="">Value 1</option>
-              <option value="">Value 2</option>
+            <select v-model="form.skill_id">
+              <option value="" selected disabled>Select Skill</option>
+              <option :value="item.id" v-for="item in skills" :key="item.id">
+                {{ item.name }}
+              </option>
             </select>
           </div>
 
           <div class="mb-3">
             <label for="">Level</label>
-            <select name="" id="">
-              <option value="" selected disabled>Level</option>
-              <option value="">Value 1</option>
-              <option value="">Value 2</option>
+            <select v-model="form.level">
+              <option value="-" selected disabled>Select Level</option>
+              <option :value="item.value" v-for="item in levels" :key="item.id">
+                {{ item.name }}
+              </option>
             </select>
           </div>
         </form>
@@ -69,7 +73,64 @@
 </template>
 
 <script>
-export default {};
+import { mapState, mapActions } from "vuex";
+
+export default {
+ 
+  data() {
+    return {
+      form: {
+        domain_id: '',
+        core_id:'',
+        skill_id: '',
+        level: 'beginner',
+      }
+    }
+  },   
+  
+  methods: {
+    ...mapActions("config", ["getDomains","getCore","getSkills"]),
+    selectDomain() { 
+      console.log(this.form.domain_id)
+      this.getCore(this.form.domain_id)
+    },
+
+    selectCore() {
+      this.getSkills(this.form.core_id)
+    },
+
+    // goToNext() {
+    //   let payload = {
+    //     skill: this.skill,
+    //     core: this.core,
+    //     delivery: this.delivery,
+    //     level: this.level,
+    //     assessment_name: this.assessment_name,
+    //     category: this.category,
+    //     domain: this.domain
+    //   };
+    //   console.log(payload);
+    //   this.$store.commit("assessmentDetails/SET_DETAILS", payload);
+    //   this.$emit("next");
+    // }
+  },
+
+  mounted() {
+    this.getDomains()
+  },
+
+  computed: {
+    ...mapState("config", {
+      domains: (state) => state.domains,
+      levels: (state) => state.levels,
+      delivery_type: (state) => state.delivery_type,
+      categories: (state) => state.categories,
+      cores: (state) => state.cores,
+      skills: (state) => state.skills
+    }),
+  }
+
+};
 </script>
 
 <style></style>

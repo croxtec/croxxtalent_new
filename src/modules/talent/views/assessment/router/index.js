@@ -3,7 +3,7 @@ const Quiz = () => import("../components/quizPage.vue");
 
 const routes = [
   {
-    path: "/assessment",
+    path: "/assessment/:id",
     name: "assessment",
     component: Home,
     meta: {

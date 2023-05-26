@@ -129,14 +129,13 @@
               <div
                 class="bg-percent my-4 mb-5 px-3 py-2 rounded-pill text-center"
               >
-                <span>0% complete</span> <br />
+                <span>0% completetttt</span> <br />
                 <progress value="0" max="100"></progress>
               </div>
               <div class="d-flex">
-                <span
+                <router-link :to="{ name: 'assessment', params: { id: dhjfjfjjfjghhjfjjf}}"
                   class="btn btn-primary rounded-pill mr-2"
-                  @click.prevent="assessment()"
-                  >Take Test</span
+                  >Take Testkkk</router-link
                 >
                 <span
                   class="btn border border-primary text-primary rounded-pill"
@@ -147,7 +146,7 @@
           </div>
           <div class="card col-sm m-3 rounded" style="width: 18rem">
             <div class="card-body">
-              <h6 class="card-title mb-3">Production cementing</h6>
+              <h6 class="card-title mb-3">Production cementingkkkk</h6>
               <span
                 class="px-3 py-1 text-primary border border-primary rounded-pill"
                 >Basic</span
@@ -361,7 +360,7 @@ export default {
   },
   methods: {
     assessment() {
-      this.$router.push("/assessment");
+      this.$router.push({name: 'assessment', params: {id: "fsdfjdsfbnsdbfjdfbdfhsfbsjd"}});
     },
     addCompetenceModal() {
       this.CompetenceModal = true;

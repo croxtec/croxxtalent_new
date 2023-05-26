@@ -214,7 +214,7 @@ body {
     color: #fff;
 }
 
-.primary--button {
+.primary-btn , .primary--button {
     background-color: var(--primary-color);
     padding: 10px 40px;
     color: #fff;
@@ -333,7 +333,7 @@ button.in-active {
     border-radius: 3px;
 }
 
-.table td,
+/* .table td,
 .table th {
     border-top: none;
     border-bottom: none;
@@ -342,7 +342,7 @@ button.in-active {
 }
 
 .table td {
-    /* color: var(--main-color); */
+    color: var(--main-color);
     border-bottom: 1px solid var(--gray-300);
     font-weight: 400;
     font-size: 0.85rem;
@@ -353,9 +353,9 @@ button.in-active {
 }
 
 .table thead th {
-    /* border-bottom: none; */
+    border-bottom: none;
     color: var(--gray-500) !important;
-}
+} */
 
 .other--tables .table thead th {
     border-bottom: 1px solid var(--gray-300);
