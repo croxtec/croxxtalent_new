@@ -25,7 +25,7 @@
       <div  class="d-flex flex-column" style="gap: 20px">
         <div class="table-responsive">
           <table class="table table-centered table-nowrap">
-            <tr v-for="item in 6" :key="item">
+            <tr v-for="item in summaries.data" :key="item.id">
               <td>
                 <div class="d-flex align-items-center" style="gap: 15px">
                   <img src="https://menofvalue.com/wp-content/uploads/2015/04/bigstock-Skeptical-74315989-e1438791711725.jpg" alt="" style="" />
@@ -54,7 +54,7 @@
                 </div>
               </td>
               <td class="text-right">
-                <button
+                <button @click="gotoMarkAssesment(item)"
                   class="button primary-btn py-2"
                   style="width: max-content"
                 >
@@ -71,21 +71,39 @@
 
 <script>
 import { sliceHash } from "@/filter";
-import { mapState } from "vuex";
+import { mapState, mapActions } from 'vuex'
+
 export default {
   data() {
     return {
+      code: this.$route.params.id,
       details: false,
       sliceHash,
     };
   },
+
   computed: {
-    ...mapState("job_codes", {
-      results: (state) => state.results,
+    ...mapState("manager", {
+      assessment: (state) => state.assessment,
+      summaries: (state) => state.summaries,
       loading: (state) => state.loading,
       error: (state) => state.error,
     }),
   },
+
+  methods: {
+    ...mapActions("manager", ["getAssesmentSummaries"]),
+
+    gotoMarkAssesment(item){
+      this.$router.push({name: 'mark-assessment', params: {id: item.assesment_code.code}});
+    }
+  },
+
+  mounted(){
+    this.getAssesmentSummaries(1).then(() =>{
+      this.$route.meta.header = `${this.assessment?.name} - (${this.assessment.level})`;
+    });
+  }
 };
 </script>
 

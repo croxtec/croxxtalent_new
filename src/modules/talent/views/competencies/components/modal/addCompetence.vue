@@ -16,7 +16,7 @@
           <i-icon icon="teenyicons:search-outline" />
           <input type="search" placeholder="Search domain, core, skills" />
         </div>
-        <form @submit.prevent="alert('Form Submitted')">
+        <form @submit.prevent="createRecord()">
           <div class="mb-3">
             <label for="">Domain</label>
             <select @change="selectDomain()" v-model="form.domain_id">
@@ -63,10 +63,10 @@
         class="mt-2 modal-actions d-flex align-items-center justify-content-center"
         style="gap: 10px"
       >
-        <button class="primary--button" @click="$emit('add-competence')">
+        <button class="primary--button" type="submit" >
           Add Competence
         </button>
-        <!-- <button class="error-btn" @click="$emit('retry')">Try Again</button> -->
+        <!-- @click="$emit('add-competence')"<button class="error-btn" @click="$emit('retry')">Try Again</button> -->
       </div>
     </div>
   </div>
@@ -90,8 +90,8 @@ export default {
   
   methods: {
     ...mapActions("config", ["getDomains","getCore","getSkills"]),
+    
     selectDomain() { 
-      console.log(this.form.domain_id)
       this.getCore(this.form.domain_id)
     },
 
@@ -99,20 +99,13 @@ export default {
       this.getSkills(this.form.core_id)
     },
 
-    // goToNext() {
-    //   let payload = {
-    //     skill: this.skill,
-    //     core: this.core,
-    //     delivery: this.delivery,
-    //     level: this.level,
-    //     assessment_name: this.assessment_name,
-    //     category: this.category,
-    //     domain: this.domain
-    //   };
-    //   console.log(payload);
-    //   this.$store.commit("assessmentDetails/SET_DETAILS", payload);
-    //   this.$emit("next");
-    // }
+    createRecord(){
+      console.log(this.form);
+      // this.$store.dispatch("r/storeSkills", payload).then(() => {
+      //     // this.recordsLoading = false;
+      // });  
+
+    }
   },
 
   mounted() {

@@ -1,12 +1,27 @@
 <template>
   <div class="skills">
     <el-collapse v-model="activeNames" @change="handleChange">
-      <el-collapse-item title="Well Services" name="1">
-        <div>
+      <el-collapse-item v-for="(domain, key_domain) in skills" :key="domain.name" :title="domain.name" :name="key_domain">
           <div class="skill-header">
-            <span v-for="item in skillsArr" :key="item">{{ item }}</span>
+            <div class="skills-list" :id="key_domain">
+              <span
+                role="button"
+                @click="switchActive(key_domain, key_core)"
+                :class="{ active: competency[key_domain]?.activeCore === key_core }"
+                v-for="(core, key_core) in domain.core"
+                :key="key_core"
+                > {{ core.name }} </span
+              >
+            </div>
+            <div class="arrows">
+              <span class="left-arrow" role="button" @click="scrollButton('left', key_domain)" @mousedown="scrollButton('left', key_domain)">
+                <i-icon icon="prime:angle-left" width="25px" />
+              </span>
+              <span class="right-arrow" role="button" @click="scrollButton('right', key_domain)" @mousedown="scrollButton('right', key_domain)">
+                <i-icon icon="prime:angle-right" width="25px" />
+              </span>
+            </div>
           </div>
-        </div>
         <div class="skills-content mt-3">
           <div class="skills-data">
             <div>
@@ -32,10 +47,10 @@
             </div>
           </div>
 
-          <div class="skills-data">
+          <div class="skills-data"  v-for="skill in domain.core[ competency[key_domain]?.activeCore ]?.skills" :key="skill.id">
             <div>
-              <h5>Bridge Cementing</h5>
-              <span class="accessment-status mt-2">Basic</span>
+              <h5> {{ skill.skill_name  }} </h5>
+              <span class="accessment-status mt-2" v-text="skill.level"></span>
             </div>
             <div class="assesement-completed level-excellent mt-2">
               <div class="assesement-grade">
@@ -59,100 +74,6 @@
             </div>
           </div>
 
-          <div class="skills-data">
-            <div>
-              <h5>Surface Cementing</h5>
-              <span class="accessment-status mt-2">Expert</span>
-            </div>
-            <img
-              src="@/assets/img/Croxx Badge.png"
-              width="120"
-              alt=""
-              class="mt-2"
-            />
-            <div class="mt-3 d-flex align-items-center" style="gap: 20px">
-              <!-- <button class="primary--button">Download Badge</button> -->
-              <button class="primary--button_border">Preview</button>
-            </div>
-          </div> 
-        </div>
-      </el-collapse-item>
-
-      <el-collapse-item title="Rig Operations" name="2">
-        <div>
-          <div class="skill-header">
-            <span v-for="item in skillsArr" :key="item">{{ item }}</span>
-          </div>
-        </div>
-        <div class="skills-content mt-3">
-          <div class="skills-data">
-            <div>
-              <h5>Drill a stand</h5>
-            </div>
-            <div class="d-flex align-items-center" style="gap: 10px">
-              <img
-                src="@/assets/img/Croxx Badge.png"
-                width="120"
-                alt=""
-                class="mt-2"
-              />
-              <span class="expiring-soon">
-                <span>
-                  <i-icon
-                    class="text-danger"
-                    width="30px"
-                    icon="ri:alarm-warning-fill"
-                  />
-                </span>
-                <span class="expiring-soon-text">Expiring Soon</span>
-              </span>
-            </div>
-            <div class="mt-3">
-              <button class="primary--button">Download</button>
-            </div>
-          </div>
-          
-          <div class="skills-data">
-            <div>
-              <h5>BHA Handling</h5>
-            </div>
-            <span class="expiring-soon">
-              <span class="pending-icon">
-                <i-icon width="30px" icon="bx:refresh" />
-              </span>
-              <span class="expiring-soon-text">Pending review</span>
-            </span>
-            <div class="mt-3 d-flex align-items-center" style="gap: 20px">
-              <button class="primary--button" @click.prevent="assessment()">Take Test</button>
-              <button class="primary--button_border">Interview</button>
-            </div>
-          </div>
-          <div class="skills-data">
-            <div>
-              <h5>Drill a stand</h5>
-            </div>
-            <div class="d-flex align-items-center" style="gap: 10px">
-              <img
-                src="@/assets/img/Croxx Badge.png"
-                width="120"
-                alt=""
-                class="mt-2"
-              />
-              <span class="expiring-soon bg-danger">
-                <span>
-                  <i-icon
-                    class="text-white"
-                    width="30px"
-                    icon="ic:round-warning-amber"
-                  />
-                </span>
-                <span class="expiring-soon-text text-white">Expired</span>
-              </span>
-            </div>
-            <div class="mt-3">
-              <button class="primary--button">Download</button>
-            </div>
-          </div>
         </div>
       </el-collapse-item>
     </el-collapse>
@@ -160,30 +81,42 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   data() {
     return {
-      activeNames: ["1", "2"],
+      activeNames: [0, 1, 2],
       customColor: "#0040A1",
       percentage: 30,
-      skillsArr: [
-        "Cementing jobs",
-        "Stimulation equipment",
-        "Auxiliary equipment",
-        "Cementing equipment",
-        "Down-holes tools",
-        "Pressure jobs",
-      ],
+      competency: []
     };
   },
   methods: {
+    ...mapActions("competencies", ["getCompetencySkills"]),
+
     handleChange(val) {
       console.log(val);
     },
     assessment() {
       this.$router.push("/assessment");
     },
+    switchActive(domainId, item) {
+      this.competency[domainId].activeCore = item
+    },
   },
+
+  computed: {
+    ...mapState("competencies", {
+      skills: (state) => state.skills
+    })
+  },
+
+  mounted(){
+    this.getCompetencySkills().then(()=> {
+      this.skills.map(() =>  this.competency.push({ activeCore: 0  }));
+    })
+  }
 };
 </script>
 

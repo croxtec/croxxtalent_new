@@ -2,7 +2,8 @@
   
   <div class="pb-4">
     <competences-header />
-
+    
+    {{ experience  }}
     <div class="mt-4">
       <div class="skills">
         <el-collapse v-model="activeNames" @change="handleChange">
@@ -133,6 +134,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import competencesHeader from "../components/competencesHeader.vue";
 
 
@@ -154,11 +156,25 @@ export default {
       ],
     };
   },
+
   methods: {
+    ...mapActions("competencies", ["getCompetencyExperience"]),
+
     handleChange(val) {
       console.log(val);
     },
   },
+
+  computed: {
+    ...mapState("competencies", {
+      experience: (state) => state.experience
+    })
+  },
+
+  mounted(){
+    this.getCompetencyExperience()
+  }
+
 };
 </script>
 
