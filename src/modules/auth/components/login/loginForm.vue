@@ -116,8 +116,8 @@ export default {
               let company = this.user.company_name
               let sessionId = window.btoa(this.credentials.password)
               let UserId = window.btoa(this.credentials.login)
-              // window.open(`http://localhost:8081/redirecting?userType=${type}&sessionId=${sessionId}&userID=${UserId}&company=${company}`, "_blank");
-              window.open(`https://croxxtalent-employers.netlify.app/redirecting?userType=${type}&sessionId=${sessionId}&userID=${UserId}&company=${company}`, "_blank");
+              // window.open(`http://localhost:8081/redirecting?userType=${type}&sessionId=${sessionId}&userID=${UserId}&company=${company}`, "_blank"); 
+              window.open(`https://croxxtalent-employers.netlify.app/redirecting?userType=${type}&sessionId=${sessionId}&userID=${UserId}&company=${company}`, "_blank"); 
             }
           }
         }
