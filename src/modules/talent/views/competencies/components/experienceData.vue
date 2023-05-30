@@ -8,7 +8,7 @@
       <div class="skills">
         <el-collapse v-model="activeNames" @change="handleChange">
           <el-collapse-item  v-for="(employee, key) in experience" :key="employee.id"
-            :title="employee.employer.name +' - '+ employee.job_code.job_title " :name="key">
+            :title="employee.employer.company_name +' - '+ employee.job_code.job_title " :name="key">
             
             <div class="skills-content mt-3">
               <div class="skills-data col-4" v-for="skill in employee.competence" :key="skill.id">
