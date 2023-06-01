@@ -57,17 +57,17 @@
                 <button @click="gotoMarkAssessment(item)"
                   class="button primary-btn py-2"
                   style="width: max-content"
-                  v-if="item.is_published === 0"
                 >
                   Mark Test
                 </button>
-                <button @click="viewScore(item)"
+                <!-- v-if="item.is_published === 0" -->
+                <!-- <button @click="viewScore(item)"
                   class="button primary-btn py-2"
                   style="width: max-content"
                   v-else
                 >
                   View Score
-                </button>
+                </button> -->
               </td>
             </tr>
           </table>
