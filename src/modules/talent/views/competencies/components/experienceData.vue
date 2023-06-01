@@ -3,20 +3,23 @@
   <div class="pb-4">
     <competences-header />
     
-    {{ experience  }}
-    <div class="mt-4">
+    <!-- {{ experience  }} -->
+    <div class="mt-4" v-if="experience">
       <div class="skills">
         <el-collapse v-model="activeNames" @change="handleChange">
-          <el-collapse-item title="Well Services" name="1">
+          <el-collapse-item  v-for="(employee, key) in experience" :key="employee.id"
+            :title="employee.employer.company_name +' - '+ employee.job_code.job_title " :name="key">
+            
             <div class="skills-content mt-3">
-              <div class="skills-data">
+              <div class="skills-data col-4" v-for="skill in employee.competence" :key="skill.id">
+  
                 <div>
-                  <h5>Bridge Cementing</h5>
+                  <h5>{{ skill.name }}</h5>
                 </div>
-                <div class="assesement-completed level-poor mt-2">
-                  <div class="assesement-grade">
+                <div class="assesement-completed level-poor mt-2" v-if="skill.score_average > 1">
+                  <div class="assesement-grade" >
                     <div class="w-75 d-flex"> 
-                      <span class="info">Completed</span>  
+                      <span class="info"> Completed </span>  
                       <span class="split score-poor"></span>
                     </div>
                     <div class="w-25"> 
@@ -28,12 +31,30 @@
                       </div>
                     </div>
                   </div>
+                  
                 </div>
-                <div class="mt-3 d-flex align-items-center">
+                <div class="assesement-level mt-2" v-else>
+                <span>0% Complete</span>
+                <el-progress
+                  :percentage="percentage"
+                  :color="customColor"
+                  :show-text="false"
+                ></el-progress>
+              </div>
+                <!-- <div class="mt-3 d-flex align-items-center">
                   <button class="primary--button_border">Preview</button>
+                </div> -->
+                <div class="mt-3 d-flex align-items-center" style="gap: 20px">
+                  <!-- <button class="primary--button"  @click.prevent="assessment()">Take Test</button> -->
+                  <router-link :to="{ name: 'assessment', params: { id: skill.code }}"
+                      class="primary--button"
+                      >Complete Task</router-link
+                    >
+                  <!-- <button class="primary--button_border">Preview</button> -->
                 </div>
               </div>
-              <div class="skills-data">
+
+              <!-- <div class="skills-data col-4">
                 <div>
                   <h5>Surface Cementing</h5>
                 </div>
@@ -49,7 +70,8 @@
                   <button class="primary--button">Complete task</button>
                 </div>
               </div>
-              <div class="skills-data">
+
+              <div class="skills-data col-4">
                 <div>
                   <h5>Surface Cementing</h5>
                 </div>
@@ -64,67 +86,7 @@
                 <div class="mt-3">
                   <button class="primary--button">Complete task</button>
                 </div>
-              </div>
-            </div>
-          </el-collapse-item>
-          <el-collapse-item title="Rig Operations" name="2">
-            <div class="skills-content mt-3">
-              <div class="skills-data">
-                <div>
-                  <h5>Surface Cementing</h5>
-                </div>
-                <div class="assesement-level mt-2">
-                  <span>0% Complete</span>
-                  <el-progress
-                    :percentage="percentage"
-                    :color="customColor"
-                    :show-text="false"
-                  ></el-progress>
-                </div>
-                <div class="mt-3">
-                  <button class="primary--button">Complete task</button>
-                </div>
-              </div>
-              <div class="skills-data">
-                <div>
-                  <h5>Hydrolic</h5>
-                </div>
-                <div class="assesement-completed level-average mt-2">
-                  <div class="assesement-grade">
-                    <div class="w-75 d-flex"> 
-                      <span class="info">Completed</span>  
-                      <span class="split score-average"></span>
-                    </div>
-                    <div class="w-25"> 
-                      <div class="assement-score score-average">
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.69 0H6.31C2.67 0 0.5 2.17 0.5 5.81V14.18C0.5 17.83 2.67 20 6.31 20H14.68C18.32 20 20.49 17.83 20.49 14.19V5.81C20.5 2.17 18.33 0 14.69 0ZM15.28 7.7L9.61 13.37C9.47 13.51 9.28 13.59 9.08 13.59C8.88 13.59 8.69 13.51 8.55 13.37L5.72 10.54C5.43 10.25 5.43 9.77 5.72 9.48C6.01 9.19 6.49 9.19 6.78 9.48L9.08 11.78L14.22 6.64C14.51 6.35 14.99 6.35 15.28 6.64C15.57 6.93 15.57 7.4 15.28 7.7Z" fill="#C2DBFF"/>
-                        </svg>
-                        <span class="h3"> 3</span> 
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="mt-3 d-flex align-items-center">
-                  <button class="primary--button_border">Preview</button>
-                </div>
-              </div>
-              <div class="skills-data">
-                <div>
-                  <h5>Surface Cementing</h5>
-                </div>
-                <div class="assesement-level mt-2">
-                  <span>0% Complete</span>
-                  <el-progress
-                    :percentage="percentage"
-                    :color="customColor"
-                    :show-text="false"
-                  ></el-progress>
-                </div>
-                <div class="mt-3">
-                  <button class="primary--button">Complete task</button>
-                </div>
-              </div>
+              </div> -->
             </div>
           </el-collapse-item>
         </el-collapse>
@@ -143,7 +105,7 @@ export default {
 
   data() {
     return {
-      activeNames: ["1", "2"],
+      activeNames: [0, 1, 2],
       customColor: "#0040A1",
       percentage: 30,
       skillsArr: [

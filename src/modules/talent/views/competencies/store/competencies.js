@@ -67,5 +67,15 @@ export default {
               }
         },
 
+        async storeSkill({ commit }, payload){
+            try {
+                let response = await $request.post(`/assesments/${code}/assigned/employees`);
+                let responsePayload = response.data.data;
+                commit("SET_ASSESSMENT_SUMMARIES", responsePayload);
+              } catch (error) {
+                console.log(error);
+              }
+        }
+
     }
 }

@@ -90,8 +90,8 @@ const getDefaultState = () => {
       },
       {
         id: 3, 
-        name: 'Advanced',
-        value: 'advanced'
+        name: 'Advance',
+        value: 'advance'
       },
       {
         id: 4, 

@@ -56,18 +56,18 @@
               </option>
             </select>
           </div>
+          <div
+            class="mt-4 modal-actions d-flex align-items-center justify-content-center"
+            style="gap: 10px"
+          >
+            <button class="primary--button" type="submit" >
+              Add Competence
+            </button>
+            <!-- @click="$emit('add-competence')"<button class="error-btn" @click="$emit('retry')">Try Again</button> -->
+          </div>
         </form>
       </div>
 
-      <div
-        class="mt-2 modal-actions d-flex align-items-center justify-content-center"
-        style="gap: 10px"
-      >
-        <button class="primary--button" type="submit" >
-          Add Competence
-        </button>
-        <!-- @click="$emit('add-competence')"<button class="error-btn" @click="$emit('retry')">Try Again</button> -->
-      </div>
     </div>
   </div>
 </template>
@@ -101,9 +101,9 @@ export default {
 
     createRecord(){
       console.log(this.form);
-      // this.$store.dispatch("r/storeSkills", payload).then(() => {
-      //     // this.recordsLoading = false;
-      // });  
+      this.$store.dispatch("cvCompetency/create", {payload: this.form}).then(() => {
+          // this.recordsLoading = false;
+      });  
 
     }
   },
