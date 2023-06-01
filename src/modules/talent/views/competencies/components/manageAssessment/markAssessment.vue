@@ -228,8 +228,8 @@
         </div>
       </div>
     </div>
-    <div class="text-center my-5">
-      <h5>Please mark candidate answer as right or wrong</h5>
+    <div class="text-center mt-5">
+      <h5 class="text-success">Grade</h5>
     </div>
     <div class="circle-container">
       <div
@@ -241,8 +241,14 @@
         {{ num }}
       </div>
     </div>
+    <div class="text-center mt-4">
+      <h5 class="text-success">Managers Comment</h5>
+    </div>
+    <div class="text-center my-3">
+      <textarea name="" id="" cols="6" rows="6" placeholder="Managers comment" v-model="managerComment"/>
+    </div>
     <div
-      class="text-center mt-4 d-flex justify-content-center"
+      class="text-center my-4 d-flex justify-content-center"
       v-if="loader == false"
     >
       <button
@@ -293,6 +299,7 @@ export default {
       score: null,
       talent: null,
       feedback: "",
+      managerComment: ""
     };
   },
   directives: {
@@ -368,6 +375,7 @@ export default {
         question_id: this.currentQuestion.answer.assesment_question_id,
         talent_id: this.currentQuestion.answer.talent_id,
         score: this.score,
+        comment: this.managerComment
       };
       try {
         this.loader = true;
@@ -378,6 +386,7 @@ export default {
         this.step++;
         this.currentQuestionIndex++;
         this.selectedNumber = "";
+        this.managerComment = ""
         this.loader = false;
       } catch (error) {
         alert("please select a score");
