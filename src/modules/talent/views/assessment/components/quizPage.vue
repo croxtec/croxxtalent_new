@@ -162,7 +162,9 @@
           class="majorInput text-center my-5"
           v-if="currentQuestion.type === 'text'"
         >
-          <input
+        <textarea
+            rows="6"
+            cols="50"
             type="text"
             class="textInput"
             placeholder="Enter your Answer here"
@@ -323,6 +325,7 @@ export default {
       } catch (error) {
         alert("please select an option");
         console.error(error.data.message);
+        this.loader = false
       }
     },
     previousPage() {
@@ -340,7 +343,6 @@ export default {
   },
   mounted() {
     const assessment = JSON.parse(localStorage.getItem("assessmentQuestions"));
-    console.log(assessment);
     this.questions = assessment.questions;
     this.assessments = assessment;
   },

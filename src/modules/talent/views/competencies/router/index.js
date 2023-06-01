@@ -48,7 +48,7 @@ const routes = [
     },
   },
   {
-    path: "/summary",
+    path: "/summary/:id",
     name: "assessmentSummary",
     component: Summary,
     meta: {
@@ -60,6 +60,10 @@ const routes = [
     path: "/ScoreSheet",
     name: "ScoreSheet",
     component: ScoreSheet,
+    meta: {
+      layout: "AppDashboardLayout",
+      header: "Mark Assessment"
+    }
   },
 
   {

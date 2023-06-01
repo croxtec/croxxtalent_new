@@ -40,7 +40,7 @@
           </div>
           <div class="mt-">
             <button class="start-assessment" @click="startAssessment">
-              Start assessment
+              Mark assessment
             </button>
           </div>
         </div>
@@ -58,12 +58,12 @@
     },
     methods: {
        getAssessment() {
-        $request.get(`/assesments/${this.$route.params.id}`).then((res) => {
-          this.assessment = res.data.data
-          const getQuestions = res.data.data
-          const assessmentQuestions = JSON.stringify(getQuestions)
-          localStorage.setItem('assessmentQuestions', assessmentQuestions)
-          let que = localStorage.getItem('assessmentQuestions')
+        const getUserData = JSON.parse(localStorage.getItem("userData"))
+        $request.get(`/assesments/${getUserData.code}/result/${getUserData.talentID}`).then((res) => {
+          this.assessment = res.data.data.assesment
+          const getResponse = res.data.data
+          const assessmentResponse = JSON.stringify(getResponse)
+          localStorage.setItem('assessmentResponse', assessmentResponse)
         })
       },
       goBack() {
