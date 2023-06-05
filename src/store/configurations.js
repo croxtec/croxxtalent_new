@@ -18,65 +18,6 @@ const getDefaultState = () => {
     skills: null,
     domains: [],
     cores: null,
-    delivery_type: [
-      {
-        id: 1,
-        name: 'Quiz',
-        value: 'quiz'
-      },
-      {
-        id: 2,
-        name: 'Classroom',
-        value: 'classroom'
-      },
-      {
-        id: 3,
-        name: 'On the Job',
-        value: 'on-the-job'
-      },
-      {
-        id: 4,
-        name: 'Assessment',
-        value: 'assessment'
-      },
-      {
-        id: 5,
-        name: 'Experience',
-        value: 'experience'
-      },
-      {
-        id: 6,
-        name: 'Exam',
-        value: 'exam'
-      },
-      {
-        id: 7,
-        name: 'External',
-        value: 'external'
-      }
-    ],
-    categories: [
-      {
-        id: 1, 
-        name: 'Generic',
-        value: 'generic'
-      },
-      {
-        id: 2, 
-        name: 'Job Specific',
-        value: 'job specific'
-      },
-      {
-        id: 3, 
-        name: 'HSE',
-        value: 'hse'
-      },
-      {
-        id: 4, 
-        name: 'Vetting',
-        value: 'vetting'
-      },
-    ],
     levels: [
       {
         id: 1, 
