@@ -83,6 +83,7 @@ export default {
 
     gotoManagement(code){
       this.$router.push('/manage-assessment/'+code);
+      console.log(code)
     }
 
   },

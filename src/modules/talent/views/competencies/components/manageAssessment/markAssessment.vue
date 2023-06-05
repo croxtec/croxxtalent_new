@@ -23,6 +23,12 @@
             class="img-fluid modal-img"
           />
           <h4>Are you sure you want to submit?</h4>
+          <textarea
+            rows="6"
+            cols="50"
+            v-model="feedback"
+            placeholder="Managers Feedback"
+          />
           <div class="button-container my-3">
             <button class="confirm-button bg-primary" @click="confirmSubmit">
               Submit
@@ -57,7 +63,7 @@
         </div>
       </div>
       <div class="quiz-card" v-if="currentQuestion" :key="currentQuestion.id">
-        <h6 class="text-center my-5">{{ currentQuestion.question }}</h6>
+        <h4 class="text-center my-5">{{ currentQuestion.question }}</h4>
         <div class="questions" v-if="currentQuestion.type === 'radio'">
           <div class="container mt-4">
             <div class="row">
@@ -162,7 +168,7 @@
           class="majorInput text-center my-5"
           v-if="currentQuestion.type === 'text'"
         >
-        <textarea
+          <textarea
             rows="6"
             cols="50"
             type="text"
@@ -194,8 +200,9 @@
                 <input
                   type="checkbox"
                   :id="option.id"
-                  :name="option.name"
-                  v-model="option.checked"
+                  :value="option.checked"
+                  v-model="currentAnswer"
+                  v-check-match="option.checked"
                 />
               </div>
               <label :for="option.id" class="checkbox-label">{{
@@ -212,33 +219,58 @@
             </div>
           </div>
         </div>
-        <div class="text--center justify-content-center d-flex align-items-center" v-if="loader">
+        <div
+          class="text--center justify-content-center d-flex align-items-center"
+          v-if="loader"
+        >
           <img src="@/assets/img/loaderSession.gif" class="nextLoader" />
           loading next question
         </div>
-        <div class="text-center mt-3 d-flex justify-content-center" v-if="loader == false">
-          <button
-            class="back mr-3"
-            @click="previousPage"
-            id="backButton"
-            :disabled="step === 1"
-          >
-            Back
-          </button>
-          <button
-            class="rounded-pill text-white next"
-            @click="nextPage"
-            :disabled="step === questions.length + 1"
-          >
-            Next
-          </button>
-        </div>
       </div>
+    </div>
+    <div class="text-center mt-5">
+      <h5 class="text-success">Grade</h5>
+    </div>
+    <div class="circle-container">
+      <div
+        v-for="num in numbers"
+        :key="num"
+        :class="['circle', { active: num === selectedNumber }]"
+        @click="selectNumber(num)"
+      >
+        {{ num }}
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <h5 class="text-success">Managers Comment</h5>
+    </div>
+    <div class="text-center my-3">
+      <textarea name="" id="" cols="6" rows="6" placeholder="Managers comment" v-model="managerComment"/>
+    </div>
+    <div
+      class="text-center my-4 d-flex justify-content-center"
+      v-if="loader == false"
+    >
+      <button
+        class="back mr-3"
+        @click="previousPage"
+        id="backButton"
+        :disabled="step === 1"
+      >
+        Back
+      </button>
+      <button
+        class="rounded-pill text-white next"
+        @click="nextPage"
+        :disabled="step === questions.length + 1"
+      >
+        Next
+      </button>
     </div>
   </div>
 </template>
-
-<script>
+  
+  <script>
 import $request from "@/axios";
 export default {
   data() {
@@ -249,6 +281,8 @@ export default {
         { id: "option3", name: "option3", label: "Option 3", checked: false },
         { id: "option4", name: "option4", label: "Option 4", checked: false },
       ],
+      numbers: [1, 2, 3, 4, 5],
+      selectedNumber: null,
       confirmSubmission: false,
       assessments: "",
       answer: "",
@@ -262,15 +296,41 @@ export default {
       currentQuestionIndex: 0,
       checkedOptions: [],
       loader: false,
+      score: null,
+      talent: null,
+      feedback: "",
+      managerComment: ""
     };
   },
+  directives: {
+    "check-match": {
+      bind(el, binding) {
+        const { value } = binding;
+        if (value === binding.instance.currentAnswer) {
+          el.checked = true;
+        }
+      },
+      update(el, binding) {
+        const { value } = binding;
+        if (value === binding.instance.currentAnswer) {
+          el.checked = true;
+        } else {
+          el.checked = false;
+        }
+      },
+    },
+  },
   methods: {
+    selectNumber(num) {
+      this.selectedNumber = num;
+      this.score = num;
+    },
     handleFileUpload(event) {
       const file = event.target.files[0];
       this.fileName = file.name;
       const formData = new FormData();
-      formData.append('file', file)
-      this.fileUpload = formData.get('file');
+      formData.append("file", file);
+      this.fileUpload = formData.get("file");
     },
     closeQuiz() {
       this.$router.go(-1);
@@ -282,50 +342,56 @@ export default {
       this.selected = value;
     },
     nextPage() {
+      let talent_id = this.currentQuestion.answer.talent_id;
+      this.talent = talent_id;
       this.submitQuestion();
     },
     submitAssessment() {
       this.confirmSubmission = true;
     },
-    confirmSubmit() {
-      let id = this.assessments.id
-      $request.patch(`/assesments/${id}/talent/publish`)
-      this.closeQuiz();
+    async confirmSubmit() {
+      // let talent = this.currentQuestion.answer.talent_id
+      // console.log(talent, "check mate")
+      let id = this.assessments.id;
+      const payload = {
+        feedback: this.feedback,
+        talent: this.talent,
+      };
+      try {
+        let response = await $request.patch(`/assesments/${id}/management/feedback`, payload)
+        this.closeQuiz();
+      } catch (error) {
+        alert("please drop a feed back");
+        console.error(error.data.message);
+      }
     },
     cancelSubmit() {
       this.previousPage();
       this.confirmSubmission = false;
     },
     async submitQuestion() {
-      if (this.currentQuestion.type === "radio") {
-        this.selectedOption = this.selected;
-      } else if (this.currentQuestion.type === "text") {
-        this.selectedOption = this.answer;
-      } else if (this.currentQuestion.type === "file") {
-        this.selectedOption = this.fileUpload;
-      } else if (this.currentQuestion.type === "reference") {
-        this.selectedOption = this.urlLink;
-      } else if (this.currentQuestion.type === "checkbox") {
-        this.selectedOption = this.checkedOptions;
-      }
       const payload = {
-        assesment_id: this.assessments.id,
-        question_id: this.currentQuestion.id,
-        answer: this.selectedOption,
+        assesment_id: this.currentQuestion.answer.assesment_id,
+        question_id: this.currentQuestion.answer.assesment_question_id,
+        talent_id: this.currentQuestion.answer.talent_id,
+        score: this.score,
+        comment: this.managerComment
       };
       try {
         this.loader = true;
         let response = await $request.post(
-          `/assesments/talent/answer`,
-          payload, { headers: { 'Content-Type': 'multipart/form-data'}}
+          `/assesments/management/scoresheet`,
+          payload
         );
         this.step++;
         this.currentQuestionIndex++;
-        this.loader = false
+        this.selectedNumber = "";
+        this.managerComment = ""
+        this.loader = false;
       } catch (error) {
-        alert("please select an option");
+        alert("please select a score");
         console.error(error.data.message);
-        this.loader = false
+        this.loader = false;
       }
     },
     previousPage() {
@@ -340,11 +406,35 @@ export default {
     currentQuestion() {
       return this.questions[this.currentQuestionIndex];
     },
+    currentAnswer: {
+      get() {
+        const question = this.questions[this.currentQuestionIndex];
+        if (question && question.answer) {
+          return (
+            question.answer.option ||
+            question.answer.comment ||
+            question.answer.options ||
+            question.answer.upload
+          );
+        }
+        return null;
+      },
+      set(newAnswer) {
+        const question = this.questions[this.currentQuestionIndex];
+        if (question && question.answer) {
+          question.answer.option = newAnswer;
+          question.answer.comment = newAnswer;
+          question.answer.options = newAnswer;
+          question.answer.upload = newAnswer;
+        }
+      },
+    },
   },
   mounted() {
-    const assessment = JSON.parse(localStorage.getItem("assessmentQuestions"));
-    this.questions = assessment.questions;
-    this.assessments = assessment;
+    const assessment = JSON.parse(localStorage.getItem("assessmentResponse"));
+    this.questions = assessment.assesment.questions;
+    this.assessments = assessment.assesment;
+    console.log(this.assessments);
   },
   watch: {
     options: {
@@ -356,11 +446,66 @@ export default {
       },
       deep: true,
     },
+    currentAnswer(newAnswer) {
+      this.selected = newAnswer;
+      this.answer = newAnswer;
+      this.urlLink = newAnswer;
+      this.options.checked = newAnswer;
+    },
+    currentQuestionIndex(newIndex) {
+      const question = this.questions[newIndex];
+      if (question && question.answer) {
+        this.selected =
+          question.answer.option ||
+          question.answer.comment ||
+          question.answer.options ||
+          question.answer.upload;
+        this.answer =
+          question.answer.option ||
+          question.answer.comment ||
+          question.answer.options ||
+          question.answer.upload;
+        this.urlLink =
+          question.answer.option ||
+          question.answer.comment ||
+          question.answer.options ||
+          question.answer.upload;
+        this.options.forEach((option) => {
+          option.checked = (question.answer.options || []).includes(
+            option.name
+          );
+        });
+      }
+    },
   },
 };
 </script>
-
+  
 <style scooped>
+.circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #0040a1;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 10px;
+  color: #0040a1;
+}
+
+.circle.active {
+  background-color: #0040a1;
+  color: #ffffff;
+}
 .nextLoader {
   height: 100px;
 }
@@ -391,7 +536,7 @@ export default {
   margin: auto;
   margin-top: 130px;
   width: 80%;
-  height: 600px;
+  height: 100%;
   border: 1px solid #080808;
   padding: 10px;
   border-radius: 40px;
@@ -603,3 +748,4 @@ input[type="checkbox"] {
   left: 4px;
 }
 </style>
+  

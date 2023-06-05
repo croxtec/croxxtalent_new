@@ -54,12 +54,20 @@
                 </div>
               </td>
               <td class="text-right">
-                <button @click="gotoMarkAssesment(item)"
+                <button @click="gotoMarkAssessment(item)"
                   class="button primary-btn py-2"
                   style="width: max-content"
                 >
                   Mark Test
                 </button>
+                <!-- v-if="item.is_published === 0" -->
+                <!-- <button @click="viewScore(item)"
+                  class="button primary-btn py-2"
+                  style="width: max-content"
+                  v-else
+                >
+                  View Score
+                </button> -->
               </td>
             </tr>
           </table>
@@ -94,8 +102,17 @@ export default {
   methods: {
     ...mapActions("manager", ["getAssesmentSummaries"]),
 
-    gotoMarkAssesment(item){
-      this.$router.push({name: 'mark-assessment', params: {id: item.assesment_code.code}});
+    gotoMarkAssessment(item){
+      const data = {
+        code: item.assesment_code.id,
+        talentID: item.talent_id
+      }
+      const userString = JSON.stringify(data)
+      localStorage.setItem("userData", userString)
+      this.$router.push({name: 'assessmentSummary', params: {id: item.assesment_code.code}});
+    },
+    viewScore(item) {
+      alert(`Your total Score is ${item.total_score}`)
     }
   },
 
