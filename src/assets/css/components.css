@@ -103,17 +103,6 @@ input::placeholder, textarea::placeholder {
     font-size: 13px;
 }
 
-.form-data {
-    display: flex;
-    display: inline-flex;
-    display: -webkit-flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 60%;
-    /* align-items: center; */
-    margin: 30px auto;
-}
-
 option:disabled {
     /* color:  red; */
 }

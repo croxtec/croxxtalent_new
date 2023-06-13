@@ -57,7 +57,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions("cvEducation", ["list"]),
+    // ...mapActions("cvCertification", ["list"]),
     create(value) {
       if (value === "education") {
         this.add_education = !this.add_education;
@@ -80,9 +80,6 @@ export default {
         this.add_certification = !this.add_certification;
       }
     },
-  },
-  beforeMount() {
-    this.list();
   },
   computed: {
     ...mapState("cvEducation", {

@@ -3,7 +3,6 @@
     <div class="form-steps">
       <div class="step-items" v-for="(item, index) in steps" :key="index">
         <!-- <div class="step-icons"></div> -->
-
         <span class="step-level text-uppercase">{{ "step " + item.id }}</span>
         <span class="step-title">{{ item.name }}</span>
         <span
@@ -13,8 +12,9 @@
         >
       </div>
     </div>
+    
     <div class="form-data mt-4">
-      <div class="form-content p-4">
+      <div class="form-content p-4" >
         <CreateCVTitle v-if="stepNum === 1" />
         <ContactInfo v-if="stepNum === 2" />
         <WorkHistory v-if="stepNum === 3" />
