@@ -36,6 +36,38 @@ Vue.use(VueSweetalert2, {
   },
 });
 
+
+// Vee Validate
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
+import * as rules from "vee-validate/dist/rules";
+// import { required, email } from 'vee-validate/dist/rules';
+import { messages } from "vee-validate/dist/locale/en.json";
+Object.keys(rules).forEach(rule => {
+  extend(rule, {
+    ...rules[rule], // copies rule configuration
+    message: messages[rule] // assign message
+  });
+});
+
+extend("username", {
+  validate: value => {
+    let regex = RegExp("^((?!-)*)([A-Za-z0-9-]+)((?!-)*)$");
+    return regex.test(value);
+  },
+  message:
+    "The {_field_} field may contain alpha-numeric characters as well as dashes."
+});
+extend("internal_identifier", {
+  validate: value => {
+    let regex = RegExp("^((?!-)*)([A-Za-z0-9-]+)((?!-)*)$");
+    return regex.test(value);
+  },
+  message:
+    "The {_field_} field may contain alpha-numeric characters as well as dashes."
+});
+Vue.component("validation-provider", ValidationProvider);
+Vue.component("validation-observer", ValidationObserver);
+
 import { Icon } from "@iconify/vue2";
 Vue.component("i-icon", Icon);
 
