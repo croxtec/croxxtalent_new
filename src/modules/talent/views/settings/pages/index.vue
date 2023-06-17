@@ -20,7 +20,7 @@ export default {
 
 <style></style>
 <template>
-    <div>   
+    <div class="settings-main">   
          <settingsHeader/>
          <profilePage/>
     </div>

@@ -2,5 +2,41 @@
         border: 1px solid #c2dbff;
         margin-top: 70px;
         border-radius: 20px;
-        padding: 20px;
+        padding: 30px 20px;
+        justify-content: center;
+}
+.settings-header{
+    text-align: center;
+    font-size: 24px;
+    line-height: 28.8px;
+}
+.user-img{
+    height: 126px;
+    max-width: 126px;
+    border-radius: 100%;
+    background-color: #c2dbff;
+    margin: 40px auto;
+}
+.red-star{
+    color: #FC3030;
+}
+.input-lable{
+    font-size: 16px;
+    line-height: 25.6px;
+    color: #282929;
+}
+.input-group{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+.input-container{
+    margin: 0 auto;
+    width: 70%;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 30px;
+}
+.settings-main{
+    padding-bottom: 100px;
 }
