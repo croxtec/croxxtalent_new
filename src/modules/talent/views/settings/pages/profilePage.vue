@@ -5,10 +5,10 @@
             <div class="user-img">
                 <img src=""/>
             </div>
-            <p>Upload A Profile Picture</p>
+            <p class="text-center">Upload A Profile Picture</p>
         </div>
                 <div class="input-container">
-            <div class="input-group">  
+            <div class="input-group mt-5">  
 
                     <div class="search">
                         <label class="input-lable">First Name<span class="red-star">*</span></label>

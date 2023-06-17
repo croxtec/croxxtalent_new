@@ -15,7 +15,7 @@
     max-width: 126px;
     border-radius: 100%;
     background-color: #c2dbff;
-    margin: 40px auto;
+    margin: 10px auto;
 }
 .red-star{
     color: #FC3030;
@@ -32,7 +32,7 @@
 }
 .input-container{
     margin: 0 auto;
-    width: 70%;
+    width: 60%;
     display: grid;
     grid-template-rows: auto auto auto;
     gap: 30px;
