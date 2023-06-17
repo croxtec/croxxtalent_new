@@ -23,7 +23,6 @@ export default {
     <div>   
          <settingsHeader/>
          <profilePage/>
-    settings page
     </div>
 </template>
 <style scoped>
