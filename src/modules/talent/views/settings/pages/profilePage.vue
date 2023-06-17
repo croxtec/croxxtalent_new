@@ -28,6 +28,12 @@
             <input type="search" placeholder="Enter phone number" />
         </div>
       </div>
+          <button
+            class="primary--button mt-5 p-3 px-5 d-flex align-items-center mx-auto"
+            style="gap: 10px"
+          >
+            <span>Save Changes</span>
+          </button>
 
       </div>
 </template>
