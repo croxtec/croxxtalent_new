@@ -1,8 +1,9 @@
 <script>
 import settingsHeader from "../components/settingsHeader.vue";
+import profilePage from "./profilePage.vue";
 
 export default {
-    components: { settingsHeader },
+    components: { settingsHeader, profilePage },
     data: () => {
         return {
             sectionName: "settings",
@@ -21,7 +22,9 @@ export default {
 <template>
     <div>   
          <settingsHeader/>
-    settings page</div>
+         <profilePage/>
+    settings page
+    </div>
 </template>
 <style scoped>
 
