@@ -1,9 +1,10 @@
 .settings-container{
         border: 1px solid #c2dbff;
-        margin-top: 70px;
         border-radius: 20px;
         padding: 30px 20px;
         justify-content: center;
+        width: 80%;
+        margin: 70px auto;
 }
 .settings-header{
     text-align: center;
