@@ -48,6 +48,7 @@
           </div>
 
           <div class="skills-data"  v-for="skill in domain.core[ competency[key_domain]?.activeCore ]?.skills" :key="skill.id">
+            {{  skill }}
             <div>
               <h5> {{ skill.skill_name  }} </h5>
               <span class="accessment-status mt-2" v-text="skill.level"></span>

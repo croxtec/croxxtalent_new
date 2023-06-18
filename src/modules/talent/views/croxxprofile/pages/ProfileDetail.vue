@@ -153,7 +153,7 @@
 </template>
 
 <script>
-  import CompetenciesCard from "../../dashboard/components/CompetenciesCard.vue";
+  import CompetenciesCard from "../../../../../components/cards/CompetenciesCard.vue";
 
   export default{
     component: { CompetenciesCard }
