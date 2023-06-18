@@ -135,6 +135,7 @@
   display: block;
   width: max-content;
   border-radius: 20px;
+  text-transform: capitalize;
 }
 
 .skills-data {
