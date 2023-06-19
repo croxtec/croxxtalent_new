@@ -15,7 +15,7 @@ export default {
       <h6 class="py-2 pl-2">Job Description</h6>
     </header>
     <div class="job-details-container">
-      <div class="d-flex justify-content-between">
+      <div class="d-flex job-title-container justify-content-between">
         <div class="d-flex">
           <img src="@/assets/img/round-logo.png" />
           <div class="pl-4">
@@ -31,7 +31,64 @@ export default {
         </div>
         <div>but</div>
       </div>
-      <div>k</div>
+      <div class="job-content-container">
+        <div>
+          <h3>Schlumbe</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. At a eu fusce et suspendisse
+            condimentum. Cursus at orci tempor ut aliquet in leo. Gravida tortor varius
+            phasellus viverra elementum. Quis faucibus vel sem duis. Mattis praesent ac
+            nunc eget feugiat varius est non gravida. Ipsum convallis quis ornare
+            vulputate amet. Morbi nunc tincidunt in fermentum pharetra massa phasellus
+            faucibus nibh. Quis gravida lorem malesuada porttitor. Dignissim sagittis arcu
+            faucibus ultrices integer at bibendum. Nibh egestas arcu interdum vitae sit
+            ornare.rger
+          </p>
+        </div>
+        <div>
+          <h3>Competency</h3>
+          <ul>
+            <li>Domain name</li>
+            <li>Core name</li>
+            <li>Skill</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Requirements</h3>
+          <ul>
+            <li>Domain name</li>
+            <li>Core name</li>
+            <li>Skill</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Responsibility</h3>
+          <ul>
+            <li>Domain name</li>
+            <li>Core name</li>
+            <li>Skill</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Summary</h3>
+          <span
+            >Lorem ipsum dolor sit amet consectetur. At a eu fusce et suspendisse
+            condimentum. Cursus at orci tempor ut aliquet in leo. Gravida tortor varius
+            phasellus viverra elementum. Quis faucibus vel sem duis. Mattis praesent ac
+            nunc eget feugiat varius est non gravida. Ipsum convallis quis ornare
+            vulputate amet. Morbi nunc tincidunt in fermentum pharetra massa phasellus
+            faucibus nibh. Quis gravida lorem malesuada porttitor. Dignissim sagittis arcu
+            faucibus ultrices integer at bibendum. Nibh egestas arcu interdum vitae sit
+            ornare.</span
+          >
+        </div>
+        <button
+          class="primary--button mt-5 p-3 px-5 d-flex align-items-center mx-auto"
+          style="gap: 10px"
+        >
+          <span>Apply Now</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -44,7 +101,7 @@ export default {
 .job-details-container {
   border: 1px solid #c2dbff;
   border-radius: 40px;
-  padding: 30px 20px;
+  padding: 30px 0px;
 }
 .job-title {
   font-size: 20px;
@@ -93,5 +150,12 @@ export default {
 .line {
   height: auto;
   border-left: 1px solid #cbd7e7;
+}
+.job-content-container {
+  border-top: 1px solid #c2dbff;
+  padding: 0px 20px;
+}
+.job-title-container {
+  padding: 8px 20px;
 }
 </style>
