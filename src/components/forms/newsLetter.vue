@@ -11,7 +11,7 @@
           fresh batch of new jobs every day.
         </p>
           <validation-provider v-slot="{ invalid, errors }" 
-                vid="first_name" name="Email"
+                vid="email" name="Email"
                 rules="required|email" >
             <div class="subscibe-input">
               <input
@@ -33,7 +33,6 @@
                 <span v-else>Subscribe</span>
               </button>
             </div>
-            <!-- <span>{{ invalid }}  {{ errors[0] }}</span> -->
           </validation-provider>
         </div>
     </div>
