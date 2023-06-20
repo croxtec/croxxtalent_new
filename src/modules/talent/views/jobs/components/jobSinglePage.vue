@@ -10,7 +10,7 @@ export default {
 </script>
 <template>
   <div>
-    <header class="d-flex">
+    <header class="d-flex mb-4">
       <BackIcon />
       <h6 class="py-2 pl-2">Job Description</h6>
     </header>
@@ -30,9 +30,9 @@ export default {
           </div>
         </div>
         <div>
-          <div class="d-flex">
+          <div class="d-flex apply_button gap-2">
             <button
-              class="primary--button mt-5 p-3 px-5 d-flex align-items-center mx-auto"
+              class="primary--button_border mt-5 p-3 px-5 d-flex align-items-center mx-auto"
               style="gap: 10px"
             >
               <span>Save</span>

@@ -1,7 +1,7 @@
 .job-details-container {
     border: 1px solid #c2dbff;
     border-radius: 40px;
-    padding: 60px 0px;
+    padding: 0px 0px;
     margin-bottom: 30px;
 }
 
@@ -62,11 +62,11 @@
 
 .job-content-container {
     border-top: 1px solid #c2dbff;
-    padding: 20px 50px;
+    padding: 50px 50px;
 }
 
 .job-title-container {
-    padding: 8px 50px;
+    padding: 40px 50px;
 }
 
 .Schlumbe-heading {
@@ -94,3 +94,6 @@
 
 }
 .Requirements-section{}
+.apply_button{
+    gap:10px
+}
