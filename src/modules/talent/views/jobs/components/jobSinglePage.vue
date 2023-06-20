@@ -29,11 +29,29 @@ export default {
             </div>
           </div>
         </div>
-        <div>but</div>
+        <div>
+          <div class="d-flex">
+            <button
+              class="primary--button mt-5 p-3 px-5 d-flex align-items-center mx-auto"
+              style="gap: 10px"
+            >
+              <span>Save</span>
+            </button>
+            <button
+              class="primary--button mt-5 p-3 px-5 d-flex align-items-center mx-auto"
+              style="gap: 10px"
+            >
+              <span>Apply </span>
+            </button>
+          </div>
+          <div>
+            <div class="progress-container"><div class="progress-bar"></div></div>
+          </div>
+        </div>
       </div>
       <div class="job-content-container">
         <div class="Schlumbe-section">
-          <h3 class="Schlumbe-heading mb-4">Schlumbe</h3>
+          <h6 class="Schlumbe-heading mb-4">Schlumbe</h6>
           <p class="Schlumbe-memo mb-4">
             Lorem ipsum dolor sit amet consectetur. At a eu fusce et suspendisse
             condimentum. Cursus at orci tempor ut aliquet in leo. Gravida tortor varius
@@ -46,7 +64,7 @@ export default {
           </p>
         </div>
         <div class="Competency-section mt-4">
-          <h3 class="Competency-heading mb-2">Competency</h3>
+          <h6 class="Competency-heading mb-2">Competency</h6>
           <ol>
             <li>Domain name</li>
             <li>Core name</li>
@@ -54,7 +72,7 @@ export default {
           </ol>
         </div>
         <div class="Requirements-section">
-          <h3 class="Requirements-section">Requirements</h3>
+          <h6 class="Requirements-section">Requirements</h6>
           <ul>
             <li>Domain name</li>
             <li>Core name</li>
@@ -62,7 +80,7 @@ export default {
           </ul>
         </div>
         <div class="Responsibility-section">
-          <h3>Responsibility</h3>
+          <h6>Responsibility</h6>
           <ul>
             <li>Domain name</li>
             <li>Core name</li>
@@ -70,7 +88,7 @@ export default {
           </ul>
         </div>
         <div class="Summary-section">
-          <h3>Summary</h3>
+          <h6>Summary</h6>
           <span
             >Lorem ipsum dolor sit amet consectetur. At a eu fusce et suspendisse
             condimentum. Cursus at orci tempor ut aliquet in leo. Gravida tortor varius
