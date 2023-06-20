@@ -32,9 +32,9 @@ export default {
         <div>but</div>
       </div>
       <div class="job-content-container">
-        <div>
-          <h3>Schlumbe</h3>
-          <p>
+        <div class="Schlumbe-section">
+          <h3 class="Schlumbe-heading mb-4">Schlumbe</h3>
+          <p class="Schlumbe-memo mb-4">
             Lorem ipsum dolor sit amet consectetur. At a eu fusce et suspendisse
             condimentum. Cursus at orci tempor ut aliquet in leo. Gravida tortor varius
             phasellus viverra elementum. Quis faucibus vel sem duis. Mattis praesent ac
@@ -45,23 +45,23 @@ export default {
             ornare.rger
           </p>
         </div>
-        <div>
-          <h3>Competency</h3>
+        <div class="Competency-section mt-4">
+          <h3 class="Competency-heading mb-2">Competency</h3>
+          <ol>
+            <li>Domain name</li>
+            <li>Core name</li>
+            <li>Skill</li>
+          </ol>
+        </div>
+        <div class="Requirements-section">
+          <h3 class="Requirements-section">Requirements</h3>
           <ul>
             <li>Domain name</li>
             <li>Core name</li>
             <li>Skill</li>
           </ul>
         </div>
-        <div>
-          <h3>Requirements</h3>
-          <ul>
-            <li>Domain name</li>
-            <li>Core name</li>
-            <li>Skill</li>
-          </ul>
-        </div>
-        <div>
+        <div class="Responsibility-section">
           <h3>Responsibility</h3>
           <ul>
             <li>Domain name</li>
@@ -69,7 +69,7 @@ export default {
             <li>Skill</li>
           </ul>
         </div>
-        <div>
+        <div class="Summary-section">
           <h3>Summary</h3>
           <span
             >Lorem ipsum dolor sit amet consectetur. At a eu fusce et suspendisse
@@ -97,65 +97,5 @@ export default {
   font-size: 32px;
   line-height: 38.4px;
   font-weight: 700;
-}
-.job-details-container {
-  border: 1px solid #c2dbff;
-  border-radius: 40px;
-  padding: 30px 0px;
-}
-.job-title {
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 600;
-  color: #282929;
-}
-.job-sub-title {
-  font-size: 16px;
-  line-height: 25.6px;
-  font-weight: 400;
-  color: #646868;
-}
-.lable-section {
-  gap: 10px;
-}
-.green-label {
-  color: #56cdad;
-  background-color: #56cdad10;
-  padding: 9px 18px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 22.4px;
-  border-radius: 50px;
-}
-.yellow-label {
-  color: #ffb836;
-  background-color: #ffffff;
-  padding: 9px 18px;
-  border: 1px solid #ffb836;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 22.4px;
-  border-radius: 50px;
-}
-.purple-label {
-  color: #7b61ff;
-  background-color: #ffffff;
-  padding: 9px 18px;
-  border: 1px solid #7b61ff;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 22.4px;
-  border-radius: 50px;
-}
-.line {
-  height: auto;
-  border-left: 1px solid #cbd7e7;
-}
-.job-content-container {
-  border-top: 1px solid #c2dbff;
-  padding: 0px 20px;
-}
-.job-title-container {
-  padding: 8px 20px;
 }
 </style>

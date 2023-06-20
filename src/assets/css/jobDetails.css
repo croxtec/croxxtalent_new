@@ -1,0 +1,96 @@
+.job-details-container {
+    border: 1px solid #c2dbff;
+    border-radius: 40px;
+    padding: 30px 0px;
+    margin-bottom: 30px;
+}
+
+.job-title {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #282929;
+}
+
+.job-sub-title {
+    font-size: 16px;
+    line-height: 25.6px;
+    font-weight: 400;
+    color: #646868;
+}
+
+.lable-section {
+    gap: 10px;
+}
+
+.green-label {
+    color: #56cdad;
+    background-color: #56cdad10;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22.4px;
+    border-radius: 50px;
+}
+
+.yellow-label {
+    color: #ffb836;
+    background-color: #ffffff;
+    padding: 9px 18px;
+    border: 1px solid #ffb836;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22.4px;
+    border-radius: 50px;
+}
+
+.purple-label {
+    color: #7b61ff;
+    background-color: #ffffff;
+    padding: 9px 18px;
+    border: 1px solid #7b61ff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22.4px;
+    border-radius: 50px;
+}
+
+.line {
+    height: auto;
+    border-left: 1px solid #cbd7e7;
+}
+
+.job-content-container {
+    border-top: 1px solid #c2dbff;
+    padding: 80px 20px;
+}
+
+.job-title-container {
+    padding: 8px 20px;
+}
+
+.Schlumbe-heading {
+    font-size: 32px;
+    line-height: 37.5px;
+    font-weight: 600;
+
+}
+
+.Schlumbe-memo {
+    font-size: 16px;
+    line-height: 18.75px;
+    font-weight: 400;
+}
+.Competency-heading{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #282929;
+}
+.Competency-section ol {
+    font-size: 16px;
+    line-height: 18.75px;
+    font-weight: 400;
+
+}
+.Requirements-section{}

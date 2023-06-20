@@ -8,7 +8,6 @@ import "aos/dist/aos.css";
 
 import "@/assets/css/main.css";
 import "@/assets/css/media-query.css";
-import "@/assets/css/settings.css";
 Vue.config.productionTip = false;
 
 import ElementUI from "element-ui";

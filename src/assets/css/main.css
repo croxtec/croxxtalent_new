@@ -21,6 +21,12 @@
 /* Profile CSS  */
 @import url("../css/components.css");
 
+/* Job Details CSS  */
+@import url("../css/jobDetails.css");
+
+/*settings CSS  */
+@import url("../css/settings.css");
+
 /* Animations  */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 @import url("../css/wickedcss.css");
