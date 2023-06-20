@@ -5,28 +5,21 @@
         <span
           role="button"
           class="report-header-item"
-          :class="{ 'active-item': activeEl === 'competencies' }"
+          :class="{ 'active-item': $router?.currentRoute.name == 'competencies' }"
           @click="gotoCompetences()"
           >Skills</span
         >
         <span
           class="report-header-item"
-          :class="{ 'active-item': activeEl === 'experience' }"
+          :class="{ 'active-item': $router?.currentRoute.name == 'Experience' }"
           role="button"
           @click="gotoExperience()"
           >Experience</span
         >
-        <!-- <span
-          class="report-header-item"
-          :class="{ 'active-item': activeEl === '3' }"
-          role="button"
-          @click="switchSection('3')"
-          >Manager</span
-        > -->
       </div>
       <button
         @click="competencesModal = !competencesModal"
-        v-if="activeEl === 'competencies'" 
+        v-if="$router?.currentRoute.name == 'competencies'" 
         class="primary--button d-flex align-items-center"
         style="
           gap: 10px;
@@ -53,26 +46,24 @@ export default {
   components: { addCompetence },
   data: () => {
     return {
-      activeEl: "competencies",
+      // activeEl: this.$router?.currentRoute.path ,
       competencesModal: false,
     };
   },
   methods: {
-    switchSection(value) {
-      this.activeEl = value;
-      this.$emit("switchData", value);
-    },
-
     gotoCompetences(){
-      this.activeEl = 'competencies';
       this.$router.push("/competencies");
     },
 
     gotoExperience(){
-      this.activeEl = 'experience';
       this.$router.push("/experience");
     }
   },
+
+  computed: {
+   
+  }
+  
 };
 </script>
 

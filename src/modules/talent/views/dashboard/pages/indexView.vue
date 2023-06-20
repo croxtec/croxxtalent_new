@@ -4,12 +4,12 @@
     <div class="w-75 d-flex flex-column" style="gap:20px">
       <ProfileCard/>
       <div class="d-flex" style="gap:20px">
-        <CompetenciesCard class="w-100"/>
-        <CompetenciesCard class="w-100"/>
+        <!-- <CompetenciesCard class="w-100"/>
+        <CompetenciesCard class="w-100"/> -->
       </div>
       <div class="d-flex" style="gap:20px">
-        <CompetenciesCard class="w-100"/>
-        <CompetenciesCard class="w-100"/>
+        <!-- <CompetenciesCard class="w-100"/>
+        <CompetenciesCard class="w-100"/> -->
       </div>
     </div>
     <div class="w-25">
@@ -70,7 +70,7 @@ import CxJobGrid from '../../jobs/components/CxJobGrid.vue'
 import ProfileCard from '../components/ProfileCard.vue'
 import SideBar from '../components/SideBar.vue'
 import CxTraining from '@/components/cards/cxTraining.vue';
-import CompetenciesCard from '../components/CompetenciesCard.vue';
+import CompetenciesCard from '@/components/cards/CompetenciesCard.vue';
 export default {
   components: { ProfileCard, SideBar, CxJobs, CxEmployers, CxTraining, CompetenciesCard, CxJobGrid },
 

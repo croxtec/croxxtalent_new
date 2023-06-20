@@ -10,27 +10,31 @@
           We know you're busy. Join our newsletter and we'll send you a <br />
           fresh batch of new jobs every day.
         </p>
-        <div class="subscibe-input">
-          <input
-            type="text"
-            placeholder="Email Address"
-            v-model="payload.email"
-          />
-          <button
-            class="primary--button py-3"
-            style="font-weight: 300"
-            @click="requestNewsletter"
-            :class="{ 'in-active': loading }"
-            :disabled="loading"
-          >
-            <span v-if="loading">
-              <i-icon icon="eos-icons:bubble-loading" width="20px" />
-            </span>
+          <validation-provider v-slot="{ invalid, errors }" 
+                vid="email" name="Email"
+                rules="required|email" >
+            <div class="subscibe-input">
+              <input
+                type="text"
+                placeholder="Email Address"
+                v-model="payload.email"
+              />
+              <button
+                class="primary--button py-3"
+                style="font-weight: 300"
+                @click="requestNewsletter"
+                :class="{ 'in-active': loading }"
+                :disabled="invalid || loading"
+              >
+                <span v-if="loading">
+                  <i-icon icon="eos-icons:bubble-loading" width="20px" />
+                </span>
 
-            <span v-else>Subscribe</span>
-          </button>
+                <span v-else>Subscribe</span>
+              </button>
+            </div>
+          </validation-provider>
         </div>
-      </div>
     </div>
 
     <!-- Alerts  -->

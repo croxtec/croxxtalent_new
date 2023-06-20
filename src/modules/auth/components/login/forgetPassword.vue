@@ -33,25 +33,31 @@
         </div>
       </div>
     </div>
-    <div class="text-center py-5">
-      <img src="@/assets/img/logo.png" width="250" alt="" />
-    </div>
+    <router-link style="color: inherit" to="/">
+      <div class="text-center py-5">
+        <img src="@/assets/img/logo.png" width="250" alt="" />
+      </div>
+    </router-link>
+
     <h4 class="py-3">RESET PASSWORD</h4>
     <p class="py-5 mt-2">
       Please enter the email address associated <br />with your account
     </p>
     <form @submit.prevent="sendEmail">
-      <div class="pb-5">
-        <input
-          type="email"
-          placeholder="Enter email address"
-          class="p-3 rounded-pill border-secondary border"
-          v-model="resetEmail"
-          required
-        />
-      </div>
-      <input type="submit" class="rounded-pill btns btn" value="Proceed" />
-    </form>
+      <validation-provider v-slot="{ invalid }" vid="email" name="Email"
+          rules="required|email" >
+          <div class="pb-5">
+            <input
+              type="email"
+              placeholder="Enter email address"
+              class="p-3 rounded-pill border-secondary border"
+              v-model="resetEmail"
+              required
+            />
+          </div>
+          <input type="submit" class="rounded-pill btns btn" :disabled="invalid" value="Proceed" />
+        </validation-provider>
+     </form>
   </div>
 </template>
 

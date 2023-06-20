@@ -2,6 +2,8 @@ const Home = () => import("../pages/indexView.vue");
 const Competences = () => import("../pages/competenciesPage.vue");
 const Experience = () => import("../components/experienceData.vue");
 const Managers = () => import("../components/managerData.vue");
+const Summary = () => import("../components/manageAssessment/assessmentSummary.vue");
+const ScoreSheet = () => import("../components/manageAssessment/markAssessment.vue");
 const ManageAssesment = () => import("../components/ManageAssesment.vue");
 
 const routes = [
@@ -45,6 +47,24 @@ const routes = [
       header: "managers",
     },
   },
+  {
+    path: "/summary/:id",
+    name: "assessmentSummary",
+    component: Summary,
+    meta: {
+      layout: "AppDashboardLayout",
+      header: "managers",
+    },
+  },
+  {
+    path: "/ScoreSheet",
+    name: "ScoreSheet",
+    component: ScoreSheet,
+    meta: {
+      layout: "AppDashboardLayout",
+      header: "Mark Assessment"
+    }
+  },
 
   {
     path: "/manage-assessment/:id",
@@ -52,7 +72,7 @@ const routes = [
     name: "manage-assessment",
     meta: {
       layout: "AppDashboardLayout",
-      header: "Surface Cementing (Lv1) - Assessment"
+      // header: "Surface Cementing (Lv1) - Assessment"
     },
   },
 ];

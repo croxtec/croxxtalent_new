@@ -16,5 +16,23 @@ const routes = [
     name: "quiz",
     component: Quiz,
   },
+
+  // Manager
+
+  {
+    path: "/summary/:id",
+    name: "mark-assessment",
+    component: Home,
+    meta: {
+      layout: "AppDashboardLayout",
+      // header: "assessment",
+    },
+  },
+  {
+    path: "/summary",
+    name: "summary",
+    component: Quiz,
+  },
+
 ];
 export default routes;

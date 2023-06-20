@@ -9,12 +9,15 @@ import home from "@/modules/landing/store/index";
 
 // 
 import manager from "@/modules/talent//views/competencies/store/manager"
+import competencies from "@/modules/talent//views/competencies/store/competencies"
 
 // Configurations
 import config from "./configurations";
 
 // CV STORE DATA
 import cvEducation from "@/modules/talent/views/resume/store/cv-education";
+import cvCertification from "@/modules/talent/views/resume/store/cv-certification";
+import cvCompetency from "@/modules/talent/views/resume/store/cv-competency";
 
 import createPersistedState from "vuex-persistedstate";
 
@@ -34,7 +37,11 @@ export default new Vuex.Store({
 
     // CV
     cvEducation,
-    manager
+    cvCertification,
+    cvCompetency,
+    
+    manager,
+    competencies
 
   },
 });

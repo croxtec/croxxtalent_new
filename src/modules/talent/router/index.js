@@ -6,6 +6,7 @@ import JobsRoutes from "../views/jobs/router";
 import CroxxProfile from "../views/croxxprofile/router";
 import TrainingRoutes from "../views/training/router"
 import Messaging from "../views/messaging/router"
+import Settings from "../views/settings/router"
 
 const routes = [];
 
@@ -17,7 +18,8 @@ const router = routes.concat(
   JobsRoutes,
   CroxxProfile,
   TrainingRoutes,
-  Messaging
+  Messaging,
+  Settings
 );
 
 export default router;

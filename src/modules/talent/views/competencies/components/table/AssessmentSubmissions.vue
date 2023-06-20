@@ -25,7 +25,7 @@
       <div  class="d-flex flex-column" style="gap: 20px">
         <div class="table-responsive">
           <table class="table table-centered table-nowrap">
-            <tr v-for="item in 6" :key="item">
+            <tr v-for="item in summaries.data" :key="item.id">
               <td>
                 <div class="d-flex align-items-center" style="gap: 15px">
                   <img src="https://menofvalue.com/wp-content/uploads/2015/04/bigstock-Skeptical-74315989-e1438791711725.jpg" alt="" style="" />
@@ -54,12 +54,20 @@
                 </div>
               </td>
               <td class="text-right">
-                <button
+                <button @click="gotoMarkAssessment(item)"
                   class="button primary-btn py-2"
                   style="width: max-content"
                 >
                   Mark Test
                 </button>
+                <!-- v-if="item.is_published === 0" -->
+                <!-- <button @click="viewScore(item)"
+                  class="button primary-btn py-2"
+                  style="width: max-content"
+                  v-else
+                >
+                  View Score
+                </button> -->
               </td>
             </tr>
           </table>
@@ -71,21 +79,48 @@
 
 <script>
 import { sliceHash } from "@/filter";
-import { mapState } from "vuex";
+import { mapState, mapActions } from 'vuex'
+
 export default {
   data() {
     return {
+      code: this.$route.params.id,
       details: false,
       sliceHash,
     };
   },
+
   computed: {
-    ...mapState("job_codes", {
-      results: (state) => state.results,
+    ...mapState("manager", {
+      assessment: (state) => state.assessment,
+      summaries: (state) => state.summaries,
       loading: (state) => state.loading,
       error: (state) => state.error,
     }),
   },
+
+  methods: {
+    ...mapActions("manager", ["getAssesmentSummaries"]),
+
+    gotoMarkAssessment(item){
+      const data = {
+        code: item.assesment_code.id,
+        talentID: item.talent_id
+      }
+      const userString = JSON.stringify(data)
+      localStorage.setItem("userData", userString)
+      this.$router.push({name: 'assessmentSummary', params: {id: item.assesment_code.code}});
+    },
+    viewScore(item) {
+      alert(`Your total Score is ${item.total_score}`)
+    }
+  },
+
+  mounted(){
+    this.getAssesmentSummaries(1).then(() =>{
+      this.$route.meta.header = `${this.assessment?.name} - (${this.assessment.level})`;
+    });
+  }
 };
 </script>
 

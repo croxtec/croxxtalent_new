@@ -35,7 +35,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions("cvEducation", ["view"]),
+    ...mapActions("cvEducation", ["view", "list"]),
     edit(value) {
       this.$emit("edit", "education");
       this.view(value.id);
@@ -45,6 +45,10 @@ export default {
     ...mapState("cvEducation", {
       dataSet: (state) => state.dataSet,
     }),
+  },
+
+  beforeMount() {
+    this.list();
   },
 };
 </script>
