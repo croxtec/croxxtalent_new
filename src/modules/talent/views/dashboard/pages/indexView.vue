@@ -4,12 +4,7 @@
     <div class="w-75 d-flex flex-column" style="gap:20px">
       <ProfileCard/>
       <div class="d-flex" style="gap:20px">
-        <!-- <CompetenciesCard class="w-100"/>
-        <CompetenciesCard class="w-100"/> -->
-      </div>
-      <div class="d-flex" style="gap:20px">
-        <!-- <CompetenciesCard class="w-100"/>
-        <CompetenciesCard class="w-100"/> -->
+          <CompetenciesCard class="w-100" v-for="skill in recommended.competency" :key="skill.id" :cxCompetence="skill"/>
       </div>
     </div>
     <div class="w-25">
@@ -49,7 +44,7 @@
     <!-- Courses  -->
   <div class="my-4">
     <div class="top d-flex align-items-center justify-content-between mb-4">
-        <h5 class=" header--text">Recommended Courses</h5>
+        <h5 class=" header--text">Courses</h5>
         <div class="d-lg-flex align-items-center see--all linker" 
           @click.prevent="$router.push('/training')"
           style="gap: 4px; margin-right: 3em;">
@@ -64,6 +59,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 import CxEmployers from '@/components/cards/cxEmployers.vue';
 import CxJobs from '@/components/cards/cxJobs.vue'
 import CxJobGrid from '../../jobs/components/CxJobGrid.vue'
@@ -71,10 +68,27 @@ import ProfileCard from '../components/ProfileCard.vue'
 import SideBar from '../components/SideBar.vue'
 import CxTraining from '@/components/cards/cxTraining.vue';
 import CompetenciesCard from '@/components/cards/CompetenciesCard.vue';
+
 export default {
+
   components: { ProfileCard, SideBar, CxJobs, CxEmployers, CxTraining, CompetenciesCard, CxJobGrid },
 
+  methods: {
+    ...mapActions("competencies", ["getRecommendedCompetency"]),
+  },
+
+  computed: {
+    ...mapState("competencies", {
+      recommended: (state) => state.recommended
+    })
+  },
+
+  mounted(){
+    this.getRecommendedCompetency()
+  }
+
 }
+
 </script>
 
 <style>
