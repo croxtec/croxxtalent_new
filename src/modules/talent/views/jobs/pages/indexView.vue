@@ -11,20 +11,20 @@
         <div class="images">
           <router-link to="jobs">
             <img
-            src="@/assets/img/vertical.png"
-            alt=""
-            srcset=""
-            class="img-fluid mx-3"
-          />
+              src="@/assets/img/vertical.png"
+              alt=""
+              srcset=""
+              class="img-fluid mx-3"
+            />
           </router-link>
           <router-link to="rows">
             <img
-            src="@/assets/img/horizontal.png"
-            alt=""
-            srcset=""
-            class="img-fluid"
-            @click="showHorizontal"
-          />
+              src="@/assets/img/horizontal.png"
+              alt=""
+              srcset=""
+              class="img-fluid"
+              @click="showHorizontal"
+            />
           </router-link>
         </div>
       </div>
@@ -34,8 +34,9 @@
       <div class="job-filter">
         <span @click="showEmployment">
           <h6 class="my-3">
-          Type of Employment <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
-        </h6>
+            Type of Employment <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
+          </h6>
         </span>
         <div class="employment-card" v-if="employment">
           <div class="my-3">
@@ -60,7 +61,10 @@
           </div>
         </div>
         <span @click="showCategories">
-          <h6 class="my-3">Categories <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i></h6>
+          <h6 class="my-3">
+            Categories <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
+          </h6>
         </span>
         <div class="employment-card" v-if="categories">
           <div class="my-3">
@@ -93,7 +97,10 @@
           </div>
         </div>
         <span @click="showJobLevel">
-          <h6 class="my-3">Job Level <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i></h6>
+          <h6 class="my-3">
+            Job Level <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i>
+          </h6>
         </span>
         <div class="employment-card" v-if="jobLevel">
           <div class="my-3">
@@ -118,7 +125,10 @@
           </div>
         </div>
         <span @click="showSalaryRange">
-          <h6 class="my-3">Salary Range <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i></h6>
+          <h6 class="my-3">
+            Salary Range <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i>
+          </h6>
         </span>
         <div class="employment-card" v-if="salaryRange">
           <div class="my-3">
@@ -142,7 +152,7 @@
       <div class="job-list">
         <div class="jobs grid-job">
           <div class="floter" v-for="job in jobs" :key="job.id">
-            <div class="job-card mx-2">
+            <div class="job-card">
               <div class="d-flex justify-content-between">
                 <img
                   src="@/assets/img/box.png"
@@ -151,14 +161,8 @@
                   class="img-fluid"
                   style="width: 40px"
                 />
-                <i
-                  class="fa fa-ellipsis-h"
-                  @click="showOptionModal(job.id)"
-                ></i>
-                <div
-                  class="option-modal py-2"
-                  v-if="optionModal === job.id"
-                >
+                <i class="fa fa-ellipsis-h" @click="showOptionModal(job.id)"></i>
+                <div class="option-modal py-2" v-if="optionModal === job.id">
                   <span>Apply</span>
                   <hr />
                   <span>Save</span>
@@ -172,8 +176,7 @@
               </div>
               <p class="d-block text-truncate content">
                 Dropbox is looking for Brand <br />
-                Designer to help the team to be able to access all of the
-                required state
+                Designer to help the team to be able to access all of the required state
               </p>
               <div class="d-flex mt-4 justify-content-between">
                 <span class="drilling">Drilling</span>
@@ -194,7 +197,7 @@ export default {
       vertical: false,
       horizontal: false,
       employment: true,
-      categories:true,
+      categories: true,
       jobLevel: true,
       salaryRange: true,
       optionModal: null,
@@ -406,32 +409,32 @@ export default {
   },
   methods: {
     showOptionModal(item) {
-      this.optionModal = this.optionModal === item ? null:item;
+      this.optionModal = this.optionModal === item ? null : item;
     },
-    showVertical () {
-      this.vertical = true
-      this.horizontal = false
+    showVertical() {
+      this.vertical = true;
+      this.horizontal = false;
     },
-    showHorizontal () {
-      this.vertical = false
-      this.horizontal = true
+    showHorizontal() {
+      this.vertical = false;
+      this.horizontal = true;
     },
-    showEmployment () {
-      this.employment = !this.employment
-      this.show1 = !this.show1
+    showEmployment() {
+      this.employment = !this.employment;
+      this.show1 = !this.show1;
     },
-    showCategories () {
-      this.categories = !this.categories
-      this.show2 = !this.show2
+    showCategories() {
+      this.categories = !this.categories;
+      this.show2 = !this.show2;
     },
-    showJobLevel () {
-      this.jobLevel = !this.jobLevel
-      this.show3 = !this.show3
+    showJobLevel() {
+      this.jobLevel = !this.jobLevel;
+      this.show3 = !this.show3;
     },
-    showSalaryRange () {
-      this.salaryRange = !this.salaryRange
-      this.show4 = !this.show4
-    }
+    showSalaryRange() {
+      this.salaryRange = !this.salaryRange;
+      this.show4 = !this.show4;
+    },
   },
 };
 </script>
@@ -454,10 +457,10 @@ header h6 {
 .jobs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1rem;
+  grid-gap: 1.4rem;
 }
 .job-card {
-  width: 274px;
+  /* width: 274px; */
   height: 275px;
   border: 1px solid #c2dbff;
   border-radius: 20px;
