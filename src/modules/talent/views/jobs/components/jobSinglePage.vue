@@ -4,7 +4,10 @@ import BackIcon from "./backArrow.vue";
 export default {
   components: { BackIcon },
   data: () => {
-    return {};
+    return {
+      customColor: "#56CDAD",
+      percentage: 30,
+    };
   },
 };
 </script>
@@ -22,31 +25,45 @@ export default {
             <h6 class="job-title">Petroleum Engineer</h6>
             <p class="job-sub-title">Dest oil . Paris, France</p>
             <div class="d-flex lable-section">
-              <div class="green-label">Full-Time</div>
-              <div class="line"></div>
+              <div>
+                <div class="green-label">Full-Time</div>
+              </div>
+              <div><div class="line"></div></div>
               <div class="yellow-label">Mudlogging</div>
-              <div class="purple-label">Drilling</div>
+              <div>
+                <div class="purple-label">Drilling</div>
+              </div>
             </div>
           </div>
         </div>
         <div>
           <div class="d-flex apply_button gap-2">
-            <button
-              class="primary--button_border mt-5 p-3 px-5 d-flex align-items-center mx-auto"
-              style="gap: 10px"
-            >
-              <span>Save</span>
-            </button>
-            <button
-              class="primary--button mt-5 p-3 px-5 d-flex align-items-center mx-auto"
-              style="gap: 10px"
-            >
-              <span>Apply </span>
-            </button>
+            <div>
+              <button
+                class="primary--button_border mt-5 p-2 px-5 d-flex align-items-center mx-auto"
+              >
+                <span>Save</span>
+              </button>
+            </div>
+            <div>
+              <button
+                class="primary--button mt-5 p-2 px-5 d-flex align-items-center mx-auto"
+              >
+                <span>Apply </span>
+              </button>
+              <div class="mt-2">
+                <el-progress
+                  :percentage="percentage"
+                  :color="customColor"
+                  :show-text="false"
+                ></el-progress>
+                <span>5 applied of 10 capacity</span>
+              </div>
+            </div>
           </div>
-          <div>
+          <!-- <div class="mt-2">
             <div class="progress-container"><div class="progress-bar"></div></div>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="job-content-container">
@@ -65,30 +82,51 @@ export default {
         </div>
         <div class="Competency-section mt-4">
           <h6 class="Competency-heading mb-2">Competency</h6>
-          <ol>
-            <li>Domain name</li>
-            <li>Core name</li>
-            <li>Skill</li>
-          </ol>
+          <div class="my-4">
+            <ol>
+              <li>Domain name</li>
+              <li>Core name</li>
+              <li>Skill</li>
+            </ol>
+          </div>
         </div>
         <div class="Requirements-section">
-          <h6 class="Requirements-section">Requirements</h6>
-          <ul>
-            <li>Domain name</li>
-            <li>Core name</li>
-            <li>Skill</li>
-          </ul>
+          <h6 class="Requirements-heading">Requirements</h6>
+          <div class="my-4">
+            <ul>
+              <li>Domain name</li>
+              <li>Core name</li>
+              <li>Skill</li>
+            </ul>
+          </div>
         </div>
         <div class="Responsibility-section">
-          <h6>Responsibility</h6>
-          <ul>
-            <li>Domain name</li>
-            <li>Core name</li>
-            <li>Skill</li>
-          </ul>
+          <h6 class="Responsibility-heading">Responsibility</h6>
+          <div class="my-4">
+            <ul>
+              <li>Domain name</li>
+              <li>Core name</li>
+              <li>Skill</li>
+            </ul>
+          </div>
+        </div>
+        <div class="Salary-section">
+          <h6 class="Salary-heading">
+            <div class="Salary-section">
+              <h6 class="Salary-heading">Salary</h6>
+              <div class="my-4"><span>N 350,000 - N 500,000</span></div>
+            </div>
+          </h6>
+          <div class="my-4">
+            <ul>
+              <li>Domain name</li>
+              <li>Core name</li>
+              <li>Skill</li>
+            </ul>
+          </div>
         </div>
         <div class="Summary-section">
-          <h6>Summary</h6>
+          <h6 class="Summary-heading mb-4">Summary</h6>
           <span
             >Lorem ipsum dolor sit amet consectetur. At a eu fusce et suspendisse
             condimentum. Cursus at orci tempor ut aliquet in leo. Gravida tortor varius

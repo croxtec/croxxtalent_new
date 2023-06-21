@@ -94,6 +94,36 @@
 
 }
 .Requirements-section{}
-.apply_button{
+.Requirements-heading {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #282929;
+}
+.Salary-heading,
+.Responsibility-heading {
+    font-size: 20px;
+    line-height: 23.44px;
+    font-weight: 600;
+    color: #282929;
+}
+.Responsibility-content {padding: 20px 0px;}
+.Summary-heading {
+    font-size: 20px;
+    line-height: 23.44px;
+    font-weight: 600;
+    color: #282929;
+}
+    .apply_button{
     gap:10px
+}
+.progress-container{
+    background-color: #CBD7E7;
+     width: 100%; 
+     height: 10px;
+    }
+.progress-bar{
+    background-color:#56CDAD; 
+    width: 40px; 
+    height: 10px;
 }
