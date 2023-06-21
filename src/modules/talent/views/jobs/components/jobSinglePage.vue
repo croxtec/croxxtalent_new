@@ -24,31 +24,50 @@ export default {
           <div class="pl-4">
             <h6 class="job-title">Petroleum Engineer</h6>
             <p class="job-sub-title">Dest oil . Paris, France</p>
-            <div class="d-flex lable-section">
-              <div>
-                <div class="green-label">Full-Time</div>
+
+            <div class="d-flex justify-content-between">
+              <div class="d-flex lable-section">
+                <div>
+                  <div class="green-label">Full-Time</div>
+                </div>
+                <div><div class="line"></div></div>
+                <div><div class="yellow-label">Mudlogging</div></div>
+                <div>
+                  <div class="purple-label">Drilling</div>
+                </div>
               </div>
-              <div><div class="line"></div></div>
-              <div class="yellow-label">Mudlogging</div>
-              <div>
-                <div class="purple-label">Drilling</div>
-              </div>
+              <!-- <div class="d-flex apply_button gap-2">
+                <div>
+                  <button class="primary--button_border p-2 px-5 align-items-center">
+                    <span>Save</span>
+                  </button>
+                </div>
+                <div>
+                  <button class="primary--button p-2 px-5 align-items-center">
+                    <span>Apply </span>
+                  </button>
+                  <div class="mt-2">
+                    <el-progress
+                      :percentage="percentage"
+                      :color="customColor"
+                      :show-text="false"
+                    ></el-progress>
+                    <span>5 applied of 10 capacity</span>
+                  </div>
+                </div>
+              </div> -->
             </div>
           </div>
         </div>
         <div>
-          <div class="d-flex apply_button gap-2">
+          <div style="display: none" class=" apply_button gap-2">
             <div>
-              <button
-                class="primary--button_border mt-5 p-2 px-5 d-flex align-items-center mx-auto"
-              >
+              <button class="primary--button_border mt-5 p-2 px-5 align-items-center">
                 <span>Save</span>
               </button>
             </div>
             <div>
-              <button
-                class="primary--button mt-5 p-2 px-5 d-flex align-items-center mx-auto"
-              >
+              <button class="primary--button mt-5 p-2 px-5 align-items-center">
                 <span>Apply </span>
               </button>
               <div class="mt-2">
@@ -114,7 +133,9 @@ export default {
           <h6 class="Salary-heading">
             <div class="Salary-section">
               <h6 class="Salary-heading">Salary</h6>
-              <div class="my-4"><span>N 350,000 - N 500,000</span></div>
+              <div class="my-4">
+                <span class="salary-price">N 350,000 - N 500,000</span>
+              </div>
             </div>
           </h6>
           <div class="my-4">

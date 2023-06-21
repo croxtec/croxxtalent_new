@@ -127,3 +127,9 @@
     width: 40px; 
     height: 10px;
 }
+.salary-price{
+    color: #0040A1;
+    font-size: 16px;
+        line-height: 18.75px;
+        font-weight: 700;
+}
