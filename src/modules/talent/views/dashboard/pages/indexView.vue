@@ -1,6 +1,6 @@
 <template>
   <div id="home" class="pb-4">
-   <div class="d-flex pb-4" style="gap:20px">
+   <div class="d-flex main-home pb-4" style="gap:20px">
     <div class="w-75 d-flex flex-column" style="gap:20px">
       <ProfileCard/>
       <div class="d-flex" style="gap:20px">
@@ -79,4 +79,16 @@ export default {
 
 <style>
 
+</style>
+
+<style>
+  @media (max-width: 990px) {
+    .main-home {
+      flex-direction: column !important;
+    }
+
+    .w-75, .w-25 {
+      width: 100% !important;
+    }
+  }
 </style>

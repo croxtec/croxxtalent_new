@@ -1,8 +1,8 @@
 <template>
   <div>
     <hero-section />
-    <FeaturedJobs :numberOfItems="4" />
     <how-it-works />
+    <FeaturedJobs :numberOfItems="8" />
     <news-letter />
   </div>
 </template>
@@ -16,4 +16,3 @@ export default {
   components: { HeroSection, FeaturedJobs, NewsLetter, HowItWorks },
 };
 </script>
-, NewsLetter

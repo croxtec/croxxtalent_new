@@ -1,6 +1,44 @@
 <template>
-  <div>
-    <div class="container">
+  <div class="">
+    <div class="numbers-card">
+            <div class="numbers-content">
+              <div class="text-center">
+                <span><i-icon icon="fluent:people-24-regular" /></span>
+                <h6>Talents</h6>
+                <animated-number
+                  :value="value"
+                  :formatValue="formatToPrice"
+                  :duration="duration"
+                />
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="text-center">
+                <span><i-icon icon="iconamoon:briefcase-light" /></span>
+                <h6>Contractors</h6>
+                <animated-number
+                  :value="value2"
+                  :formatValue="formatToPrice"
+                  :duration="duration"
+                />
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="text-center">
+                <span><i-icon icon="fontisto:smiling" /></span>
+                <h6>Happy Clients</h6>
+                <animated-number
+                  :value="value3"
+                  :formatValue="formatToPrice"
+                  :duration="duration"
+                />
+                
+              </div>
+            </div>
+          </div>
+    <!-- <div class="container">
       <div class="our-mission-container">
         <div class="my-5 w-100 our-mission-cont">
           <img
@@ -19,11 +57,9 @@
                   :formatValue="formatToPrice"
                   :duration="duration"
                 />
-                <!-- <h1>200+</h1> -->
                 <h6>Talents</h6>
               </div>
               <div class="text-center">
-                <!-- <h1>120+</h1> -->
                 <animated-number
                   :value="value2"
                   :formatValue="formatToPrice"
@@ -32,7 +68,6 @@
                 <h6>Contractors</h6>
               </div>
               <div class="text-center">
-                <!-- <h1>300+</h1> -->
                 <animated-number
                   :value="value3"
                   :formatValue="formatToPrice"
@@ -63,7 +98,7 @@
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -85,7 +120,59 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+.numbers-card {
+    background: url('@/assets/img/hero-g-g.svg');
+    height: 500px;
+    display: grid;
+    display: -ms-inline-grid;
+    display: -moz-grid;
+    place-items: center;
+    background-color: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.divider {
+  width: 0.7px;
+  background:#fff;
+  height: 100%;
+}
+
+.numbers-card .numbers-content h6 {
+  text-transform: uppercase;
+  font-size: 11px !important;
+  letter-spacing: 2px;
+}
+
+.numbers-card .numbers-content{
+    display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
+    height: 200px;
+}
+
+.numbers-card .numbers-content h1, .numbers-card .numbers-content h6, .numbers-card .numbers-content span {
+    color: #fff;
+}
+
+.numbers-card .numbers-content span {
+  font-size: 20px;
+}
+
+.numbers-card .numbers-content h1 {
+    font-weight: 600;
+}
+
+.numbers-card .numbers-content h6 {
+    font-weight: 300;
+    font-size: 14px;
+}
+
 .our-mission {
   /* margin-top: 200px; */
 }
@@ -99,9 +186,7 @@ export default {
   }
   .numbers--card {
     width: 80%;
-    left: 20%;
     height: 7em;
-    bottom: -50px;
   }
 
   .numbers--card .numbers-content h1 {
