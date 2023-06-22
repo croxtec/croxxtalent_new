@@ -178,9 +178,16 @@ export default {
 }
 
 @media only screen and (max-width: 572px) {
+  .numbers-card .numbers-content {
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+  }
+
   .img-fluid {
     width: 90%;
   }
+
   .our-mission {
     /* margin-top: 20px; */
   }
