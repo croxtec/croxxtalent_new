@@ -108,14 +108,14 @@
     display: -moz-grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    justify-content: center;
 }
 
 
 /* Subscibe to Newsletter */
 .subscribe-to-newsletter {
-    background-color: var(--primary-color);
-    padding: 2rem 0;
-    min-height: 100vh;
+    background-color: var(--green-600);
+    padding: 4rem 0;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
@@ -125,7 +125,8 @@
 .subscribe-form {
     background-color: var(--light-accent);
     padding: 4rem;
-    border-radius: 20px;text-align: center;
+    border-radius: 20px;
+    text-align: center;
 }
 
 .subscibe-input {
@@ -204,12 +205,16 @@
 
 /* How it works  */
 .how--it_works {
-    background-color: var(--light-accent);
+    background: url('../img/hero-g-g.svg');
     min-height: 100vh;
     display: grid;
     display: -ms-inline-grid;
     display: -moz-grid;
     place-items: center;
+    background-color: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
 }
 
 .how--it_works.employers {
@@ -228,6 +233,11 @@
  background-color: #fff;
  padding: 2rem;
  border-radius: 20px;
+ text-align: center;
+}
+
+.how-it-works-card img {
+    width: 80%;
 }
 
 .how-it-works-card p {
@@ -235,7 +245,11 @@
 }
 
 .how-it-works-card h5 {
-    margin: 12px 0 !important;
+    margin-top: 20px !important;
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: 600;
+    /* margin: 0 auto; */
 }
 
 .how-it-works-card .icon svg path {
@@ -440,7 +454,8 @@
     display: -ms-inline-grid;
     display: -moz-grid;
     place-items: center;
-    background-color: var(--light-accent);
+    background: url('../img/hero-g-g.svg') center center no-repeat;
+    /* background-color: var(--light-accent); */
 }
 
 .competencies--card{
@@ -814,52 +829,6 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     
 }
 
-
-/* RESOURCES */
-.resource-card {
-    display: flex;
-    display: inline-flex;
-    display: -webkit-flex;
-    gap: 50px;
-    align-items: center;
-}
-
-.resource-card div {
-    width: 50%;
-}
-
-.resource-card img {
-    width: 50%;
-    height: 400px;
-    object-fit: cover;
-    -o-object-fit: cover;
-    object-position: center;
-    -o-object-position: center;
-    border-radius: 20px;
-}
-
-.resources-card {
-    display: flex;
-    flex-direction: column;
-    display: inline-flex;
-    display: -webkit-flex;
-    gap: 30px;
-}
-
-.resource-card div {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.resource-card div h5 {
-    font-weight: 500;
-}
-
-.colored-resource-card {
-    background-color: #f5f5f5;
-    padding: 30px 0;
-}
 
 /* FAQ  */
 .faq-cards {

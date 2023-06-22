@@ -49,6 +49,10 @@
         display: none !important;
     }   
 
+    .talent-nav_items {
+        display: none !important;
+    }
+
     .app-nav .mobile-menu {
         display: block;
     }

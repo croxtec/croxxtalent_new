@@ -1,6 +1,9 @@
 <template>
   <div id="profile-card" class="bordered">
-   <div class="d-flex align-items-center justify-content-between w-100 py-2" style="gap:20px; ">
+    <!-- <div>
+      {{ user }}
+     </div> -->
+   <div class="d-flex align-items-center profile-card justify-content-between w-100 py-2" style="gap:20px; ">
     
     <div class="d-flex align-items-center" style="gap:20px">
       <img  class="linker" @click.prevent="gotoProfile()"
@@ -8,7 +11,7 @@
       alt=""
     />
      <div class="linker" @click.prevent="gotoProfile()">
-      <h5 class="profile-name">Nancy Tukura</h5>
+      <h5 class="profile-name">{{ user.name }}</h5>
       <h6 class="profile-profession">Petroleum Engineer</h6>
      </div>
     </div>
@@ -27,6 +30,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   data() {
     return {
@@ -39,13 +43,24 @@ export default {
       this.$router.push({name: 'create-cv'});
     },
 
-
     gotoProfile(){
       this.$router.push({name: 'profile'});
     }
   },
+
+  computed: {
+    ...mapState('auth', {
+      user: (state) => state.user
+    })
+  }
 };
 </script>
 
 <style>
+@media (max-width:990px) {
+  .profile-card {
+    flex-direction: column !important;
+    align-items: start !important;
+  }
+}
 </style>

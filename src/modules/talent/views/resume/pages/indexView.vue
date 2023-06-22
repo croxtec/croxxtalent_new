@@ -93,3 +93,15 @@ export default {
   },
 };
 </script>
+
+<style>
+  @media (max-width: 990px) {
+    .create-cv {
+      flex-direction: column;
+  }
+
+  .cv-option {
+    width: 100%;
+  }
+  }
+</style>

@@ -1,55 +1,57 @@
 <template>
   <div class="how--it_works" :class="isEmployer ? 'employers' : ''">
     <div class="container py-5">
-      <h2
-        class="header--text text-center mb-5"
-        style="color: var(--primary-color)"
+      <h1
+        class="text-center mb-5"
+        style="color: #fff; font-weight: 600;"
         data-aos="fade-up"
       >
-        How it Works
-      </h2>
-      <div class="d-lg-flex" style="gap: 10px">
+        How can we help
+      </h1>
+      <div class="d-lg-flex justify-content-center" style="gap: 25px">
         <router-link
-          class="col-md-3 how-it-works-card"
+          class="col-md-4 how-it-works-card"
           to="/register"
           data-aos="fade-left"
         >
-          <div class="icon">
+        <img src="@/assets/img/qualified-candidates.png" alt="">
+          <!-- <div class="icon">
             <svg width="32" height="32" viewBox="0 0 15 15">
               <path
                 fill="currentColor"
                 d="M4.5 6.995H4v1h.5v-1Zm6 1h.5v-1h-.5v1ZM4.5 10H4v1h.5v-1Zm6 1h.5v-1h-.5v1Zm-6-7.003H4v1h.5v-1Zm6 1h.5v-1h-.5v1Zm3-1.497h.5v-.207l-.146-.147l-.354.354Zm-3-3l.354-.354L10.707 0H10.5v.5Zm-6 7.495h6v-1h-6v1ZM4.5 11h6v-1h-6v1Zm0-6.003h6v-1h-6v1Zm8 9.003h-10v1h10v-1ZM2 13.5v-12H1v12h1Zm11-10v10h1v-10h-1ZM2.5 1h8V0h-8v1Zm7.646-.146l3 3l.708-.708l-3-3l-.708.708ZM2.5 14a.5.5 0 0 1-.5-.5H1A1.5 1.5 0 0 0 2.5 15v-1Zm10 1a1.5 1.5 0 0 0 1.5-1.5h-1a.5.5 0 0 1-.5.5v1ZM2 1.5a.5.5 0 0 1 .5-.5V0A1.5 1.5 0 0 0 1 1.5h1Z"
               />
             </svg>
-          </div>
-          <h5>Register</h5>
-          <p class="text-dark">
+          </div> -->
+          <h5>Qualified <br> candidates</h5>
+          <!-- <p class="text-dark">
             Join the CroxxTalent community of top employers and start finding
             the best talent in the energy sector.
-          </p>
+          </p> -->
         </router-link>
 
         <router-link
           to="/register"
-          class="col-md-3 how-it-works-card"
+          class="col-md-4 how-it-works-card"
           data-aos="fade-up"
         >
-          <div class="icon">
+          <!-- <div class="icon">
             <svg width="32" height="32" viewBox="0 0 2048 2048">
               <path
                 fill="currentColor"
                 d="M768 1024q-88 0-170 23t-153 64t-129 100t-100 130t-65 153t-23 170H0q0-117 35-229t101-207t157-169t203-113q-56-36-100-83t-76-103t-47-118t-17-130q0-106 40-199t109-163T568 40T768 0q106 0 199 40t163 109t110 163t40 200q0 67-16 129t-48 119t-75 103t-101 83q69 26 132 64t117 89l-87 95q-89-82-201-126t-233-44zM384 512q0 80 30 149t82 122t122 83t150 30q79 0 149-30t122-82t83-122t30-150q0-79-30-149t-82-122t-123-83t-149-30q-80 0-149 30t-122 82t-83 123t-30 149zm1530 1027q6 30 6 61t-6 61l124 51l-49 119l-124-52q-35 51-86 86l52 124l-119 49l-51-124q-30 6-61 6t-61-6l-51 124l-119-49l52-124q-51-35-86-86l-124 52l-49-119l124-51q-6-30-6-61t6-61l-124-51l49-119l124 52q35-51 86-86l-52-124l119-49l51 124q30-6 61-6t61 6l51-124l119 49l-52 124q51 35 86 86l124-52l49 119l-124 51zm-314 253q40 0 75-15t61-41t41-61t15-75q0-40-15-75t-41-61t-61-41t-75-15q-40 0-75 15t-61 41t-41 61t-15 75q0 40 15 75t41 61t61 41t75 15z"
               />
             </svg>
-          </div>
-          <h5>Setup Profile</h5>
-          <p class="text-dark">
+          </div> -->
+          <img src="@/assets/img/workforce.png" alt="">
+          <h5>Take control of your <br> work force</h5>
+          <!-- <p class="text-dark">
             Customize your company profile and showcase your brand to top talent
             in the energy sector.
-          </p>
+          </p> -->
         </router-link>
 
-        <router-link
+        <!-- <router-link
           to="/register"
           class="col-md-3 how-it-works-card"
           data-aos="fade-up"
@@ -103,9 +105,8 @@
           <p class="text-dark">
             Let our team do the heavy lifting for you and find the perfect
             talent match for your business.
-            <!-- You can focus on running your business while we take care of sourcing and screening the best match for your business.  -->
-          </p>
-        </router-link>
+             </p>
+        </router-link> -->
       </div>
     </div>
   </div>

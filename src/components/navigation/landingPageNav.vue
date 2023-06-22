@@ -1,53 +1,54 @@
 <template>
-  <div class="app-nav sticky-top">
-    <div class="navbar-transparent bg-white">
-      <div class="container py-4">
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="app-logo w-100">
-            <router-link to="/"
-              ><img src="@/assets/img/logo.png" width="40%" alt=""
-            /></router-link>
-          </div>
-          <ul
-            class="m-0 app--nav_items d-flex align-items-center w-100 justify-content-end"
-            style="gap: 30px"
-          >
-            <li>
-              <router-link to="/employers">For Employers</router-link>
-            </li>
-            <li>
-              <router-link to="/talents">For Talents</router-link>
-            </li>
-            <li>
-              <router-link to="/services">Services</router-link>
-            </li>
-            <li>
-              <router-link to="/about-us">About Us</router-link>
-            </li>
-            <li>
-              <button class="primary--button" @click="buttonClick">
-                {{ loggedIn ? "Home" : "Login" }}
-              </button>
-              <!-- <cx-button @buttonClicked="goToLogin"
+  <div>
+    <div class="app-nav sticky-top">
+      <div class="navbar-transparent bg-white">
+        <div class="container py-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="app-logo w-100">
+              <router-link to="/"
+                ><img src="@/assets/img/logo.png" width="40%" alt=""
+              /></router-link>
+            </div>
+            <ul
+              class="m-0 app--nav_items d-flex align-items-center w-100 justify-content-end"
+              style="gap: 30px"
+            >
+              <li>
+                <router-link to="/employers">For Employers</router-link>
+              </li>
+              <li>
+                <router-link to="/talents">For Talents</router-link>
+              </li>
+              <li>
+                <router-link to="/services">Services</router-link>
+              </li>
+              <li>
+                <router-link to="/about-us">About Us</router-link>
+              </li>
+              <li>
+                <button class="primary--button" @click="buttonClicked">
+                  {{ loggedIn ? "Home" : "Login" }}
+                </button>
+                <!-- <cx-button @buttonClicked="goToLogin"
                 ><slot>Login</slot></cx-button
               > -->
-            </li>
-          </ul>
+              </li>
+            </ul>
 
-          <div class="mobile-menu">
-            <span role="button" @click="drawer = true">
-              <i-icon icon="material-symbols:menu-sharp" width="30px" />
-            </span>
+            <div class="mobile-menu">
+              <span role="button" @click="drawer = true">
+                <i-icon icon="material-symbols:menu-sharp" width="30px" />
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <!-- Drawer  -->
     <el-drawer
-      title="I am the title"
       :visible.sync="drawer"
       direction="rtl"
-      size="92%"
+      size="90%"
       :withHeader="false"
     >
       <!-- style="max-width: 400px;" -->
@@ -81,7 +82,7 @@
           </li>
           <li>
             <!-- <cx-button @buttonClicked="goToLogin"><slot>Login</slot></cx-button> -->
-            <button class="primary--button" @click="buttonClick">
+            <button class="primary--button" @click="buttonClicked">
               {{ loggedIn ? "Home" : "Login" }}
             </button>
           </li>
@@ -101,7 +102,7 @@ export default {
     };
   },
   methods: {
-    buttonClick() {
+    buttonClicked() {
       this.loggedIn ? this.goToDashboard() : this.goToLogin();
     },
     goToLogin() {
@@ -119,3 +120,14 @@ export default {
   },
 };
 </script>
+
+
+<style>
+.el-drawer__body {
+  background: var(--primary-color) !important;
+}
+
+.el-drawer__body ul li a {
+  color: #fff !important;
+}
+</style>
