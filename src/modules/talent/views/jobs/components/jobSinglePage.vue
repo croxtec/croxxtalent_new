@@ -4,13 +4,16 @@ import BackIcon from "./backArrow.vue";
 export default {
   components: { BackIcon },
   data: () => {
-    return {};
+    return {
+      customColor: "#56CDAD",
+      percentage: 30,
+    };
   },
 };
 </script>
 <template>
   <div>
-    <header class="d-flex">
+    <header class="d-flex mb-4">
       <BackIcon />
       <h6 class="py-2 pl-2">Job Description</h6>
     </header>
@@ -21,20 +24,71 @@ export default {
           <div class="pl-4">
             <h6 class="job-title">Petroleum Engineer</h6>
             <p class="job-sub-title">Dest oil . Paris, France</p>
-            <div class="d-flex lable-section">
-              <div class="green-label">Full-Time</div>
-              <div class="line"></div>
-              <div class="yellow-label">Mudlogging</div>
-              <div class="purple-label">Drilling</div>
+
+            <div class="d-flex justify-content-between">
+              <div class="d-flex lable-section">
+                <div>
+                  <div class="green-label">Full-Time</div>
+                </div>
+                <div><div class="line"></div></div>
+                <div><div class="yellow-label">Mudlogging</div></div>
+                <div>
+                  <div class="purple-label">Drilling</div>
+                </div>
+              </div>
+              <!-- <div class="d-flex apply_button gap-2">
+                <div>
+                  <button class="primary--button_border p-2 px-5 align-items-center">
+                    <span>Save</span>
+                  </button>
+                </div>
+                <div>
+                  <button class="primary--button p-2 px-5 align-items-center">
+                    <span>Apply </span>
+                  </button>
+                  <div class="mt-2">
+                    <el-progress
+                      :percentage="percentage"
+                      :color="customColor"
+                      :show-text="false"
+                    ></el-progress>
+                    <span>5 applied of 10 capacity</span>
+                  </div>
+                </div>
+              </div> -->
             </div>
           </div>
         </div>
-        <div>but</div>
+        <div>
+          <div style="display: none" class=" apply_button gap-2">
+            <div>
+              <button class="primary--button_border mt-5 p-2 px-5 align-items-center">
+                <span>Save</span>
+              </button>
+            </div>
+            <div>
+              <button class="primary--button mt-5 p-2 px-5 align-items-center">
+                <span>Apply </span>
+              </button>
+              <div class="mt-2">
+                <el-progress
+                  :percentage="percentage"
+                  :color="customColor"
+                  :show-text="false"
+                ></el-progress>
+                <span>5 applied of 10 capacity</span>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="mt-2">
+            <div class="progress-container"><div class="progress-bar"></div></div>
+          </div> -->
+        </div>
       </div>
       <div class="job-content-container">
-        <div>
-          <h3>Schlumbe</h3>
-          <p>
+        <div class="Schlumbe-section">
+          <h6 class="Schlumbe-heading mb-4">Schlumbe</h6>
+          <p class="Schlumbe-memo mb-4">
             Lorem ipsum dolor sit amet consectetur. At a eu fusce et suspendisse
             condimentum. Cursus at orci tempor ut aliquet in leo. Gravida tortor varius
             phasellus viverra elementum. Quis faucibus vel sem duis. Mattis praesent ac
@@ -45,32 +99,55 @@ export default {
             ornare.rger
           </p>
         </div>
-        <div>
-          <h3>Competency</h3>
-          <ul>
-            <li>Domain name</li>
-            <li>Core name</li>
-            <li>Skill</li>
-          </ul>
+        <div class="Competency-section mt-4">
+          <h6 class="Competency-heading mb-2">Competency</h6>
+          <div class="my-4">
+            <ol>
+              <li>Domain name</li>
+              <li>Core name</li>
+              <li>Skill</li>
+            </ol>
+          </div>
         </div>
-        <div>
-          <h3>Requirements</h3>
-          <ul>
-            <li>Domain name</li>
-            <li>Core name</li>
-            <li>Skill</li>
-          </ul>
+        <div class="Requirements-section">
+          <h6 class="Requirements-heading">Requirements</h6>
+          <div class="my-4">
+            <ul>
+              <li>Domain name</li>
+              <li>Core name</li>
+              <li>Skill</li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h3>Responsibility</h3>
-          <ul>
-            <li>Domain name</li>
-            <li>Core name</li>
-            <li>Skill</li>
-          </ul>
+        <div class="Responsibility-section">
+          <h6 class="Responsibility-heading">Responsibility</h6>
+          <div class="my-4">
+            <ul>
+              <li>Domain name</li>
+              <li>Core name</li>
+              <li>Skill</li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h3>Summary</h3>
+        <div class="Salary-section">
+          <h6 class="Salary-heading">
+            <div class="Salary-section">
+              <h6 class="Salary-heading">Salary</h6>
+              <div class="my-4">
+                <span class="salary-price">N 350,000 - N 500,000</span>
+              </div>
+            </div>
+          </h6>
+          <div class="my-4">
+            <ul>
+              <li>Domain name</li>
+              <li>Core name</li>
+              <li>Skill</li>
+            </ul>
+          </div>
+        </div>
+        <div class="Summary-section">
+          <h6 class="Summary-heading mb-4">Summary</h6>
           <span
             >Lorem ipsum dolor sit amet consectetur. At a eu fusce et suspendisse
             condimentum. Cursus at orci tempor ut aliquet in leo. Gravida tortor varius
@@ -97,65 +174,5 @@ export default {
   font-size: 32px;
   line-height: 38.4px;
   font-weight: 700;
-}
-.job-details-container {
-  border: 1px solid #c2dbff;
-  border-radius: 40px;
-  padding: 30px 0px;
-}
-.job-title {
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 600;
-  color: #282929;
-}
-.job-sub-title {
-  font-size: 16px;
-  line-height: 25.6px;
-  font-weight: 400;
-  color: #646868;
-}
-.lable-section {
-  gap: 10px;
-}
-.green-label {
-  color: #56cdad;
-  background-color: #56cdad10;
-  padding: 9px 18px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 22.4px;
-  border-radius: 50px;
-}
-.yellow-label {
-  color: #ffb836;
-  background-color: #ffffff;
-  padding: 9px 18px;
-  border: 1px solid #ffb836;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 22.4px;
-  border-radius: 50px;
-}
-.purple-label {
-  color: #7b61ff;
-  background-color: #ffffff;
-  padding: 9px 18px;
-  border: 1px solid #7b61ff;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 22.4px;
-  border-radius: 50px;
-}
-.line {
-  height: auto;
-  border-left: 1px solid #cbd7e7;
-}
-.job-content-container {
-  border-top: 1px solid #c2dbff;
-  padding: 0px 20px;
-}
-.job-title-container {
-  padding: 8px 20px;
 }
 </style>
