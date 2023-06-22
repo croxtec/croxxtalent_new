@@ -7,7 +7,8 @@ const getDefaultState = () => {
         competencies: [],
         assessment: {},
         skills: [],
-        experience: []
+        experience: [],
+        recommended: {}
     }
 };
 
@@ -20,6 +21,11 @@ export default {
     },
 
     mutations: {
+
+        SET_RECOMMENDED_COMPETENCY(state, payload) {
+            state.recommended = payload;
+        },
+
         SET_COMPETENCY_SKILL(state, payload) {
             state.skills = payload;
         },
@@ -35,6 +41,18 @@ export default {
     },
 
     actions: {
+
+      async getRecommendedCompetency({ commit }){
+            try {
+                let response = await $request.get("/talent/competence");
+                console.log(response.data.data);
+                let responsePayload = response.data.data;
+                commit("SET_RECOMMENDED_COMPETENCY", responsePayload);
+              } catch (error) {
+                console.log(error);
+              }
+        },
+
         async getCompetencySkills({ commit }){
             try {
                 let response = await $request.get("/talent/competence/skill");

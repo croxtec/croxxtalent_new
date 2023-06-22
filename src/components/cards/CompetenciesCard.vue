@@ -54,9 +54,9 @@
         </div>
       </div>
       <div class="assesement-level mt-2" v-else>
-        <span>24% Complete</span>
+        <span>{{cxCompetence.percentage ?? 0}}% Complete</span>
         <el-progress
-          :percentage="24"
+          :percentage="cxCompetence.percentage ?? 0"
           :color="customColor"
           :show-text="false"
         ></el-progress>

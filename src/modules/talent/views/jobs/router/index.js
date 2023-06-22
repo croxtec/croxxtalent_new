@@ -2,7 +2,7 @@ const Home = () => import("../pages/indexView.vue");
 const Recommended = () => import("../components/recommended.vue")
 const MyJobs = () => import("../pages/myJobs.vue");
 const Rows = () => import("../components/rows.vue")
-
+const JobDetails = () => import("../components/jobSinglePage.vue")
 
 const routes = [
   {
@@ -27,6 +27,15 @@ const routes = [
     path: "/myjobs",
     name: "my-jobs",
     component: MyJobs,
+    meta: {
+      layout: "AppDashboardLayout",
+      // header: "assessment",
+    },
+  },
+  {
+    path: "/job-details",
+    name: "job-Details",
+    component: JobDetails,
     meta: {
       layout: "AppDashboardLayout",
       // header: "assessment",

@@ -8,7 +8,7 @@ const routes = [
     component: Settings,
     meta: {
       layout: "AppDashboardLayout",
-      // header: "assessment",
+      header: "Settings",
     },
   },
 ];
