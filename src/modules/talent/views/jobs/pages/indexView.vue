@@ -33,7 +33,7 @@
     <div class="job-grid">
       <div class="job-filter">
         <span @click="showEmployment">
-          <h6 class="my-3">
+          <h6 class="my-3 justify-between">
             Type of Employment <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show1"></i>
           </h6>
@@ -61,7 +61,7 @@
           </div>
         </div>
         <span @click="showCategories">
-          <h6 class="my-3">
+          <h6 class="my-3 justify-between">
             Categories <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
           </h6>
@@ -97,7 +97,7 @@
           </div>
         </div>
         <span @click="showJobLevel">
-          <h6 class="my-3">
+          <h6 class="my-3 justify-between">
             Job Level <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i>
           </h6>
@@ -125,7 +125,7 @@
           </div>
         </div>
         <span @click="showSalaryRange">
-          <h6 class="my-3">
+          <h6 class="my-3 justify-between">
             Salary Range <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i>
           </h6>
@@ -683,5 +683,9 @@ progress {
   font-size: 16px;
   line-height: 160%;
   color: #646868;
+}
+.justify-between {
+  justify-content: space-between;
+  display: flex;
 }
 </style>
