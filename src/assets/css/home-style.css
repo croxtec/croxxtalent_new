@@ -702,43 +702,6 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     position: relative;
 }
 
-.numbers--card {
-    background: url('../img/hero-g-g.svg');
-    height: 200px;
-    display: grid;
-    display: -ms-inline-grid;
-    display: -moz-grid;
-    place-items: center;
-    background-color: var(--primary-color);
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: overlay;
-    width: 145%;
-    position: absolute;
-    border-radius: 20px;
-    left: 60%;
-    bottom: -25%;
-}
-
-.numbers--card .numbers-content{
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-}
-
-.numbers--card .numbers-content h1, .numbers--card .numbers-content h6 {
-    color: #fff;
-}
-
-.numbers--card .numbers-content h1 {
-    font-weight: 600;
-}
-
-.numbers--card .numbers-content h6 {
-    font-weight: 300;
-    font-size: 14px;
-}
-
 /* Our team  */
 .our-team-container {
     margin-top: 5rem;
