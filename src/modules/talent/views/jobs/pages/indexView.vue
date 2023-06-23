@@ -9,23 +9,17 @@
         </div>
         <span class="vertical">|</span>
         <div class="images">
-          <router-link to="jobs">
+          <a @click="setLayout('jobs grid-job')">
             <img
               src="@/assets/img/vertical.png"
               alt=""
               srcset=""
               class="img-fluid mx-3"
             />
-          </router-link>
-          <router-link to="rows">
-            <img
-              src="@/assets/img/horizontal.png"
-              alt=""
-              srcset=""
-              class="img-fluid"
-              @click="showHorizontal"
-            />
-          </router-link>
+          </a>
+          <a @click="setLayout('list')">
+            <img src="@/assets/img/horizontal.png" alt="" srcset="" class="img-fluid" />
+          </a>
         </div>
       </div>
     </header>
@@ -150,7 +144,7 @@
         </div>
       </div>
       <div class="job-list">
-        <div class="jobs grid-job">
+        <div :class="[layout]" class="">
           <div class="floter" v-for="job in jobs" :key="job.id">
             <div class="job-card">
               <div class="d-flex justify-content-between">
@@ -194,6 +188,7 @@
 export default {
   data() {
     return {
+      layout: "jobs",
       vertical: false,
       horizontal: false,
       employment: true,
@@ -408,6 +403,9 @@ export default {
     };
   },
   methods: {
+    setLayout(layout) {
+      this.layout = layout;
+    },
     showOptionModal(item) {
       this.optionModal = this.optionModal === item ? null : item;
     },
@@ -440,6 +438,13 @@ export default {
 </script>
 
 <style scooped>
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
 .images img {
   cursor: pointer;
 }
