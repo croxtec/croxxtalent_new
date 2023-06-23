@@ -9,23 +9,17 @@
         </div>
         <span class="vertical">|</span>
         <div class="images">
-          <router-link to="jobs">
+          <a @click="setLayout('row')">
             <img
               src="@/assets/img/vertical.png"
               alt=""
               srcset=""
               class="img-fluid mx-3"
             />
-          </router-link>
-          <router-link to="rows">
-            <img
-              src="@/assets/img/horizontal.png"
-              alt=""
-              srcset=""
-              class="img-fluid"
-              @click="showHorizontal"
-            />
-          </router-link>
+          </a>
+          <a @click="setLayout('column')">
+            <img src="@/assets/img/horizontal.png" alt="" srcset="" class="img-fluid" />
+          </a>
         </div>
       </div>
     </header>
@@ -33,9 +27,9 @@
     <div class="job-grid">
       <div class="job-filter">
         <span @click="showEmployment">
-          <h6 class="my-3">
+          <h6 class="my-3 justify-between">
             Type of Employment <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i
-            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show1"></i>
           </h6>
         </span>
         <div class="employment-card" v-if="employment">
@@ -61,7 +55,7 @@
           </div>
         </div>
         <span @click="showCategories">
-          <h6 class="my-3">
+          <h6 class="my-3 justify-between">
             Categories <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
           </h6>
@@ -97,7 +91,7 @@
           </div>
         </div>
         <span @click="showJobLevel">
-          <h6 class="my-3">
+          <h6 class="my-3 justify-between">
             Job Level <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i>
           </h6>
@@ -125,7 +119,7 @@
           </div>
         </div>
         <span @click="showSalaryRange">
-          <h6 class="my-3">
+          <h6 class="my-3 justify-between">
             Salary Range <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i>
           </h6>
@@ -150,7 +144,7 @@
         </div>
       </div>
       <div class="job-list">
-        <div class="jobs grid-job">
+        <div :class="[layout]" class="">
           <div class="floter" v-for="job in jobs" :key="job.id">
             <div class="job-card">
               <div class="d-flex justify-content-between">
@@ -194,6 +188,7 @@
 export default {
   data() {
     return {
+      layout: "row",
       vertical: false,
       horizontal: false,
       employment: true,
@@ -408,6 +403,9 @@ export default {
     };
   },
   methods: {
+    setLayout(layout) {
+      this.layout = layout;
+    },
     showOptionModal(item) {
       this.optionModal = this.optionModal === item ? null : item;
     },
@@ -440,6 +438,16 @@ export default {
 </script>
 
 <style scooped>
+.row {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1.4rem;
+}
+.column {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1.4rem;
+}
 .images img {
   cursor: pointer;
 }
@@ -683,5 +691,9 @@ progress {
   font-size: 16px;
   line-height: 160%;
   color: #646868;
+}
+.justify-between {
+  justify-content: space-between;
+  display: flex;
 }
 </style>
