@@ -9,7 +9,7 @@
         </div>
         <span class="vertical">|</span>
         <div class="images">
-          <a @click="setLayout('jobs grid-job')">
+          <a @click="setLayout('row')">
             <img
               src="@/assets/img/vertical.png"
               alt=""
@@ -17,7 +17,7 @@
               class="img-fluid mx-3"
             />
           </a>
-          <a @click="setLayout('list')">
+          <a @click="setLayout('column')">
             <img src="@/assets/img/horizontal.png" alt="" srcset="" class="img-fluid" />
           </a>
         </div>
@@ -188,7 +188,7 @@
 export default {
   data() {
     return {
-      layout: "jobs",
+      layout: "row",
       vertical: false,
       horizontal: false,
       employment: true,
@@ -439,11 +439,19 @@ export default {
 
 <style scooped>
 .row {
-  flex-direction: row;
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1.4rem;
 }
-
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1.4rem;
+}
 .column {
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1.4rem;
 }
 .images img {
   cursor: pointer;
