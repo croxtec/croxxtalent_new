@@ -35,7 +35,7 @@
         <span @click="showEmployment">
           <h6 class="my-3">
             Type of Employment <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i
-            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show1"></i>
           </h6>
         </span>
         <div class="employment-card" v-if="employment">
