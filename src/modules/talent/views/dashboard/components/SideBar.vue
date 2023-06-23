@@ -31,37 +31,6 @@
       <h6>In Progress</h6>
       <h1 class="">7</h1>
     </div>
-
-    <el-dropdown trigger="click">
-      <button
-        class="el-dropdown-link primary--button d-flex align-items-center"
-        style="gap: 20px"
-      >
-        <i-icon icon="carbon:settings" /> <span>Settings</span>
-        <i class="el-icon-arrow-down el-icon--right"></i>
-      </button>
-      <el-dropdown-menu slot="dropdown" class="settings-dropdown">
-        <el-dropdown-item>
-          <span class="d-flex" style="gap: 5px" @click.prevent="gotoManagers()">
-            <span>Manager</span>
-            <span class="info-card">3</span>
-            <i-icon icon="material-symbols:arrow-forward" />
-          </span>
-        </el-dropdown-item>
-
-        <el-dropdown-item>
-          <span class="d-flex" style="gap: 5px" >
-            <span>Professionals</span>
-            <span class="info-card">3</span>
-            <i-icon icon="material-symbols:arrow-forward" />
-          </span>
-        </el-dropdown-item>
-
-        <el-dropdown-item>
-          <span>Affilate</span>
-        </el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
   </div>
 </template>
 
