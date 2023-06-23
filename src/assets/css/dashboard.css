@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  gap: 10px;
 }
 
 .talent-nav ul .search {
@@ -15,6 +15,7 @@
   background: #fff;
   border-radius: 25px;
   padding: 0 25px;
+  width: 100%;
 }
 
 .talent-nav ul li a {
