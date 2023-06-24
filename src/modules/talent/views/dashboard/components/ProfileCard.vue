@@ -12,7 +12,7 @@
     />
      <div class="linker" @click.prevent="gotoProfile()">
       <h5 class="profile-name">{{ user.name }}</h5>
-      <h6 class="profile-profession">Petroleum Engineer</h6>
+      <h6 class="profile-profession">{{ user.job_title_name }}</h6>
      </div>
     </div>
     <div @click.prevent="gotoCompleteResume(p)"

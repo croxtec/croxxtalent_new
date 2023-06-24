@@ -112,17 +112,17 @@
                 </div>
                 <el-dropdown-menu slot="dropdown" class="settings-dropdown">
                   <el-dropdown-item>
-                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
+                    <router-link  to="/profile" class="d-flex justify-content-between w-100" style="gap: 5px">
                       <span>Profile</span>
                       <i-icon icon="material-symbols:arrow-forward" />
-                    </span>
+                    </router-link>
                   </el-dropdown-item>
 
                   <el-dropdown-item>
-                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
+                    <router-link to="/settings" class="d-flex justify-content-between w-100" style="gap: 5px">
                       <span>Settings</span>
                       <i-icon icon="material-symbols:arrow-forward" />
-                    </span>
+                    </router-link>
                   </el-dropdown-item>
 
                   <el-divider class="my-0"></el-divider>
