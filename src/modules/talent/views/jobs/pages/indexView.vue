@@ -8,28 +8,52 @@
           <span class="mr-2">Most relevant</span>
         </div>
         <span class="vertical">|</span>
-        <div class="images">
-          <a @click="setLayout('row')">
-            <img
+        <div class="images d-flex g-2">
+          <a class="pt-3 px-2" v-on:click="activeView = '1'">
+            <!-- <img
               src="@/assets/img/vertical.png"
               alt=""
               srcset=""
               class="img-fluid mx-3"
-            />
+            /> -->
+            <!-- @click="setLayout('column')" -->
+            <ColumnIcon />
           </a>
-          <a @click="setLayout('column')">
-            <img src="@/assets/img/horizontal.png" alt="" srcset="" class="img-fluid" />
+          <a class="pt-3 pb-0 px-2" v-on:click="activeView = '2'">
+            <RowIcon />
+
+            <!-- <img src="@/assets/img/horizontal.png" alt="" srcset="" class="img-fluid" /> -->
           </a>
         </div>
       </div>
     </header>
     <p class="mb-3">Showing 73 results</p>
     <div class="job-grid">
-      <div class="job-filter">
+      <div class="job-filter pr-2">
         <span @click="showEmployment">
           <h6 class="my-3 justify-between">
-            Type of Employment <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i
-            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show1"></i>
+            Type of Employment
+            <!-- <ArrowUp class="rotate-defult" :class="{ 'rotate-180': show1 }" /> -->
+            <svg
+              :class="{ 'rotate-180': show1 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show1"></i> -->
           </h6>
         </span>
         <div class="employment-card" v-if="employment">
@@ -56,8 +80,27 @@
         </div>
         <span @click="showCategories">
           <h6 class="my-3 justify-between">
-            Categories <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i
-            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
+            Categories
+            <svg
+              :class="{ 'rotate-180': show2 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i> -->
           </h6>
         </span>
         <div class="employment-card" v-if="categories">
@@ -92,7 +135,26 @@
         </div>
         <span @click="showJobLevel">
           <h6 class="my-3 justify-between">
-            Job Level <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
+            Job Level
+            <svg
+              :class="{ 'rotate-180': show1 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i>
           </h6>
         </span>
@@ -144,7 +206,7 @@
         </div>
       </div>
       <div class="job-list">
-        <div :class="[layout]" class="">
+        <div v-if="activeView === '1'" class="column">
           <div class="floter" v-for="job in jobs" :key="job.id">
             <div class="job-card">
               <div class="d-flex justify-content-between">
@@ -179,15 +241,53 @@
             </div>
           </div>
         </div>
+        <div v-if="activeView === '2'" class="list">
+          <div class="list-job my-3 d-flex" v-for="job in jobs" :key="job.id">
+            <img
+              src="@/assets/img/round-logo.png"
+              alt=""
+              class="img-fluid m-3"
+              style="width: 64px; height: 64px"
+            />
+            <div>
+              <div class="job-content">
+                <div class="job-container">
+                  <h5 class="content-header">{{ job.title }}</h5>
+                  <i class="fa fa-ellipsis-h"></i>
+                </div>
+                <div class="location">
+                  <span>Rain Oil</span> . <span>Paris, France</span>
+                </div>
+                <div class="options d-flex justify-content-between">
+                  <div class="option-tags mt-3">
+                    <span class="full-time">Full-Time</span> |
+                    <span class="off-shore mr-2">Off-shore</span>
+                    <span class="design">Design</span>
+                  </div>
+                  <div class="option-progress">
+                    <progress value="45" max="100"></progress><br />
+                    <span>5 applied of 10 capacity</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ColumnIcon from "../components/icons/ColumnIcon.vue";
+import RowIcon from "../components/icons/RowIcon.vue";
+import ArrowUp from "../components/icons/ArrowUp.vue";
 export default {
+  components: { ArrowUp, RowIcon, ColumnIcon },
+
   data() {
     return {
+      activeView: "1",
       layout: "row",
       vertical: false,
       horizontal: false,
@@ -438,6 +538,12 @@ export default {
 </script>
 
 <style scooped>
+.rotate-180 {
+  transform: rotate(180deg);
+}
+.rotate-defult {
+  transform: rotate(-180deg);
+}
 .row {
   display: grid;
   grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
@@ -450,6 +556,7 @@ export default {
 }
 .images img {
   cursor: pointer;
+  display: flex;
 }
 header h6 {
   font-family: "Poppins";
@@ -528,6 +635,7 @@ h5 {
 .job-grid {
   display: grid;
   grid-template-columns: 20% 80%;
+  gap: 1px;
 }
 .fa-ellipsis-h {
   cursor: pointer;
@@ -589,6 +697,11 @@ h5 {
   font-size: 16px;
   line-height: 150%;
   /* padding-top: 100px; */
+}
+@media screen and (max-width: 768px) {
+  .job-filter {
+    display: none;
+  }
 }
 .job-filter span {
   cursor: pointer;
