@@ -22,15 +22,15 @@
                 <validation-provider v-slot="validationContext"
                   vid="domin_id"  name="Domain"
                   rules="required">
-                <label for="">Domain</label>
-                <select  :class="{ 'is-invalid': validationContext.errors[0] }"
-                  @change="selectDomain()" v-model="form.domain_id">
-                  <option value="" selected >Select Doamin</option>
-                  <option :value="item.id" v-for="item in domains" :key="item.id">
-                    {{ item.name }}
-                  </option>
-                </select>
-                <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
+                  <label for="">Domain</label>
+                  <select  :class="{ 'is-invalid': validationContext.errors[0] }"
+                    @change="selectDomain()" v-model="form.domain_id">
+                    <option value="" selected >Select Doamin</option>
+                    <option :value="item.id" v-for="item in domains" :key="item.id">
+                      {{ item.name }}
+                    </option>
+                  </select>
+                  <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
                 </validation-provider>
               </div>
 

@@ -16,67 +16,86 @@
       </div>
     </div>
 
-    <div class="form-details">
-      <div class="d-flex" style="gap: 20px">
-        <div class="mb-3 w-100">
-          <label for="">First Name <span class="text-danger">*</span></label>
-          <input type="text" placeholder="Enter your first name" />
+    <validation-observer  ref="form" v-slot="{ invalid, handleSubmit }">
+      <form  @submit.prevent="handleSubmit(updateResumeInfo)">
+        <div class="form-details">
+          <div class="d-flex" style="gap: 20px">
+            <div class="mb-3 w-100">
+              <validation-provider v-slot="validationContext" vid="firstname"  name="firstname" rules="required|max:30">
+                  <label for="">First Name <span class="text-danger">*</span></label>
+                  <input v-model="form.firstname" type="text" placeholder="Enter your first name" />
+                  <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
+              </validation-provider>
+            </div>
+            <div class="mb-3 w-100">
+              <validation-provider v-slot="validationContext" vid="lastname"  name="lastname" rules="required|max:30">
+                <label for="">Last Name <span class="text-danger">*</span></label>
+                <input v-model="form.lastname" type="text" placeholder="Enter your last name" />
+                <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
+              </validation-provider>
+            </div>
+          </div>
+  
+          <div class="d-flex" style="gap: 20px">
+            <div class="mb-3 w-100">
+              <validation-provider v-slot="validationContext" vid="gender"  name="gender" rules="required">
+                  <label for="">Gender <span class="text-danger">*</span></label>
+                  <select v-model="form.gender">
+                    <option value="" disabled selected>Pick Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                  <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
+              </validation-provider>
+            </div>
+            <div class="mb-3 w-100">
+              <validation-provider v-slot="validationContext" vid="dateOfBirth"  name="dateOfBirth" rules="required">
+                <label for="">Date of Birth <span class="text-danger">*</span></label>
+                <input v-model="dateOfBirth" type="date" />
+                <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
+              </validation-provider>
+            </div>
+          </div>
+  
+          <div class="d-flex" style="gap: 20px">
+            <div class="mb-3 w-100">
+              <validation-provider v-slot="validationContext" vid="industry"  name="industry" rules="required">
+                <label for="">Industry <span class="text-danger">*</span></label>
+                <select v-model="form.industry_id" name="industry">
+                  <option value="" disabled selected>Pick Industry</option>
+                  <option v-for="item in industries" :key="item.id" :value="item.id">
+                    {{ item.name }}
+                  </option>
+                </select>
+                <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
+              </validation-provider>
+            </div>
+            <div class="mb-3 w-100">
+              <validation-provider v-slot="validationContext" vid="job_title"  name="job title" rules="required">
+                <label for="">Job Title<span class="text-danger">*</span></label>
+                <input v-model="form.job_title" type="text" placeholder="Enter your Job Title" />
+                <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
+              </validation-provider>
+            </div>
+          </div>
+  
+          <div>
+            <div class="d-flex justify-content-between">
+              <label for=""> Career Summary <span class="text-danger">*</span></label>
+              <span class="" style="font-size: 14px">(150 words)</span>
+            </div>
+            <validation-provider v-slot="validationContext" vid="career"  name="career" rules="required|min:30|max:150">
+              <textarea v-model="form.career" name="career" id="" cols="30" rows="4"></textarea>
+              <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
+             </validation-provider>
+          </div>
         </div>
-        <div class="mb-3 w-100">
-          <label for="">First Name <span class="text-danger">*</span></label>
-          <input type="text" placeholder="Enter your last name" />
+        <div class="text-center mt-3">
+          <button class="primary--button" :disabled="invalid">Save</button>
         </div>
-      </div>
+      </form>
+    </validation-observer>
 
-      <div class="d-flex" style="gap: 20px">
-        <div class="mb-3 w-100">
-          <label for="">Gender <span class="text-danger">*</span></label>
-          <select type="text" placeholder="Enter your first name">
-            <option value="" disabled selected>Pick Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-        </div>
-        <div class="mb-3 w-100">
-          <label for="">Date of Birth <span class="text-danger">*</span></label>
-          <input type="date" placeholder="Enter your first name" />
-        </div>
-      </div>
-
-      <div class="d-flex" style="gap: 20px">
-        <div class="mb-3 w-100">
-          <!-- <div>
-            {{ industries }}
-          </div> -->
-          <label for="">Industry <span class="text-danger">*</span></label>
-          <select type="text" placeholder="">
-            <option value="" disabled selected>Pick Industry</option>
-            <option v-for="item in industries" :key="item.id" :value="item.id">
-              {{ item.name }}
-            </option>
-          </select>
-        </div>
-        <div class="mb-3 w-100">
-          <label for="">Job Title<span class="text-danger">*</span></label>
-          <select type="text" placeholder="">
-            <option value="" disabled selected>Pick Job Title</option>
-            <option v-for="item in job_titles" :key="item.id" :value="item.id">
-              {{ item.name }}
-            </option>
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <div class="d-flex justify-content-between">
-          <label for=""
-            >Career Summary <span class="text-danger">*</span></label
-          >
-          <span class="" style="font-size: 14px">(150 words)</span>
-        </div>
-        <textarea name="" id="" cols="30" rows="4"></textarea>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -85,8 +104,26 @@ import { mapState } from "vuex";
 
 export default {
   data() {
-    return {};
+    return {
+      form: {
+        firstname: '',
+        lastname: '',
+        gender: '',
+        dateOfBirth: '',
+        industry_id: '',
+        job_title: '',
+        career: '',
+      }
+    };
   },
+
+  methods: {
+    updateResumeInfo(){
+
+    }
+  },
+
+
   computed: {
     ...mapState("config", {
       industries: (state) => state.industries,
