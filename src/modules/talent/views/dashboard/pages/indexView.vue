@@ -1,13 +1,13 @@
 <template>
   <div id="home" class="pb-4">
    <div class="d-flex main-home pb-4" style="gap:20px">
-    <div class="w-75 d-flex flex-column" style="gap:20px">
+    <div  :class="{ 'w-100' : !resumePercentage,  'w-75' : resumePercentage}" class="d-flex flex-column" style="gap:20px">
       <ProfileCard/>
-      <div class="d-flex" style="gap:20px">
-          <CompetenciesCard class="w-100" v-for="skill in recommended.competency" :key="skill.id" :cxCompetence="skill"/>
+      <div class="row" style="gap:20px">
+          <CompetenciesCard :class="{ 'flex-30' : !resumePercentage,  'flex-50' : resumePercentage}" class="" v-for="skill in recommended.competency" :key="skill.id" :cxCompetence="skill"/>
       </div>
     </div>
-    <div class="w-25">
+    <div v-if="resumePercentage" class="w-25">
       <SideBar/>
     </div>
    </div>
@@ -18,7 +18,7 @@
         <h5 class="header--text">Recommended Jobs</h5>
         <div class="d-lg-flex align-items-center see--all linker"  
           @click.prevent="$router.push('/recommended')"
-          style="gap: 4px; margin-right: 3em;">
+          style="gap: 4px;">
           <span>Show all</span>
           <i class="isax isax-arrow-right-1"></i>
         </div>
@@ -33,7 +33,7 @@
         <h5 class=" header--text">Top Employers</h5>
         <div class="d-lg-flex align-items-center see--all linker" 
           @click.prevent="$router.push('/jobs')"
-          style="gap: 4px; margin-right: 3em;">
+          style="gap: 4px;">
           <span>Show all </span>
           <i class="isax isax-arrow-right-1"></i>
         </div>
@@ -47,7 +47,7 @@
         <h5 class=" header--text">Courses</h5>
         <div class="d-lg-flex align-items-center see--all linker" 
           @click.prevent="$router.push('/training')"
-          style="gap: 4px; margin-right: 3em;">
+          style="gap: 4px;">
           <span>Show all </span>
           <i class="isax isax-arrow-right-1"></i>
         </div>
@@ -72,6 +72,12 @@ import CompetenciesCard from '@/components/cards/CompetenciesCard.vue';
 export default {
 
   components: { ProfileCard, SideBar, CxJobs, CxEmployers, CxTraining, CompetenciesCard, CxJobGrid },
+
+  data(){
+    return{
+      resumePercentage: false,
+    }
+  },
 
   methods: {
     ...mapActions("competencies", ["getRecommendedCompetency"]),
@@ -104,5 +110,12 @@ export default {
     .w-75, .w-25 {
       width: 100% !important;
     }
+
+  }
+  .flex-50{
+    flex-basis: 48.5%;
+  }
+  .flex-30{
+    flex-basis: 32.25%;
   }
 </style>

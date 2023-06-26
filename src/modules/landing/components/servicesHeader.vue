@@ -1,23 +1,26 @@
 <template>
   <div class="services-page">
     <div class="container">
-      <h1>Everything you need to get ahead in the world of work.</h1>
+      <div class="text-center mx-auto">
+        <span>Everything you need to get ahead in the world of work.</span>
+      </div>
     </div>
   </div>
 </template>
 
 <style>
-.services-page .container h1 {
+.services-page .container span {
   font-weight: 700;
+  font-size: 40px;
   width: 50%;
   text-align: center;
 }
 
 .services-page .container {
-  display: flex;
+  /* display: flex;
   display: inline-flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
   height: 550px;
   padding-top: 60px;
   background: url("@/assets/img/services-hero.png");

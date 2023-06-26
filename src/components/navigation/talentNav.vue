@@ -2,9 +2,11 @@
   <div>
     <div class="talent-nav">
       <div class="container">
-        <div class="d-flex justify-content-between align-items-center py-3" style="gap:50px">
-          <img src="@/assets/img/logo.png" width="20%" alt=""
-        />
+        <div
+          class="d-flex justify-content-between align-items-center py-3"
+          style="gap: 50px"
+        >
+          <img src="@/assets/img/logo.png" width="20%" alt="" />
 
           <ul class="mb-0 w-100 talent-nav_items">
             <li>
@@ -89,14 +91,81 @@
             </li>
 
             <li>
-              <div class="user-avatar">
+              <!-- <div class="user-avatar">
                 <router-link to="/profile">
+                  
+                </router-link>
+              </div> -->
+              <el-dropdown trigger="click">
+                <div
+                  class="el-dropdown-link d-flex align-items-center"
+                  style="gap: 1px"
+                >
+                  <!-- <i-icon icon="carbon:settings" /> <span>Settings</span> -->
                   <img
                     src="https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/10-1024.png"
                     alt=""
+                    style="border-radius: 50%"
+                    width="35px"
                   />
-                </router-link>
-              </div>
+                  <i class="el-icon-arrow-down el-icon--right"></i>
+                </div>
+                <el-dropdown-menu slot="dropdown" class="settings-dropdown">
+                  <el-dropdown-item>
+                    <router-link  to="/profile" class="d-flex justify-content-between w-100" style="gap: 5px">
+                      <span>Profile</span>
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </router-link>
+                  </el-dropdown-item>
+
+                  <el-dropdown-item>
+                    <router-link to="/settings" class="d-flex justify-content-between w-100" style="gap: 5px">
+                      <span>Settings</span>
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </router-link>
+                  </el-dropdown-item>
+
+                  <el-divider class="my-0"></el-divider>
+
+                  <el-dropdown-item>
+                    <span
+                      class="d-flex justify-content-between w-100"
+                      style="gap: 5px"
+                      @click.prevent="gotoManagers()"
+                    >
+                      <span>Manager</span>
+                      <span class="info-card">3</span>
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </span>
+                  </el-dropdown-item>
+
+                  <el-dropdown-item>
+                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
+                      <span>Professionals</span>
+                      <span class="info-card">3</span>
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </span>
+                  </el-dropdown-item>
+
+
+
+                <el-dropdown-item>
+                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
+                      <span>Affiliate</span>
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </span>
+                  </el-dropdown-item>
+
+                  <el-divider class="my-0"></el-divider>
+
+                  <el-dropdown-item>
+                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
+                      <span>Logout</span>
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </span>
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
             </li>
           </ul>
 
@@ -128,20 +197,20 @@
 
       <div class="container mobile-talent-nav">
         <ul class="mb-0">
-            <li>
-              <router-link to="/home">Home</router-link>
-            </li>
-            <li>
-              <router-link
-                to="/resume"
-                :class="{
-                  'router-link-exact-active':
-                    this.$route.meta.parent === 'resume',
-                }"
-                >Resume</router-link
-              >
-            </li>
-            <!-- <li>
+          <li>
+            <router-link to="/home">Home</router-link>
+          </li>
+          <li>
+            <router-link
+              to="/resume"
+              :class="{
+                'router-link-exact-active':
+                  this.$route.meta.parent === 'resume',
+              }"
+              >Resume</router-link
+            >
+          </li>
+          <!-- <li>
           <router-link
             to="/competencies"
             :class="{
@@ -151,43 +220,42 @@
             >Competencies</router-link
           >
         </li> -->
-            <li>
-              <router-link
-                to="/competencies"
-                :class="{
-                  'router-link-exact-active':
-                    this.$route.meta.parent === 'competencies',
-                }"
-                >Competencies</router-link
-              >
-            </li>
-            <li>
-              <router-link
-                to="/jobs"
-                :class="{
-                  'router-link-exact-active':
-                    this.$route.meta.parent === 'jobs',
-                }"
-                >Jobs</router-link
-              >
-            </li>
-            <li>
-              <router-link
-                to="/training"
-                :class="{
-                  'router-link-exact-active':
-                    this.$route.meta.parent === 'training',
-                }"
-                >Training</router-link
-              >
-            </li>
-            <!-- <li>
+          <li>
+            <router-link
+              to="/competencies"
+              :class="{
+                'router-link-exact-active':
+                  this.$route.meta.parent === 'competencies',
+              }"
+              >Competencies</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              to="/jobs"
+              :class="{
+                'router-link-exact-active': this.$route.meta.parent === 'jobs',
+              }"
+              >Jobs</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              to="/training"
+              :class="{
+                'router-link-exact-active':
+                  this.$route.meta.parent === 'training',
+              }"
+              >Training</router-link
+            >
+          </li>
+          <!-- <li>
               <div class="search">
                 <i-icon icon="ri:search-2-line" class="nav-icon" />
                 <input type="search" placeholder="Search" />
               </div>
             </li> -->
-            <!-- <li>
+          <!-- <li>
               <div class="menu-icon-container">
                 <router-link to="/messages">
                   <i-icon icon="tabler:message-2" class="menu-icon" />
@@ -195,7 +263,7 @@
               </div>
             </li> -->
 
-            <!-- <li>
+          <!-- <li>
               <div class="menu-icon-container">
                 <router-link
                   to="/notifications"
@@ -209,7 +277,7 @@
               </div>
             </li> -->
 
-            <!-- <li>
+          <!-- <li>
               <div class="user-avatar">
                 <router-link to="/profile">
                   <img
@@ -219,7 +287,7 @@
                 </router-link>
               </div>
             </li> -->
-          </ul>
+        </ul>
       </div>
     </el-drawer>
   </div>
@@ -233,6 +301,16 @@ export default {
     };
   },
 
+  methods: {
+    gotoMyJobs() {
+      return this.$router.push({ name: "my-jobs" });
+    },
+
+    gotoManagers() {
+      return this.$router.push({ name: "Managers" });
+    },
+  },
+
   // computed: {
 
   // }
@@ -240,7 +318,6 @@ export default {
 </script>
 
 <style>
-
 .mobile-menu {
   display: none;
 }
@@ -256,7 +333,7 @@ export default {
   display: inline-flex;
   display: -webkit-flex;
   flex-direction: column;
-  gap:10px
+  gap: 10px;
 }
 
 .mobile-talent-nav ul li a {
@@ -270,7 +347,7 @@ export default {
   border-radius: 10px;
 }
 
-@media (max-width:990px) {
+@media (max-width: 990px) {
   .mobile-menu {
     display: block;
   }
