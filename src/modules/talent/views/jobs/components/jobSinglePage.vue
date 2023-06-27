@@ -20,7 +20,7 @@ export default {
     <div class="job-details-container">
       <div class="d-flex job-title-container justify-content-between">
         <div class="d-flex">
-          <img src="@/assets/img/round-logo.png" />
+          <img class="img-fluid" src="@/assets/img/round-logo.png" />
           <div class="pl-4">
             <h6 class="job-title">Petroleum Engineer</h6>
             <p class="job-sub-title">Dest oil . Paris, France</p>
