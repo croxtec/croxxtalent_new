@@ -2,32 +2,7 @@
   <div>
     <header class="d-flex justify-content-between">
       <h6>Jobs</h6>
-      <div class="sorting d-flex">
-        <div class="sortBy mr-2 d-flex mt-2">
-          <small class="muted mt-1 mr-2">Sort by:</small>
-          <span class="mr-2">Most relevant</span>
-        </div>
-        <span class="vertical">|</span>
-        <div class="images d-flex g-2">
-          <a class="pt-3 px-2" v-on:click="activeView = '1'">
-            <!-- <img
-              src="@/assets/img/vertical.png"
-              alt=""
-              srcset=""
-              class="img-fluid mx-3"
-            /> -->
-            <!-- @click="setLayout('column')" -->
-            <ColumnIcon />
-          </a>
-          <a class="pt-3 pb-0 px-2" v-on:click="activeView = '2'">
-            <RowIcon />
-
-            <!-- <img src="@/assets/img/horizontal.png" alt="" srcset="" class="img-fluid" /> -->
-          </a>
-        </div>
-      </div>
     </header>
-    <p class="mb-3">Showing 73 results</p>
     <div class="job-grid">
       <div class="job-filter pr-2">
         <span @click="showEmployment">
@@ -137,7 +112,7 @@
           <h6 class="my-3 justify-between">
             Job Level
             <svg
-              :class="{ 'rotate-180': show1 }"
+              :class="{ 'rotate-180': show3 }"
               width="20"
               height="20"
               viewBox="0 0 20 20"
@@ -154,8 +129,8 @@
               />
             </svg>
 
-            <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
-            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i>
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i> -->
           </h6>
         </span>
         <div class="employment-card" v-if="jobLevel">
@@ -182,8 +157,26 @@
         </div>
         <span @click="showSalaryRange">
           <h6 class="my-3 justify-between">
-            Salary Range <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i
-            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i>
+            Salary Range
+            <svg
+              :class="{ 'rotate-180': show4 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i> -->
           </h6>
         </span>
         <div class="employment-card" v-if="salaryRange">
@@ -205,71 +198,147 @@
           </div>
         </div>
       </div>
-      <div class="job-list">
-        <div v-if="activeView === '1'" class="column">
-          <div class="floter" v-for="job in jobs" :key="job.id">
-            <div class="job-card">
-              <div class="d-flex justify-content-between">
-                <img
-                  src="@/assets/img/box.png"
-                  alt=""
-                  srcset=""
-                  class="img-fluid"
-                  style="width: 40px"
-                />
-                <i class="fa fa-ellipsis-h" @click="showOptionModal(job.id)"></i>
-                <div class="option-modal py-2" v-if="optionModal === job.id">
-                  <span>Apply</span>
-                  <hr />
-                  <span>Save</span>
-                  <hr />
-                  <span>Archive</span>
-                </div>
-              </div>
-              <div class="my-3">
-                <h5>{{ job.title }}</h5>
-                <span>Agency</span> . <span>San Fransisco, US</span>
-              </div>
-              <p class="d-block text-truncate content">
-                Dropbox is looking for Brand <br />
-                Designer to help the team to be able to access all of the required state
-              </p>
-              <div class="d-flex mt-4 justify-content-between">
-                <span class="drilling">Drilling</span>
-                <span class="Management">Management</span>
-              </div>
+      <div class="">
+        <div class="d-flex justify-content-between">
+          <p class="pt-3">Showing 73 results</p>
+          <div class="sorting d-flex">
+            <div class="sortBy mr-2 pt-3 d-flex">
+              <small class="muted mr-2">Sort by:</small>
+              <span class="mr-2">Most relevant</span>
+            </div>
+            <span class="vertical">|</span>
+            <div class="images d-flex g-2">
+              <a class="pt-3 px-2" @click="activeView = '1'">
+                <!-- <img
+              src="@/assets/img/vertical.png"
+              alt=""
+              srcset=""
+              class="img-fluid mx-3"
+            /> -->
+                <!-- @click="setLayout('column')" -->
+                <ColumnIcon />
+              </a>
+              <a class="pt-3 pb-0 px-2" @click="activeView = '2'">
+                <RowIcon />
+
+                <!-- <img src="@/assets/img/horizontal.png" alt="" srcset="" class="img-fluid" /> -->
+              </a>
             </div>
           </div>
         </div>
-        <div v-if="activeView === '2'" class="list">
-          <div class="list-job my-3 d-flex" v-for="job in jobs" :key="job.id">
-            <img
-              src="@/assets/img/round-logo.png"
-              alt=""
-              class="img-fluid m-3"
-              style="width: 64px; height: 64px"
-            />
-            <div>
-              <div class="job-content">
-                <div class="job-container">
-                  <h5 class="content-header">{{ job.title }}</h5>
-                  <i class="fa fa-ellipsis-h"></i>
-                </div>
-                <div class="location">
-                  <span>Rain Oil</span> . <span>Paris, France</span>
-                </div>
-                <div class="options d-flex justify-content-between">
-                  <div class="option-tags mt-3">
-                    <span class="full-time">Full-Time</span> |
-                    <span class="off-shore mr-2">Off-shore</span>
-                    <span class="design">Design</span>
+        <div class="job-list">
+          <div v-if="activeView === '1'" class="column">
+            <div class="floter" v-for="job in jobs.slice(0, 7)" :key="job.id">
+              <div class="job-card">
+                <div class="d-flex justify-content-between">
+                  <img
+                    src="@/assets/img/box.png"
+                    alt=""
+                    srcset=""
+                    class="img-fluid"
+                    style="width: 40px"
+                  />
+                  <i class="fa fa-ellipsis-h" @click="showOptionModal(job.id)"></i>
+                  <div class="option-modal py-2" v-if="optionModal === job.id">
+                    <span>Apply</span>
+                    <hr />
+                    <span>Save</span>
+                    <hr />
+                    <span>Archive</span>
                   </div>
-                  <div class="option-progress">
-                    <progress value="45" max="100"></progress><br />
-                    <span>5 applied of 10 capacity</span>
+                </div>
+                <div class="my-3">
+                  <h5>{{ job.title }}</h5>
+                  <span>Agency</span> . <span>San Fransisco, US</span>
+                </div>
+                <p class="d-block text-truncate content">
+                  Dropbox is looking for Brand <br />
+                  Designer to help the team to be able to access all of the required state
+                </p>
+                <div class="d-flex mt-4 justify-content-between">
+                  <span class="drilling">Drilling</span>
+                  <span class="Management">Management</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-if="activeView === '2'" class="list">
+            <div
+              class="list-job my-3 d-flex"
+              v-for="job in jobs.slice(0, 7)"
+              :key="job.id"
+            >
+              <img
+                src="@/assets/img/round-logo.png"
+                alt=""
+                class="img-fluid m-3"
+                style="width: 64px; height: 64px"
+              />
+              <div>
+                <div class="job-content">
+                  <div class="job-container">
+                    <h5 class="content-header">{{ job.title }}</h5>
+                    <i class="fa fa-ellipsis-h"></i>
+                  </div>
+                  <div class="location">
+                    <span>Rain Oil</span> . <span>Paris, France</span>
+                  </div>
+                  <div class="options d-flex justify-content-between">
+                    <div class="option-tags mt-3">
+                      <span class="full-time">Full-Time</span> |
+                      <span class="off-shore mr-2">Off-shore</span>
+                      <span class="design">Design</span>
+                    </div>
+                    <div class="option-progress">
+                      <progress value="45" max="100"></progress><br />
+                      <span>5 applied of 10 capacity</span>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="d-flex gap-8 mt-4 mx-auto">
+              <button class="border-[1px] text-sm rounded-md py-1 px-2">
+                <svg
+                  width="8"
+                  height="14"
+                  viewBox="0 0 8 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 1L1 7L7 13"
+                    stroke="#282929"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="mt-4">
+                <span class="">1</span>
+                <span class="">2</span>
+                <span class=" ">3</span>
+              </div>
+              <button class="border-[1px] text-sm rounded-md py-1 px-2">
+                <svg
+                  width="9"
+                  height="14"
+                  viewBox="0 0 9 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.375 1L7.625 7L1.375 13"
+                    stroke="#282929"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -554,7 +623,7 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1.4rem;
 }
-.images img {
+.images a {
   cursor: pointer;
   display: flex;
 }
@@ -575,7 +644,7 @@ header h6 {
   grid-gap: 1.4rem;
 }
 .job-card {
-  /* width: 274px; */
+  width: auto;
   height: 275px;
   border: 1px solid #c2dbff;
   border-radius: 20px;
