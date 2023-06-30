@@ -15,6 +15,7 @@ import competencies from "@/modules/talent//views/competencies/store/competencie
 import config from "./configurations";
 
 // CV STORE DATA
+import cvs from "./modules/cvs";
 import cvEducation from "@/modules/talent/views/resume/store/cv-education";
 import cvCertification from "@/modules/talent/views/resume/store/cv-certification";
 import cvCompetency from "@/modules/talent/views/resume/store/cv-competency";
@@ -36,6 +37,7 @@ export default new Vuex.Store({
     config,
 
     // CV
+    cvs,
     cvEducation,
     cvCertification,
     cvCompetency,

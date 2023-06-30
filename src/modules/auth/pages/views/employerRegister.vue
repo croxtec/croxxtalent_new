@@ -1,16 +1,5 @@
 <template>
   <div class="auth-form">
-    <!-- <button
-      class="blue-border justify-content-center d-flex align-items-center w-100 my-4"
-      style="gap: 10px"
-    >
-      <span> <img src="@/assets/img/google.png" width="20" alt="" /> </span>
-      <span>Signup with Google</span>
-    </button>
-    <el-divider content-position="center">
-      <h6>or signup with email</h6>
-    </el-divider> -->
-
     <form action="">
       <div class="d-lg-flex" style="gap: 20px">
         <div class="mb-3 w-100">

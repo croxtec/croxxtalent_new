@@ -5,6 +5,7 @@
       <ProfileCard/>
       <div class="row" style="gap:20px">
           <CompetenciesCard :class="{ 'flex-30' : !resumePercentage,  'flex-50' : resumePercentage}" class="" v-for="skill in recommended.competency" :key="skill.id" :cxCompetence="skill"/>
+          <CompetenciesCard :class="{ 'flex-30' : !resumePercentage,  'flex-50' : resumePercentage}" class="" v-for="skill in recommended.competency" :key="skill.id" :cxCompetence="skill"/>
       </div>
     </div>
     <div v-if="resumePercentage" class="w-25">
