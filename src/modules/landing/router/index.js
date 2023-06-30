@@ -1,7 +1,8 @@
 const Home = () => import("../pages/indexPage.vue");
 const Talents = () => import("../pages/talentsPage.vue");
 const Employers = () => import("../pages/employersPage.vue");
-const Contact = () => import("../pages/contactPage.vue");
+// const Contact = () => import("../pages/contactPage.vue");
+const Contact = () => import("../pages/newContactUs.vue");
 const PrivacyPolicy = () => import("../pages/privacyPolicy.vue");
 const FrequentlyAskedQuestions = () =>
   import("../pages/frequentlyAskedQuestions");
