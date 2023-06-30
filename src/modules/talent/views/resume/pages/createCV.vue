@@ -44,6 +44,7 @@ import WorkHistory from "../components/cv/cv-buider/workHistory.vue";
 import ProfessionalSummary from "../components/cv/cv-buider/professionalSummary.vue";
 import CvPreview from "../components/cv/cv-templates/cvPreviewer.vue";
 
+import { mapState, mapActions } from 'vuex'
 export default {
   components: {
     ContactInfo,
@@ -63,6 +64,8 @@ export default {
   },
 
   methods: {
+    // ...mapActions("manager", ["getAssesmentSummaries"]),
+
     prev() {
       if (this.stepNum > 1) {
         this.stepNum--;
@@ -74,6 +77,16 @@ export default {
         this.stepNum++;
       }
     },
+
+    loadResume() {
+      this.$store.dispatch("cvs/list", {}).then(() => {
+        // this.recordsLoading = false;
+      });
+    }, 
   },
+
+  beforeMount(){
+    this.loadResume();
+  }
 };
 </script>

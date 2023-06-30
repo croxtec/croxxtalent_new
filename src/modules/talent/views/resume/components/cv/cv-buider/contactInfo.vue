@@ -133,6 +133,38 @@ export default {
     ...mapState("auth", {
       user: (state) => state.user,
     }),
+    ...mapState("cvs", {
+        isLoading: state => state.loading,
+        error: state => state.error,
+        success: state => state.success,
+        validationErrors: state => state.validationErrors,
+        data: state => state.data,
+        dataSet: state => state.dataSet,
+        dataSetTotal: state => state.dataSetTotal,
+        uploadProgress: state => state.uploadProgress
+      }),
   },
+
+  watch: {
+    data: function(newValue, oldValue) {
+      let vm = this;
+      console.log('Contact Value',newValue);
+      if(newValue){
+        this.form = {
+          email: newValue.email,
+          phone: newValue.phone,
+          address: newValue.address,
+          city: newValue.city,
+          state_id:
+            newValue.country_code !== this.form.country_code &&
+            this.form.country_code != null
+              ? null
+              : parseInt(newValue.state_id),
+          country_code: newValue.country_code,
+        };
+        this.nameInitials = newValue.photo_url ? newValue.name_initials : newValue.name_initials;
+      }
+    },
+  }
 };
 </script>

@@ -1,4 +1,4 @@
-/* src/store/modules/cvs.js */
+/* src/store/modules/talent/resume.js */
 
 import $http from "../../axios";
 
@@ -92,44 +92,22 @@ const storeModule = {
     async list({ commit }, payload) {
       try {
         commit("SET_LOADING_DATASET");
-        let response = await $http.get("/cvs", {
+        let response = await $http.get("/talent/resume", {
           params: payload
         });
         let responsePayload = response.data;
-        commit("SET_DATASET", responsePayload);
+        commit("SET_DATA", responsePayload);
       } catch (error) {
         //
       }
     },
 
-    // Create action
-    async create({ commit }, payload) {
-      commit("SET_LOADING");
-      try {
-        let response = await $http.post("/cvs", payload);
-        let responsePayload = response.data;
-        commit("SET_DATA", responsePayload);
-        commit("SET_SUCCESS", responsePayload.message);
-      } catch (error) {
-        if (error && error.data) {
-          let errorPayload = error.data;
-          if (errorPayload.message) {
-            commit("SET_ERROR", errorPayload.message);
-            if (errorPayload.errors) {
-              commit("SET_VALIDATION_ERRORS", errorPayload.errors);
-            }
-            return;
-          }
-        }
-        commit("SET_ERROR", "Internal connection error, please try again.");
-      }
-    },
 
     // View action
     async view({ commit }, id) {
       commit("SET_LOADING");
       try {
-        let response = await $http.get(`/cvs/${id}`);
+        let response = await $http.get(`/talent/resume/${id}`);
         let responsePayload = response.data;
         commit("SET_DATA", responsePayload);
         // console.log(responsePayload)
@@ -150,7 +128,7 @@ const storeModule = {
     async update({ commit }, { id, payload }) {
       commit("SET_LOADING");
       try {
-        let response = await $http.put(`/cvs/${id}`, payload);
+        let response = await $http.put(`/talent/resume/${id}`, payload);
         let responsePayload = response.data;
         commit("SET_DATA", responsePayload);
         commit("SET_SUCCESS", responsePayload.message);
@@ -173,7 +151,7 @@ const storeModule = {
     async delete({ commit }, id) {
       commit("SET_LOADING");
       try {
-        let response = await $http.delete(`/cvs/${id}`);
+        let response = await $http.delete(`/talent/resume/${id}`);
         let responsePayload = response.data;
         commit("SET_SUCCESS", responsePayload.message);
       } catch (error) {
@@ -192,7 +170,7 @@ const storeModule = {
     async deleteMultiple({ commit }, payload) {
       commit("SET_LOADING");
       try {
-        let response = await $http.post(`/cvs/delete-multiple`, payload);
+        let response = await $http.post(`/talent/resume/delete-multiple`, payload);
         let responsePayload = response.data;
         commit("SET_SUCCESS", responsePayload.message);
       } catch (error) {
@@ -211,7 +189,7 @@ const storeModule = {
     async uploadPhoto({ commit }, { id, payload }) {
       commit("SET_LOADING");
       try {
-        let response = await $http.post(`/cvs/${id}/photo`, payload, {
+        let response = await $http.post(`/talent/resume/${id}/photo`, payload, {
           headers: {
             "Content-Type": "multipart/form-data"
           },
@@ -246,7 +224,7 @@ const storeModule = {
     async publish({ commit }, id) {
       commit("SET_LOADING");
       try {
-        let response = await $http.patch(`/cvs/${id}/publish`);
+        let response = await $http.patch(`/talent/resume/${id}/publish`);
         let responsePayload = response.data;
         commit("SET_SUCCESS", responsePayload.message);
       } catch (error) {
@@ -265,7 +243,7 @@ const storeModule = {
     async unpublish({ commit }, id) {
       commit("SET_LOADING");
       try {
-        let response = await $http.patch(`/cvs/${id}/unpublish`);
+        let response = await $http.patch(`/talent/resume/${id}/unpublish`);
         let responsePayload = response.data;
         commit("SET_SUCCESS", responsePayload.message);
       } catch (error) {

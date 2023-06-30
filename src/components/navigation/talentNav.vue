@@ -52,15 +52,16 @@
                 >Jobs</router-link
               >
             </li>
-            <li>
+            <li class="" disabeled>
               <router-link
                 to="/training"
                 :class="{
                   'router-link-exact-active':
                     this.$route.meta.parent === 'training',
                 }"
-                >Training</router-link
-              >
+                >Training
+                <!-- <b-badge pill variant="light">soon</b-badge> -->
+                </router-link>
             </li>
             <li>
               <div class="search">
