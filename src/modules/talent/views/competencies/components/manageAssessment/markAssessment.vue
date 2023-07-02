@@ -2,7 +2,26 @@
   <div>
     <span class="closeQuiz" @click="closeQuiz">X</span>
     <div class="center">
-      <div class="stepper-progress-bar" :style="'width:' + stepProgress"></div>
+      <div class="steps-progress-bar">
+        <div class="steps">
+          <div
+            v-for="(step, index) in questions.length"
+            :key="index"
+            class="step-container"
+          >
+            <div class="step" :class="{ active: index <= currentStep }">
+              {{ index + 1 }}
+            </div>
+            <div
+              v-if="index !== questions.length - 1"
+              class="progress-line"
+              :class="{ active: index < currentStep }"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="stepper-progress-bar" :style="'width:' + stepProgress"></div>
       <div class="stepper my-5">
         <div
           :class="{ current: step == steps, current: step > steps - 1 }"
@@ -12,7 +31,19 @@
         >
           <span>{{ steps }}</span>
         </div>
-      </div>
+      </div> -->
+      <!-- <div v-for="(steps, index) in questions.length" :key="steps" class="d-flex gap-3">
+        <div
+          :class="{ current: step == steps, current: step > steps - 1 }"
+          class="stepper-item-counter"
+        >
+          {{ index + 1 }}
+        </div>
+        <div v-if="index + 1 != steps.length" class="d-flex">
+          <div class="stepper-progress-bar"></div>
+        </div>
+      </div> -->
+
       <!-- confirmation Modal -->
       <div class="confirm-modal-overlay" v-if="confirmSubmission">
         <div class="confirm-modal">
@@ -33,9 +64,7 @@
             <button class="confirm-button bg-primary" @click="confirmSubmit">
               Submit
             </button>
-            <button class="cancel-button bg-danger" @click="cancelSubmit">
-              Cancel
-            </button>
+            <button class="cancel-button bg-danger" @click="cancelSubmit">Cancel</button>
           </div>
         </div>
       </div>
@@ -53,10 +82,7 @@
             >
               Back
             </button>
-            <button
-              class="rounded-pill text-white next"
-              @click="submitAssessment"
-            >
+            <button class="rounded-pill text-white next" @click="submitAssessment">
               Submit Assessment
             </button>
           </div>
@@ -150,24 +176,13 @@
             </div>
           </div>
         </div>
-        <div
-          class="fileUpload text-center"
-          v-if="currentQuestion.type === 'file'"
-        >
-          <input
-            type="file"
-            accept="*/*"
-            class="input-file"
-            @change="handleFileUpload"
-          />
+        <div class="fileUpload text-center" v-if="currentQuestion.type === 'file'">
+          <input type="file" accept="*/*" class="input-file" @change="handleFileUpload" />
           <p class="mt-5 font-weight-bold">Click or Drag and Drop</p>
           <small class="muted">SVG, PNG, JPG or GIF (max. 400 x 400px) </small>
           <h4 v-if="fileName">{{ fileName }}</h4>
         </div>
-        <div
-          class="majorInput text-center my-5"
-          v-if="currentQuestion.type === 'text'"
-        >
+        <div class="majorInput text-center my-5" v-if="currentQuestion.type === 'text'">
           <textarea
             rows="6"
             cols="50"
@@ -245,12 +260,16 @@
       <h5 class="text-success">Managers Comment</h5>
     </div>
     <div class="text-center my-3">
-      <textarea name="" id="" cols="6" rows="6" placeholder="Managers comment" v-model="managerComment"/>
+      <textarea
+        name=""
+        id=""
+        cols="6"
+        rows="6"
+        placeholder="Managers comment"
+        v-model="managerComment"
+      />
     </div>
-    <div
-      class="text-center my-4 d-flex justify-content-center"
-      v-if="loader == false"
-    >
+    <div class="text-center my-4 d-flex justify-content-center" v-if="loader == false">
       <button
         class="back mr-3"
         @click="previousPage"
@@ -269,8 +288,8 @@
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 import $request from "@/axios";
 export default {
   data() {
@@ -299,7 +318,8 @@ export default {
       score: null,
       talent: null,
       feedback: "",
-      managerComment: ""
+      managerComment: "",
+      currentStep: 0,
     };
   },
   directives: {
@@ -358,7 +378,10 @@ export default {
         talent: this.talent,
       };
       try {
-        let response = await $request.patch(`/assesments/${id}/management/feedback`, payload)
+        let response = await $request.patch(
+          `/assesments/${id}/management/feedback`,
+          payload
+        );
         this.closeQuiz();
       } catch (error) {
         alert("please drop a feed back");
@@ -375,18 +398,15 @@ export default {
         question_id: this.currentQuestion.answer.assesment_question_id,
         talent_id: this.currentQuestion.answer.talent_id,
         score: this.score,
-        comment: this.managerComment
+        comment: this.managerComment,
       };
       try {
         this.loader = true;
-        let response = await $request.post(
-          `/assesments/management/scoresheet`,
-          payload
-        );
+        let response = await $request.post(`/assesments/management/scoresheet`, payload);
         this.step++;
         this.currentQuestionIndex++;
         this.selectedNumber = "";
-        this.managerComment = ""
+        this.managerComment = "";
         this.loader = false;
       } catch (error) {
         alert("please select a score");
@@ -471,17 +491,15 @@ export default {
           question.answer.options ||
           question.answer.upload;
         this.options.forEach((option) => {
-          option.checked = (question.answer.options || []).includes(
-            option.name
-          );
+          option.checked = (question.answer.options || []).includes(option.name);
         });
       }
     },
   },
 };
 </script>
-  
-<style scooped>
+
+<style scoped>
 .circle-container {
   display: flex;
   justify-content: center;
@@ -537,7 +555,7 @@ export default {
   margin-top: 130px;
   width: 80%;
   height: 100%;
-  border: 1px solid #080808;
+  border: 1px solid #C2DBFF;
   padding: 10px;
   border-radius: 40px;
 }
@@ -548,7 +566,7 @@ export default {
 .stepper-progress-bar {
   border-top: 5px solid #00ec83;
   margin-top: 114.5px;
-  position: absolute;
+  /* position: absolute; */
   width: 350px;
   left: 600px;
 }
@@ -747,5 +765,56 @@ input[type="checkbox"] {
   top: 1px;
   left: 4px;
 }
+/*  */
+.steps-progress-bar {
+  width: 50%;
+  /* height: 30px; */
+  /* border-radius: 15px; */
+  overflow: hidden;
+  margin: 10px auto;
+  padding-top: 60px;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.step-container {
+  position: relative;
+}
+
+.step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ebfff6;
+  color: #000;
+  border-radius: 50%;
+  z-index: 2;
+  border: 2px solid #c2ffe4;
+}
+
+.step.active {
+  background-color: #00ec83;
+  color: #fff;
+}
+
+.progress-line {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 15px);
+  width: calc(100% - 45px);
+  height: 1px;
+  background-color: #00ec83;
+  z-index: 1;
+}
+
+.progress-line.active {
+  background-color: #ccc;
+}
 </style>
-  

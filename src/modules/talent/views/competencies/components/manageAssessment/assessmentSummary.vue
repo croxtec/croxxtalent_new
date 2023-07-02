@@ -3,7 +3,7 @@
     <span @click.prevent="goBack()" class="backPage"
       ><i class="fa fa-solid fa-arrow-left"></i> Back</span
     >
-    <div class="center text-center">
+    <div class="center text-center mb-5">
       <div class="m-5">
         <div class="assessment my-4">
           <span class="assess">Assessment</span>
@@ -89,7 +89,7 @@ export default {
   border: 1px solid #c2dbff;
   padding: 10px;
   border-radius: 40px;
-  width: 1201px;
+  width: 80%;
   height: 520px;
 }
 .surface {
@@ -155,6 +155,7 @@ export default {
   text-align: center;
   color: #ffffff;
   margin-top: 30px;
+  border: none;
 }
 .assess {
   align-items: center;
