@@ -308,7 +308,7 @@
           </div>
         </div> -->
         <div
-          class="text--center justify-content-center d-flex align-items-center"
+          class="text-center justify-content-center d-flex align-items-center"
           v-if="loader"
         >
           <img src="@/assets/img/loaderSession.gif" class="nextLoader" />
@@ -332,7 +332,7 @@
     <div class="text-center mt-4">
       <h5 class="text-success">Managers Comment</h5>
     </div>
-    <div class="text-center my-3">
+    <div class="text-center container my-3">
       <textarea
         name=""
         id=""
