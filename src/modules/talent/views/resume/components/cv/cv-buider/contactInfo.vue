@@ -11,21 +11,9 @@
           <div class="d-flex" style="gap: 20px">
             <div class="mb-3 w-100">
               <label for="">Phone Number <span class="text-danger">*</span></label>
-              <validation-provider v-slot="validationContext" vid="phone"  name="phone" rules="required">
-                <div class="phone-number-input">
-                  <el-dropdown>
-                    <span class="el-dropdown-link">
-                      <country-flag country="NG" size="small" />
-                      <i class="el-icon-arrow-down el-icon--right"></i>
-                    </span>
-                    <el-dropdown-menu slot="dropdown">
-                      <el-dropdown-item>Action 1</el-dropdown-item>
-                      <el-dropdown-item>Action 2</el-dropdown-item>
-                      <el-dropdown-item>Action 3</el-dropdown-item>
-                    </el-dropdown-menu>
-                  </el-dropdown>
-                  <input type="tel" placeholder="Enter phone number" />
-                </div>
+              <validation-provider v-slot="validationContext" vid="phone"  name="phone" rules="required|max:25">
+                <!-- <div class="phone-number-input"></div> -->
+                <vue-tel-input v-model="form.phone"  autocomplete="off"></vue-tel-input>
                 <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
               </validation-provider>
             </div>
@@ -40,24 +28,28 @@
 
           <div class="d-flex" style="gap: 20px">
             <div class="mb-3 w-100">
-              <label for="">Country <span class="text-danger">*</span></label>
-              <select type="text" placeholder="Enter your first name">
-                <option value="" disabled selected class="font-weight-light">
-                  Select Country
-                </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
-            </div>
+                <label for="">Country <span class="text-danger">*</span></label>
+                <select v-model="form.country_code">
+                  <option value="" disabled selected class="font-weight-light">
+                    Select Country
+                  </option>
+                  <option value="NG" selected>Nigeria</option>
+                  <option v-for="item in countries" :key="item.id" :value="item.code">
+                    {{ item.name }}
+                  </option>
+                </select>
+
+              </div>
             <div class="mb-3 w-100">
               <label for="">State <span class="text-danger">*</span></label>
-              <select type="text" placeholder="Enter your first name">
-                <option value="" disabled selected class="font-weight-light">
-                  Select State
-                </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
+                <select v-model="form.state_id">
+                  <option value="" disabled selected class="font-weight-light">
+                    Select State
+                  </option>
+                  <option v-for="item in states" :key="item.id" :value="item.id">
+                    {{ item.name }}
+                  </option>
+                </select>
             </div>
           </div>
 
@@ -70,12 +62,12 @@
               </validation-provider>
             </div>
             <div class="mb-3 w-100">
-              <validation-provider v-slot="validationContext" vid="postal"  name="postal" rules=">
+              <validation-provider v-slot="validationContext" vid="Postal code"  name="postal code"  rules="max:10">
                 <label for=""
                   >Postal Code<span class="font-weight-lighter"
                     >(optional)</span >
                 </label  >
-                <input v-model="form.postal" type="text" placeholder="Input postal code" />
+                <input v-model="form.postal_code" type="text" placeholder="Input postal code" />
                 <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
               </validation-provider>
             </div>
@@ -102,6 +94,7 @@
 
 <script>
 import { mapState } from "vuex";
+import toastify from "toastify-js";
 
 export default {
   data() {
@@ -109,19 +102,55 @@ export default {
       form: {
         phone: '',
         email: '',
-        country: '',
-        state: '',
+        country_code: '',
+        state_id: '',
         city: '',
-        postal: '',
+        postal_code: '',
         address: '',
       }
     };
   },
 
   methods: {
-    updateCantactInfo(){
+    updateContactInfo(){
+      console.log(this.form);
+      this.$store
+        .dispatch("cvs/updateResumeContact", { 
+          payload: this.form
+        })
+        .then(() => {
+          console.log('Contact Update',this.success)
+          if (this.success !== false && this.error === false) {
+            // resolve(true);
+              toastify({
+              text: this.success,
+              className: "info",
+              style: {
+                background: "green",
+                fontSize: "12px",
+                borderRadius: "5px",
+              },
+            }).showToast();
+          } else {
+            this.$refs.form.setErrors(this.validationErrors); // set VeeValidation error
+            // reject(true);
+          }
+        });
+    },
 
-    }
+    loadStates() {
+      let payload = {
+        per_page: "all",
+        sort_by: "name",
+        sort_dir: "asc",
+        archived: "no"
+      };
+      console.log(payload);
+      this.$store.dispatch("config/getCountryStates", {
+        id: this.form.country_code,
+        payload: payload
+      });
+    }, 
   },
 
 
@@ -129,10 +158,14 @@ export default {
     ...mapState("config", {
       industries: (state) => state.industries,
       job_titles: (state) => state.job_titles,
+      countries: (state) => state.countries,
+      states: (state) => state.states,
     }),
+
     ...mapState("auth", {
       user: (state) => state.user,
     }),
+
     ...mapState("cvs", {
         isLoading: state => state.loading,
         error: state => state.error,
@@ -143,6 +176,10 @@ export default {
         dataSetTotal: state => state.dataSetTotal,
         uploadProgress: state => state.uploadProgress
       }),
+
+      formCountryCode: function() {
+        return this.form.country_code;
+      }
   },
 
   watch: {
@@ -154,17 +191,33 @@ export default {
           email: newValue.email,
           phone: newValue.phone,
           address: newValue.address,
+          postal_code: newValue.postal_code,
           city: newValue.city,
+          country_code: newValue.country_code,
           state_id:
             newValue.country_code !== this.form.country_code &&
             this.form.country_code != null
               ? null
-              : parseInt(newValue.state_id),
-          country_code: newValue.country_code,
+              : newValue.state_id,
+          
         };
         this.nameInitials = newValue.photo_url ? newValue.name_initials : newValue.name_initials;
       }
     },
+
+    formCountryCode: function(newValue, oldValue) {
+
+      if (newValue !== oldValue && oldValue != null) {
+        this.form.state_id = null;
+      }
+      // this.$store.commit("countries/SET_STATES_DATASET", {
+      //   data: [],
+      //   total: 0
+      // });
+      if (newValue !== null) {
+        this.loadStates();
+      }
+    }
   }
 };
 </script>
