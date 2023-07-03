@@ -9,13 +9,13 @@
             :key="index"
             class="step-container"
           >
-            <div class="step" :class="{ active: index <= currentStep }">
+            <div class="step" :class="{ active: index <= currentQuestionIndex }">
               {{ index + 1 }}
             </div>
             <div
               v-if="index !== questions.length - 1"
               class="progress-line"
-              :class="{ active: index < currentStep }"
+              :class="{ active: index < currentQuestionIndex }"
             ></div>
           </div>
         </div>
@@ -89,7 +89,7 @@
         </div>
       </div>
       <div class="quiz-card" v-if="currentQuestion" :key="currentQuestion.id">
-        <h4 class="text-center my-5">{{ currentQuestion.question }}</h4>
+        <h4 class="text-center question-heading my-5">{{ currentQuestion.question }}</h4>
         <div class="questions" v-if="currentQuestion.type === 'radio'">
           <div class="container mt-4">
             <div class="row">
@@ -101,7 +101,8 @@
                   @click="selectItem('option1')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option1' ? 'active' : '1'"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option1'
                         ? 'material-symbols:check-circle-rounded'
@@ -120,7 +121,8 @@
                   @click="selectItem('option2')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option1' ? 'active' : '1'"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option2'
                         ? 'material-symbols:check-circle-rounded'
@@ -141,7 +143,8 @@
                   @click="selectItem('option3')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option1' ? 'active' : '1'"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option3'
                         ? 'material-symbols:check-circle-rounded'
@@ -160,7 +163,8 @@
                   @click="selectItem('option4')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option1' ? 'active' : '1'"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option4'
                         ? 'material-symbols:check-circle-rounded'
@@ -555,14 +559,14 @@ export default {
   margin-top: 130px;
   width: 80%;
   height: 100%;
-  border: 1px solid #C2DBFF;
+  border: 1px solid #c2dbff;
   padding: 10px;
   border-radius: 40px;
 }
-.container {
+/* .container {
   padding-left: 100px !important;
   padding-right: 100px !important;
-}
+} */
 .stepper-progress-bar {
   border-top: 5px solid #00ec83;
   margin-top: 114.5px;
@@ -645,15 +649,28 @@ export default {
 .registration-options.active {
   background-color: var(--blue-100);
   border: 1px solid var(--primary-color);
+  border-radius: 40px;
 }
 
 .registration-options {
-  border: 1px solid var(--gray-200);
-  padding: 13px 27px 13px 14px;
   border-radius: 40px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  padding: 13px 27px 13px 14px;
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
+  color: #646868;
+  font-size: 16px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+.registration-options-icon {
+  color: #e0e0e0;
+}
+.registration-options-icon.active {
+  color: var(--primary-color);
 }
 .closeQuiz {
   position: absolute;
@@ -816,5 +833,14 @@ input[type="checkbox"] {
 
 .progress-line.active {
   background-color: #ccc;
+}
+.question-heading {
+  color: #646868;
+  text-align: center;
+  font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
 }
 </style>
