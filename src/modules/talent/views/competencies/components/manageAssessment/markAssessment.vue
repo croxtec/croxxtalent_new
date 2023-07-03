@@ -2,7 +2,26 @@
   <div>
     <span class="closeQuiz" @click="closeQuiz">X</span>
     <div class="center">
-      <div class="stepper-progress-bar" :style="'width:' + stepProgress"></div>
+      <div class="steps-progress-bar">
+        <div class="steps">
+          <div
+            v-for="(steps, index) in questions.length"
+            :key="index"
+            class="step-container"
+          >
+            <div class="step" :class="{ active: index <= currentQuestionIndex }">
+              {{ index + 1 }}
+            </div>
+            <div
+              v-if="index !== questions.length - 1"
+              class="progress-line"
+              :class="{ active: index < currentQuestionIndex }"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="stepper-progress-bar" :style="'width:' + stepProgress"></div>
       <div class="stepper my-5">
         <div
           :class="{ current: step == steps, current: step > steps - 1 }"
@@ -12,7 +31,19 @@
         >
           <span>{{ steps }}</span>
         </div>
-      </div>
+      </div> -->
+      <!-- <div v-for="(steps, index) in questions.length" :key="steps" class="d-flex gap-3">
+        <div
+          :class="{ current: step == steps, current: step > steps - 1 }"
+          class="stepper-item-counter"
+        >
+          {{ index + 1 }}
+        </div>
+        <div v-if="index + 1 != steps.length" class="d-flex">
+          <div class="stepper-progress-bar"></div>
+        </div>
+      </div> -->
+
       <!-- confirmation Modal -->
       <div class="confirm-modal-overlay" v-if="confirmSubmission">
         <div class="confirm-modal">
@@ -33,14 +64,12 @@
             <button class="confirm-button bg-primary" @click="confirmSubmit">
               Submit
             </button>
-            <button class="cancel-button bg-danger" @click="cancelSubmit">
-              Cancel
-            </button>
+            <button class="cancel-button bg-danger" @click="cancelSubmit">Cancel</button>
           </div>
         </div>
       </div>
       <!-- end of confirmation -->
-      <div class="overlayBackground" v-if="step > questions.length">
+      <div class="overlayBackground" v-if="step > currentQuestion.length">
         <div class="modalShow text-center">
           <h4>You have gotten to the end of the assessment</h4>
           <p class="my-3">Do you want to submit this assessment?</p>
@@ -53,18 +82,20 @@
             >
               Back
             </button>
-            <button
-              class="rounded-pill text-white next"
-              @click="submitAssessment"
-            >
+            <button class="rounded-pill text-white next" @click="submitAssessment">
               Submit Assessment
             </button>
           </div>
         </div>
       </div>
-      <div class="quiz-card" v-if="currentQuestion" :key="currentQuestion.id">
-        <h4 class="text-center my-5">{{ currentQuestion.question }}</h4>
-        <div class="questions" v-if="currentQuestion.type === 'radio'">
+      <div class="quiz-card">
+        <h4 class="text-center question-heading my-5">
+          {{ currentQuestion.question }}
+        </h4>
+        <div
+          class="questions"
+          v-if="currentQuestion.type === 'radio' || currentQuestion.type === 'checkbox'"
+        >
           <div class="container mt-4">
             <div class="row">
               <div class="col-sm-6">
@@ -75,7 +106,8 @@
                   @click="selectItem('option1')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option1' ? 'active' : '1'"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option1'
                         ? 'material-symbols:check-circle-rounded'
@@ -94,7 +126,8 @@
                   @click="selectItem('option2')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option2' ? 'active' : ''"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option2'
                         ? 'material-symbols:check-circle-rounded'
@@ -115,7 +148,8 @@
                   @click="selectItem('option3')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option3' ? 'active' : ''"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option3'
                         ? 'material-symbols:check-circle-rounded'
@@ -134,7 +168,8 @@
                   @click="selectItem('option4')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option4' ? 'active' : ''"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option4'
                         ? 'material-symbols:check-circle-rounded'
@@ -150,23 +185,15 @@
             </div>
           </div>
         </div>
-        <div
-          class="fileUpload text-center"
-          v-if="currentQuestion.type === 'file'"
-        >
-          <input
-            type="file"
-            accept="*/*"
-            class="input-file"
-            @change="handleFileUpload"
-          />
+        <div class="fileUpload text-center" v-else-if="currentQuestion.type === 'file'">
+          <input type="file" accept="*/*" class="input-file" @change="handleFileUpload" />
           <p class="mt-5 font-weight-bold">Click or Drag and Drop</p>
           <small class="muted">SVG, PNG, JPG or GIF (max. 400 x 400px) </small>
           <h4 v-if="fileName">{{ fileName }}</h4>
         </div>
         <div
           class="majorInput text-center my-5"
-          v-if="currentQuestion.type === 'text'"
+          v-else-if="currentQuestion.type === 'text'"
         >
           <textarea
             rows="6"
@@ -179,7 +206,7 @@
         </div>
         <div
           class="majorInput text-center my-5"
-          v-if="currentQuestion.type === 'reference'"
+          v-else-if="question.type === 'reference'"
         >
           <input
             type="url"
@@ -188,14 +215,75 @@
             v-model="urlLink"
           />
         </div>
-        <div v-if="currentQuestion.type === 'checkbox'">
+        <!-- <div v-else-if="currentQuestion.type === ''">
           <div class="grid-container">
-            <div
-              v-for="(option, index) in options"
-              :key="index"
-              class="grid-item"
-              @click="toggleCheckbox(index)"
-            >
+            <div class="grid-item" @click="toggleCheckbox(index)">
+              <div :class="['checkbox', { checked: option.checked }]">
+                <input
+                  type="checkbox"
+                  :id="option.id"
+                  :value="option.checked"
+                  v-model="currentAnswer"
+                  v-check-match="option.checked"
+                />
+              </div>
+              <label :for="option.id" class="checkbox-label">{{
+                option.id === "option1"
+                  ? currentQuestion.option1
+                  : option.id === "option2"
+                  ? currentQuestion.option2
+                  : option.id === "option3"
+                  ? currentQuestion.option3
+                  : option.id === "option4"
+                  ? currentQuestion.option4
+                  : "no option"
+              }}</label>
+            </div>
+            <div class="grid-item" @click="toggleCheckbox(index)">
+              <div :class="['checkbox', { checked: option.checked }]">
+                <input
+                  type="checkbox"
+                  :id="option.id"
+                  :value="option.checked"
+                  v-model="currentAnswer"
+                  v-check-match="option.checked"
+                />
+              </div>
+              <label :for="option.id" class="checkbox-label">{{
+                option.id === "option1"
+                  ? currentQuestion.option1
+                  : option.id === "option2"
+                  ? currentQuestion.option2
+                  : option.id === "option3"
+                  ? currentQuestion.option3
+                  : option.id === "option4"
+                  ? currentQuestion.option4
+                  : "no option"
+              }}</label>
+            </div>
+            <div class="grid-item" @click="toggleCheckbox(index)">
+              <div :class="['checkbox', { checked: option.checked }]">
+                <input
+                  type="checkbox"
+                  :id="option.id"
+                  :value="option.checked"
+                  v-model="currentAnswer"
+                  v-check-match="option.checked"
+                />
+              </div>
+              <label :for="option.id" class="checkbox-label">{{
+                option.id === "option1"
+                  ? currentQuestion.option1
+                  : option.id === "option2"
+                  ? currentQuestion.option2
+                  : option.id === "option3"
+                  ? currentQuestion.option3
+                  : option.id === "option4"
+                  ? currentQuestion.option4
+                  : "no option"
+              }}</label>
+            </div>
+            <div class="grid-item" @click="toggleCheckbox(index)">
               <div :class="['checkbox', { checked: option.checked }]">
                 <input
                   type="checkbox"
@@ -218,9 +306,9 @@
               }}</label>
             </div>
           </div>
-        </div>
+        </div> -->
         <div
-          class="text--center justify-content-center d-flex align-items-center"
+          class="text-center justify-content-center d-flex align-items-center"
           v-if="loader"
         >
           <img src="@/assets/img/loaderSession.gif" class="nextLoader" />
@@ -244,33 +332,37 @@
     <div class="text-center mt-4">
       <h5 class="text-success">Managers Comment</h5>
     </div>
-    <div class="text-center my-3">
-      <textarea name="" id="" cols="6" rows="6" placeholder="Managers comment" v-model="managerComment"/>
+    <div class="text-center container my-3">
+      <textarea
+        name=""
+        id=""
+        cols="6"
+        rows="6"
+        placeholder="Managers comment"
+        v-model="managerComment"
+      />
     </div>
-    <div
-      class="text-center my-4 d-flex justify-content-center"
-      v-if="loader == false"
-    >
+    <div class="text-center my-4 d-flex justify-content-center" v-if="loader == false">
       <button
         class="back mr-3"
-        @click="previousPage"
+        @click="previousPage()"
         id="backButton"
-        :disabled="step === 1"
+        :disabled="currentQuestion.id === 1"
       >
         Back
       </button>
       <button
         class="rounded-pill text-white next"
-        @click="nextPage"
-        :disabled="step === questions.length + 1"
+        @click="nextPage()"
+        :disabled="currentQuestion.id === questions.length"
       >
         Next
       </button>
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 import $request from "@/axios";
 export default {
   data() {
@@ -281,7 +373,7 @@ export default {
         { id: "option3", name: "option3", label: "Option 3", checked: false },
         { id: "option4", name: "option4", label: "Option 4", checked: false },
       ],
-      numbers: [1, 2, 3, 4, 5],
+      numbers: [0, 1, 2, 3, 4, 5],
       selectedNumber: null,
       confirmSubmission: false,
       assessments: "",
@@ -299,7 +391,9 @@ export default {
       score: null,
       talent: null,
       feedback: "",
-      managerComment: ""
+      managerComment: "",
+      // currentStep: 0,
+      // currentQuestion: [],
     };
   },
   directives: {
@@ -321,6 +415,10 @@ export default {
     },
   },
   methods: {
+    questionOptions(question) {
+      // Filter out null options and return as an array
+      return Object.values(question).filter((option) => option !== null && option !== "");
+    },
     selectNumber(num) {
       this.selectedNumber = num;
       this.score = num;
@@ -342,9 +440,16 @@ export default {
       this.selected = value;
     },
     nextPage() {
-      let talent_id = this.currentQuestion.answer.talent_id;
-      this.talent = talent_id;
-      this.submitQuestion();
+      // let talent_id = this.currentQuestion.answer.talent_id;
+      // this.talent = talent_id;
+      // this.submitQuestion();
+      // this.step++;
+      // this.currentQuestionIndex++;
+      // this.selectedNumber = "";
+      // this.managerComment = "";
+      if (this.currentQuestionIndex < this.questions.length - 1) {
+        this.currentQuestionIndex++;
+      }
     },
     submitAssessment() {
       this.confirmSubmission = true;
@@ -358,7 +463,10 @@ export default {
         talent: this.talent,
       };
       try {
-        let response = await $request.patch(`/assesments/${id}/management/feedback`, payload)
+        let response = await $request.patch(
+          `/assesments/${id}/management/feedback`,
+          payload
+        );
         this.closeQuiz();
       } catch (error) {
         alert("please drop a feed back");
@@ -375,18 +483,15 @@ export default {
         question_id: this.currentQuestion.answer.assesment_question_id,
         talent_id: this.currentQuestion.answer.talent_id,
         score: this.score,
-        comment: this.managerComment
+        comment: this.managerComment,
       };
       try {
         this.loader = true;
-        let response = await $request.post(
-          `/assesments/management/scoresheet`,
-          payload
-        );
+        let response = await $request.post(`/assesments/management/scoresheet`, payload);
         this.step++;
         this.currentQuestionIndex++;
         this.selectedNumber = "";
-        this.managerComment = ""
+        this.managerComment = "";
         this.loader = false;
       } catch (error) {
         alert("please select a score");
@@ -395,8 +500,11 @@ export default {
       }
     },
     previousPage() {
-      this.step--;
-      this.currentQuestionIndex--;
+      if (this.currentQuestionIndex > 0) {
+        this.currentQuestionIndex--;
+      }
+      // this.step--;
+      // this.currentQuestionIndex--;
     },
   },
   computed: {
@@ -435,6 +543,7 @@ export default {
     this.questions = assessment.assesment.questions;
     this.assessments = assessment.assesment;
     console.log(this.assessments);
+    console.log(this.questions);
   },
   watch: {
     options: {
@@ -471,17 +580,15 @@ export default {
           question.answer.options ||
           question.answer.upload;
         this.options.forEach((option) => {
-          option.checked = (question.answer.options || []).includes(
-            option.name
-          );
+          option.checked = (question.answer.options || []).includes(option.name);
         });
       }
     },
   },
 };
 </script>
-  
-<style scooped>
+
+<style scoped>
 .circle-container {
   display: flex;
   justify-content: center;
@@ -537,18 +644,18 @@ export default {
   margin-top: 130px;
   width: 80%;
   height: 100%;
-  border: 1px solid #080808;
+  border: 1px solid #c2dbff;
   padding: 10px;
   border-radius: 40px;
 }
-.container {
+/* .container {
   padding-left: 100px !important;
   padding-right: 100px !important;
-}
+} */
 .stepper-progress-bar {
   border-top: 5px solid #00ec83;
   margin-top: 114.5px;
-  position: absolute;
+  /* position: absolute; */
   width: 350px;
   left: 600px;
 }
@@ -627,15 +734,28 @@ export default {
 .registration-options.active {
   background-color: var(--blue-100);
   border: 1px solid var(--primary-color);
+  border-radius: 40px;
 }
 
 .registration-options {
-  border: 1px solid var(--gray-200);
-  padding: 13px 27px 13px 14px;
   border-radius: 40px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  padding: 13px 27px 13px 14px;
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
+  color: #646868;
+  font-size: 16px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+.registration-options-icon {
+  color: #e0e0e0;
+}
+.registration-options-icon.active {
+  color: var(--primary-color);
 }
 .closeQuiz {
   position: absolute;
@@ -747,5 +867,74 @@ input[type="checkbox"] {
   top: 1px;
   left: 4px;
 }
+/*  */
+.steps-progress-bar {
+  width: 50%;
+  /* height: 30px; */
+  /* border-radius: 15px; */
+  overflow: hidden;
+  margin: 10px auto;
+  padding-top: 60px;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.step-container {
+  position: relative;
+}
+
+.step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ebfff6;
+  color: #000;
+  border-radius: 50%;
+  z-index: 2;
+  border: 2px solid #c2ffe4;
+}
+
+.step.active {
+  background-color: #00ec83;
+  color: #fff;
+}
+/* .progress-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #ccc;
+}
+
+.progress-line.active {
+  background-color: #00ec83;
+} */
+.progress-line {
+  position: absolute;
+  /* top: 50%; */
+  left: calc(50% + 15px);
+  width: calc(100% - 45px);
+  flex-grow: 1;
+  height: 2px;
+  background-color: #ccc;
+  /* z-index: 1; */
+}
+
+.progress-line.active {
+  background-color: #00ec83;
+}
+.question-heading {
+  color: #646868;
+  text-align: center;
+  font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
 </style>
-  
