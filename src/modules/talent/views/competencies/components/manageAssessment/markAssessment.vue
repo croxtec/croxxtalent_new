@@ -5,7 +5,7 @@
       <div class="steps-progress-bar">
         <div class="steps">
           <div
-            v-for="(step, index) in questions.length"
+            v-for="(steps, index) in questions.length"
             :key="index"
             class="step-container"
           >
@@ -69,7 +69,7 @@
         </div>
       </div>
       <!-- end of confirmation -->
-      <div class="overlayBackground" v-if="step > questions.length">
+      <div class="overlayBackground" v-if="step > currentQuestion.length">
         <div class="modalShow text-center">
           <h4>You have gotten to the end of the assessment</h4>
           <p class="my-3">Do you want to submit this assessment?</p>
@@ -88,9 +88,14 @@
           </div>
         </div>
       </div>
-      <div class="quiz-card" v-if="currentQuestion" :key="currentQuestion.id">
-        <h4 class="text-center question-heading my-5">{{ currentQuestion.question }}</h4>
-        <div class="questions" v-if="currentQuestion.type === 'radio'">
+      <div class="quiz-card">
+        <h4 class="text-center question-heading my-5">
+          {{ currentQuestion.question }}
+        </h4>
+        <div
+          class="questions"
+          v-if="currentQuestion.type === 'radio' || currentQuestion.type === 'checkbox'"
+        >
           <div class="container mt-4">
             <div class="row">
               <div class="col-sm-6">
@@ -180,13 +185,16 @@
             </div>
           </div>
         </div>
-        <div class="fileUpload text-center" v-if="currentQuestion.type === 'file'">
+        <div class="fileUpload text-center" v-else-if="currentQuestion.type === 'file'">
           <input type="file" accept="*/*" class="input-file" @change="handleFileUpload" />
           <p class="mt-5 font-weight-bold">Click or Drag and Drop</p>
           <small class="muted">SVG, PNG, JPG or GIF (max. 400 x 400px) </small>
           <h4 v-if="fileName">{{ fileName }}</h4>
         </div>
-        <div class="majorInput text-center my-5" v-if="currentQuestion.type === 'text'">
+        <div
+          class="majorInput text-center my-5"
+          v-else-if="currentQuestion.type === 'text'"
+        >
           <textarea
             rows="6"
             cols="50"
@@ -198,7 +206,7 @@
         </div>
         <div
           class="majorInput text-center my-5"
-          v-if="currentQuestion.type === 'reference'"
+          v-else-if="question.type === 'reference'"
         >
           <input
             type="url"
@@ -207,14 +215,75 @@
             v-model="urlLink"
           />
         </div>
-        <div v-if="currentQuestion.type === 'checkbox'">
+        <!-- <div v-else-if="currentQuestion.type === ''">
           <div class="grid-container">
-            <div
-              v-for="(option, index) in options"
-              :key="index"
-              class="grid-item"
-              @click="toggleCheckbox(index)"
-            >
+            <div class="grid-item" @click="toggleCheckbox(index)">
+              <div :class="['checkbox', { checked: option.checked }]">
+                <input
+                  type="checkbox"
+                  :id="option.id"
+                  :value="option.checked"
+                  v-model="currentAnswer"
+                  v-check-match="option.checked"
+                />
+              </div>
+              <label :for="option.id" class="checkbox-label">{{
+                option.id === "option1"
+                  ? currentQuestion.option1
+                  : option.id === "option2"
+                  ? currentQuestion.option2
+                  : option.id === "option3"
+                  ? currentQuestion.option3
+                  : option.id === "option4"
+                  ? currentQuestion.option4
+                  : "no option"
+              }}</label>
+            </div>
+            <div class="grid-item" @click="toggleCheckbox(index)">
+              <div :class="['checkbox', { checked: option.checked }]">
+                <input
+                  type="checkbox"
+                  :id="option.id"
+                  :value="option.checked"
+                  v-model="currentAnswer"
+                  v-check-match="option.checked"
+                />
+              </div>
+              <label :for="option.id" class="checkbox-label">{{
+                option.id === "option1"
+                  ? currentQuestion.option1
+                  : option.id === "option2"
+                  ? currentQuestion.option2
+                  : option.id === "option3"
+                  ? currentQuestion.option3
+                  : option.id === "option4"
+                  ? currentQuestion.option4
+                  : "no option"
+              }}</label>
+            </div>
+            <div class="grid-item" @click="toggleCheckbox(index)">
+              <div :class="['checkbox', { checked: option.checked }]">
+                <input
+                  type="checkbox"
+                  :id="option.id"
+                  :value="option.checked"
+                  v-model="currentAnswer"
+                  v-check-match="option.checked"
+                />
+              </div>
+              <label :for="option.id" class="checkbox-label">{{
+                option.id === "option1"
+                  ? currentQuestion.option1
+                  : option.id === "option2"
+                  ? currentQuestion.option2
+                  : option.id === "option3"
+                  ? currentQuestion.option3
+                  : option.id === "option4"
+                  ? currentQuestion.option4
+                  : "no option"
+              }}</label>
+            </div>
+            <div class="grid-item" @click="toggleCheckbox(index)">
               <div :class="['checkbox', { checked: option.checked }]">
                 <input
                   type="checkbox"
@@ -237,7 +306,7 @@
               }}</label>
             </div>
           </div>
-        </div>
+        </div> -->
         <div
           class="text--center justify-content-center d-flex align-items-center"
           v-if="loader"
@@ -276,16 +345,16 @@
     <div class="text-center my-4 d-flex justify-content-center" v-if="loader == false">
       <button
         class="back mr-3"
-        @click="previousPage"
+        @click="previousPage()"
         id="backButton"
-        :disabled="step === 1"
+        :disabled="currentQuestion.id === 1"
       >
         Back
       </button>
       <button
         class="rounded-pill text-white next"
-        @click="nextPage"
-        :disabled="step === questions.length + 1"
+        @click="nextPage()"
+        :disabled="currentQuestion.id === questions.length"
       >
         Next
       </button>
@@ -304,7 +373,7 @@ export default {
         { id: "option3", name: "option3", label: "Option 3", checked: false },
         { id: "option4", name: "option4", label: "Option 4", checked: false },
       ],
-      numbers: [1, 2, 3, 4, 5],
+      numbers: [0, 1, 2, 3, 4, 5],
       selectedNumber: null,
       confirmSubmission: false,
       assessments: "",
@@ -323,7 +392,8 @@ export default {
       talent: null,
       feedback: "",
       managerComment: "",
-      currentStep: 0,
+      // currentStep: 0,
+      // currentQuestion: [],
     };
   },
   directives: {
@@ -345,6 +415,10 @@ export default {
     },
   },
   methods: {
+    questionOptions(question) {
+      // Filter out null options and return as an array
+      return Object.values(question).filter((option) => option !== null && option !== "");
+    },
     selectNumber(num) {
       this.selectedNumber = num;
       this.score = num;
@@ -366,9 +440,16 @@ export default {
       this.selected = value;
     },
     nextPage() {
-      let talent_id = this.currentQuestion.answer.talent_id;
-      this.talent = talent_id;
-      this.submitQuestion();
+      // let talent_id = this.currentQuestion.answer.talent_id;
+      // this.talent = talent_id;
+      // this.submitQuestion();
+      // this.step++;
+      // this.currentQuestionIndex++;
+      // this.selectedNumber = "";
+      // this.managerComment = "";
+      if (this.currentQuestionIndex < this.questions.length - 1) {
+        this.currentQuestionIndex++;
+      }
     },
     submitAssessment() {
       this.confirmSubmission = true;
@@ -419,8 +500,11 @@ export default {
       }
     },
     previousPage() {
-      this.step--;
-      this.currentQuestionIndex--;
+      if (this.currentQuestionIndex > 0) {
+        this.currentQuestionIndex--;
+      }
+      // this.step--;
+      // this.currentQuestionIndex--;
     },
   },
   computed: {
@@ -459,6 +543,7 @@ export default {
     this.questions = assessment.assesment.questions;
     this.assessments = assessment.assesment;
     console.log(this.assessments);
+    console.log(this.questions);
   },
   watch: {
     options: {
@@ -820,19 +905,28 @@ input[type="checkbox"] {
   background-color: #00ec83;
   color: #fff;
 }
-
-.progress-line {
-  position: absolute;
-  top: 50%;
-  left: calc(50% + 15px);
-  width: calc(100% - 45px);
-  height: 1px;
-  background-color: #00ec83;
-  z-index: 1;
+/* .progress-line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #ccc;
 }
 
 .progress-line.active {
+  background-color: #00ec83;
+} */
+.progress-line {
+  position: absolute;
+  /* top: 50%; */
+  left: calc(50% + 15px);
+  width: calc(100% - 45px);
+  flex-grow: 1;
+  height: 2px;
   background-color: #ccc;
+  /* z-index: 1; */
+}
+
+.progress-line.active {
+  background-color: #00ec83;
 }
 .question-heading {
   color: #646868;
