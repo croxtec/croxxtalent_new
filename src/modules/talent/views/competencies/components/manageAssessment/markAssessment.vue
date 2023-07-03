@@ -121,7 +121,7 @@
                   @click="selectItem('option2')"
                 >
                   <i-icon
-                    :class="selected === 'option1' ? 'active' : '1'"
+                    :class="selected === 'option2' ? 'active' : ''"
                     class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option2'
@@ -143,7 +143,7 @@
                   @click="selectItem('option3')"
                 >
                   <i-icon
-                    :class="selected === 'option1' ? 'active' : '1'"
+                    :class="selected === 'option3' ? 'active' : ''"
                     class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option3'
@@ -163,7 +163,7 @@
                   @click="selectItem('option4')"
                 >
                   <i-icon
-                    :class="selected === 'option1' ? 'active' : '1'"
+                    :class="selected === 'option4' ? 'active' : ''"
                     class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option4'
