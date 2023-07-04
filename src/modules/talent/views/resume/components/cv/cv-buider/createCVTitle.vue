@@ -7,8 +7,24 @@
       Input details you would like to have on your CV
     </p>
     <div class="text-center my-4 title-page-image">
-      <img src="@/assets/icons/no-user.png" alt="" />
-      <i-icon icon="" />
+        <img src="@/assets/icons/no-user.png" alt="" />
+        <!-- <i-icon icon="" />
+        <b-icon
+          v-b-tooltip.hover
+          icon="camera"
+          scale="0.7"
+          style="cursor: pointer;"
+          title="Change Photo"
+          @click="$refs.fileInputPhoto.click()"
+        ></b-icon> -->
+         <!-- PHOTO UPLOAD FROM FIELDS -->
+         <input
+            ref="fileInputPhoto"
+            style="display: none;"
+            accept="image/*"
+            type="file"
+            @change="selectPhotoFile"
+          />
       <div>
         <small class="text-dark mt-3" style="font-weight: 500"
           >Upload a Profile Photo</small
@@ -101,6 +117,7 @@
 
 <script>
 import { mapState } from "vuex";
+import toastify from "toastify-js";
 
 export default {
   data() {
@@ -112,7 +129,6 @@ export default {
         date_of_birth: '',
         industry_id: '',
         job_title: '',
-        postal_code: '',
         career_summary: '',
       }
     };
@@ -122,18 +138,87 @@ export default {
     updateResumeInfo(){
       console.log(this.form);
       this.$store
-        .dispatch("cvs/update", {
-          id: this.form.id,
+        .dispatch("cvs/updateResumeTitle", { 
           payload: this.form
         })
         .then(() => {
-          console.log('Profile Update',this.success)
           if (this.success !== false && this.error === false) {
             // resolve(true);
+              toastify({
+              text: `Resume Information update successfully`,
+              className: "info",
+              style: {
+                background: "green",
+                fontSize: "12px",
+                borderRadius: "5px",
+              },
+            }).showToast();
           } else {
             this.$refs.form.setErrors(this.validationErrors); // set VeeValidation error
             // reject(true);
           }
+        });
+    }, 
+    
+    async selectPhotoFile(e) {
+      this.photoForm.photo = e.target.files[0];
+      this.uploadPhoto();
+    },
+
+    uploadPhoto() {
+      let formData = new FormData();
+      formData.append("photo", this.photoForm.photo);
+      this.$store
+        .dispatch("cvs/uploadPhoto", {
+          id: this.form.id,
+          payload: formData
+        }) 
+        .then(() => {
+          if (this.success !== false && this.error === false) {
+            // successful, re-fetch cv data
+            let successMsg = this.success;
+            this.$store.dispatch("cvs/view", this.form.id).then(() => {
+              if (this.success !== false && this.error === false) {
+                this.$store.commit("cvs/REMOVE_ERROR_SUCCESS");
+              }
+            });
+            if (successMsg) {
+              // this.$swal.fire({
+              //   toast: true,
+              //   type: "success",
+              //   title: "",
+              //   text: successMsg,
+              //   showConfirmButton: false,
+              //   position: "top-start", // bottom-start | top | top-end
+              //   background: "#d4edda", // success:#d4edda | error:#f8d7da | warning:#f9edbe
+              //   timer: 4000
+              // });
+            }
+          } else {
+            // this.$refs.uploadForm.setErrors(this.validationErrors); // set VeeValidation error
+            const validationErrors = this.validationErrors;
+            let errMsg = "";
+            Object.keys(validationErrors).forEach(key => {
+              errMsg += errMsg != "" ? "\n\r" : "";
+              errMsg += validationErrors[key][0];
+            });
+            if (!errMsg) {
+              errMsg += this.error;
+            }
+            this.$store.commit("cvs/REMOVE_ERROR_SUCCESS");
+            if (errMsg) {
+              this.$swal.fire({
+                toast: true,
+                type: "error",
+                title: "",
+                text: errMsg,
+                showConfirmButton: false,
+                position: "top-start", // bottom-start | top | top-end
+                background: "#f8d7da", // success:#d4edda | error:#f8d7da | warning:#f9edbe
+                timer: 4000
+              });
+            }
+          } 
         });
     }
   },
@@ -169,9 +254,9 @@ export default {
           last_name: newValue.last_name,
           gender: newValue.gender,
           date_of_birth: newValue.date_of_birth,
-          x: newValue.postal_code,
           career_summary: newValue.career_summary,
-          photo_url: newValue.photo_url
+          // photo_url: newValue.photo_url,
+          job_title: newValue.job_title
         };
         this.nameInitials = newValue.photo_url ? newValue.name_initials : newValue.name_initials;
       }

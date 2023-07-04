@@ -8,6 +8,7 @@ const getDefaultState = () => {
     // timezones: [],
     countries: [],
     states: [],
+    statesTotal: 0,
     course_of_studies: [],
     certification_courses: [],
     competence: [],
@@ -52,6 +53,10 @@ export default {
     SET_COUNTRIES_DATA(state, payload) {
       state.countries = payload;
     },
+    SET_STATES_DATASET(state, payload) {
+      state.states = payload.data;
+      state.statesTotal = payload.total;
+    },
     SET_COURSES(state, payload) {
       state.course_of_studies = payload;
     },
@@ -83,6 +88,18 @@ export default {
         commit("SET_COUNTRIES_DATA", responsePayload);
       } catch (error) {
         console.log(error);
+      }
+    },
+       // List A Country's States
+    async getCountryStates({ commit }, { id, payload }) {
+      try {
+        let response = await $request.get(`/settings/countries/${id}/states`, {
+          params: payload,
+        });
+        let responsePayload = response.data;
+        commit("SET_STATES_DATASET", responsePayload);
+      } catch (error) {
+        //
       }
     },
 

@@ -53,8 +53,8 @@
                     :key="item"
                     >* {{ item }}</small
                   >
+                  <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
                 </div>
-                <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
               </div>
             </validation-provider>
 
@@ -65,7 +65,7 @@
                   <option value="" disabled selected class="font-weight-light">
                     Select Country
                   </option>
-                  <option value="NG">Nigeria</option>
+                  <option value="NG" selected>Nigeria</option>
                   <option v-for="item in countries" :key="item.id" :value="item.code">
                     {{ item.name }}
                   </option>

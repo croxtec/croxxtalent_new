@@ -17,6 +17,13 @@ Vue.use(ElementUI);
 import CountryFlag from "vue-country-flag";
 Vue.component("country-flag", CountryFlag);
 
+import VueTelInput from 'vue-tel-input';
+import 'vue-tel-input/dist/vue-tel-input.css';
+Vue.use(VueTelInput, {
+  dynamicPlaceholder: true, 
+  mode: "international"
+});
+
 import "toastify-js/src/toastify.css";
 
 // Vue.use(toastify);

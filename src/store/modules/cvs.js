@@ -125,10 +125,32 @@ const storeModule = {
     },
 
     // Update action
-    async update({ commit }, { id, payload }) {
+    async updateResumeTitle({ commit }, {  payload }) {
       commit("SET_LOADING");
       try {
-        let response = await $http.put(`/talent/resume/${id}`, payload);
+        let response = await $http.post(`/talent/resume`, payload);
+        let responsePayload = response.data;
+        commit("SET_DATA", responsePayload);
+        commit("SET_SUCCESS", responsePayload.message);
+      } catch (error) {
+        if (error && error.data) {
+          let errorPayload = error.data;
+          if (errorPayload.message) {
+            commit("SET_ERROR", errorPayload.message);
+            if (errorPayload.errors) {
+              commit("SET_VALIDATION_ERRORS", errorPayload.errors);
+            }
+            return;
+          }
+        }
+        commit("SET_ERROR", "Internal connection error, please try again.");
+      }
+    },
+
+    async updateResumeContact({ commit }, {  payload }) {
+      commit("SET_LOADING");
+      try {
+        let response = await $http.post(`/talent/resume/contact`, payload);
         let responsePayload = response.data;
         commit("SET_DATA", responsePayload);
         commit("SET_SUCCESS", responsePayload.message);
