@@ -1,7 +1,15 @@
 <template>
   <div>
-    <span class="closeQuiz" @click="closeQuiz">X</span>
+    <!-- <div class="page_header">
+      <h3>Back to dashboard</h3>
+      <span class="closeQuiz" @click="closeQuiz">X</span>
+      <div>Mark test</div>
+    </div> -->
+    <!-- <span class="closeQuiz" @click="closeQuiz">X</span> -->
     <div class="center">
+      <div class="py-5">
+        <h3 class="question_numb">Question {{ currentQuestion.id }}</h3>
+      </div>
       <div class="steps-progress-bar">
         <div class="steps">
           <div
@@ -185,7 +193,10 @@
             </div>
           </div>
         </div>
-        <div class="fileUpload text-center" v-else-if="currentQuestion.type === 'file'">
+        <div
+          class="fileUpload text-center py-3"
+          v-else-if="currentQuestion.type === 'file'"
+        >
           <input type="file" accept="*/*" class="input-file" @change="handleFileUpload" />
           <p class="mt-5 font-weight-bold">Click or Drag and Drop</p>
           <small class="muted">SVG, PNG, JPG or GIF (max. 400 x 400px) </small>
@@ -316,32 +327,40 @@
         </div>
       </div>
     </div>
-    <div class="text-center mt-5">
-      <h5 class="text-success">Grade</h5>
-    </div>
-    <div class="circle-container">
-      <div
-        v-for="num in numbers"
-        :key="num"
-        :class="['circle', { active: num === selectedNumber }]"
-        @click="selectNumber(num)"
-      >
-        {{ num }}
+    <div class="text-center center my-5">
+      <h5 class="question_numb py-4">Grade</h5>
+      <div class="circle-container my-5">
+        <div
+          v-for="num in numbers"
+          :key="num"
+          :class="['circle', { active: num === selectedNumber }]"
+          @click="selectNumber(num)"
+        >
+          {{ num }}
+        </div>
       </div>
     </div>
-    <div class="text-center mt-4">
-      <h5 class="text-success">Managers Comment</h5>
+    <div class="text-center mt-4 center">
+      <h5 class="question_numb py-4">Comment</h5>
+      <div class="text-center container my-3">
+        <textarea
+          class="p-4"
+          name=""
+          id=""
+          cols="6"
+          rows="6"
+          placeholder="Enter comments here"
+          v-model="managerComment"
+        />
+      </div>
     </div>
-    <div class="text-center container my-3">
-      <textarea
-        name=""
-        id=""
-        cols="6"
-        rows="6"
-        placeholder="Managers comment"
-        v-model="managerComment"
-      />
-    </div>
+    <!-- <div class="center my-4 py-5">
+      <div class="attach_file text-center py-3">
+        <input type="file" accept="*/*" class="input-file" @change="handleFileUpload" />
+        <img src="@/assets/icons/arrow-up.svg" />
+        <small class="muted">Attach file </small>
+      </div>
+    </div> -->
     <div class="text-center my-4 d-flex justify-content-center" v-if="loader == false">
       <button
         class="back mr-3"
@@ -610,8 +629,8 @@ export default {
 }
 
 .circle.active {
-  background-color: #0040a1;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #c2c2c2;
 }
 .nextLoader {
   height: 100px;
@@ -684,7 +703,7 @@ export default {
   justify-content: space-around;
 }
 .fileUpload {
-  outline: 2px dashed #0040a1;
+  outline: 1px dashed #0040a1;
   outline-offset: -10px;
   color: dimgray;
   padding: 10px 10px;
@@ -732,9 +751,9 @@ export default {
   background-color: #0040a1;
 }
 .registration-options.active {
-  background-color: var(--blue-100);
-  border: 1px solid var(--primary-color);
   border-radius: 40px;
+  border: 1px solid #c2c2c2;
+  background: #ebf3ff;
 }
 
 .registration-options {
@@ -755,7 +774,9 @@ export default {
   color: #e0e0e0;
 }
 .registration-options-icon.active {
-  color: var(--primary-color);
+  background-color: #ffffff;
+  color: #c2c2c2;
+  border-radius: 100%;
 }
 .closeQuiz {
   position: absolute;
@@ -874,7 +895,6 @@ input[type="checkbox"] {
   /* border-radius: 15px; */
   overflow: hidden;
   margin: 10px auto;
-  padding-top: 60px;
 }
 
 .steps {
@@ -936,5 +956,29 @@ input[type="checkbox"] {
   font-style: normal;
   font-weight: 400;
   line-height: 160%;
+}
+.page_header {
+  border-bottom: 2px solid gray;
+  padding: 20px 10px;
+  display: flex;
+}
+.question_numb {
+  color: #06e594;
+  text-align: center;
+  font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+.attach_file {
+  outline: 1px dashed #0040a1;
+  outline-offset: -10px;
+  color: dimgray;
+  position: relative;
+  cursor: pointer;
+  border-radius: 40px;
+  width: 60%;
+  margin: auto;
 }
 </style>
