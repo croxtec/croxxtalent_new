@@ -1,7 +1,11 @@
 <template>
   <div>
     <span class="closeQuiz" @click="closeQuiz">X</span>
-    <div class="center">
+
+    <div class="center" v-if="currentQuestionIndex !== questions.length">
+      <div class="py-5">
+        <h3 class="question_numb">Question {{ currentQuestion.id }}</h3>
+      </div>
       <div class="steps-progress-bar">
         <div class="steps">
           <div
@@ -15,34 +19,11 @@
             <div
               v-if="index !== questions.length - 1"
               class="progress-line"
-              :class="{ active: index < currentQuestionIndex }"
+              :class="{ active: index <= currentQuestionIndex }"
             ></div>
           </div>
         </div>
       </div>
-
-      <!-- <div class="stepper-progress-bar" :style="'width:' + stepProgress"></div>
-      <div class="stepper my-5">
-        <div
-          :class="{ current: step == steps, current: step > steps - 1 }"
-          class="stepper-item-counter mt-5 mx-4"
-          v-for="steps in questions.length"
-          :key="steps"
-        >
-          <span>{{ steps }}</span>
-        </div>
-      </div> -->
-      <!-- <div v-for="(steps, index) in questions.length" :key="steps" class="d-flex gap-3">
-        <div
-          :class="{ current: step == steps, current: step > steps - 1 }"
-          class="stepper-item-counter"
-        >
-          {{ index + 1 }}
-        </div>
-        <div v-if="index + 1 != steps.length" class="d-flex">
-          <div class="stepper-progress-bar"></div>
-        </div>
-      </div> -->
 
       <!-- confirmation Modal -->
       <div class="confirm-modal-overlay" v-if="confirmSubmission">
@@ -102,8 +83,6 @@
                 <div
                   class="mb-4 registration-options"
                   :class="selected === 'option1' ? 'active' : '1'"
-                  role="button"
-                  @click="selectItem('option1')"
                 >
                   <i-icon
                     :class="selected === 'option1' ? 'active' : '1'"
@@ -122,8 +101,6 @@
                 <div
                   class="mb-4 registration-options"
                   :class="selected === 'option2' ? 'active' : ''"
-                  role="button"
-                  @click="selectItem('option2')"
                 >
                   <i-icon
                     :class="selected === 'option2' ? 'active' : ''"
@@ -144,8 +121,6 @@
                 <div
                   class="mb-4 registration-options"
                   :class="selected === 'option3' ? 'active' : ''"
-                  role="button"
-                  @click="selectItem('option3')"
                 >
                   <i-icon
                     :class="selected === 'option3' ? 'active' : ''"
@@ -164,8 +139,6 @@
                 <div
                   class="mb-4 registration-options"
                   :class="selected === 'option4' ? 'active' : ''"
-                  role="button"
-                  @click="selectItem('option4')"
                 >
                   <i-icon
                     :class="selected === 'option4' ? 'active' : ''"
@@ -185,35 +158,25 @@
             </div>
           </div>
         </div>
-        <div class="fileUpload text-center" v-else-if="currentQuestion.type === 'file'">
-          <input type="file" accept="*/*" class="input-file" @change="handleFileUpload" />
-          <p class="mt-5 font-weight-bold">Click or Drag and Drop</p>
-          <small class="muted">SVG, PNG, JPG or GIF (max. 400 x 400px) </small>
-          <h4 v-if="fileName">{{ fileName }}</h4>
+        <div
+          class="fileUpload text-center py-3"
+          v-else-if="currentQuestion.type === 'file'"
+        >
+          image here
         </div>
         <div
           class="majorInput text-center my-5"
           v-else-if="currentQuestion.type === 'text'"
         >
-          <textarea
-            rows="6"
-            cols="50"
-            type="text"
-            class="textInput"
-            placeholder="Enter your Answer here"
-            v-model="answer"
-          />
+          <div class="textInput text_answer text-left container p-4">
+            <h4 class="text_answer">{{ currentQuestion.answer.comment }}</h4>
+          </div>
         </div>
         <div
           class="majorInput text-center my-5"
           v-else-if="question.type === 'reference'"
         >
-          <input
-            type="url"
-            class="textInput"
-            placeholder="Enter link here"
-            v-model="urlLink"
-          />
+          <h4 class="text_answer">{{ currentQuestion.answer.comment }}</h4>
         </div>
         <!-- <div v-else-if="currentQuestion.type === ''">
           <div class="grid-container">
@@ -316,47 +279,95 @@
         </div>
       </div>
     </div>
-    <div class="text-center mt-5">
-      <h5 class="text-success">Grade</h5>
-    </div>
-    <div class="circle-container">
-      <div
-        v-for="num in numbers"
-        :key="num"
-        :class="['circle', { active: num === selectedNumber }]"
-        @click="selectNumber(num)"
-      >
-        {{ num }}
+    <div v-if="currentQuestionIndex !== questions.length" class="text-center center my-5">
+      <h5 class="question_numb py-4">Grade</h5>
+      <div class="circle-container my-5">
+        <div
+          v-for="num in numbers"
+          :key="num"
+          :class="['circle', { active: num === selectedNumber }]"
+          @click="selectNumber(num)"
+        >
+          {{ num }}
+        </div>
       </div>
     </div>
-    <div class="text-center mt-4">
-      <h5 class="text-success">Managers Comment</h5>
+    <div v-if="currentQuestionIndex !== questions.length" class="text-center mt-4 center">
+      <h5 class="question_numb py-4">Comment</h5>
+      <div class="text-center container my-3">
+        <textarea
+          class="p-4"
+          name=""
+          id=""
+          cols="6"
+          rows="6"
+          placeholder="Enter comments here"
+          v-model="managerComment"
+        />
+      </div>
     </div>
-    <div class="text-center container my-3">
+    <div v-else class="container mt-5 py-5 final_page">
+      <div class="border_box text-center py-3">
+        <h3 class="score_heading text-muted mb-5">score</h3>
+        <h3 class="mb-2">
+          <span class="score_value">60</span><span class="score_value_total">/100</span>
+        </h3>
+      </div>
+      <div class="border_box text-center py-3">
+        <h3 class="score_heading text-muted mb-5">Grade</h3>
+        <h3 class="score_grade mb-2">Expert (A)</h3>
+      </div>
       <textarea
+        class="p-4"
         name=""
         id=""
         cols="6"
         rows="6"
-        placeholder="Managers comment"
-        v-model="managerComment"
+        placeholder="Write a feedback to the talent on the assessment..."
       />
+      <div @click="showRecommendations()" class="border_box select_section">
+        <h6 class="d-flex px-2 py-2 justify-content-between">
+          Suggest training for the talent
+          <i class="fa fa-solid fa-chevron-up mx-3" v-if="recommendation"></i
+          ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!recommendation"></i>
+        </h6>
+
+        <div v-if="recommendation">
+          <ul>
+            <li v-for="items in 4" :key="item">test</li>
+          </ul>
+        </div>
+      </div>
     </div>
+    <!-- <div class="center my-4 py-5">
+      <div class="attach_file text-center py-3">
+        <input type="file" accept="*/*" class="input-file" @change="handleFileUpload" />
+        <img src="@/assets/icons/arrow-up.svg" />
+        <small class="muted">Attach file </small>
+      </div>
+    </div> -->
     <div class="text-center my-4 d-flex justify-content-center" v-if="loader == false">
       <button
+        v-if="currentQuestionIndex !== questions.length"
         class="back mr-3"
         @click="previousPage()"
         id="backButton"
-        :disabled="currentQuestion.id === 1"
       >
         Back
       </button>
       <button
+        v-if="currentQuestionIndex !== questions.length"
         class="rounded-pill text-white next"
         @click="nextPage()"
-        :disabled="currentQuestion.id === questions.length"
       >
         Next
+      </button>
+      <button
+        v-if="currentQuestionIndex == questions.length"
+        class="rounded-pill text-white next"
+        @click="submitAssessment"
+      >
+        Submit
       </button>
     </div>
   </div>
@@ -367,12 +378,6 @@ import $request from "@/axios";
 export default {
   data() {
     return {
-      options: [
-        { id: "option1", name: "option1", label: "Option 1", checked: false },
-        { id: "option2", name: "option2", label: "Option 2", checked: false },
-        { id: "option3", name: "option3", label: "Option 3", checked: false },
-        { id: "option4", name: "option4", label: "Option 4", checked: false },
-      ],
       numbers: [0, 1, 2, 3, 4, 5],
       selectedNumber: null,
       confirmSubmission: false,
@@ -392,8 +397,7 @@ export default {
       talent: null,
       feedback: "",
       managerComment: "",
-      // currentStep: 0,
-      // currentQuestion: [],
+      recommendation: false,
     };
   },
   directives: {
@@ -415,20 +419,19 @@ export default {
     },
   },
   methods: {
-    questionOptions(question) {
+    showRecommendations() {
+      this.recommendation = !this.recommendation;
+    },
+
+    questionOptions(questions) {
       // Filter out null options and return as an array
-      return Object.values(question).filter((option) => option !== null && option !== "");
+      return Object.values(questions).filter(
+        (option) => option !== null && option !== ""
+      );
     },
     selectNumber(num) {
       this.selectedNumber = num;
       this.score = num;
-    },
-    handleFileUpload(event) {
-      const file = event.target.files[0];
-      this.fileName = file.name;
-      const formData = new FormData();
-      formData.append("file", file);
-      this.fileUpload = formData.get("file");
     },
     closeQuiz() {
       this.$router.go(-1);
@@ -440,16 +443,9 @@ export default {
       this.selected = value;
     },
     nextPage() {
-      // let talent_id = this.currentQuestion.answer.talent_id;
-      // this.talent = talent_id;
-      // this.submitQuestion();
-      // this.step++;
-      // this.currentQuestionIndex++;
-      // this.selectedNumber = "";
-      // this.managerComment = "";
-      if (this.currentQuestionIndex < this.questions.length - 1) {
-        this.currentQuestionIndex++;
-      }
+      // if (this.currentQuestionIndex < this.questions.length - 1) {
+      this.currentQuestionIndex++;
+      // }
     },
     submitAssessment() {
       this.confirmSubmission = true;
@@ -504,39 +500,38 @@ export default {
         this.currentQuestionIndex--;
       }
       // this.step--;
-      // this.currentQuestionIndex--;
     },
   },
   computed: {
-    stepProgress() {
-      return (100 / 20) * (this.step - 0.28) + "%";
-    },
+    // stepProgress() {
+    //   return (100 / 20) * (this.step - 0.28) + "%";
+    // },
     currentQuestion() {
       return this.questions[this.currentQuestionIndex];
     },
-    currentAnswer: {
-      get() {
-        const question = this.questions[this.currentQuestionIndex];
-        if (question && question.answer) {
-          return (
-            question.answer.option ||
-            question.answer.comment ||
-            question.answer.options ||
-            question.answer.upload
-          );
-        }
-        return null;
-      },
-      set(newAnswer) {
-        const question = this.questions[this.currentQuestionIndex];
-        if (question && question.answer) {
-          question.answer.option = newAnswer;
-          question.answer.comment = newAnswer;
-          question.answer.options = newAnswer;
-          question.answer.upload = newAnswer;
-        }
-      },
-    },
+    // currentAnswer: {
+    //   get() {
+    //     const question = this.questions[this.currentQuestionIndex];
+    //     if (question && question.answer) {
+    //       return (
+    //         question.answer.option ||
+    //         question.answer.comment ||
+    //         question.answer.options ||
+    //         question.answer.upload
+    //       );
+    //     }
+    //     return null;
+    //   },
+    //   set(newAnswer) {
+    //     const question = this.questions[this.currentQuestionIndex];
+    //     if (question && question.answer) {
+    //       question.answer.option = newAnswer;
+    //       question.answer.comment = newAnswer;
+    //       question.answer.options = newAnswer;
+    //       question.answer.upload = newAnswer;
+    //     }
+    //   },
+    // },
   },
   mounted() {
     const assessment = JSON.parse(localStorage.getItem("assessmentResponse"));
@@ -555,35 +550,35 @@ export default {
       },
       deep: true,
     },
-    currentAnswer(newAnswer) {
-      this.selected = newAnswer;
-      this.answer = newAnswer;
-      this.urlLink = newAnswer;
-      this.options.checked = newAnswer;
-    },
-    currentQuestionIndex(newIndex) {
-      const question = this.questions[newIndex];
-      if (question && question.answer) {
-        this.selected =
-          question.answer.option ||
-          question.answer.comment ||
-          question.answer.options ||
-          question.answer.upload;
-        this.answer =
-          question.answer.option ||
-          question.answer.comment ||
-          question.answer.options ||
-          question.answer.upload;
-        this.urlLink =
-          question.answer.option ||
-          question.answer.comment ||
-          question.answer.options ||
-          question.answer.upload;
-        this.options.forEach((option) => {
-          option.checked = (question.answer.options || []).includes(option.name);
-        });
-      }
-    },
+    // currentAnswer(newAnswer) {
+    //   this.selected = newAnswer;
+    //   this.answer = newAnswer;
+    //   this.urlLink = newAnswer;
+    //   this.options.checked = newAnswer;
+    // },
+    // currentQuestionIndex(newIndex) {
+    //   const question = this.questions[newIndex];
+    //   if (question && question.answer) {
+    //     this.selected =
+    //       question.answer.option ||
+    //       question.answer.comment ||
+    //       question.answer.options ||
+    //       question.answer.upload;
+    //     this.answer =
+    //       question.answer.option ||
+    //       question.answer.comment ||
+    //       question.answer.options ||
+    //       question.answer.upload;
+    //     this.urlLink =
+    //       question.answer.option ||
+    //       question.answer.comment ||
+    //       question.answer.options ||
+    //       question.answer.upload;
+    //     this.options.forEach((option) => {
+    //       option.checked = (question.answer.options || []).includes(option.name);
+    //     });
+    //   }
+    // },
   },
 };
 </script>
@@ -610,8 +605,8 @@ export default {
 }
 
 .circle.active {
-  background-color: #0040a1;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #c2c2c2;
 }
 .nextLoader {
   height: 100px;
@@ -684,7 +679,7 @@ export default {
   justify-content: space-around;
 }
 .fileUpload {
-  outline: 2px dashed #0040a1;
+  outline: 1px dashed #0040a1;
   outline-offset: -10px;
   color: dimgray;
   padding: 10px 10px;
@@ -732,9 +727,9 @@ export default {
   background-color: #0040a1;
 }
 .registration-options.active {
-  background-color: var(--blue-100);
-  border: 1px solid var(--primary-color);
   border-radius: 40px;
+  border: 1px solid #c2c2c2;
+  background: #ebf3ff;
 }
 
 .registration-options {
@@ -755,7 +750,9 @@ export default {
   color: #e0e0e0;
 }
 .registration-options-icon.active {
-  color: var(--primary-color);
+  background-color: #ffffff;
+  color: #c2c2c2;
+  border-radius: 100%;
 }
 .closeQuiz {
   position: absolute;
@@ -874,7 +871,6 @@ input[type="checkbox"] {
   /* border-radius: 15px; */
   overflow: hidden;
   margin: 10px auto;
-  padding-top: 60px;
 }
 
 .steps {
@@ -932,6 +928,94 @@ input[type="checkbox"] {
   color: #646868;
   text-align: center;
   font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+.page_header {
+  border-bottom: 2px solid gray;
+  padding: 20px 10px;
+  display: flex;
+}
+.question_numb {
+  color: #06e594;
+  text-align: center;
+  font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+.attach_file {
+  outline: 1px dashed #0040a1;
+  outline-offset: -10px;
+  color: dimgray;
+  position: relative;
+  cursor: pointer;
+  border-radius: 40px;
+  width: 60%;
+  margin: auto;
+}
+.text_answer {
+  color: #c2c2c2;
+  font-size: 12px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+.final_page {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 25px;
+}
+.border_box {
+  border: 1px solid #c2dbff;
+  padding: 10px;
+  border-radius: 40px;
+}
+.score_heading {
+  color: #646868;
+  text-align: center;
+  font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+.select_section,
+h6 {
+  height: 60px;
+  color: #646868;
+  font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+.score_value {
+  color: #c2c2c2;
+  text-align: center;
+  font-size: 48px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+.score_value_total {
+  color: #646868;
+  text-align: center;
+  font-size: 48px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+.score_grade {
+  color: #0040a1;
+  text-align: center;
+  font-size: 32px;
   font-family: Poppins;
   font-style: normal;
   font-weight: 400;
