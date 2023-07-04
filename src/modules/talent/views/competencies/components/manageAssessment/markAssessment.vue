@@ -334,7 +334,7 @@
 
         <div v-if="recommendation">
           <ul>
-            <li v-for="items in 4" :key="item">test</li>
+            <li v-for="items in 4" :key="items">test</li>
           </ul>
         </div>
       </div>
