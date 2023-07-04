@@ -59,9 +59,9 @@
                   'router-link-exact-active':
                     this.$route.meta.parent === 'training',
                 }"
-                >Training
-                <!-- <b-badge pill variant="light">soon</b-badge> -->
-                </router-link>
+                >Trainings
+                <sup class="coming-soon">soon</sup>
+              </router-link>
             </li>
             <li>
               <div class="search">
@@ -73,6 +73,7 @@
               <div class="menu-icon-container">
                 <router-link to="/messages">
                   <i-icon icon="tabler:message-2" class="menu-icon" />
+                  <sup class="coming-soon">soon</sup>
                 </router-link>
               </div>
             </li>
@@ -87,6 +88,7 @@
                   }"
                 >
                   <i-icon icon="nimbus:notification" class="menu-icon" />
+                  <sup class="coming-soon">soon</sup>
                 </router-link>
               </div>
             </li>
@@ -121,7 +123,9 @@
 
                   <el-dropdown-item>
                     <router-link to="/settings" class="d-flex justify-content-between w-100" style="gap: 5px">
-                      <span>Settings</span>
+                      <span>Settings
+                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                      </span>
                       <i-icon icon="material-symbols:arrow-forward" />
                     </router-link>
                   </el-dropdown-item>
@@ -135,15 +139,17 @@
                       @click.prevent="gotoManagers()"
                     >
                       <span>Manager</span>
-                      <span class="info-card">3</span>
+                      <!-- <span class="info-card">3</span> -->
                       <i-icon icon="material-symbols:arrow-forward" />
                     </span>
                   </el-dropdown-item>
 
                   <el-dropdown-item>
                     <span class="d-flex justify-content-between w-100" style="gap: 5px">
-                      <span>Professionals</span>
-                      <span class="info-card">3</span>
+                      <span>Professionals
+                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                      </span>
+                      <!-- <span class="info-card">3</span> -->
                       <i-icon icon="material-symbols:arrow-forward" />
                     </span>
                   </el-dropdown-item>
@@ -152,7 +158,9 @@
 
                 <el-dropdown-item>
                     <span class="d-flex justify-content-between w-100" style="gap: 5px">
-                      <span>Affiliate</span>
+                      <span>Affiliate
+                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                      </span>
                       <i-icon icon="material-symbols:arrow-forward" />
                     </span>
                   </el-dropdown-item>
@@ -247,7 +255,9 @@
                 'router-link-exact-active':
                   this.$route.meta.parent === 'training',
               }"
-              >Training</router-link
+              >Trainings
+              <sup class="coming-soon" style="position: relative;">soon</sup>
+              </router-link
             >
           </li>
           <!-- <li>

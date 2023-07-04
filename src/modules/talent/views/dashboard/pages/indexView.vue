@@ -5,7 +5,7 @@
       <ProfileCard/>
       <div class="row" style="gap:20px">
           <CompetenciesCard :class="{ 'flex-30' : !resumePercentage,  'flex-50' : resumePercentage}" class="" v-for="skill in recommended.competency" :key="skill.id" :cxCompetence="skill"/>
-          <CompetenciesCard :class="{ 'flex-30' : !resumePercentage,  'flex-50' : resumePercentage}" class="" v-for="skill in recommended.competency" :key="skill.id" :cxCompetence="skill"/>
+          <!-- <CompetenciesCard :class="{ 'flex-30' : !resumePercentage,  'flex-50' : resumePercentage}" class="" v-for="skill in recommended.competency" :key="skill.id" :cxCompetence="skill"/> -->
       </div>
     </div>
     <div v-if="resumePercentage" class="w-25">
@@ -44,16 +44,18 @@
 
     <!-- Courses  -->
   <div class="my-4">
+    <!-- @click.prevent="$router.push('/training')" -->
     <div class="top d-flex align-items-center justify-content-between mb-4">
         <h5 class=" header--text">Courses</h5>
         <div class="d-lg-flex align-items-center see--all linker" 
-          @click.prevent="$router.push('/training')"
           style="gap: 4px;">
-          <span>Show all </span>
-          <i class="isax isax-arrow-right-1"></i>
+          <span>Coming Soon </span>
+          <!-- <i class="isax isax-arrow-right-1"></i> -->
+          <!-- <sup class="coming-soon">soon</sup> -->
         </div>
     </div>
     <!-- <CxEmployers class="mt-3" :employersCount="4"/> -->
+
     <CxTraining class="mt-3" :trainingCount="4"/>
    </div>
   </div>
@@ -114,9 +116,9 @@ export default {
 
   }
   .flex-50{
-    flex-basis: 48.5%;
+    flex-basis: 48%;
   }
   .flex-30{
-    flex-basis: 32.25%;
+    flex-basis: 32%;
   }
 </style>

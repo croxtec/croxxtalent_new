@@ -489,17 +489,13 @@
   border-radius: 50%;
   color: #fff;
   font-weight: 600;
+}  
+.coming-soon {
+  position: absolute;
+  font-size: 8px;
+  color: #ff0000;
+  background: #ff000023;
+  padding: 3px;
+  border-radius: 3px;
 }
-.coming_soon::after{
-  position: relative;
-  content: 'Soon';
-  top: 11px;
-  right: -14px;
-  padding: 0.5rem;
-  width: 2rem;
-  background: var(--primary-color);
-  color: white;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
-}
+
