@@ -3,8 +3,8 @@
     <span @click.prevent="goBack()" class="backPage"
       ><i class="fa fa-solid fa-arrow-left"></i> Back</span
     >
-    <div class="center text-center mb-5">
-      <div class="m-5">
+    <div class="center mx-xl-auto my-xl-4 text-center mb-5">
+      <div class="p-xl-5">
         <div class="assessment my-4">
           <span class="assess">Assessment</span>
         </div>
@@ -80,17 +80,17 @@ export default {
 };
 </script>
 
-<style scooped>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
 .center {
-  margin: 50px auto;
+  /* margin: 50px auto; */
   /* margin-top: 50px;  */
   background: #ffffff;
   border: 1px solid #c2dbff;
   padding: 10px;
   border-radius: 40px;
   width: 80%;
-  height: 520px;
+  min-height: 520px;
 }
 .surface {
   font-family: "Poppins";
@@ -103,7 +103,7 @@ export default {
 .content {
   font-size: 14px;
   font-family: "Poppins", sans-serif !important;
-  height: 66px;
+  /* height: 66px; */
   line-height: 160%;
   font-style: normal;
   font-weight: 400;
@@ -113,16 +113,16 @@ export default {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   justify-content: space-around;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding: 0px 100px;
 }
-.credential h6 {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 160%;
-  color: #282929;
+@media only screen and (max-width: 768px) {
+  .credentials {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    justify-content: space-between;
+    padding: 0px 10px;
+  }
 }
 .credential small {
   font-family: "Poppins";

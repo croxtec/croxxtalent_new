@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="closeQuiz" @click="closeQuiz">X</span>
-    <div class="steps-progress-bar mt-4">
+    <div class="steps-progress-bar mt-5">
       <div class="steps">
         <div
           v-for="(steps, index) in questions.length"
@@ -635,7 +635,7 @@ export default {
 }
 .center {
   margin: auto;
-  margin-top: 130px;
+  margin-top: 60px;
   width: 80%;
   height: 100%;
   border: 1px solid #c2dbff;
