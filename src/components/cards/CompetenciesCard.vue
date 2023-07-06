@@ -68,8 +68,9 @@
           >
         <button disabled v-if="!cxCompetence.is_published && !cxCompetence.type"   @click="gotoAssessment"
             class="primary--button text-white" style="color: inherit;"
-            >Take Test</button
-          >
+            >
+            Coming Soon
+          </button>
         <button  v-if=" cxCompetence.is_published" class="primary--button_border">Preview</button>
       </div>
   </div>
