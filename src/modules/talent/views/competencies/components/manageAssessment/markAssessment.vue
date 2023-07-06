@@ -1,28 +1,27 @@
 <template>
   <div>
     <span class="closeQuiz" @click="closeQuiz">X</span>
-
-    <div class="center" v-if="currentQuestionIndex !== questions.length">
-      <div class="py-5">
-        <h3 class="question_numb">Question {{ currentQuestion.id }}</h3>
-      </div>
-      <div class="steps-progress-bar">
-        <div class="steps">
-          <div
-            v-for="(steps, index) in questions.length"
-            :key="index"
-            class="step-container"
-          >
-            <div class="step" :class="{ active: index <= currentQuestionIndex }">
-              {{ index + 1 }}
-            </div>
-            <div
-              v-if="index !== questions.length - 1"
-              class="progress-line"
-              :class="{ active: index <= currentQuestionIndex }"
-            ></div>
+    <div class="steps-progress-bar mt-4">
+      <div class="steps">
+        <div
+          v-for="(steps, index) in questions.length"
+          :key="index"
+          class="step-container"
+        >
+          <div class="step" :class="{ active: index <= currentQuestionIndex }">
+            {{ index + 1 }}
           </div>
+          <div
+            v-if="index !== questions.length - 1"
+            class="progress-line"
+            :class="{ active: index <= currentQuestionIndex }"
+          ></div>
         </div>
+      </div>
+    </div>
+    <div class="center" v-if="currentQuestionIndex !== questions.length">
+      <div class="py-2">
+        <h3 class="question_numb">Question {{ currentQuestion.id }}</h3>
       </div>
 
       <!-- confirmation Modal -->
@@ -605,7 +604,7 @@ export default {
 }
 
 .circle.active {
-  background-color: #ffffff;
+  background-color: #0040a1;
   color: #c2c2c2;
 }
 .nextLoader {
