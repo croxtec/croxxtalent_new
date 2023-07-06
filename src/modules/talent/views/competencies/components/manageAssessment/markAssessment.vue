@@ -309,7 +309,7 @@
         />
       </div>
     </div>
-    <div v-else class="container mt-5 py-5 p-2 final_page">
+    <div v-else class="mx-auto mt-5 py-5 p-2 final_page">
       <div class="border_box p-0 text-center py-3">
         <h3 class="score_heading text-muted mb-5">score</h3>
         <h3 class="mb-2">
@@ -329,7 +329,7 @@
         placeholder="Write a feedback to the talent on the assessment..."
       />
       <div @click="showRecommendations()" class="border_box p-0 select_section">
-        <h6 class="d-flex px-2 py-2 justify-content-between">
+        <h6 class="d-flex px-2 py-4 justify-content-between">
           Suggest training for the talent
           <i class="fa fa-solid fa-chevron-up mx-3" v-if="recommendation"></i
           ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!recommendation"></i>
@@ -972,13 +972,6 @@ input[type="checkbox"] {
   font-weight: 400;
   line-height: 160%;
 }
-@media only screen and (max-width: 768px) {
-  .final_page {
-    display: grid;
-    grid-template-columns: auto;
-    gap: 25px;
-  }
-}
 .final_page {
   display: grid;
   grid-template-columns: auto auto;
@@ -1034,5 +1027,12 @@ h6 {
   font-style: normal;
   font-weight: 400;
   line-height: 160%;
+}
+@media only screen and (max-width: 768px) {
+  .final_page {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 25px;
+  }
 }
 </style>
