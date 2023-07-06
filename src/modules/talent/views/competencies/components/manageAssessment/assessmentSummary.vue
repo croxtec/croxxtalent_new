@@ -3,7 +3,7 @@
     <span @click.prevent="goBack()" class="backPage"
       ><i class="fa fa-solid fa-arrow-left"></i> Back</span
     >
-    <div class="center mx-xl-auto my-xl-4 text-center mb-5">
+    <div class="center p-3 w-xl-75 mx-xl-auto my-xl-4 mt-3 text-center mb-5">
       <div class="p-xl-5">
         <div class="assessment my-4">
           <span class="assess">Assessment</span>
@@ -89,7 +89,7 @@ export default {
   border: 1px solid #c2dbff;
   padding: 10px;
   border-radius: 40px;
-  width: 80%;
+  /* width: 80%; */
   min-height: 520px;
 }
 .surface {
@@ -113,7 +113,7 @@ export default {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   justify-content: space-around;
-  padding: 0px 100px;
+  /* padding: 0px 100px; */
 }
 @media only screen and (max-width: 768px) {
   .credentials {
@@ -121,7 +121,7 @@ export default {
     grid-template-columns: auto auto;
     gap: 10px;
     justify-content: space-between;
-    padding: 0px 10px;
+    /* padding: 0px 10px; */
   }
 }
 .credential small {
