@@ -1,7 +1,7 @@
 <template>
   <div>
-    <span class="closeQuiz" @click="closeQuiz">X</span>
-    <div class="steps-progress-bar mt-5">
+    <!-- <span class="closeQuiz" @click="closeQuiz">X</span> -->
+    <div class="steps-progress-bar mx-auto w-xl-25 my-5">
       <div class="steps">
         <div
           v-for="(steps, index) in questions.length"
@@ -19,7 +19,10 @@
         </div>
       </div>
     </div>
-    <div class="center" v-if="currentQuestionIndex !== questions.length">
+    <div
+      class="center p-3 w-xl-75 mx-xl-auto my-xl-4 mt-3 text-center mb-5"
+      v-if="currentQuestionIndex !== questions.length"
+    >
       <div class="py-2">
         <h3 class="question_numb">Question {{ currentQuestion.id }}</h3>
       </div>
@@ -76,9 +79,9 @@
           class="questions"
           v-if="currentQuestion.type === 'radio' || currentQuestion.type === 'checkbox'"
         >
-          <div class="container mt-4">
+          <div class="container px-0 mt-4">
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-0">
                 <div
                   class="mb-4 registration-options"
                   :class="selected === 'option1' ? 'active' : '1'"
@@ -96,7 +99,7 @@
                   <span>{{ currentQuestion.option1 }}</span>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-0">
                 <div
                   class="mb-4 registration-options"
                   :class="selected === 'option2' ? 'active' : ''"
@@ -116,7 +119,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-0">
                 <div
                   class="mb-4 registration-options"
                   :class="selected === 'option3' ? 'active' : ''"
@@ -134,7 +137,7 @@
                   <span>{{ currentQuestion.option3 }}</span>
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-6 p-0">
                 <div
                   class="mb-4 registration-options"
                   :class="selected === 'option4' ? 'active' : ''"
@@ -158,7 +161,7 @@
           </div>
         </div>
         <div
-          class="fileUpload text-center py-3"
+          class="fileUpload w-xl-50 text-center py-3"
           v-else-if="currentQuestion.type === 'file'"
         >
           image here
@@ -284,6 +287,7 @@
         <div
           v-for="num in numbers"
           :key="num"
+          class="px-4"
           :class="['circle', { active: num === selectedNumber }]"
           @click="selectNumber(num)"
         >
@@ -305,14 +309,14 @@
         />
       </div>
     </div>
-    <div v-else class="container mt-5 py-5 final_page">
-      <div class="border_box text-center py-3">
+    <div v-else class="container mt-5 py-5 p-2 final_page">
+      <div class="border_box p-0 text-center py-3">
         <h3 class="score_heading text-muted mb-5">score</h3>
         <h3 class="mb-2">
           <span class="score_value">60</span><span class="score_value_total">/100</span>
         </h3>
       </div>
-      <div class="border_box text-center py-3">
+      <div class="border_box p-0 text-center py-3">
         <h3 class="score_heading text-muted mb-5">Grade</h3>
         <h3 class="score_grade mb-2">Expert (A)</h3>
       </div>
@@ -324,7 +328,7 @@
         rows="6"
         placeholder="Write a feedback to the talent on the assessment..."
       />
-      <div @click="showRecommendations()" class="border_box select_section">
+      <div @click="showRecommendations()" class="border_box p-0 select_section">
         <h6 class="d-flex px-2 py-2 justify-content-between">
           Suggest training for the talent
           <i class="fa fa-solid fa-chevron-up mx-3" v-if="recommendation"></i
@@ -583,23 +587,27 @@ export default {
 </script>
 
 <style scoped>
+.gap {
+  gap: 10px;
+}
 .circle-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .circle {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
+  width: 54px;
   height: 50px;
   border-radius: 50%;
   border: 1px solid #0040a1;
   font-size: 20px;
   cursor: pointer;
-  margin: 10px;
   color: #0040a1;
 }
 
@@ -634,9 +642,9 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .center {
-  margin: auto;
-  margin-top: 60px;
-  width: 80%;
+  /* margin: auto; */
+  /* margin-top: 60px; */
+  /* width: 80%; */
   height: 100%;
   border: 1px solid #c2dbff;
   padding: 10px;
@@ -683,10 +691,10 @@ export default {
   color: dimgray;
   padding: 10px 10px;
   min-height: 200px;
-  position: relative;
-  cursor: pointer;
+  /* position: relative; */
+  /* cursor: pointer; */
   border-radius: 40px;
-  width: 60%;
+  /* width: 60%; */
   margin: auto;
 }
 
@@ -868,13 +876,13 @@ input[type="checkbox"] {
   width: 50%;
   /* height: 30px; */
   /* border-radius: 15px; */
-  overflow: hidden;
-  margin: 10px auto;
+  /* overflow: hidden; */
+  /*  margin: 10px auto; */
 }
 
 .steps {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
 }
@@ -963,6 +971,13 @@ input[type="checkbox"] {
   font-style: normal;
   font-weight: 400;
   line-height: 160%;
+}
+@media only screen and (max-width: 768px) {
+  .final_page {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 25px;
+  }
 }
 .final_page {
   display: grid;
