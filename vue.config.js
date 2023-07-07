@@ -14,11 +14,11 @@ module.exports = defineConfig({
     },
   },
 
-  // devServer: {
-  //   port: 8080,
-  //   overlay: {
-  //     warnings: true,
-  //     errors: true,
-  //   },
-  // },
+  devServer: {
+    port: 8080,
+    overlay: {
+      warnings: true,
+      errors: true,
+    },
+  },
 });
