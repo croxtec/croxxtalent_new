@@ -1,5 +1,4 @@
 const { defineConfig } = require("@vue/cli-service");
-const path = require('path');
 module.exports = defineConfig({
   // publicPath: process.env.NODE_ENV === "production" ? "/app/" : "/",
   publicPath: "/",
@@ -14,10 +13,16 @@ module.exports = defineConfig({
       },
     },
   },
-
+  
   devServer: {
-    static: path.join(__dirname, 'public/'),
-    port: 8080,
-    hot: "only"
-  },
+    disableHostCheck: true
+  }
+
+  // devServer: {
+  //   port: 8080,
+  //   overlay: {
+  //     warnings: true,
+  //     errors: true,
+  //   },
+  // },
 });
