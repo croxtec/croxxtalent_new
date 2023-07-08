@@ -17,9 +17,6 @@ module.exports = defineConfig({
 
   devServer: {
     static: path.join(__dirname, 'public/'),
-    devMiddleware: {
-      publicPath: '/dist/'
-    },
     port: 8080,
     hot: "only"
   },
