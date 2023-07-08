@@ -15,11 +15,11 @@ module.exports = defineConfig({
   },
 
   devServer: {
-    disableHostCheck: true
-    // port: 8080,
-    // overlay: {
-    //   warnings: true,
-    //   errors: true,
-    // },
+    static: path.join(__dirname, 'public/'),
+    devMiddleware: {
+      publicPath: '/dist/'
+    },
+    port: 8080,
+    hot: "only"
   },
 });
