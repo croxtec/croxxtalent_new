@@ -31,7 +31,7 @@
         <AddCertification />
       </div> -->
       <hr />
-
+      <!-- Emmanuel: This might not work because you want to try out prop -->
       <button class="add-item-button" @click="create('certification')">
         <span> <i-icon icon="clarity:plus-line" /> </span>
         <span>Add Certification</span>

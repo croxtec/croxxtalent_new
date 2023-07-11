@@ -13,8 +13,8 @@
                      v-model="payload.school"
                      placeholder="Name of school"
                    />
-                   <small class="text-danger" v-for="item in errors.school" :key="item"
-                     >* {{ item }}</small>
+                   <!-- <small class="text-danger" v-for="item in errors.school" :key="item"
+                     >* {{ item }}</small> -->
                    <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
                </validation-provider>
              </div>

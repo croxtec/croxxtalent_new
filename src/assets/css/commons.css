@@ -354,6 +354,17 @@
     font-size: 22px;
 }
 
+.delete-icon {
+    background-color: var(--error-color);
+    display: grid;
+    place-items: center;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
 .input-field {
     display: flex;
     display: inline-flex;

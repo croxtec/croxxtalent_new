@@ -88,7 +88,7 @@ export default {
   },
 
   methods: {
-      ...mapActions("cvCertification", ["list","create"]),
+      ...mapActions("cvCertification", ["list","create", "update"]),
 
       addNewRecord(){
         console.log(this.form);
@@ -107,9 +107,6 @@ export default {
         });  
       },
 
-      updateRecord(){
-        console.log('Update rec',this.form);
-      },
 
       editResumeCertification(value){
         console.log('Editing Certification', value.id);
@@ -125,7 +122,9 @@ export default {
         // console.log(this.form);
         // this.form = newData;
         Vue.set(this, 'form', newData)
-      }
+      },
+
+     
   }, 
 
   computed: {
