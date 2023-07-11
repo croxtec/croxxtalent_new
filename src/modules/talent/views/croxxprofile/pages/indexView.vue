@@ -98,5 +98,5 @@ export default {
 };
 </script>
 
-<style scooped>
+<style scoped>
 </style>
