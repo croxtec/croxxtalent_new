@@ -6,7 +6,7 @@
           class="d-flex justify-content-between align-items-center py-3"
           style="gap: 50px"
         >
-          <img src="@/assets/img/logo.png" width="20%" alt="" />
+          <img src="@/assets/img/logo.png" width="200" alt="" />
 
           <ul class="mb-0 w-100 talent-nav_items">
             <li>
@@ -179,9 +179,87 @@
           </ul>
 
           <div class="mobile-menu">
+            <div class="d-flex align-items-center" style="gap:20px">
+            <el-dropdown trigger="click">
+                <div
+                  class="el-dropdown-link d-flex align-items-center"
+                  style="gap: 1px"
+                >
+                  <!-- <i-icon icon="carbon:settings" /> <span>Settings</span> -->
+                  <img
+                    src="https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/10-1024.png"
+                    alt=""
+                    style="border-radius: 50%"
+                    width="35px"
+                  />
+                  <i class="el-icon-arrow-down el-icon--right"></i>
+                </div>
+                <el-dropdown-menu slot="dropdown" class="settings-dropdown">
+                  <el-dropdown-item>
+                    <router-link  to="/profile" class="d-flex justify-content-between w-100" style="gap: 5px">
+                      <span>Profile</span>
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </router-link>
+                  </el-dropdown-item>
+
+                  <el-dropdown-item>
+                    <router-link to="/settings" class="d-flex justify-content-between w-100" style="gap: 5px">
+                      <span>Settings
+                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                      </span>
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </router-link>
+                  </el-dropdown-item>
+
+                  <el-divider class="my-0"></el-divider>
+
+                  <el-dropdown-item>
+                    <span
+                      class="d-flex justify-content-between w-100"
+                      style="gap: 5px"
+                      @click.prevent="gotoManagers()"
+                    >
+                      <span>Manager</span>
+                      <!-- <span class="info-card">3</span> -->
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </span>
+                  </el-dropdown-item>
+
+                  <el-dropdown-item>
+                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
+                      <span>Professionals
+                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                      </span>
+                      <!-- <span class="info-card">3</span> -->
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </span>
+                  </el-dropdown-item>
+
+
+
+                <el-dropdown-item>
+                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
+                      <span>Affiliate
+                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                      </span>
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </span>
+                  </el-dropdown-item>
+
+                  <el-divider class="my-0"></el-divider>
+
+                  <el-dropdown-item>
+                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
+                      <span>Logout</span>
+                      <i-icon icon="material-symbols:arrow-forward" />
+                    </span>
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
             <span role="button" @click="drawer = true">
-              <i-icon icon="material-symbols:menu-sharp" width="30px" />
+              <i-icon icon="material-symbols:menu-sharp" width="40px" />
             </span>
+          </div>
           </div>
         </div>
       </div>

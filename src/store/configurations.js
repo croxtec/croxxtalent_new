@@ -90,7 +90,8 @@ export default {
         console.log(error);
       }
     },
-       // List A Country's States
+
+    // List A Country's States
     async getCountryStates({ commit }, { id, payload }) {
       try {
         let response = await $request.get(`/settings/countries/${id}/states`, {
