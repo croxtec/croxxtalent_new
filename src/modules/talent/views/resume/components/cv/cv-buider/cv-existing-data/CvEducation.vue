@@ -37,7 +37,7 @@ export default {
   methods: {
     ...mapActions("cvEducation", ["view", "list"]),
     edit(value) {
-      this.$emit("edit", "education");
+      this.$emit("editMode", "education");
       this.view(value.id);
     },
   },

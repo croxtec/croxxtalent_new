@@ -4,7 +4,7 @@
       <h5 style="font-size: 18px; font-weight: 600">Education</h5>
       <p class="small text-muted">Add your education history</p>
       <div class="mt-2">
-        <cv-education @edit="editData" />
+        <cv-education @editMode="editData" />
       </div>
 
       <div class="mt-2" v-if="add_education">
@@ -25,11 +25,11 @@
       </p>
 
       <div class="mt-2">
-        <cv-certification />
+        <cv-certification  />
       </div>
-      <div class="mt-2" v-if="add_certification">
+      <!-- <div class="mt-2" v-if="add_certification">
         <AddCertification />
-      </div>
+      </div> -->
       <hr />
 
       <button class="add-item-button" @click="create('certification')">
@@ -73,19 +73,20 @@ export default {
       if (value === "education") {
         this.add_education = !this.add_education;
         this.editEducation = true;
-        // if (this.error) {
-        //   this.$store.commit("cvEducation/REMOVE_ERROR_SUCCESS");
-        // }
-      } else {
+      } else if(value === "certification") {
         this.add_certification = !this.add_certification;
       }
     },
+    
   },
   computed: {
     ...mapState("cvEducation", {
       success: (state) => state.success,
       error: (state) => state.error,
     }),
+  },
+  mounted() {
+    this.$eventBus.on('editMode', this.editData);
   },
 };
 </script>

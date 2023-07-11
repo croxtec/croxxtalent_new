@@ -89,6 +89,10 @@ import AnimatedNumber from "animated-number-vue";
 // Vue.use(AnimatedNumber);
 Vue.component("AnimatedNumber", AnimatedNumber);
 
+import TinyEmitter from 'tiny-emitter';
+const emitter = new TinyEmitter();
+Vue.prototype.$eventBus = emitter;
+
 new Vue({
   router,
   store,

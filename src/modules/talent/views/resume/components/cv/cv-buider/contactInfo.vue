@@ -113,7 +113,6 @@ export default {
 
   methods: {
     updateContactInfo(){
-      console.log(this.form);
       this.$store
         .dispatch("cvs/updateResumeContact", { 
           payload: this.form
@@ -145,7 +144,6 @@ export default {
         sort_dir: "asc",
         archived: "no"
       };
-      console.log(payload);
       this.$store.dispatch("config/getCountryStates", {
         id: this.form.country_code,
         payload: payload
