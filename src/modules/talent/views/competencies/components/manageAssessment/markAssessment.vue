@@ -372,7 +372,7 @@
       <button
         v-if="currentQuestionIndex == questions.length"
         class="rounded-pill text-white next"
-        @click="submitAssessment"
+        @click="submitAssessment()"
       >
         Submit
       </button>
