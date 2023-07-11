@@ -32,8 +32,8 @@ import "toastify-js/src/toastify.css";
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 Vue.use(VueSweetalert2, {
-  // confirmButtonColor: "#41b882",
-  // cancelButtonColor: "#ff7674",
+  confirmButtonColor: "#41b882",
+  cancelButtonColor: "#ff7674",
   reverseButtons: false,
   buttonsStyling: false,
   customClass: {
@@ -88,6 +88,10 @@ Vue.use(Vuesax, {
 import AnimatedNumber from "animated-number-vue";
 // Vue.use(AnimatedNumber);
 Vue.component("AnimatedNumber", AnimatedNumber);
+
+import TinyEmitter from 'tiny-emitter';
+const emitter = new TinyEmitter();
+Vue.prototype.$eventBus = emitter;
 
 new Vue({
   router,

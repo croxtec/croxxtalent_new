@@ -90,7 +90,7 @@
 }
 
 .competences-header-container span.active-item {
-  background-color:var(--blue-100) ;
+  background-color: var(--blue-100);
 }
 
 .competences-header-container {
@@ -102,7 +102,8 @@
   width: max-content;
 }
 
-.skills .el-collapse-item__header, .skills .el-collapse-item__wrap {
+.skills .el-collapse-item__header,
+.skills .el-collapse-item__wrap {
   border-bottom: 1px solid var(--blue-100);
 }
 
@@ -140,7 +141,7 @@
 }
 
 .skills-data {
-  border: 1px solid var(--blue-300); 
+  border: 1px solid var(--blue-300);
   padding: 20px;
   border-radius: 25px;
   width: 100%;
@@ -160,7 +161,7 @@
   align-items: center;
   padding: 0 18px;
   width: 100%;
-  
+
 }
 
 .skills-list {
@@ -201,8 +202,8 @@
 }
 
 .skills-list::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
 
 .skills-list span:hover {
   color: var(--dark);
@@ -230,49 +231,56 @@
 
 .assesement-level {
   background-color: var(--blue-100);
-  padding: 25px 20px; 
-  border-radius: 25px;
-}
-.assesement-completed{
-  padding: 8px 20px; 
+  padding: 25px 20px;
   border-radius: 25px;
 }
 
-.level-excellent{
+.assesement-completed {
+  padding: 8px 20px;
+  border-radius: 25px;
+}
+
+.level-excellent {
   background-color: var(--green-200);
 }
-.level-average{
+
+.level-average {
   background-color: var(--blue-200);
 }
-.level-poor{
+
+.level-poor {
   background-color: var(--orange-200);
 }
 
-.assesement-grade .split{
+.assesement-grade .split {
   width: 2px;
   height: 35px;
 }
-.assesement-grade{
+
+.assesement-grade {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 65px;
 }
+
 .assement-score {
-    margin: 4px;
-    padding: 12px 8px;
-    border-radius: 15px;
+  margin: 4px;
+  padding: 12px 8px;
+  border-radius: 15px;
 }
 
-.score-excellent{
+.score-excellent {
   background-color: var(--green-600);
   color: #D6FFED;
 }
-.score-poor{
+
+.score-poor {
   background-color: var(--orange-600);
   color: #FDB3A9;
 }
-.score-average{
+
+.score-average {
   background: #0040A1;
   color: #C2DBFF;
 }
@@ -312,7 +320,7 @@
 }
 
 .manager-data {
-  border: 1px solid var(--blue-300); 
+  border: 1px solid var(--blue-300);
   padding: 20px;
   border-radius: 25px;
   width: 100%;
@@ -322,7 +330,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0 30px ;
+  padding: 0 30px;
   gap: 10px;
 }
 
@@ -340,14 +348,14 @@
   font-weight: 200;
   color: var(--gray-300);
   font-size: 13px;
-} 
+}
 
 .manager-data {
   display: grid;
   display: -ms-grid;
   display: -moz-grid;
-  grid-template-columns:repeat(4, 1fr) ;
-  gap:20px
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px
 }
 
 .manager-info {
@@ -420,7 +428,7 @@
   padding: 6px 4px !important;
   font-family: 'Poppins';
   font-style: inherit;
-  font-size: 48px; 
+  font-size: 48px;
   font-weight: 400;
 }
 
@@ -431,7 +439,8 @@
   background-position: bottom right;
   background-position: 95% 90%;
 }
-.icon-text{
+
+.icon-text {
   background-image: url('../icons/text.png');
 }
 
@@ -451,7 +460,7 @@
   color: var(--blue-100);
 }
 
-.settings-dropdown{
+.settings-dropdown {
   border: 1px solid var(--blue-100) !important;
   box-shadow: unset !important;
   width: 15% !important;
@@ -460,14 +469,14 @@
 }
 
 .settings-dropdown .popper__arrow {
-  border-top-color:var(--blue-100) !important ;
-} 
+  border-top-color: var(--blue-100) !important;
+}
 
-.settings-dropdown  .el-dropdown-menu__item {
+.settings-dropdown .el-dropdown-menu__item {
   display: flex;
   display: -webkit-flex;
   display: inline-flex;
- justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
   line-height: unset !important;
   width: 100%;
@@ -475,7 +484,7 @@
   color: #000;
 }
 
-.settings-dropdown  .el-dropdown-menu__item:hover {
+.settings-dropdown .el-dropdown-menu__item:hover {
   background-color: var(--blue-100) !important;
   border-radius: 25px;
 }
@@ -489,7 +498,8 @@
   border-radius: 50%;
   color: #fff;
   font-weight: 600;
-}  
+}
+
 .coming-soon {
   position: absolute;
   font-size: 8px;
@@ -498,4 +508,3 @@
   padding: 3px;
   border-radius: 3px;
 }
-
