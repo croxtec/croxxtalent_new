@@ -180,6 +180,15 @@
 
           <div class="mobile-menu">
             <div class="d-flex align-items-center" style="gap:20px">
+              <router-link to="/">
+                  <i-icon icon="ri:search-line" class="mobile-menu-icon" />
+                  <sup class="coming-soon">soon</sup>
+                </router-link>
+              <router-link to="/">
+                  <i-icon icon="tabler:message-2" class="mobile-menu-icon" />
+                  <sup class="coming-soon">soon</sup>
+                </router-link>
+                
             <el-dropdown trigger="click">
                 <div
                   class="el-dropdown-link d-flex align-items-center"
@@ -190,9 +199,9 @@
                     src="https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/10-1024.png"
                     alt=""
                     style="border-radius: 50%"
-                    width="35px"
+                    width="40px"
                   />
-                  <i class="el-icon-arrow-down el-icon--right"></i>
+                  <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
                 </div>
                 <el-dropdown-menu slot="dropdown" class="settings-dropdown">
                   <el-dropdown-item>
@@ -256,9 +265,7 @@
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
-            <span role="button" @click="drawer = true">
-              <i-icon icon="material-symbols:menu-sharp" width="40px" />
-            </span>
+              
           </div>
           </div>
         </div>
@@ -434,6 +441,11 @@ export default {
   background: var(--blue-100);
   color: #000 !important;
   border-radius: 10px;
+}
+
+.mobile-menu a .mobile-menu-icon {
+  font-size: 25px;
+  color: var(--primary-color);
 }
 
 @media (max-width: 990px) {
