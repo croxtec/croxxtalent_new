@@ -84,13 +84,13 @@
               <div class="col-sm-6 p-0">
                 <div
                   class="mb-4 registration-options"
-                  :class="selected === 'option1' ? 'active' : '1'"
+                  :class="currentQuestion.answer.option === 'option1' ? 'active' : '1'"
                 >
                   <i-icon
-                    :class="selected === 'option1' ? 'active' : '1'"
+                    :class="currentQuestion.answer.option === 'option1' ? 'active' : '1'"
                     class="mr-4 registration-options-icon"
                     :icon="
-                      selected === 'option1'
+                      currentQuestion.answer.option === 'option1'
                         ? 'material-symbols:check-circle-rounded'
                         : 'mdi:checkbox-blank-circle-outline'
                     "
@@ -102,13 +102,13 @@
               <div class="col-sm-6 p-0">
                 <div
                   class="mb-4 registration-options"
-                  :class="selected === 'option2' ? 'active' : ''"
+                  :class="currentQuestion.answer.option === 'option2' ? 'active' : ''"
                 >
                   <i-icon
-                    :class="selected === 'option2' ? 'active' : ''"
+                    :class="currentQuestion.answer.option === 'option2' ? 'active' : ''"
                     class="mr-4 registration-options-icon"
                     :icon="
-                      selected === 'option2'
+                      currentQuestion.answer.option === 'option2'
                         ? 'material-symbols:check-circle-rounded'
                         : 'mdi:checkbox-blank-circle-outline'
                     "
@@ -122,13 +122,13 @@
               <div class="col-sm-6 p-0">
                 <div
                   class="mb-4 registration-options"
-                  :class="selected === 'option3' ? 'active' : ''"
+                  :class="currentQuestion.answer.option === 'option3' ? 'active' : ''"
                 >
                   <i-icon
-                    :class="selected === 'option3' ? 'active' : ''"
+                    :class="currentQuestion.answer.option === 'option3' ? 'active' : ''"
                     class="mr-4 registration-options-icon"
                     :icon="
-                      selected === 'option3'
+                      currentQuestion.answer.option === 'option3'
                         ? 'material-symbols:check-circle-rounded'
                         : 'mdi:checkbox-blank-circle-outline'
                     "
@@ -140,13 +140,13 @@
               <div class="col-sm-6 p-0">
                 <div
                   class="mb-4 registration-options"
-                  :class="selected === 'option4' ? 'active' : ''"
+                  :class="currentQuestion.answer.option === 'option4' ? 'active' : ''"
                 >
                   <i-icon
-                    :class="selected === 'option4' ? 'active' : ''"
+                    :class="currentQuestion.answer.option === 'option4' ? 'active' : ''"
                     class="mr-4 registration-options-icon"
                     :icon="
-                      selected === 'option4'
+                      currentQuestion.answer.option === 'option4'
                         ? 'material-symbols:check-circle-rounded'
                         : 'mdi:checkbox-blank-circle-outline'
                     "
@@ -230,7 +230,7 @@
               <div :class="['checkbox', { checked: option.checked }]">
                 <input
                   type="checkbox"
-                  :id="option.id"
+                  :id="option.id" 
                   :value="option.checked"
                   v-model="currentAnswer"
                   v-check-match="option.checked"
@@ -289,7 +289,7 @@
           :key="num"
           class="px-4"
           :class="['circle', { active: num === selectedNumber }]"
-          @click="selectNumber(num)"
+          @click="handleSelectNumber(num)"
         >
           {{ num }}
         </div>
@@ -328,8 +328,12 @@
         rows="6"
         placeholder="Write a feedback to the talent on the assessment..."
       />
-      <div @click="showRecommendations()" class="border_box p-0 select_section">
-        <h6 class="d-flex px-2 py-4 justify-content-between">
+      <div
+        @click="showRecommendations()"
+        role="button"
+        class="border_box p-0 select_section"
+      >
+        <h6 class="d-flex px-3 py-3 justify-content-between">
           Suggest training for the talent
           <i class="fa fa-solid fa-chevron-up mx-3" v-if="recommendation"></i
           ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!recommendation"></i>
@@ -368,7 +372,7 @@
       <button
         v-if="currentQuestionIndex == questions.length"
         class="rounded-pill text-white next"
-        @click="submitAssessment"
+        @click="submitAssessment()"
       >
         Submit
       </button>
@@ -384,14 +388,14 @@ export default {
       numbers: [0, 1, 2, 3, 4, 5],
       selectedNumber: null,
       confirmSubmission: false,
-      assessments: "",
-      answer: "",
-      selectedOption: [],
+      // assessments: "",
+      // answer: "",
+      // selectedOption: [],
       questions: [],
       selected: null,
-      fileName: "",
-      fileUpload: [],
-      urlLink: "",
+      // fileName: "",
+      // fileUpload: [],
+      // urlLink: "",
       step: 1,
       currentQuestionIndex: 0,
       checkedOptions: [],
@@ -432,9 +436,10 @@ export default {
         (option) => option !== null && option !== ""
       );
     },
-    selectNumber(num) {
+    handleSelectNumber(num) {
       this.selectedNumber = num;
-      this.score = num;
+      // this.score = num;
+      console.log(this.selectedNumber);
     },
     closeQuiz() {
       this.$router.go(-1);
@@ -481,7 +486,7 @@ export default {
         assesment_id: this.currentQuestion.answer.assesment_id,
         question_id: this.currentQuestion.answer.assesment_question_id,
         talent_id: this.currentQuestion.answer.talent_id,
-        score: this.score,
+        score: this.selectedNumber,
         comment: this.managerComment,
       };
       try {
@@ -542,6 +547,7 @@ export default {
     this.assessments = assessment.assesment;
     console.log(this.assessments);
     console.log(this.questions);
+    console.log(this.managerComment);
   },
   watch: {
     options: {

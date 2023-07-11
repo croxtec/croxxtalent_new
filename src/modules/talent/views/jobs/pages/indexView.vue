@@ -606,7 +606,7 @@ export default {
 };
 </script>
 
-<style scooped>
+<style scoped>
 .rotate-180 {
   transform: rotate(180deg);
 }

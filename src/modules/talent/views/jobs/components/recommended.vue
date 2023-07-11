@@ -206,7 +206,7 @@
   }
   </script>
   
-  <style scooped>
+  <style scoped>
   .images img {
     cursor: pointer;
   }
