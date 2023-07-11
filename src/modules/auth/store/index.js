@@ -62,6 +62,8 @@ export default {
 
     SET_SUCCESS(state, message) {
       state.success = message;
+      state.regSuccess = true;
+      state.regError = false;
       state.error = false;
       state.validationErrors = {};
       state.loading = false;
@@ -255,20 +257,20 @@ export default {
             borderRadius: "5px",
           },
         }).showToast();
-        commit("SET_USER", responsePayload.data.user);
-        commit("SET_REG_SUCCESS", responsePayload.message);
+        // commit("SET_USER", responsePayload.data.user);
+        commit("SET_SUCCESS", responsePayload.message);
       } catch (error) {
         if (error && error.data) {
           let errorPayload = error.data;
           if (errorPayload.message) {
-            commit("SET_REG_ERROR", errorPayload.message);
+            commit("SET_ERROR", errorPayload.message);
             if (errorPayload.errors) {
               commit("SET_VALIDATION_ERRORS", errorPayload.errors);
             }
             return;
           }
         }
-        commit("SET_REG_ERROR", "Internal connection error, please try again.");
+        commit("SET_ERROR", "Internal connection error, please try again.");
       }
     },
   },

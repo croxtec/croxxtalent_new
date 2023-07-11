@@ -131,7 +131,6 @@ export default {
     registerTalent() {
       // this.$store.dispatch("auth/registerUser", this.credentials);
       this.registerUser(this.credentials);
-
       if (this.regSuccess !== false && this.regError === false) {
         if (this.credentials.type == "talent") {
           this.$router.replace({ name: "cvBuilder" });
