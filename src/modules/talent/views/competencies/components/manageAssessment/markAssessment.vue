@@ -176,7 +176,7 @@
         </div>
         <div
           class="majorInput text-center my-5"
-          v-else-if="question.type === 'reference'"
+          v-else-if="currentQuestion.type === 'reference'"
         >
           <h4 class="text_answer">{{ currentQuestion.answer.comment }}</h4>
         </div>

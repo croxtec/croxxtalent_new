@@ -1,12 +1,12 @@
 <template>
   <div>
     <span class="closeQuiz" @click="closeQuiz">X</span>
-    <div class="center">
-      <div class="stepper-progress-bar" :style="'width:' + stepProgress"></div>
+    <div class="center p-3 w-xl-25 mx-xl-auto my-xl-4 text-center mb-5">
+      <!-- <div class="stepper-progress-bar" :style="'width:' + stepProgress"></div> -->
       <div class="stepper my-5">
         <div
           :class="{ current: step == steps, current: step > steps - 1 }"
-          class="stepper-item-counter mt-5 mx-4"
+          class="stepper-item-counter mx-4"
           v-for="steps in questions.length"
           :key="steps"
         >
@@ -27,9 +27,7 @@
             <button class="confirm-button bg-primary" @click="confirmSubmit">
               Submit
             </button>
-            <button class="cancel-button bg-danger" @click="cancelSubmit">
-              Cancel
-            </button>
+            <button class="cancel-button bg-danger" @click="cancelSubmit">Cancel</button>
           </div>
         </div>
       </div>
@@ -47,19 +45,16 @@
             >
               Back
             </button>
-            <button
-              class="rounded-pill text-white next"
-              @click="submitAssessment"
-            >
+            <button class="rounded-pill text-white next" @click="submitAssessment">
               Submit Assessment
             </button>
           </div>
         </div>
       </div>
-      <div class="quiz-card" v-if="currentQuestion" :key="currentQuestion.id">
-        <h6 class="text-center my-5">{{ currentQuestion.question }}</h6>
-        <div class="questions" v-if="currentQuestion.type === 'radio'">
-          <div class="container mt-4">
+      <div class="quiz-card">
+        <h4 class="text-center question-heading my-5">{{ currentQuestion.question }}</h4>
+        <div v-if="currentQuestion.type === 'radio'" class="questions">
+          <div class="container px-0 mt-4">
             <div class="row">
               <div class="col-sm-6">
                 <div
@@ -69,7 +64,8 @@
                   @click="selectItem('option1')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option1' ? 'active' : '1'"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option1'
                         ? 'material-symbols:check-circle-rounded'
@@ -83,12 +79,13 @@
               <div class="col-sm-6">
                 <div
                   class="mb-4 registration-options"
-                  :class="selected === 'option2' ? 'active' : ''"
+                  :class="selected === 'option2' ? 'active' : '2'"
                   role="button"
                   @click="selectItem('option2')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option2' ? 'active' : '2'"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option2'
                         ? 'material-symbols:check-circle-rounded'
@@ -109,7 +106,8 @@
                   @click="selectItem('option3')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option3' ? 'active' : '3'"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option3'
                         ? 'material-symbols:check-circle-rounded'
@@ -128,7 +126,8 @@
                   @click="selectItem('option4')"
                 >
                   <i-icon
-                    class="mr-4"
+                    :class="selected === 'option4' ? 'active' : '4'"
+                    class="mr-4 registration-options-icon"
                     :icon="
                       selected === 'option4'
                         ? 'material-symbols:check-circle-rounded'
@@ -144,37 +143,127 @@
             </div>
           </div>
         </div>
-        <div
-          class="fileUpload text-center"
-          v-if="currentQuestion.type === 'file'"
+        <!--multi select -->
+        <div v-else-if="currentQuestion.type === 'checkbox'" class="questions">
+          <div class="container px-0 mt-4">
+            <div class="row">
+              <div class="col-sm-6">
+                <div
+                  class="mb-4 registration-options"
+                  :class="isSelected('option1') ? 'active' : '1'"
+                  role="button"
+                  @click="toggleSelection('option1')"
+                >
+                  <i-icon
+                    :class="isSelected('option1') ? 'active' : '1'"
+                    class="mr-4 registration-options-icon"
+                    :icon="
+                      isSelected('option1')
+                        ? 'material-symbols:check-circle-rounded'
+                        : 'mdi:checkbox-blank-circle-outline'
+                    "
+                    width="20px"
+                  />
+                  <span>{{ currentQuestion.option1 }}</span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div
+                  class="mb-4 registration-options"
+                  :class="isSelected('option2') ? 'active' : ''"
+                  role="button"
+                  @click="toggleSelection('option2')"
+                >
+                  <i-icon
+                    :class="isSelected('option2') ? 'active' : ''"
+                    class="mr-4 registration-options-icon"
+                    :icon="
+                      isSelected('option2')
+                        ? 'material-symbols:check-circle-rounded'
+                        : 'mdi:checkbox-blank-circle-outline'
+                    "
+                    width="20px"
+                  />
+                  <span>{{ currentQuestion.option2 }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div
+                  class="mb-4 registration-options"
+                  :class="isSelected('option3') ? 'active' : ''"
+                  role="button"
+                  @click="toggleSelection('option3')"
+                >
+                  <i-icon
+                    :class="isSelected('option3') ? 'active' : ''"
+                    class="mr-4 registration-options-icon"
+                    :icon="
+                      isSelected('option3')
+                        ? 'material-symbols:check-circle-rounded'
+                        : 'mdi:checkbox-blank-circle-outline'
+                    "
+                    width="20px"
+                  />
+                  <span>{{ currentQuestion.option3 }}</span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div
+                  class="mb-4 registration-options"
+                  :class="isSelected('option4') ? 'active' : ''"
+                  role="button"
+                  @click="toggleSelection('option4')"
+                >
+                  <i-icon
+                    :class="isSelected('option4') ? 'active' : ''"
+                    class="mr-4 registration-options-icon"
+                    :icon="
+                      isSelected('option4')
+                        ? 'material-symbols:check-circle-rounded'
+                        : 'mdi:checkbox-blank-circle-outline'
+                    "
+                    width="20px"
+                  />
+                  <span>{{
+                    currentQuestion.option4 ? currentQuestion.option4 : "N/A"
+                  }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <label
+          v-else-if="currentQuestion.type === 'file'"
+          for="file-upload"
+          class="fileUpload w-xl-50 text-center py-3"
         >
           <input
             type="file"
             accept="*/*"
+            hidden
+            id="file-upload"
             class="input-file"
             @change="handleFileUpload"
           />
           <p class="mt-5 font-weight-bold">Click or Drag and Drop</p>
           <small class="muted">SVG, PNG, JPG or GIF (max. 400 x 400px) </small>
           <h4 v-if="fileName">{{ fileName }}</h4>
-        </div>
+        </label>
         <div
-          class="majorInput text-center my-5"
-          v-if="currentQuestion.type === 'text'"
+          v-else-if="currentQuestion.type === 'text'"
+          class="container text-center my-5"
         >
-        <textarea
+          <textarea
             rows="6"
             cols="50"
             type="text"
-            class="textInput"
             placeholder="Enter your Answer here"
             v-model="answer"
           />
         </div>
-        <div
-          class="majorInput text-center my-5"
-          v-if="currentQuestion.type === 'reference'"
-        >
+        <div v-else-if="currentQuestion.type === 'reference'" class="text-center my-5">
           <input
             type="url"
             class="textInput"
@@ -182,8 +271,34 @@
             v-model="urlLink"
           />
         </div>
-        <div v-if="currentQuestion.type === 'checkbox'">
-          <div class="grid-container">
+        <!-- last view -->
+        <div class="text-center mt-4">
+          <h4 class="text-center question-heading my-5">Weldone!</h4>
+          <div class="review_section container justify-content-center">
+            <h4 class="question-heading py-2">How was the test?</h4>
+            <button class="back" id="backButton">
+              <img src="@/assets/icons/like.svg" /> Good
+            </button>
+            <button class="back" id="backButton">
+              <img src="@/assets/icons/like-dislike.svg" /> Indifferent
+            </button>
+            <button class="back" id="backButton">
+              <img src="@/assets/icons/dislike.svg" /> Terrible
+            </button>
+          </div>
+          <div class="text-center container my-3">
+            <textarea
+              class="p-4"
+              name=""
+              id=""
+              cols="4"
+              rows="6"
+              placeholder="Do you have a feedback"
+            />
+          </div>
+        </div>
+        <div>
+          <!-- <div class="grid-container">
             <div
               v-for="(option, index) in options"
               :key="index"
@@ -210,13 +325,19 @@
                   : "no option"
               }}</label>
             </div>
-          </div>
+          </div> -->
         </div>
-        <div class="text--center justify-content-center d-flex align-items-center" v-if="loader">
+        <div
+          class="text--center justify-content-center d-flex align-items-center"
+          v-if="loader"
+        >
           <img src="@/assets/img/loaderSession.gif" class="nextLoader" />
           loading next question
         </div>
-        <div class="text-center mt-3 d-flex justify-content-center" v-if="loader == false">
+        <div
+          class="text-center mt-3 d-flex justify-content-center"
+          v-if="loader == false"
+        >
           <button
             class="back mr-3"
             @click="previousPage"
@@ -227,7 +348,7 @@
           </button>
           <button
             class="rounded-pill text-white next"
-            @click="nextPage"
+            @click="nextPage()"
             :disabled="step === questions.length + 1"
           >
             Next
@@ -265,12 +386,28 @@ export default {
     };
   },
   methods: {
+    toggleSelection(option) {
+      // Check if the option is already selected
+      const index = this.checkedOptions.indexOf(option);
+      if (index > -1) {
+        // Option is already selected, remove it from the checkedOptions array
+        this.checkedOptions.splice(index, 1);
+      } else {
+        // Option is not selected, add it to the checkedOptions array
+        this.checkedOptions.push(option);
+      }
+    },
+    isSelected(option) {
+      // Check if the option is in the checkedOptions array
+      return this.checkedOptions.includes(option);
+    },
+
     handleFileUpload(event) {
       const file = event.target.files[0];
       this.fileName = file.name;
       const formData = new FormData();
-      formData.append('file', file)
-      this.fileUpload = formData.get('file');
+      formData.append("file", file);
+      this.fileUpload = formData.get("file");
     },
     closeQuiz() {
       this.$router.go(-1);
@@ -288,8 +425,8 @@ export default {
       this.confirmSubmission = true;
     },
     confirmSubmit() {
-      let id = this.assessments.id
-      $request.patch(`/assesments/${id}/talent/publish`)
+      let id = this.assessments.id;
+      $request.patch(`/assesments/${id}/talent/publish`);
       this.closeQuiz();
     },
     cancelSubmit() {
@@ -315,17 +452,16 @@ export default {
       };
       try {
         this.loader = true;
-        let response = await $request.post(
-          `/assesments/talent/answer`,
-          payload, { headers: { 'Content-Type': 'multipart/form-data'}}
-        );
+        let response = await $request.post(`/assesments/talent/answer`, payload, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
         this.step++;
         this.currentQuestionIndex++;
-        this.loader = false
+        this.loader = false;
       } catch (error) {
         alert("please select an option");
         console.error(error.data.message);
-        this.loader = false
+        this.loader = false;
       }
     },
     previousPage() {
@@ -360,7 +496,32 @@ export default {
 };
 </script>
 
-<style scooped>
+<style scoped>
+.review_section {
+  display: flex;
+  gap: 10px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.registration-options-icon {
+  color: #e0e0e0;
+}
+.registration-options-icon.active {
+  background-color: #ffffff;
+  color: #c2c2c2;
+  border-radius: 100%;
+}
+
+.question-heading {
+  color: #646868;
+  text-align: center;
+  font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+
 .nextLoader {
   height: 100px;
 }
@@ -389,23 +550,23 @@ export default {
 }
 .center {
   margin: auto;
-  margin-top: 130px;
+  margin-top: 60px;
   width: 80%;
-  height: 600px;
-  border: 1px solid #080808;
+  height: 100%;
+  border: 1px solid #c2dbff;
   padding: 10px;
   border-radius: 40px;
 }
-.container {
+/* .container {
   padding-left: 100px !important;
   padding-right: 100px !important;
-}
+} */
 .stepper-progress-bar {
   border-top: 5px solid #00ec83;
-  margin-top: 114.5px;
   position: absolute;
   width: 350px;
   left: 600px;
+  top: 120px;
 }
 .stepper-item-counter {
   border: 2px solid #c2ffe4;
@@ -432,12 +593,12 @@ export default {
   justify-content: space-around;
 }
 .fileUpload {
-  outline: 2px dashed #0040a1;
+  outline: 1px dashed #0040a1;
   outline-offset: -10px;
   color: dimgray;
   padding: 10px 10px;
   min-height: 200px;
-  position: relative;
+  /* position: relative; */
   cursor: pointer;
   border-radius: 40px;
   width: 60%;
@@ -459,12 +620,13 @@ export default {
   color: #282929;
 }
 .textInput {
-  width: 495px;
+  width: 60%;
   height: 152px;
   border-radius: 20px;
   background: #ffffff;
   border: 1px solid #c2dbff;
   padding: 20px;
+  margin: 0 auto;
 }
 .back {
   padding: 10px 21px;
@@ -472,6 +634,7 @@ export default {
   color: #0040a1;
   border: 1px solid #0040a1;
   border-radius: 40px;
+  background: #ffffff;
 }
 .next {
   padding: 10px 21px;
@@ -480,17 +643,24 @@ export default {
   background-color: #0040a1;
 }
 .registration-options.active {
-  background-color: var(--blue-100);
-  border: 1px solid var(--primary-color);
+  border-radius: 40px;
+  border: 1px solid #c2c2c2;
+  background: #ebf3ff;
 }
 
 .registration-options {
-  border: 1px solid var(--gray-200);
-  padding: 13px 27px 13px 14px;
   border-radius: 40px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  padding: 13px 27px 13px 14px;
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
+  color: #646868;
+  font-size: 16px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
 }
 .closeQuiz {
   position: absolute;
