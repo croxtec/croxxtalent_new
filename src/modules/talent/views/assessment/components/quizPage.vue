@@ -329,33 +329,6 @@
           <img src="@/assets/img/loaderSession.gif" class="nextLoader" />
           loading next question
         </div>
-        <div
-          class="text-center mt-3 d-flex justify-content-center"
-          v-if="loader == false"
-        >
-          <button
-            v-if="currentQuestionIndex !== questions.length"
-            class="back mr-3"
-            @click="previousPage()"
-            id="ba ckButton"
-          >
-            Back
-          </button>
-          <button
-            v-if="currentQuestionIndex !== questions.length"
-            class="rounded-pill text-white next"
-            @click="nextPage()"
-          >
-            Next
-          </button>
-          <button
-            v-if="currentQuestionIndex == questions.length"
-            class="rounded-pill text-white next"
-            @click="submitAssessment()"
-          >
-            Submit
-          </button>
-        </div>
       </div>
       <!-- last view -->
       <div v-else class="text-center mt-4">
@@ -383,6 +356,30 @@
             placeholder="Do you have a feedback"
           />
         </div>
+      </div>
+      <div class="text-center mt-3 d-flex justify-content-center">
+        <button
+          v-if="currentQuestionIndex !== questions.length"
+          class="back mr-3"
+          @click="previousPage()"
+          id="ba ckButton"
+        >
+          Back
+        </button>
+        <button
+          v-if="currentQuestionIndex !== questions.length"
+          class="rounded-pill text-white next"
+          @click="nextPage()"
+        >
+          Next
+        </button>
+        <button
+          v-if="currentQuestionIndex == questions.length"
+          class="rounded-pill text-white next"
+          @click="submitAssessment()"
+        >
+          Submit
+        </button>
       </div>
     </div>
   </div>
