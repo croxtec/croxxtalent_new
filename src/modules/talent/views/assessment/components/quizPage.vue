@@ -333,8 +333,21 @@
           class="text-center mt-3 d-flex justify-content-center"
           v-if="loader == false"
         >
-          <button class="back mr-3" @click="previousPage()" id="backButton">Back</button>
-          <button class="rounded-pill text-white next" @click="nextPage()">Next</button>
+          <button
+            v-if="currentQuestionIndex !== questions.length"
+            class="back mr-3"
+            @click="previousPage()"
+            id="ba ckButton"
+          >
+            Back
+          </button>
+          <button
+            v-if="currentQuestionIndex !== questions.length"
+            class="rounded-pill text-white next"
+            @click="nextPage()"
+          >
+            Next
+          </button>
           <button
             v-if="currentQuestionIndex == questions.length"
             class="rounded-pill text-white next"
@@ -436,11 +449,9 @@ export default {
       this.selected = value;
     },
     nextPage() {
-      if (this.currentQuestionIndex < this.questions.length - 1) {
-        this.currentQuestionIndex++;
-      } else {
-        this.submitQuestion();
-      }
+      // if (this.currentQuestionIndex < this.questions.length - 1) {
+      this.currentQuestionIndex++;
+      // }
     },
     // submitAssessment() {
     //   this.confirmSubmission = true;
@@ -476,11 +487,11 @@ export default {
         let response = await $request.post(`/assesments/talent/answer`, payload, {
           headers: { "Content-Type": "multipart/form-data" },
         });
-        this.step++;
+        // this.step++;
         this.currentQuestionIndex++;
         this.loader = false;
       } catch (error) {
-        alert("please select an option");
+        // alert("please select an option");
         console.error(error.data.message);
         this.loader = false;
       }
@@ -504,6 +515,8 @@ export default {
     const assessment = JSON.parse(localStorage.getItem("assessmentQuestions"));
     this.questions = assessment.questions;
     this.assessments = assessment;
+    console.log(this.assessments);
+    console.log(this.questions);
   },
   watch: {
     // options: {

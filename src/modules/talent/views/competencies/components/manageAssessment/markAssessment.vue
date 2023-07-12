@@ -453,7 +453,7 @@ export default {
     },
     nextPage() {
       // if (this.currentQuestionIndex < this.questions.length - 1) {
-      this.currentQuestionIndex++;
+        this.currentQuestionIndex++;
       // }
     },
     submitAssessment() {
@@ -499,7 +499,7 @@ export default {
         this.managerComment = "";
         this.loader = false;
       } catch (error) {
-        alert("please select a score");
+        // alert("please select a score");
         console.error(error.data.message);
         this.loader = false;
       }
