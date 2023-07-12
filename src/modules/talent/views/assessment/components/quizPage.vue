@@ -33,7 +33,7 @@
         </div>
       </div> -->
       <!-- confirmation Modal -->
-      <div class="confirm-modal-overlay" v-if="confirmSubmission">
+      <!-- <div class="confirm-modal-overlay" v-if="confirmSubmission">
         <div class="confirm-modal">
           <img
             src="@/assets/img/question.png"
@@ -49,9 +49,9 @@
             <button class="cancel-button bg-danger" @click="cancelSubmit">Cancel</button>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- end of confirmation -->
-      <div class="overlayBackground" v-if="step > questions.length">
+      <!-- <div class="overlayBackground" v-if="step > questions.length">
         <div class="modalShow text-center">
           <h4>You have gotten to the end of the assessment</h4>
           <p class="my-3">Do you want to submit this assessment?</p>
@@ -69,7 +69,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
       <div v-if="currentQuestionIndex !== questions.length" class="quiz-card">
         <h4 class="text-center question-heading my-5">{{ currentQuestion.question }}</h4>
         <div v-if="currentQuestion.type === 'radio'" class="questions">
@@ -366,7 +366,7 @@
             id=""
             cols="4"
             rows="6"
-            v-modal="feedback"
+            v-model="feedback"
             placeholder="Do you have a feedback"
           />
         </div>
@@ -442,9 +442,9 @@ export default {
         this.submitQuestion();
       }
     },
-    submitAssessment() {
-      this.confirmSubmission = true;
-    },
+    // submitAssessment() {
+    //   this.confirmSubmission = true;
+    // },
     confirmSubmit() {
       let id = this.assessments.id;
       $request.patch(`/assesments/${id}/talent/publish`);
@@ -506,15 +506,15 @@ export default {
     this.assessments = assessment;
   },
   watch: {
-    options: {
-      handler(newOptions) {
-        const selectedOptionNames = newOptions
-          .filter((option) => option.checked)
-          .map((option) => option.name);
-        this.checkedOptions = selectedOptionNames;
-      },
-      deep: true,
-    },
+    // options: {
+    //   handler(newOptions) {
+    //     const selectedOptionNames = newOptions
+    //       .filter((option) => option.checked)
+    //       .map((option) => option.name);
+    //     this.checkedOptions = selectedOptionNames;
+    //   },
+    //   deep: true,
+    // },
   },
 };
 </script>

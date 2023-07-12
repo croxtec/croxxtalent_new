@@ -326,7 +326,7 @@
         id=""
         cols="6"
         rows="6"
-        v-modal="feedback"
+        v-model="feedback"
         placeholder="Write a feedback to the talent on the assessment..."
       />
       <div
@@ -408,24 +408,24 @@ export default {
       recommendation: false,
     };
   },
-  directives: {
-    "check-match": {
-      bind(el, binding) {
-        const { value } = binding;
-        if (value === binding.instance.currentAnswer) {
-          el.checked = true;
-        }
-      },
-      update(el, binding) {
-        const { value } = binding;
-        if (value === binding.instance.currentAnswer) {
-          el.checked = true;
-        } else {
-          el.checked = false;
-        }
-      },
-    },
-  },
+  // directives: {
+  //   "check-match": {
+  //     bind(el, binding) {
+  //       const { value } = binding;
+  //       if (value === binding.instance.currentAnswer) {
+  //         el.checked = true;
+  //       }
+  //     },
+  //     update(el, binding) {
+  //       const { value } = binding;
+  //       if (value === binding.instance.currentAnswer) {
+  //         el.checked = true;
+  //       } else {
+  //         el.checked = false;
+  //       }
+  //     },
+  //   },
+  // },
   methods: {
     showRecommendations() {
       this.recommendation = !this.recommendation;
@@ -551,15 +551,15 @@ export default {
     console.log(this.managerComment);
   },
   watch: {
-    options: {
-      handler(newOptions) {
-        const selectedOptionNames = newOptions
-          .filter((option) => option.checked)
-          .map((option) => option.name);
-        this.checkedOptions = selectedOptionNames;
-      },
-      deep: true,
-    },
+    // options: {
+    //   handler(newOptions) {
+    //     const selectedOptionNames = newOptions
+    //       .filter((option) => option.checked)
+    //       .map((option) => option.name);
+    //     this.checkedOptions = selectedOptionNames;
+    //   },
+    //   deep: true,
+    // },
     // currentAnswer(newAnswer) {
     //   this.selected = newAnswer;
     //   this.answer = newAnswer;
