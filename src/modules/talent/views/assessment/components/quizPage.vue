@@ -2,8 +2,27 @@
   <div>
     <span class="closeQuiz" @click="closeQuiz">X</span>
     <div class="center p-3 w-xl-25 mx-xl-auto my-xl-4 text-center mb-5">
+      <div class="steps-progress-bar mx-auto w-xl-25 my-5">
+        <div class="steps">
+          <div
+            v-for="(steps, index) in questions.length"
+            :key="index"
+            class="step-container"
+          >
+            <div class="step" :class="{ active: index <= currentQuestionIndex }">
+              {{ index + 1 }}
+            </div>
+            <div
+              v-if="index !== questions.length - 1"
+              class="progress-line"
+              :class="{ active: index <= currentQuestionIndex }"
+            ></div>
+          </div>
+        </div>
+      </div>
+
       <!-- <div class="stepper-progress-bar" :style="'width:' + stepProgress"></div> -->
-      <div class="stepper my-5">
+      <!-- <div class="stepper my-5">
         <div
           :class="{ current: step == steps, current: step > steps - 1 }"
           class="stepper-item-counter mx-4"
@@ -12,7 +31,7 @@
         >
           <span>{{ steps }}</span>
         </div>
-      </div>
+      </div> -->
       <!-- confirmation Modal -->
       <div class="confirm-modal-overlay" v-if="confirmSubmission">
         <div class="confirm-modal">
@@ -51,7 +70,7 @@
           </div>
         </div>
       </div>
-      <div class="quiz-card">
+      <div v-if="currentQuestionIndex !== questions.length" class="quiz-card">
         <h4 class="text-center question-heading my-5">{{ currentQuestion.question }}</h4>
         <div v-if="currentQuestion.type === 'radio'" class="questions">
           <div class="container px-0 mt-4">
@@ -234,6 +253,7 @@
             </div>
           </div>
         </div>
+        <!-- upload file -->
         <label
           v-else-if="currentQuestion.type === 'file'"
           for="file-upload"
@@ -261,6 +281,7 @@
             type="text"
             placeholder="Enter your Answer here"
             v-model="answer"
+            class="p-4"
           />
         </div>
         <div v-else-if="currentQuestion.type === 'reference'" class="text-center my-5">
@@ -270,32 +291,6 @@
             placeholder="Enter link here"
             v-model="urlLink"
           />
-        </div>
-        <!-- last view -->
-        <div class="text-center mt-4">
-          <h4 class="text-center question-heading my-5">Weldone!</h4>
-          <div class="review_section container justify-content-center">
-            <h4 class="question-heading py-2">How was the test?</h4>
-            <button class="back" id="backButton">
-              <img src="@/assets/icons/like.svg" /> Good
-            </button>
-            <button class="back" id="backButton">
-              <img src="@/assets/icons/like-dislike.svg" /> Indifferent
-            </button>
-            <button class="back" id="backButton">
-              <img src="@/assets/icons/dislike.svg" /> Terrible
-            </button>
-          </div>
-          <div class="text-center container my-3">
-            <textarea
-              class="p-4"
-              name=""
-              id=""
-              cols="4"
-              rows="6"
-              placeholder="Do you have a feedback"
-            />
-          </div>
         </div>
         <div>
           <!-- <div class="grid-container">
@@ -338,21 +333,42 @@
           class="text-center mt-3 d-flex justify-content-center"
           v-if="loader == false"
         >
+          <button class="back mr-3" @click="previousPage()" id="backButton">Back</button>
+          <button class="rounded-pill text-white next" @click="nextPage()">Next</button>
           <button
-            class="back mr-3"
-            @click="previousPage"
-            id="backButton"
-            :disabled="step === 1"
-          >
-            Back
-          </button>
-          <button
+            v-if="currentQuestionIndex == questions.length"
             class="rounded-pill text-white next"
-            @click="nextPage()"
-            :disabled="step === questions.length + 1"
+            @click="submitAssessment()"
           >
-            Next
+            Submit
           </button>
+        </div>
+      </div>
+      <!-- last view -->
+      <div v-else class="text-center mt-4">
+        <h4 class="text-center question-heading my-5">Weldone!</h4>
+        <div class="review_section container justify-content-center">
+          <h4 class="question-heading py-2">How was the test?</h4>
+          <button class="back" id="backButton">
+            <img src="@/assets/icons/like.svg" /> Good
+          </button>
+          <button class="back" id="backButton">
+            <img src="@/assets/icons/like-dislike.svg" /> Indifferent
+          </button>
+          <button class="back" id="backButton">
+            <img src="@/assets/icons/dislike.svg" /> Terrible
+          </button>
+        </div>
+        <div class="text-center container my-3">
+          <textarea
+            class="p-4"
+            name=""
+            id=""
+            cols="4"
+            rows="6"
+            v-modal="feedback"
+            placeholder="Do you have a feedback"
+          />
         </div>
       </div>
     </div>
@@ -364,12 +380,12 @@ import $request from "@/axios";
 export default {
   data() {
     return {
-      options: [
-        { id: "option1", name: "option1", label: "Option 1", checked: false },
-        { id: "option2", name: "option2", label: "Option 2", checked: false },
-        { id: "option3", name: "option3", label: "Option 3", checked: false },
-        { id: "option4", name: "option4", label: "Option 4", checked: false },
-      ],
+      // options: [
+      //   { id: "option1", name: "option1", label: "Option 1", checked: false },
+      //   { id: "option2", name: "option2", label: "Option 2", checked: false },
+      //   { id: "option3", name: "option3", label: "Option 3", checked: false },
+      //   { id: "option4", name: "option4", label: "Option 4", checked: false },
+      // ],
       confirmSubmission: false,
       assessments: "",
       answer: "",
@@ -383,6 +399,7 @@ export default {
       currentQuestionIndex: 0,
       checkedOptions: [],
       loader: false,
+      feedback: "",
     };
   },
   methods: {
@@ -419,7 +436,11 @@ export default {
       this.selected = value;
     },
     nextPage() {
-      this.submitQuestion();
+      if (this.currentQuestionIndex < this.questions.length - 1) {
+        this.currentQuestionIndex++;
+      } else {
+        this.submitQuestion();
+      }
     },
     submitAssessment() {
       this.confirmSubmission = true;
@@ -431,7 +452,7 @@ export default {
     },
     cancelSubmit() {
       this.previousPage();
-      this.confirmSubmission = false;
+      // this.confirmSubmission = false;
     },
     async submitQuestion() {
       if (this.currentQuestion.type === "radio") {
@@ -465,14 +486,16 @@ export default {
       }
     },
     previousPage() {
-      this.step--;
-      this.currentQuestionIndex--;
+      // this.step--;
+      if (this.currentQuestionIndex > 0) {
+        this.currentQuestionIndex--;
+      }
     },
   },
   computed: {
-    stepProgress() {
-      return (100 / 20) * (this.step - 0.28) + "%";
-    },
+    // stepProgress() {
+    //   return (100 / 20) * (this.step - 0.28) + "%";
+    // },
     currentQuestion() {
       return this.questions[this.currentQuestionIndex];
     },
@@ -497,6 +520,43 @@ export default {
 </script>
 
 <style scoped>
+.steps-progress-bar {
+  width: 50%;
+  /* height: 30px; */
+  /* border-radius: 15px; */
+  /* overflow: hidden; */
+  /*  margin: 10px auto; */
+}
+
+.steps {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.step-container {
+  position: relative;
+}
+
+.step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ebfff6;
+  color: #000;
+  border-radius: 50%;
+  z-index: 2;
+  border: 2px solid #c2ffe4;
+}
+
+.step.active {
+  background-color: #00ec83;
+  color: #fff;
+}
+
 .review_section {
   display: flex;
   gap: 10px;

@@ -326,6 +326,7 @@
         id=""
         cols="6"
         rows="6"
+        v-modal="feedback"
         placeholder="Write a feedback to the talent on the assessment..."
       />
       <div
