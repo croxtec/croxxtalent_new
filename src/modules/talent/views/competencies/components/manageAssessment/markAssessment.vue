@@ -81,7 +81,7 @@
         >
           <div class="container px-0 mt-4">
             <div class="row">
-              <div class="col-sm-6 p-0">
+              <div class="col-sm-6">
                 <div
                   class="mb-4 registration-options"
                   :class="currentQuestion.answer.option === 'option1' ? 'active' : '1'"
@@ -99,7 +99,7 @@
                   <span>{{ currentQuestion.option1 }}</span>
                 </div>
               </div>
-              <div class="col-sm-6 p-0">
+              <div class="col-sm-6">
                 <div
                   class="mb-4 registration-options"
                   :class="currentQuestion.answer.option === 'option2' ? 'active' : ''"
@@ -119,7 +119,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6 p-0">
+              <div class="col-sm-6">
                 <div
                   class="mb-4 registration-options"
                   :class="currentQuestion.answer.option === 'option3' ? 'active' : ''"
@@ -137,7 +137,7 @@
                   <span>{{ currentQuestion.option3 }}</span>
                 </div>
               </div>
-              <div class="col-sm-6 p-0">
+              <div class="col-sm-6">
                 <div
                   class="mb-4 registration-options"
                   :class="currentQuestion.answer.option === 'option4' ? 'active' : ''"
