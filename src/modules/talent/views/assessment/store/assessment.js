@@ -56,7 +56,16 @@ const assessmentModule = {
                 console.log(errors);
               }
         },
-
+        async submitManagerFeedback({ commit },id, payload){
+            try {
+                let response = await $request.post(`/assesments/${id}/management/feedback`,payload);
+                commit('SUCCESS')
+                return Promise.resolve(response.data.data);
+              } catch (errors) {
+                commit('FAILURE')
+                console.log(errors);
+              }
+        },
     }
 }
  

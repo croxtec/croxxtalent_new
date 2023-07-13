@@ -164,6 +164,7 @@
           class="fileUpload w-xl-50 text-center py-3"
           v-else-if="currentQuestion.type === 'file'"
         >
+          <img class="fileUpload w-xl-50" :src="currentQuestion.answer.upload" />
           image here
         </div>
         <div
@@ -375,7 +376,7 @@
       <button
         v-if="currentQuestionIndex == questions.length"
         class="rounded-pill text-white next"
-        @click="submitAssessment()"
+        @click="handleConfirmation()"
       >
         Submit
       </button>
@@ -459,45 +460,44 @@ export default {
       this.currentQuestionIndex++;
       // }
     },
-    submitAssessment() {
-      this.confirmSubmission = true;
-    },
-    async confirmSubmit() {
-      // let talent = this.currentQuestion.answer.talent_id
-      // console.log(talent, "check mate")
-      let id = this.assessments.id;
-      const payload = {
-        feedback: this.feedback,
-        talent: this.talent,
-      };
-      try {
-        let response = await $request.patch(
-          `/assesments/${id}/management/feedback`,
-          payload
-        );
-        this.closeQuiz();
-      } catch (error) {
-        alert("please drop a feed back");
-        console.error(error.data.message);
-      }
-    },
+    // submitAssessment() {
+    //   this.confirmSubmission = true;
+    // },
+    // async confirmSubmit() {
+    //   // let talent = this.currentQuestion.answer.talent_id
+    //   // console.log(talent, "check mate")
+    //   let id = this.assessments.id;
+    //   const payload = {
+    //     feedback: this.feedback,
+    //     talent: this.talent,
+    //   };
+    //   try {
+    //     let response = await $request.patch(
+    //       `/assesments/${id}/management/feedback`,
+    //       payload
+    //     );
+    //     this.closeQuiz();
+    //   } catch (error) {
+    //     alert("please drop a feed back");
+    //     console.error(error.data.message);
+    //   }
+    // },
     cancelSubmit() {
       this.previousPage();
       this.confirmSubmission = false;
     },
-    // async handleConfirmation() {
-    //   let id = this.assessments.id;
-    //   const payload = {
-    //     feedback: this.feedback,
-    //   };
-    //   const resp = await this.$store.dispatch("managerAssessmentModule/markAssessment", {
-    //     id,
-    //     payload,
-    //   });
-    //   this.closeQuiz();
-    //   console.log(resp);
-    // },
-
+    async handleConfirmation() {
+      let id = this.assessments.id;
+      const payload = {
+        feedback: this.feedback,
+      };
+      const resp = await this.$store.dispatch("assessmentModule/submitManagerFeedback", {
+        id,
+        payload,
+      });
+      this.closeQuiz();
+      console.log(resp);
+    },
     async handleSubmitScores() {
       const payload = {
         assesment_id: this.currentQuestion.answer.assesment_id,
@@ -510,28 +510,28 @@ export default {
       console.log(resp);
     },
 
-    async submitQuestion() {
-      const payload = {
-        assesment_id: this.currentQuestion.answer.assesment_id,
-        question_id: this.currentQuestion.answer.assesment_question_id,
-        talent_id: this.currentQuestion.answer.talent_id,
-        score: this.selectedNumber,
-        comment: this.managerComment,
-      };
-      try {
-        this.loader = true;
-        let response = await $request.post(`/assesments/management/scoresheet`, payload);
-        // this.step++;
-        // this.currentQuestionIndex++;
-        // this.selectedNumber = "";
-        // this.managerComment = "";
-        // this.loader = false;
-      } catch (error) {
-        // alert("please select a score");
-        console.error(error.data.message);
-        this.loader = false;
-      }
-    },
+    // async submitQuestion() {
+    //   const payload = {
+    //     assesment_id: this.currentQuestion.answer.assesment_id,
+    //     question_id: this.currentQuestion.answer.assesment_question_id,
+    //     talent_id: this.currentQuestion.answer.talent_id,
+    //     score: this.selectedNumber,
+    //     comment: this.managerComment,
+    //   };
+    //   try {
+    //     this.loader = true;
+    //     let response = await $request.post(`/assesments/management/scoresheet`, payload);
+    //     // this.step++;
+    //     // this.currentQuestionIndex++;
+    //     // this.selectedNumber = "";
+    //     // this.managerComment = "";
+    //     // this.loader = false;
+    //   } catch (error) {
+    //     // alert("please select a score");
+    //     console.error(error.data.message);
+    //     this.loader = false;
+    //   }
+    // },
     previousPage() {
       if (this.currentQuestionIndex > 0) {
         this.currentQuestionIndex--;

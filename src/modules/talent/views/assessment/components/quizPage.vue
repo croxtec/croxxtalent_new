@@ -357,6 +357,8 @@
           />
         </div>
       </div>
+      <div>{{ selectedOption }}</div>
+
       <div class="text-center mt-3 d-flex justify-content-center">
         <button
           v-if="currentQuestionIndex !== questions.length"
@@ -401,7 +403,7 @@ export default {
       confirmSubmission: false,
       assessments: "",
       questionAnswer: "",
-      selectedOption: null,
+      // selectedOption: null,
       questions: [],
       selected: null,
       fileName: "",
@@ -416,24 +418,44 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      if (this.currentQuestion.type === "radio") {
-        this.selectedOption = this.selected;
-      } else if (this.currentQuestion.type === "text") {
-        this.selectedOption = this.questionAnswer;
-      } else if (this.currentQuestion.type === "file") {
-        this.selectedOption = this.fileUpload;
-      } else if (this.currentQuestion.type === "reference") {
-        this.selectedOption = this.urlLink;
-      } else if (this.currentQuestion.type === "checkbox") {
-        this.selectedOption = this.checkedOptions;
-      }
+      // if (this.currentQuestion.type === "radio") {
+      //   this.selectedOption = this.selected;
+      // } else if (this.currentQuestion.type === "text") {
+      //   this.selectedOption = this.questionAnswer;
+      // } else if (this.currentQuestion.type === "file") {
+      //   this.selectedOption = this.fileUpload;
+      // } else if (this.currentQuestion.type === "reference") {
+      //   this.selectedOption = this.urlLink;
+      // } else if (this.currentQuestion.type === "checkbox") {
+      //   this.selectedOption = this.checkedOptions;
+      // }
+      // switch (this.currentQuestion.type) {
+      //   case "radio":
+      //     this.selectedOption = this.selected;
+      //     break;
+      //   case "text":
+      //     this.selectedOption = this.questionAnswer;
+      //     break;
+      //   case "file":
+      //     this.selectedOption = this.fileUpload;
+      //     break;
+      //   case "reference":
+      //     this.selectedOption = this.urlLink;
+      //     break;
+      //   case "checkbox":
+      //     this.selectedOption = this.checkedOptions;
+      //     break;
+      //   default:
+      //     this.selectedOption = null;
+      //     break;
+      // }
       const payload = {
         assesment_id: this.assessments.id,
         question_id: this.currentQuestion.id,
         answer: this.selectedOption,
       };
       const resp = await this.$store.dispatch("assessmentModule/submitAssesmentAnswers", {
-        payload: payload,
+        payload,
       });
     },
 
@@ -484,8 +506,8 @@ export default {
     },
     nextPage() {
       // if (this.currentQuestionIndex < this.questions.length - 1) {
-      this.currentQuestionIndex++;
       this.handleSubmit();
+      this.currentQuestionIndex++;
       // }
     },
     // submitAssessment() {
@@ -544,6 +566,21 @@ export default {
     // },
     currentQuestion() {
       return this.questions[this.currentQuestionIndex];
+    },
+    selectedOption() {
+      if (this.currentQuestion.type === "radio") {
+        return this.selected;
+      } else if (this.currentQuestion.type === "text") {
+        return this.questionAnswer;
+      } else if (this.currentQuestion.type === "file") {
+        return this.fileUpload;
+      } else if (this.currentQuestion.type === "reference") {
+        return this.urlLink;
+      } else if (this.currentQuestion.type === "checkbox") {
+        return this.checkedOptions;
+      } else {
+        return null;
+      }
     },
   },
   mounted() {
