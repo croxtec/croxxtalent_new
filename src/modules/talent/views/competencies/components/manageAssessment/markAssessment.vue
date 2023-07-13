@@ -168,18 +168,20 @@
         </div>
         <div
           class="majorInput text-center my-5"
-          v-else-if="currentQuestion.type === 'text'"
+          v-else-if="
+            currentQuestion.type === 'text' || currentQuestion.type === 'reference'
+          "
         >
           <div class="textInput text_answer text-left container p-4">
             <h4 class="text_answer">{{ currentQuestion.answer.comment }}</h4>
           </div>
         </div>
-        <div
+        <!-- <div
           class="majorInput text-center my-5"
           v-else-if="currentQuestion.type === 'reference'"
         >
-          <h4 class="text_answer">link{{ currentQuestion.answer.comment }}</h4>
-        </div>
+          <h4 class="text_answer">{{ currentQuestion.answer.comment }}</h4>
+        </div> -->
         <!-- <div v-else-if="currentQuestion.type === ''">
           <div class="grid-container">
             <div class="grid-item" @click="toggleCheckbox(index)">
@@ -453,6 +455,7 @@ export default {
     },
     nextPage() {
       // if (this.currentQuestionIndex < this.questions.length - 1) {
+      this.handleSubmitScores();
       this.currentQuestionIndex++;
       // }
     },
@@ -482,6 +485,31 @@ export default {
       this.previousPage();
       this.confirmSubmission = false;
     },
+    // async handleConfirmation() {
+    //   let id = this.assessments.id;
+    //   const payload = {
+    //     feedback: this.feedback,
+    //   };
+    //   const resp = await this.$store.dispatch("managerAssessmentModule/markAssessment", {
+    //     id,
+    //     payload,
+    //   });
+    //   this.closeQuiz();
+    //   console.log(resp);
+    // },
+
+    async handleSubmitScores() {
+      const payload = {
+        assesment_id: this.currentQuestion.answer.assesment_id,
+        question_id: this.currentQuestion.answer.assesment_question_id,
+        talent_id: this.currentQuestion.answer.talent_id,
+        score: this.selectedNumber,
+        comment: this.managerComment,
+      };
+      const resp = await this.$store.dispatch("assessmentModule/markAssessment", payload);
+      console.log(resp);
+    },
+
     async submitQuestion() {
       const payload = {
         assesment_id: this.currentQuestion.answer.assesment_id,
@@ -493,11 +521,11 @@ export default {
       try {
         this.loader = true;
         let response = await $request.post(`/assesments/management/scoresheet`, payload);
-        this.step++;
-        this.currentQuestionIndex++;
-        this.selectedNumber = "";
-        this.managerComment = "";
-        this.loader = false;
+        // this.step++;
+        // this.currentQuestionIndex++;
+        // this.selectedNumber = "";
+        // this.managerComment = "";
+        // this.loader = false;
       } catch (error) {
         // alert("please select a score");
         console.error(error.data.message);

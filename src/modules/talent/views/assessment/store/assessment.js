@@ -46,6 +46,17 @@ const assessmentModule = {
                 console.log(errors);
               }
         },
+        async markAssessment({ commit }, payload){
+            try {
+                let response = await $request.post(`/assesments/management/scoresheet`,payload);
+                commit('SUCCESS')
+                return Promise.resolve(response.data.data);
+              } catch (errors) {
+                commit('FAILURE')
+                console.log(errors);
+              }
+        },
+
     }
 }
  
