@@ -178,7 +178,7 @@
           class="majorInput text-center my-5"
           v-else-if="currentQuestion.type === 'reference'"
         >
-          <h4 class="text_answer">{{ currentQuestion.answer.comment }}</h4>
+          <h4 class="text_answer">link{{ currentQuestion.answer.comment }}</h4>
         </div>
         <!-- <div v-else-if="currentQuestion.type === ''">
           <div class="grid-container">
@@ -453,7 +453,7 @@ export default {
     },
     nextPage() {
       // if (this.currentQuestionIndex < this.questions.length - 1) {
-        this.currentQuestionIndex++;
+      this.currentQuestionIndex++;
       // }
     },
     submitAssessment() {

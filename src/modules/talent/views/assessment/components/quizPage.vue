@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="closeQuiz" @click="closeQuiz">X</span>
+    <!-- <span class="closeQuiz" @click="closeQuiz">X</span> -->
     <div class="center p-3 w-xl-25 mx-xl-auto my-xl-4 text-center mb-5">
       <div class="steps-progress-bar mx-auto w-xl-25 my-5">
         <div class="steps">
@@ -280,7 +280,7 @@
             cols="50"
             type="text"
             placeholder="Enter your Answer here"
-            v-model="answer"
+            v-model="questionAnswer"
             class="p-4"
           />
         </div>
@@ -376,7 +376,7 @@
         <button
           v-if="currentQuestionIndex == questions.length"
           class="rounded-pill text-white next"
-          @click="submitAssessment()"
+          @click="handleConfirmation()"
         >
           Submit
         </button>
@@ -387,6 +387,8 @@
 
 <script>
 import $request from "@/axios";
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   data() {
     return {
@@ -398,8 +400,8 @@ export default {
       // ],
       confirmSubmission: false,
       assessments: "",
-      answer: "",
-      selectedOption: [],
+      questionAnswer: "",
+      selectedOption: null,
       questions: [],
       selected: null,
       fileName: "",
@@ -413,6 +415,41 @@ export default {
     };
   },
   methods: {
+    async handleSubmit() {
+      if (this.currentQuestion.type === "radio") {
+        this.selectedOption = this.selected;
+      } else if (this.currentQuestion.type === "text") {
+        this.selectedOption = this.questionAnswer;
+      } else if (this.currentQuestion.type === "file") {
+        this.selectedOption = this.fileUpload;
+      } else if (this.currentQuestion.type === "reference") {
+        this.selectedOption = this.urlLink;
+      } else if (this.currentQuestion.type === "checkbox") {
+        this.selectedOption = this.checkedOptions;
+      }
+      const payload = {
+        assesment_id: this.assessments.id,
+        question_id: this.currentQuestion.id,
+        answer: this.selectedOption,
+      };
+      const resp = await this.$store.dispatch("assessmentModule/submitAssesmentAnswers", {
+        payload: payload,
+      });
+    },
+
+    async handleConfirmation() {
+      let id = this.assessments.id;
+      const payload = {
+        feedback: this.feedback,
+      };
+      const resp = await this.$store.dispatch(
+        "assessmentModule/publishAssesmentsAnswers",
+        { id, payload }
+      );
+      this.closeQuiz();
+      console.log(resp);
+    },
+
     toggleSelection(option) {
       // Check if the option is already selected
       const index = this.checkedOptions.indexOf(option);
@@ -448,51 +485,52 @@ export default {
     nextPage() {
       // if (this.currentQuestionIndex < this.questions.length - 1) {
       this.currentQuestionIndex++;
+      this.handleSubmit();
       // }
     },
     // submitAssessment() {
     //   this.confirmSubmission = true;
     // },
-    confirmSubmit() {
-      let id = this.assessments.id;
-      $request.patch(`/assesments/${id}/talent/publish`);
-      this.closeQuiz();
-    },
+    // confirmSubmit() {
+    //   let id = this.assessments.id;
+    //   $request.patch(`/assesments/${id}/talent/publish`);
+    //   this.closeQuiz();
+    // },
     cancelSubmit() {
       this.previousPage();
       // this.confirmSubmission = false;
     },
-    async submitQuestion() {
-      if (this.currentQuestion.type === "radio") {
-        this.selectedOption = this.selected;
-      } else if (this.currentQuestion.type === "text") {
-        this.selectedOption = this.answer;
-      } else if (this.currentQuestion.type === "file") {
-        this.selectedOption = this.fileUpload;
-      } else if (this.currentQuestion.type === "reference") {
-        this.selectedOption = this.urlLink;
-      } else if (this.currentQuestion.type === "checkbox") {
-        this.selectedOption = this.checkedOptions;
-      }
-      const payload = {
-        assesment_id: this.assessments.id,
-        question_id: this.currentQuestion.id,
-        answer: this.selectedOption,
-      };
-      try {
-        this.loader = true;
-        let response = await $request.post(`/assesments/talent/answer`, payload, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-        // this.step++;
-        this.currentQuestionIndex++;
-        this.loader = false;
-      } catch (error) {
-        // alert("please select an option");
-        console.error(error.data.message);
-        this.loader = false;
-      }
-    },
+    // async submitQuestion() {
+    //   if (this.currentQuestion.type === "radio") {
+    //     this.selectedOption = this.selected;
+    //   } else if (this.currentQuestion.type === "text") {
+    //     this.selectedOption = this.questionAnswer;
+    //   } else if (this.currentQuestion.type === "file") {
+    //     this.selectedOption = this.fileUpload;
+    //   } else if (this.currentQuestion.type === "reference") {
+    //     this.selectedOption = this.urlLink;
+    //   } else if (this.currentQuestion.type === "checkbox") {
+    //     this.selectedOption = this.checkedOptions;
+    //   }
+    //   const payload = {
+    //     assesment_id: this.assessments.id,
+    //     question_id: this.currentQuestion.id,
+    //     answer: this.selectedOption,
+    //   };
+    //   try {
+    //     this.loader = true;
+    //     let response = await $request.post(`/assesments/talent/answer`, payload, {
+    //       headers: { "Content-Type": "multipart/form-data" },
+    //     });
+    //     // this.step++;
+    //     this.currentQuestionIndex++;
+    //     this.loader = false;
+    //   } catch (error) {
+    //     // alert("please select an option");
+    //     console.error(error.data.message);
+    //     this.loader = false;
+    //   }
+    // },
     previousPage() {
       // this.step--;
       if (this.currentQuestionIndex > 0) {

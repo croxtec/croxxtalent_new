@@ -8,9 +8,9 @@ import auth from "@/modules/auth/store/index";
 import home from "@/modules/landing/store/index";
 
 // 
-import manager from "@/modules/talent//views/competencies/store/manager"
-import competencies from "@/modules/talent//views/competencies/store/competencies"
-
+import manager from "@/modules/talent/views/competencies/store/manager";
+import competencies from "@/modules/talent/views/competencies/store/competencies";
+import assessmentModule from "@/modules/talent/views/assessment/store/assessment";
 // Configurations
 import config from "./configurations";
 
@@ -43,7 +43,9 @@ export default new Vuex.Store({
     cvCompetency,
     
     manager,
-    competencies
+    competencies,
+
+    assessmentModule
 
   },
 });
