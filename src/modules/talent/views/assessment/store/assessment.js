@@ -58,7 +58,7 @@ const assessmentModule = {
         },
         async submitManagerFeedback({ commit },id, payload){
             try {
-                let response = await $request.post(`/assesments/${id}/management/feedback`,payload);
+                let response = await $request.patch(`/assesments/${id}/management/feedback`,payload);
                 commit('SUCCESS')
                 return Promise.resolve(response.data.data);
               } catch (errors) {
