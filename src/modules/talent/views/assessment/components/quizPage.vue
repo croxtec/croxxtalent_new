@@ -403,7 +403,7 @@ export default {
       confirmSubmission: false,
       assessments: "",
       questionAnswer: "",
-      // selectedOption: null,
+      selectedOption: null,
       questions: [],
       selected: null,
       fileName: "",
@@ -418,17 +418,17 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      // if (this.currentQuestion.type === "radio") {
-      //   this.selectedOption = this.selected;
-      // } else if (this.currentQuestion.type === "text") {
-      //   this.selectedOption = this.questionAnswer;
-      // } else if (this.currentQuestion.type === "file") {
-      //   this.selectedOption = this.fileUpload;
-      // } else if (this.currentQuestion.type === "reference") {
-      //   this.selectedOption = this.urlLink;
-      // } else if (this.currentQuestion.type === "checkbox") {
-      //   this.selectedOption = this.checkedOptions;
-      // }
+      if (this.currentQuestion.type === "radio") {
+        this.selectedOption = this.selected;
+      } else if (this.currentQuestion.type === "text") {
+        this.selectedOption = this.questionAnswer;
+      } else if (this.currentQuestion.type === "file") {
+        this.selectedOption = this.fileUpload;
+      } else if (this.currentQuestion.type === "reference") {
+        this.selectedOption = this.urlLink;
+      } else if (this.currentQuestion.type === "checkbox") {
+        this.selectedOption = this.checkedOptions;
+      }
       // switch (this.currentQuestion.type) {
       //   case "radio":
       //     this.selectedOption = this.selected;
@@ -567,21 +567,21 @@ export default {
     currentQuestion() {
       return this.questions[this.currentQuestionIndex];
     },
-    selectedOption() {
-      if (this.currentQuestion.type === "radio") {
-        return this.selected;
-      } else if (this.currentQuestion.type === "text") {
-        return this.questionAnswer;
-      } else if (this.currentQuestion.type === "file") {
-        return this.fileUpload;
-      } else if (this.currentQuestion.type === "reference") {
-        return this.urlLink;
-      } else if (this.currentQuestion.type === "checkbox") {
-        return this.checkedOptions;
-      } else {
-        return null;
-      }
-    },
+    // selectedOption() {
+    //   if (this.currentQuestion.type === "radio") {
+    //     return this.selected;
+    //   } else if (this.currentQuestion.type === "text") {
+    //     return this.questionAnswer;
+    //   } else if (this.currentQuestion.type === "file") {
+    //     return this.fileUpload;
+    //   } else if (this.currentQuestion.type === "reference") {
+    //     return this.urlLink;
+    //   } else if (this.currentQuestion.type === "checkbox") {
+    //     return this.checkedOptions;
+    //   } else {
+    //     return null;
+    //   }
+    // },
   },
   mounted() {
     const assessment = JSON.parse(localStorage.getItem("assessmentQuestions"));
