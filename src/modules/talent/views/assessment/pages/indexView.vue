@@ -3,14 +3,14 @@
     <span @click.prevent="goBack()" class="backPage"
       ><i class="fa fa-solid fa-arrow-left"></i> Back</span
     >
-    <div class="center text-center">
-      <div class="m-5">
+    <div class="center p-3 w-xl-75 mx-xl-auto my-xl-4 mt-3 text-center mb-5">
+      <div class="p-xl-5">
         <div class="assessment my-4">
           <span class="assess">Assessment</span>
         </div>
         <h5 class="surface my-3">{{ assessment.name }}</h5>
         <p class="mb-5 text-left content">
-          {{ assessment.description  }}
+          {{ assessment.description }}
           <!-- Dropbox is looking for Brand Designer to help the team By coupling
           smart assessment protocols with our tiered Work-Experience-Model, we
           are able to drive deep data profiling on every individual in our
@@ -54,43 +54,43 @@ import $request from "@/axios";
 export default {
   data() {
     return {
-      assessment: ''
+      assessment: "",
     };
   },
   methods: {
-     getAssessment() {
+    getAssessment() {
       $request.get(`/assesments/${this.$route.params.id}`).then((res) => {
-        this.assessment = res.data.data
-        const getQuestions = res.data.data
-        const assessmentQuestions = JSON.stringify(getQuestions)
-        localStorage.setItem('assessmentQuestions', assessmentQuestions)
-        let que = localStorage.getItem('assessmentQuestions')
-      })
+        this.assessment = res.data.data;
+        const getQuestions = res.data.data;
+        const assessmentQuestions = JSON.stringify(getQuestions);
+        localStorage.setItem("assessmentQuestions", assessmentQuestions);
+        let que = localStorage.getItem("assessmentQuestions");
+      });
     },
     goBack() {
       this.$router.go(-1);
     },
     startAssessment() {
-      this.$router.push("/quiz");
+      this.$router.push("/assessment");
     },
   },
-  mounted () {
-    this.getAssessment()
-  }
+  mounted() {
+    this.getAssessment();
+  },
 };
 </script>
 
-<style scooped>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
 .center {
-  margin: auto;
-  margin-top: 50px;
+  /* margin: 50px auto; */
+  /* margin-top: 50px;  */
   background: #ffffff;
   border: 1px solid #c2dbff;
   padding: 10px;
   border-radius: 40px;
-  width: 1201px;
-  height: 520px;
+  /* width: 80%; */
+  min-height: 520px;
 }
 .surface {
   font-family: "Poppins";
@@ -113,8 +113,16 @@ export default {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   justify-content: space-around;
-  padding-left: 100px;
-  padding-right: 100px;
+  /* padding: 0px 100px; */
+}
+@media only screen and (max-width: 768px) {
+  .credentials {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    justify-content: space-between;
+    /* padding: 0px 10px; */
+  }
 }
 .credential h6 {
   font-family: "Poppins";
@@ -155,6 +163,7 @@ export default {
   text-align: center;
   color: #ffffff;
   margin-top: 30px;
+  border: none;
 }
 .assess {
   align-items: center;

@@ -81,7 +81,7 @@
         >
           <div class="container px-0 mt-4">
             <div class="row">
-              <div class="col-sm-6 p-0">
+              <div class="col-sm-6">
                 <div
                   class="mb-4 registration-options"
                   :class="currentQuestion.answer.option === 'option1' ? 'active' : '1'"
@@ -99,7 +99,7 @@
                   <span>{{ currentQuestion.option1 }}</span>
                 </div>
               </div>
-              <div class="col-sm-6 p-0">
+              <div class="col-sm-6">
                 <div
                   class="mb-4 registration-options"
                   :class="currentQuestion.answer.option === 'option2' ? 'active' : ''"
@@ -119,7 +119,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6 p-0">
+              <div class="col-sm-6">
                 <div
                   class="mb-4 registration-options"
                   :class="currentQuestion.answer.option === 'option3' ? 'active' : ''"
@@ -137,7 +137,7 @@
                   <span>{{ currentQuestion.option3 }}</span>
                 </div>
               </div>
-              <div class="col-sm-6 p-0">
+              <div class="col-sm-6">
                 <div
                   class="mb-4 registration-options"
                   :class="currentQuestion.answer.option === 'option4' ? 'active' : ''"
@@ -164,22 +164,25 @@
           class="fileUpload w-xl-50 text-center py-3"
           v-else-if="currentQuestion.type === 'file'"
         >
+          <img class="fileUpload w-xl-50" :src="currentQuestion.answer.upload" />
           image here
         </div>
         <div
           class="majorInput text-center my-5"
-          v-else-if="currentQuestion.type === 'text'"
+          v-else-if="
+            currentQuestion.type === 'text' || currentQuestion.type === 'reference'
+          "
         >
           <div class="textInput text_answer text-left container p-4">
             <h4 class="text_answer">{{ currentQuestion.answer.comment }}</h4>
           </div>
         </div>
-        <div
+        <!-- <div
           class="majorInput text-center my-5"
-          v-else-if="question.type === 'reference'"
+          v-else-if="currentQuestion.type === 'reference'"
         >
           <h4 class="text_answer">{{ currentQuestion.answer.comment }}</h4>
-        </div>
+        </div> -->
         <!-- <div v-else-if="currentQuestion.type === ''">
           <div class="grid-container">
             <div class="grid-item" @click="toggleCheckbox(index)">
@@ -326,6 +329,7 @@
         id=""
         cols="6"
         rows="6"
+        v-model="feedback"
         placeholder="Write a feedback to the talent on the assessment..."
       />
       <div
@@ -372,7 +376,7 @@
       <button
         v-if="currentQuestionIndex == questions.length"
         class="rounded-pill text-white next"
-        @click="submitAssessment()"
+        @click="handleConfirmation()"
       >
         Submit
       </button>
@@ -407,24 +411,24 @@ export default {
       recommendation: false,
     };
   },
-  directives: {
-    "check-match": {
-      bind(el, binding) {
-        const { value } = binding;
-        if (value === binding.instance.currentAnswer) {
-          el.checked = true;
-        }
-      },
-      update(el, binding) {
-        const { value } = binding;
-        if (value === binding.instance.currentAnswer) {
-          el.checked = true;
-        } else {
-          el.checked = false;
-        }
-      },
-    },
-  },
+  // directives: {
+  //   "check-match": {
+  //     bind(el, binding) {
+  //       const { value } = binding;
+  //       if (value === binding.instance.currentAnswer) {
+  //         el.checked = true;
+  //       }
+  //     },
+  //     update(el, binding) {
+  //       const { value } = binding;
+  //       if (value === binding.instance.currentAnswer) {
+  //         el.checked = true;
+  //       } else {
+  //         el.checked = false;
+  //       }
+  //     },
+  //   },
+  // },
   methods: {
     showRecommendations() {
       this.recommendation = !this.recommendation;
@@ -452,36 +456,49 @@ export default {
     },
     nextPage() {
       // if (this.currentQuestionIndex < this.questions.length - 1) {
+      this.handleSubmitScores();
       this.currentQuestionIndex++;
       // }
     },
-    submitAssessment() {
-      this.confirmSubmission = true;
-    },
-    async confirmSubmit() {
-      // let talent = this.currentQuestion.answer.talent_id
-      // console.log(talent, "check mate")
-      let id = this.assessments.id;
-      const payload = {
-        feedback: this.feedback,
-        talent: this.talent,
-      };
-      try {
-        let response = await $request.patch(
-          `/assesments/${id}/management/feedback`,
-          payload
-        );
-        this.closeQuiz();
-      } catch (error) {
-        alert("please drop a feed back");
-        console.error(error.data.message);
-      }
-    },
+    // submitAssessment() {
+    //   this.confirmSubmission = true;
+    // },
+    // async confirmSubmit() {
+    //   // let talent = this.currentQuestion.answer.talent_id
+    //   // console.log(talent, "check mate")
+    //   let id = this.assessments.id;
+    //   const payload = {
+    //     feedback: this.feedback,
+    //     talent: this.talent,
+    //   };
+    //   try {
+    //     let response = await $request.patch(
+    //       `/assesments/${id}/management/feedback`,
+    //       payload
+    //     );
+    //     this.closeQuiz();
+    //   } catch (error) {
+    //     alert("please drop a feed back");
+    //     console.error(error.data.message);
+    //   }
+    // },
     cancelSubmit() {
       this.previousPage();
       this.confirmSubmission = false;
     },
-    async submitQuestion() {
+    async handleConfirmation() {
+      let id = this.assessments.id;
+      const payload = {
+        feedback: this.feedback,
+      };
+      const resp = await this.$store.dispatch("assessmentModule/submitManagerFeedback", {
+        id,
+        payload,
+      });
+      this.closeQuiz();
+      console.log(resp);
+    },
+    async handleSubmitScores() {
       const payload = {
         assesment_id: this.currentQuestion.answer.assesment_id,
         question_id: this.currentQuestion.answer.assesment_question_id,
@@ -489,20 +506,32 @@ export default {
         score: this.selectedNumber,
         comment: this.managerComment,
       };
-      try {
-        this.loader = true;
-        let response = await $request.post(`/assesments/management/scoresheet`, payload);
-        this.step++;
-        this.currentQuestionIndex++;
-        this.selectedNumber = "";
-        this.managerComment = "";
-        this.loader = false;
-      } catch (error) {
-        alert("please select a score");
-        console.error(error.data.message);
-        this.loader = false;
-      }
+      const resp = await this.$store.dispatch("assessmentModule/markAssessment", payload);
+      console.log(resp);
     },
+
+    // async submitQuestion() {
+    //   const payload = {
+    //     assesment_id: this.currentQuestion.answer.assesment_id,
+    //     question_id: this.currentQuestion.answer.assesment_question_id,
+    //     talent_id: this.currentQuestion.answer.talent_id,
+    //     score: this.selectedNumber,
+    //     comment: this.managerComment,
+    //   };
+    //   try {
+    //     this.loader = true;
+    //     let response = await $request.post(`/assesments/management/scoresheet`, payload);
+    //     // this.step++;
+    //     // this.currentQuestionIndex++;
+    //     // this.selectedNumber = "";
+    //     // this.managerComment = "";
+    //     // this.loader = false;
+    //   } catch (error) {
+    //     // alert("please select a score");
+    //     console.error(error.data.message);
+    //     this.loader = false;
+    //   }
+    // },
     previousPage() {
       if (this.currentQuestionIndex > 0) {
         this.currentQuestionIndex--;
@@ -550,15 +579,15 @@ export default {
     console.log(this.managerComment);
   },
   watch: {
-    options: {
-      handler(newOptions) {
-        const selectedOptionNames = newOptions
-          .filter((option) => option.checked)
-          .map((option) => option.name);
-        this.checkedOptions = selectedOptionNames;
-      },
-      deep: true,
-    },
+    // options: {
+    //   handler(newOptions) {
+    //     const selectedOptionNames = newOptions
+    //       .filter((option) => option.checked)
+    //       .map((option) => option.name);
+    //     this.checkedOptions = selectedOptionNames;
+    //   },
+    //   deep: true,
+    // },
     // currentAnswer(newAnswer) {
     //   this.selected = newAnswer;
     //   this.answer = newAnswer;

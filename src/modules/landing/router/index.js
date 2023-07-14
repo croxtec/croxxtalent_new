@@ -22,7 +22,7 @@ const routes = [
 
   {
     path: "/employers",
-    name: "home",
+    name: "employers",
     component: Employers,
     meta: {
       layout: "AppHomeLayout",
