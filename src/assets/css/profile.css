@@ -202,6 +202,9 @@ width: 130px;
     border-radius: 40px;
     padding: 25px 20px;
   }
+  .display-flex{
+    display: flex;
+    flex-wrap: wrap;}
   .details{
         display: flex;
           gap: 30px;
