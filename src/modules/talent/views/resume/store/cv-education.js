@@ -146,5 +146,27 @@ export default {
         commit("SET_ERROR", "Internal connection error, please try again.");
       }
     },
+
+    // Delete Record 
+    async delete({ commit, dispatch }, id) {
+      commit("SET_LOADING");
+      try {
+        let response = await $request.delete(
+          `talent/resume/educations/${id}`
+        );
+        let responsePayload = response.data;
+        commit("SET_SUCCESS", responsePayload.message);
+        dispatch('list')
+      } catch (error) {
+        if (error && error.data) {
+          let errorPayload = error.data;
+          if (errorPayload.message) {
+            commit("SET_ERROR", errorPayload.message);
+            return;
+          }
+        }
+        commit("SET_ERROR", "Internal connection error, please try again.");
+      }
+    }
   },
 };

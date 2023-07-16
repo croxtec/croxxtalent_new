@@ -4,11 +4,15 @@
       <h5 style="font-size: 18px; font-weight: 600">Education</h5>
       <p class="small text-muted">Add your education history</p>
       <div class="mt-2">
-        <cv-education @editMode="editData" />
+        <cv-education
+          @editMode="editData"
+          @cancelEdit="cancelEdit"
+          :editing="editing"
+        />
       </div>
 
       <div class="mt-2" v-if="add_education">
-        <AddEducation />
+        <AddEducation :payload="educationData" />
       </div>
 
       <hr />
@@ -25,12 +29,14 @@
       </p>
 
       <div class="mt-2">
-        <cv-certification  />
+        <cv-certification />
       </div>
-      <!-- <div class="mt-2" v-if="add_certification">
+      <div class="mt-2" v-if="add_certification">
         <AddCertification />
-      </div> -->
+      </div>
+
       <hr />
+
       <!-- Emmanuel: This might not work because you want to try out prop -->
       <button class="add-item-button" @click="create('certification')">
         <span> <i-icon icon="clarity:plus-line" /> </span>
@@ -54,6 +60,8 @@ export default {
       add_education: false,
       add_certification: false,
       editEducation: false,
+      educationData: {},
+      editing: null,
     };
   },
   methods: {
@@ -69,24 +77,48 @@ export default {
       }
     },
 
-    editData(value) {
+    editData(e, value) {
       if (value === "education") {
-        this.add_education = !this.add_education;
-        this.editEducation = true;
-      } else if(value === "certification") {
+        this.add_education = true;
+        this.editing = e.id;
+        this.educationData = this.dataSet;
+      } else if (value === "certification") {
         this.add_certification = !this.add_certification;
       }
     },
-    
+
+    cancelEdit(e, value) {
+      if (value === "education") {
+        if (this.add_education === false) {
+          this.add_education = true;
+          this.educationData = this.dataSet;
+          this.editing = e.id;
+        } else {
+          console.log("omooo", value);
+          this.add_education = false;
+          this.educationData = {};
+          this.editing = null;
+        }
+      } else if (value === "certification") {
+        this.add_certification = !this.add_certification;
+      }
+    },
   },
+
+  watch: {},
+
   computed: {
     ...mapState("cvEducation", {
       success: (state) => state.success,
       error: (state) => state.error,
+      dataSet: (state) => state.singleDataSet,
     }),
+    // ...mapState("cvEducation", {
+
+    // }),
   },
   mounted() {
-    this.$eventBus.on('editMode', this.editData);
+    // this.$eventBus.on("editMode", this.editData);
   },
 };
 </script>
