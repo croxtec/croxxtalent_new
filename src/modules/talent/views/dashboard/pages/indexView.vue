@@ -49,7 +49,7 @@
         <h5 class=" header--text">Courses</h5>
         <div class="d-lg-flex align-items-center see--all linker" 
           style="gap: 4px;">
-          <span>Coming Soon </span>
+          <span>Coming Soon</span>
           <!-- <i class="isax isax-arrow-right-1"></i> -->
           <!-- <sup class="coming-soon">soon</sup> -->
         </div>
@@ -78,7 +78,7 @@ export default {
 
   data(){
     return{
-      resumePercentage: false,
+      // resumePercentage: false,
     }
   },
 
@@ -89,6 +89,11 @@ export default {
   computed: {
     ...mapState("competencies", {
       recommended: (state) => state.recommended
+    }),
+
+    ...mapState('cvs', {
+      cvs: (state) => state.data,
+      resumePercentage: (state) => (state.data.progress >= 80) ? true : false
     })
   },
 

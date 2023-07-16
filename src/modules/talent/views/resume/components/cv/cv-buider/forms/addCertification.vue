@@ -59,7 +59,7 @@
         </div>
 
         <div class="text-center">
-          <button type="submit" class="primary--button">Save</button>
+          <button type="submit" :disabled="invalid" class="primary--button">Save</button>
         </div>
       </form>
     </validation-observer>
