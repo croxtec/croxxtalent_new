@@ -7,22 +7,33 @@
     line-height: 120%;
     color: #282929;
   }
+  .buttons_section{
+    display: flex;
+     gap: 10px;
+    flex-wrap: wrap;
+    margin: auto 0 ;
+  }
   .contain {
     display: grid;
     grid-template-columns: auto auto;
+    gap:20px;
+    /* flex-wrap: wrap; */
   }
   .user-profile {
     border: 1px solid #c2dbff;
     border-radius: 40px;
-    width: 822px;
-    height: 202px;
+    /* width: 822px; */
+    /* height: 202px; */
     padding: 36px 24px 36px 40px;
     gap: 50px;
     background: #ffffff;
+    display: flex;
+      gap: 10px;
+          flex-wrap: wrap;
   }
   .user-contact {
-    width: 359px;
-    height: 202px;
+    /* width: 359px; */
+    /* height: 202px; */
     background: #ffffff;
     border: 1px solid #c2dbff;
     border-radius: 40px;
@@ -32,7 +43,9 @@
   .profile-pic {
     background-color: #c2dbff;
     border-radius: 100%;
-    overflow: hidden;
+width: 130px;
+  height: 130px;
+      /* overflow: hidden; */
   }
   .full-name {
     font-family: "Poppins";
@@ -95,7 +108,7 @@
     line-height: 22px;
     color: #0040a1;
   }
-  .user-contact p {
+  .user-contact div p {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 500;
@@ -103,7 +116,7 @@
     line-height: 160%;
     color: #282929;
   }
-  .user-contact label {
+  .user-contact div label {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
@@ -115,8 +128,8 @@
     align-items: flex-start;
     padding: 24px;
     gap: 20px;
-    width: 1230px;
-    height: 184px;
+    /* width: 1230px; */
+    /* height: 184px; */
     background: #ffffff;
     border: 1px solid #c2dbff;
     border-radius: 40px;
@@ -133,7 +146,7 @@
     font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 160%;
     color: #282929;
   }
@@ -145,8 +158,13 @@
     line-height: 120%;
     color: #282929;
   }
+  .badge-section{
+        display: flex;
+          gap: 23px;
+          flex-wrap: wrap;
+  }
   .competencies-card {
-    width: 1230px;
+    /* width: 1230px; */
     height: 250px;
     background: #ffffff;
     border: 1px solid #c2dbff;
@@ -166,7 +184,7 @@
     color: #282929;
   }
   .experience-card {
-    width: 1230px;
+    /* width: 1230px; */
     height: auto;
     background: #ffffff;
     border: 1px solid #c2dbff;
@@ -174,12 +192,23 @@
     padding: 20px 30px;
   }
   .experience-details {
-    display: grid;
-    grid-template-columns: 7% 93%;
+            display: flex;
+              gap: 10px;
+              flex-wrap: wrap;
+    /* display: grid;
+    grid-template-columns: 7% 93%; */
     background: #ffffff;
     border: 1px solid #c2dbff;
     border-radius: 40px;
     padding: 25px 20px;
+  }
+  .display-flex{
+    display: flex;
+    flex-wrap: wrap;}
+  .details{
+        display: flex;
+          gap: 30px;
+          flex-wrap: wrap;
   }
   .details-duration,
   .details-name h6 {
@@ -209,7 +238,6 @@
   }
   .details-viewDetails {
     padding: 10px 21px;
-    gap: 10px;
     background: #0040a1;
     border-radius: 40px;
     font-family: "Poppins";
@@ -218,4 +246,20 @@
     font-size: 14px;
     line-height: 160%;
     color: #ffffff;
+    border: none;
   }
+            @media only screen and (max-width: 768px) {
+              .contain {
+                display: grid;
+                grid-template-columns: auto;
+                gap: 20px;
+              }
+      .justify-center{
+        justify-self: center;
+        text-align: center;
+      }
+            .justify-content-between {
+              -ms-flex-pack: center !important;
+              justify-content:center !important;
+            }
+            }

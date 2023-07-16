@@ -293,34 +293,6 @@
           />
         </div>
         <div>
-          <!-- <div class="grid-container">
-            <div
-              v-for="(option, index) in options"
-              :key="index"
-              class="grid-item"
-              @click="toggleCheckbox(index)"
-            >
-              <div :class="['checkbox', { checked: option.checked }]">
-                <input
-                  type="checkbox"
-                  :id="option.id"
-                  :name="option.name"
-                  v-model="option.checked"
-                />
-              </div>
-              <label :for="option.id" class="checkbox-label">{{
-                option.id === "option1"
-                  ? currentQuestion.option1
-                  : option.id === "option2"
-                  ? currentQuestion.option2
-                  : option.id === "option3"
-                  ? currentQuestion.option3
-                  : option.id === "option4"
-                  ? currentQuestion.option4
-                  : "no option"
-              }}</label>
-            </div>
-          </div> -->
         </div>
         <div
           class="text--center justify-content-center d-flex align-items-center"
@@ -357,7 +329,6 @@
           />
         </div>
       </div>
-      <div>{{ selectedOption }}</div>
 
       <div class="text-center mt-3 d-flex justify-content-center">
         <button
@@ -394,12 +365,6 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
-      // options: [
-      //   { id: "option1", name: "option1", label: "Option 1", checked: false },
-      //   { id: "option2", name: "option2", label: "Option 2", checked: false },
-      //   { id: "option3", name: "option3", label: "Option 3", checked: false },
-      //   { id: "option4", name: "option4", label: "Option 4", checked: false },
-      // ],
       confirmSubmission: false,
       assessments: "",
       questionAnswer: "",
@@ -428,27 +393,10 @@ export default {
         this.selectedOption = this.urlLink;
       } else if (this.currentQuestion.type === "checkbox") {
         this.selectedOption = this.checkedOptions;
+      } else {
+                this.selectedOption = null;
+
       }
-      // switch (this.currentQuestion.type) {
-      //   case "radio":
-      //     this.selectedOption = this.selected;
-      //     break;
-      //   case "text":
-      //     this.selectedOption = this.questionAnswer;
-      //     break;
-      //   case "file":
-      //     this.selectedOption = this.fileUpload;
-      //     break;
-      //   case "reference":
-      //     this.selectedOption = this.urlLink;
-      //     break;
-      //   case "checkbox":
-      //     this.selectedOption = this.checkedOptions;
-      //     break;
-      //   default:
-      //     this.selectedOption = null;
-      //     break;
-      // }
       const payload = {
         assesment_id: this.assessments.id,
         question_id: this.currentQuestion.id,
@@ -510,51 +458,10 @@ export default {
       this.currentQuestionIndex++;
       // }
     },
-    // submitAssessment() {
-    //   this.confirmSubmission = true;
-    // },
-    // confirmSubmit() {
-    //   let id = this.assessments.id;
-    //   $request.patch(`/assesments/${id}/talent/publish`);
-    //   this.closeQuiz();
-    // },
     cancelSubmit() {
       this.previousPage();
-      // this.confirmSubmission = false;
     },
-    // async submitQuestion() {
-    //   if (this.currentQuestion.type === "radio") {
-    //     this.selectedOption = this.selected;
-    //   } else if (this.currentQuestion.type === "text") {
-    //     this.selectedOption = this.questionAnswer;
-    //   } else if (this.currentQuestion.type === "file") {
-    //     this.selectedOption = this.fileUpload;
-    //   } else if (this.currentQuestion.type === "reference") {
-    //     this.selectedOption = this.urlLink;
-    //   } else if (this.currentQuestion.type === "checkbox") {
-    //     this.selectedOption = this.checkedOptions;
-    //   }
-    //   const payload = {
-    //     assesment_id: this.assessments.id,
-    //     question_id: this.currentQuestion.id,
-    //     answer: this.selectedOption,
-    //   };
-    //   try {
-    //     this.loader = true;
-    //     let response = await $request.post(`/assesments/talent/answer`, payload, {
-    //       headers: { "Content-Type": "multipart/form-data" },
-    //     });
-    //     // this.step++;
-    //     this.currentQuestionIndex++;
-    //     this.loader = false;
-    //   } catch (error) {
-    //     // alert("please select an option");
-    //     console.error(error.data.message);
-    //     this.loader = false;
-    //   }
-    // },
     previousPage() {
-      // this.step--;
       if (this.currentQuestionIndex > 0) {
         this.currentQuestionIndex--;
       }
@@ -567,21 +474,6 @@ export default {
     currentQuestion() {
       return this.questions[this.currentQuestionIndex];
     },
-    // selectedOption() {
-    //   if (this.currentQuestion.type === "radio") {
-    //     return this.selected;
-    //   } else if (this.currentQuestion.type === "text") {
-    //     return this.questionAnswer;
-    //   } else if (this.currentQuestion.type === "file") {
-    //     return this.fileUpload;
-    //   } else if (this.currentQuestion.type === "reference") {
-    //     return this.urlLink;
-    //   } else if (this.currentQuestion.type === "checkbox") {
-    //     return this.checkedOptions;
-    //   } else {
-    //     return null;
-    //   }
-    // },
   },
   mounted() {
     const assessment = JSON.parse(localStorage.getItem("assessmentQuestions"));
@@ -591,15 +483,6 @@ export default {
     console.log(this.questions);
   },
   watch: {
-    // options: {
-    //   handler(newOptions) {
-    //     const selectedOptionNames = newOptions
-    //       .filter((option) => option.checked)
-    //       .map((option) => option.name);
-    //     this.checkedOptions = selectedOptionNames;
-    //   },
-    //   deep: true,
-    // },
   },
 };
 </script>

@@ -118,9 +118,10 @@
 
 .skills-content {
   display: flex;
-  display: inline-flex;
+  /* display: inline-flex; */
   display: -webkit-flex;
-  gap: 30px;
+  gap: 25px;
+  flex-wrap: wrap;
 }
 
 
@@ -144,7 +145,7 @@
   border: 1px solid var(--blue-300);
   padding: 20px;
   border-radius: 25px;
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -239,7 +240,6 @@
   padding: 8px 20px;
   border-radius: 25px;
 }
-
 .level-excellent {
   background-color: var(--green-200);
 }
@@ -507,4 +507,13 @@
   background: #ff000023;
   padding: 3px;
   border-radius: 3px;
+}
+@media only screen and (max-width: 768px) {
+  .assesement-completed {
+    padding: 8px 10px;
+  }
+
+  .assesement-completed .info {
+    margin-right: 5.5rem;
+  }
 }
