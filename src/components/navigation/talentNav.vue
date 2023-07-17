@@ -117,7 +117,7 @@
                   <el-dropdown-item>
                     <router-link  to="/profile" class="d-flex justify-content-between w-100" style="gap: 5px">
                       <span>Profile</span>
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </router-link>
                   </el-dropdown-item>
 
@@ -126,7 +126,7 @@
                       <span>Settings
                         <sup class="coming-soon" style="position: relative;">soon</sup>
                       </span>
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </router-link>
                   </el-dropdown-item>
 
@@ -140,7 +140,7 @@
                     >
                       <span>Manager</span>
                       <!-- <span class="info-card">3</span> -->
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
                   </el-dropdown-item>
 
@@ -150,7 +150,7 @@
                         <sup class="coming-soon" style="position: relative;">soon</sup>
                       </span>
                       <!-- <span class="info-card">3</span> -->
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
                   </el-dropdown-item>
 
@@ -161,7 +161,7 @@
                       <span>Affiliate
                         <sup class="coming-soon" style="position: relative;">soon</sup>
                       </span>
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
                   </el-dropdown-item>
 
@@ -170,7 +170,7 @@
                   <el-dropdown-item>
                     <span class="d-flex justify-content-between w-100" style="gap: 5px">
                       <span>Logout</span>
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
                   </el-dropdown-item>
                 </el-dropdown-menu>
@@ -207,7 +207,7 @@
                   <el-dropdown-item>
                     <router-link  to="/profile" class="d-flex justify-content-between w-100" style="gap: 5px">
                       <span>Profile</span>
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </router-link>
                   </el-dropdown-item>
 
@@ -216,7 +216,7 @@
                       <span>Settings
                         <sup class="coming-soon" style="position: relative;">soon</sup>
                       </span>
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </router-link>
                   </el-dropdown-item>
 
@@ -230,7 +230,7 @@
                     >
                       <span>Manager</span>
                       <!-- <span class="info-card">3</span> -->
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
                   </el-dropdown-item>
 
@@ -240,7 +240,7 @@
                         <sup class="coming-soon" style="position: relative;">soon</sup>
                       </span>
                       <!-- <span class="info-card">3</span> -->
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
                   </el-dropdown-item>
 
@@ -251,7 +251,7 @@
                       <span>Affiliate
                         <sup class="coming-soon" style="position: relative;">soon</sup>
                       </span>
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
                   </el-dropdown-item>
 
@@ -260,7 +260,7 @@
                   <el-dropdown-item>
                     <span class="d-flex justify-content-between w-100" style="gap: 5px">
                       <span>Logout</span>
-                      <i-icon icon="material-symbols:arrow-forward" />
+                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
                   </el-dropdown-item>
                 </el-dropdown-menu>
@@ -283,7 +283,7 @@
       >
         <img src="@/assets/img/CroxxWhite.svg" width="40%" alt="" />
         <span role="button" @click="drawer = false">
-          <i-icon icon="mingcute:close-circle-line" color="#fff" width="30px" />
+          <!-- <i-icon icon="mingcute:close-circle-line" color="#fff" width="30px" /> -->
         </span>
       </div>
 

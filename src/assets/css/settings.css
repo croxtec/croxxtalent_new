@@ -3,7 +3,7 @@
         border-radius: 20px;
         padding: 30px 20px;
         justify-content: center;
-        width: 80%;
+        /* width: 80%; */
         margin: 70px auto;
 }
 .settings-header{
@@ -11,12 +11,17 @@
     font-size: 24px;
     line-height: 28.8px;
 }
+.user-img-container {
+        margin: 10px auto;
+            height: 126px;
+                max-width: 126px;
+}
 .user-img{
     height: 126px;
     max-width: 126px;
     border-radius: 100%;
     background-color: #c2dbff;
-    margin: 10px auto;
+    border: 1px solid #0040A1;
 }
 .red-star{
     color: #FC3030;
@@ -41,3 +46,16 @@
 .settings-main{
     padding-bottom: 100px;
 }
+    @media only screen and (max-width: 768px) {.input-group {
+            display: grid;
+            grid-template-columns: auto;
+            gap: 10px;
+        }
+    
+        .input-container {
+            margin: 0 auto;
+            width: 90%;
+            display: grid;
+            grid-template-rows: auto auto;
+            gap: 30px;
+        }}

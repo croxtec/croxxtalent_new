@@ -28,7 +28,7 @@
       </div>
 
       <!-- confirmation Modal -->
-      <div class="confirm-modal-overlay" v-if="confirmSubmission">
+      <!-- <div class="confirm-modal-overlay" v-if="confirmSubmission">
         <div class="confirm-modal">
           <img
             src="@/assets/img/question.png"
@@ -50,9 +50,9 @@
             <button class="cancel-button bg-danger" @click="cancelSubmit">Cancel</button>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- end of confirmation -->
-      <div class="overlayBackground" v-if="step > currentQuestion.length">
+      <!-- <div class="overlayBackground" v-if="step > currentQuestion.length">
         <div class="modalShow text-center">
           <h4>You have gotten to the end of the assessment</h4>
           <p class="my-3">Do you want to submit this assessment?</p>
@@ -70,7 +70,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="quiz-card">
         <h4 class="text-center question-heading my-5">
           {{ currentQuestion.question }}
@@ -177,104 +177,6 @@
             <h4 class="text_answer">{{ currentQuestion.answer.comment }}</h4>
           </div>
         </div>
-        <!-- <div
-          class="majorInput text-center my-5"
-          v-else-if="currentQuestion.type === 'reference'"
-        >
-          <h4 class="text_answer">{{ currentQuestion.answer.comment }}</h4>
-        </div> -->
-        <!-- <div v-else-if="currentQuestion.type === ''">
-          <div class="grid-container">
-            <div class="grid-item" @click="toggleCheckbox(index)">
-              <div :class="['checkbox', { checked: option.checked }]">
-                <input
-                  type="checkbox"
-                  :id="option.id"
-                  :value="option.checked"
-                  v-model="currentAnswer"
-                  v-check-match="option.checked"
-                />
-              </div>
-              <label :for="option.id" class="checkbox-label">{{
-                option.id === "option1"
-                  ? currentQuestion.option1
-                  : option.id === "option2"
-                  ? currentQuestion.option2
-                  : option.id === "option3"
-                  ? currentQuestion.option3
-                  : option.id === "option4"
-                  ? currentQuestion.option4
-                  : "no option"
-              }}</label>
-            </div>
-            <div class="grid-item" @click="toggleCheckbox(index)">
-              <div :class="['checkbox', { checked: option.checked }]">
-                <input
-                  type="checkbox"
-                  :id="option.id"
-                  :value="option.checked"
-                  v-model="currentAnswer"
-                  v-check-match="option.checked"
-                />
-              </div>
-              <label :for="option.id" class="checkbox-label">{{
-                option.id === "option1"
-                  ? currentQuestion.option1
-                  : option.id === "option2"
-                  ? currentQuestion.option2
-                  : option.id === "option3"
-                  ? currentQuestion.option3
-                  : option.id === "option4"
-                  ? currentQuestion.option4
-                  : "no option"
-              }}</label>
-            </div>
-            <div class="grid-item" @click="toggleCheckbox(index)">
-              <div :class="['checkbox', { checked: option.checked }]">
-                <input
-                  type="checkbox"
-                  :id="option.id" 
-                  :value="option.checked"
-                  v-model="currentAnswer"
-                  v-check-match="option.checked"
-                />
-              </div>
-              <label :for="option.id" class="checkbox-label">{{
-                option.id === "option1"
-                  ? currentQuestion.option1
-                  : option.id === "option2"
-                  ? currentQuestion.option2
-                  : option.id === "option3"
-                  ? currentQuestion.option3
-                  : option.id === "option4"
-                  ? currentQuestion.option4
-                  : "no option"
-              }}</label>
-            </div>
-            <div class="grid-item" @click="toggleCheckbox(index)">
-              <div :class="['checkbox', { checked: option.checked }]">
-                <input
-                  type="checkbox"
-                  :id="option.id"
-                  :value="option.checked"
-                  v-model="currentAnswer"
-                  v-check-match="option.checked"
-                />
-              </div>
-              <label :for="option.id" class="checkbox-label">{{
-                option.id === "option1"
-                  ? currentQuestion.option1
-                  : option.id === "option2"
-                  ? currentQuestion.option2
-                  : option.id === "option3"
-                  ? currentQuestion.option3
-                  : option.id === "option4"
-                  ? currentQuestion.option4
-                  : "no option"
-              }}</label>
-            </div>
-          </div>
-        </div> -->
         <div
           class="text-center justify-content-center d-flex align-items-center"
           v-if="loader"
@@ -392,14 +294,8 @@ export default {
       numbers: [0, 1, 2, 3, 4, 5],
       selectedNumber: null,
       confirmSubmission: false,
-      // assessments: "",
-      // answer: "",
-      // selectedOption: [],
       questions: [],
       selected: null,
-      // fileName: "",
-      // fileUpload: [],
-      // urlLink: "",
       step: 1,
       currentQuestionIndex: 0,
       checkedOptions: [],
@@ -411,24 +307,6 @@ export default {
       recommendation: false,
     };
   },
-  // directives: {
-  //   "check-match": {
-  //     bind(el, binding) {
-  //       const { value } = binding;
-  //       if (value === binding.instance.currentAnswer) {
-  //         el.checked = true;
-  //       }
-  //     },
-  //     update(el, binding) {
-  //       const { value } = binding;
-  //       if (value === binding.instance.currentAnswer) {
-  //         el.checked = true;
-  //       } else {
-  //         el.checked = false;
-  //       }
-  //     },
-  //   },
-  // },
   methods: {
     showRecommendations() {
       this.recommendation = !this.recommendation;
@@ -460,28 +338,6 @@ export default {
       this.currentQuestionIndex++;
       // }
     },
-    // submitAssessment() {
-    //   this.confirmSubmission = true;
-    // },
-    // async confirmSubmit() {
-    //   // let talent = this.currentQuestion.answer.talent_id
-    //   // console.log(talent, "check mate")
-    //   let id = this.assessments.id;
-    //   const payload = {
-    //     feedback: this.feedback,
-    //     talent: this.talent,
-    //   };
-    //   try {
-    //     let response = await $request.patch(
-    //       `/assesments/${id}/management/feedback`,
-    //       payload
-    //     );
-    //     this.closeQuiz();
-    //   } catch (error) {
-    //     alert("please drop a feed back");
-    //     console.error(error.data.message);
-    //   }
-    // },
     cancelSubmit() {
       this.previousPage();
       this.confirmSubmission = false;
@@ -510,33 +366,10 @@ export default {
       console.log(resp);
     },
 
-    // async submitQuestion() {
-    //   const payload = {
-    //     assesment_id: this.currentQuestion.answer.assesment_id,
-    //     question_id: this.currentQuestion.answer.assesment_question_id,
-    //     talent_id: this.currentQuestion.answer.talent_id,
-    //     score: this.selectedNumber,
-    //     comment: this.managerComment,
-    //   };
-    //   try {
-    //     this.loader = true;
-    //     let response = await $request.post(`/assesments/management/scoresheet`, payload);
-    //     // this.step++;
-    //     // this.currentQuestionIndex++;
-    //     // this.selectedNumber = "";
-    //     // this.managerComment = "";
-    //     // this.loader = false;
-    //   } catch (error) {
-    //     // alert("please select a score");
-    //     console.error(error.data.message);
-    //     this.loader = false;
-    //   }
-    // },
     previousPage() {
       if (this.currentQuestionIndex > 0) {
         this.currentQuestionIndex--;
       }
-      // this.step--;
     },
   },
   computed: {
@@ -546,29 +379,6 @@ export default {
     currentQuestion() {
       return this.questions[this.currentQuestionIndex];
     },
-    // currentAnswer: {
-    //   get() {
-    //     const question = this.questions[this.currentQuestionIndex];
-    //     if (question && question.answer) {
-    //       return (
-    //         question.answer.option ||
-    //         question.answer.comment ||
-    //         question.answer.options ||
-    //         question.answer.upload
-    //       );
-    //     }
-    //     return null;
-    //   },
-    //   set(newAnswer) {
-    //     const question = this.questions[this.currentQuestionIndex];
-    //     if (question && question.answer) {
-    //       question.answer.option = newAnswer;
-    //       question.answer.comment = newAnswer;
-    //       question.answer.options = newAnswer;
-    //       question.answer.upload = newAnswer;
-    //     }
-    //   },
-    // },
   },
   mounted() {
     const assessment = JSON.parse(localStorage.getItem("assessmentResponse"));
@@ -578,46 +388,7 @@ export default {
     console.log(this.questions);
     console.log(this.managerComment);
   },
-  watch: {
-    // options: {
-    //   handler(newOptions) {
-    //     const selectedOptionNames = newOptions
-    //       .filter((option) => option.checked)
-    //       .map((option) => option.name);
-    //     this.checkedOptions = selectedOptionNames;
-    //   },
-    //   deep: true,
-    // },
-    // currentAnswer(newAnswer) {
-    //   this.selected = newAnswer;
-    //   this.answer = newAnswer;
-    //   this.urlLink = newAnswer;
-    //   this.options.checked = newAnswer;
-    // },
-    // currentQuestionIndex(newIndex) {
-    //   const question = this.questions[newIndex];
-    //   if (question && question.answer) {
-    //     this.selected =
-    //       question.answer.option ||
-    //       question.answer.comment ||
-    //       question.answer.options ||
-    //       question.answer.upload;
-    //     this.answer =
-    //       question.answer.option ||
-    //       question.answer.comment ||
-    //       question.answer.options ||
-    //       question.answer.upload;
-    //     this.urlLink =
-    //       question.answer.option ||
-    //       question.answer.comment ||
-    //       question.answer.options ||
-    //       question.answer.upload;
-    //     this.options.forEach((option) => {
-    //       option.checked = (question.answer.options || []).includes(option.name);
-    //     });
-    //   }
-    // },
-  },
+  watch: {},
 };
 </script>
 

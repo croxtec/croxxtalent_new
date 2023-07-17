@@ -382,17 +382,6 @@ export default {
           //  ]
         },
         {
-          title: "Electrical Engineer",
-          id: 2,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
           title: "Civil Engineer",
           id: 3,
           section: "Agency",
@@ -406,138 +395,6 @@ export default {
         {
           title: "Chemical Engineer",
           id: 4,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 5,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 6,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 7,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 8,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 9,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 10,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 11,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 12,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Mechanical Engineer",
-          id: 13,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "BioChemical Engineer",
-          id: 14,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Technical Engineer",
-          id: 15,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Software Engineer",
-          id: 16,
           section: "Agency",
           location: "San Fransisco, US",
           description:
@@ -711,13 +568,13 @@ h5 {
 }
 .option-modal {
   margin-left: 120px;
-  margin-top: 30px;
+  margin-top: 15px;
   text-align: center;
   gap: 10px;
-  width: 206px;
+  width: 175px;
   position: absolute;
   background-color: white;
-  height: 151px;
+  height: 150px;
   border: 0.5px solid #e0e0e0;
   box-shadow: 0px 79px 128px rgba(192, 192, 192, 0.09),
     0px 28.8363px 46.7221px rgba(192, 192, 192, 0.0598508),
@@ -730,7 +587,7 @@ h5 {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   color: #282929;
   opacity: 0.5;
   cursor: pointer;
