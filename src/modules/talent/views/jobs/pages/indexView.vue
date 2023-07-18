@@ -228,7 +228,7 @@
         </div>
         <div class="job-list">
           <div v-if="activeView === '1'" class="column">
-            <div class="floter" v-for="job in jobs.slice(0, 7)" :key="job.id">
+            <div class="floter" v-for="job in paginatedItems" :key="job.id">
               <div class="job-card">
                 <div class="d-flex justify-content-between">
                   <img
@@ -263,11 +263,7 @@
             </div>
           </div>
           <div v-if="activeView === '2'" class="list">
-            <div
-              class="list-job my-3 d-flex"
-              v-for="job in jobs.slice(0, 7)"
-              :key="job.id"
-            >
+            <div class="list-job my-3 d-flex" v-for="job in paginatedItems" :key="job.id">
               <img
                 src="@/assets/img/round-logo.png"
                 alt=""
@@ -298,9 +294,14 @@
               </div>
             </div>
           </div>
-          <div class="mt-3">
+          <div class="mt-5">
             <div class="d-flex">
-              <div role="button" class="pagination_button">
+              <div
+                @click="previousPage"
+                :disabled="currentPage === 1"
+                role="button"
+                class="pagination_button"
+              >
                 <svg
                   width="8"
                   height="14"
@@ -318,11 +319,25 @@
                 </svg>
               </div>
               <div class="">
-                <span class="px-2 pagination_number">1</span>
-                <span class="px-2">2</span>
-                <span class="px-2">3</span>
+                <!-- <span class="px-2 pagination_number">1</span> -->
+                <span
+                  v-for="(pageNumber, index) in pageNumbers"
+                  :key="pageNumber"
+                  @click="goToPage(pageNumber)"
+                  :class="{
+                    pagination_number_active: pageNumber === currentPage,
+                    pagination_number_inactive: pageNumber !== currentPage,
+                  }"
+                  class=""
+                  >{{ displayPageNumber(index, pageNumber) }}</span
+                >
               </div>
-              <div role="button" class="pagination_button">
+              <div
+                @click="nextPage"
+                :disabled="currentPage === totalPages"
+                role="button"
+                class="pagination_button"
+              >
                 <svg
                   width="9"
                   height="14"
@@ -356,6 +371,8 @@ export default {
 
   data() {
     return {
+      currentPage: 1,
+      pageSize: 4,
       activeView: "1",
       layout: "row",
       vertical: false,
@@ -602,6 +619,53 @@ export default {
       this.salaryRange = !this.salaryRange;
       this.show4 = !this.show4;
     },
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+    goToPage(pageNumber) {
+      this.currentPage = pageNumber;
+    },
+    displayPageNumber(index, pageNumber) {
+      if (this.totalPages <= 7) {
+        return pageNumber;
+      } else {
+        if (index === 2 || index === this.totalPages - 3) {
+          return "...";
+        } else if (index > 1 && index < this.totalPages - 2) {
+          if (this.currentPage >= pageNumber - 1 && this.currentPage <= pageNumber + 1) {
+            return pageNumber;
+          } else {
+            return "";
+          }
+        } else {
+          return pageNumber;
+        }
+      }
+    },
+  },
+  computed: {
+    paginatedItems() {
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      return this.jobs.slice(startIndex, endIndex);
+    },
+    totalPages() {
+      return Math.ceil(this.jobs.length / this.pageSize);
+    },
+    pageNumbers() {
+      const numbers = [];
+      for (let i = 1; i <= this.totalPages; i++) {
+        numbers.push(i);
+      }
+      return numbers;
+    },
   },
 };
 </script>
@@ -612,12 +676,19 @@ export default {
   /* border: 1px solid #e5e7eb; */
   border-radius: 0.375rem;
 }
-.pagination_number .active {
+.pagination_number_active {
   background-color: #0040a1;
   color: white;
-  padding: 20px;
+  padding: 10px 20px;
   border-radius: 8px;
 }
+.pagination_number_inactive {
+  background-color: #ffffff;
+  color: #0040a1;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
 .rotate-180 {
   transform: rotate(180deg);
 }
