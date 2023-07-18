@@ -299,8 +299,8 @@
             </div>
           </div>
           <div class="mt-3">
-            <div class="d-flex gap-8 mt-4 mx-auto">
-              <button class="border-[1px] text-sm rounded-md py-1 px-2">
+            <div class="d-flex">
+              <div role="button" class="pagination_button">
                 <svg
                   width="8"
                   height="14"
@@ -316,13 +316,13 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-              </button>
-              <div class="mt-4">
-                <span class="">1</span>
-                <span class="">2</span>
-                <span class=" ">3</span>
               </div>
-              <button class="border-[1px] text-sm rounded-md py-1 px-2">
+              <div class="">
+                <span class="px-2 pagination_number">1</span>
+                <span class="px-2">2</span>
+                <span class="px-2">3</span>
+              </div>
+              <div role="button" class="pagination_button">
                 <svg
                   width="9"
                   height="14"
@@ -338,7 +338,7 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-              </button>
+              </div>
             </div>
           </div>
         </div>
@@ -607,6 +607,17 @@ export default {
 </script>
 
 <style scoped>
+.pagination_button {
+  padding: 0px 20px;
+  /* border: 1px solid #e5e7eb; */
+  border-radius: 0.375rem;
+}
+.pagination_number .active {
+  background-color: #0040a1;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
 .rotate-180 {
   transform: rotate(180deg);
 }
@@ -704,7 +715,7 @@ h5 {
 .job-grid {
   display: grid;
   grid-template-columns: 20% 80%;
-  gap: 1px;
+  gap: 1.4rem;
 }
 .fa-ellipsis-h {
   cursor: pointer;
@@ -756,7 +767,8 @@ h5 {
 .employment-card div > input {
   width: 24px;
   height: 24px;
-  outline: 2px solid #c2dbff;
+  border: 2px solid #c2dbff !important;
+  border-radius: 4px;
   /* margin-top: 50px; */
 }
 .job-filter h6 {
@@ -877,5 +889,12 @@ progress {
 .justify-between {
   justify-content: space-between;
   display: flex;
+}
+@media only screen and (max-width: 768px) {
+  .job-grid {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 1.4rem;
+  }
 }
 </style>
