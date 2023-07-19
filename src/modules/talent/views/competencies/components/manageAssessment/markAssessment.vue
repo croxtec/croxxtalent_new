@@ -343,7 +343,8 @@ export default {
       this.confirmSubmission = false;
     },
     async handleConfirmation() {
-      let id = this.assessments.id;
+      let id = this.assessmentsId;
+      console.log(id);
       const payload = {
         feedback: this.feedback,
       };
@@ -364,6 +365,8 @@ export default {
       };
       const resp = await this.$store.dispatch("assessmentModule/markAssessment", payload);
       console.log(resp);
+      this.selectedNumber = null;
+      this.managerComment = " ";
     },
 
     previousPage() {
@@ -382,11 +385,15 @@ export default {
   },
   mounted() {
     const assessment = JSON.parse(localStorage.getItem("assessmentResponse"));
+    // const id = JSON.parse(localStorage.getItem("userData"));
+
     this.questions = assessment.assesment.questions;
     this.assessments = assessment.assesment;
+    this.assessmentsId = assessment.assesment.id;
     console.log(this.assessments);
     console.log(this.questions);
     console.log(this.managerComment);
+    console.log(this.assessmentsId);
   },
   watch: {},
 };
