@@ -41,8 +41,8 @@
                 <label for=""
                   >Institution/School <span class="text-danger">*</span>
                 </label >
-                <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
                 <input  v-model="form.institution" type="text" placeholder="Name of institution" />
+                <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
             </validation-provider>
           </div>
           <!-- <div class="mb-3">

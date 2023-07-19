@@ -1,77 +1,21 @@
 <template>
-  <div class="d-flex flex-column justify-content-between h-100">
-    <div class="mb-4 text-center">
-      <h6 style="font-weight: 700">Choose an option that best suits you</h6>
-      <button
-        class="primary--button mt-2 d-flex align-items-center mx-auto"
-        style="gap: 10px"
-      >
-        <img class="linkedin" src="@/assets/icons/linkedin.svg" alt="" />
-        <span>Import Linkedin Profile</span>
-      </button>
+  <div>
+    <div v-if="resumePercentage">
+        <p>CV Template here</p>
     </div>
-    <div class="create-cv">
-      <div class="create-new-cv cv-option">
-        <div
-          class="option-image"
-          role="button"
-          :class="{ active: activeEl === '1' }"
-          @click="chooseSelection('1')"
-        >
-          <div class="text-right">
-            <i-icon
-              :icon="
-                activeEl === '1'
-                  ? 'material-symbols:check-circle-rounded'
-                  : 'ic:round-radio-button-unchecked'
-              "
-              class="cv-icon"
-              :class="{ active: activeEl === '1' }"
-            />
-            <!-- <i-icon icon="material-symbols:check-circle-rounded" /> -->
-          </div>
-          <img src="@/assets/img/createCv.png" alt="" />
-        </div>
-        <div class="details">
-          <h6>Create a new resume</h6>
-          <p>We get to guide you through building an excellent resume</p>
-        </div>
-      </div>
-      <div class="upload-cv cv-option">
-        <div
-          class="option-image"
-          role="button"
-          :class="{ active: activeEl === '2' }"
-          @click="chooseSelection('2')"
-        >
-          <div class="text-right">
-            <i-icon
-              :icon="
-                activeEl === '2'
-                  ? 'material-symbols:check-circle-rounded'
-                  : 'ic:round-radio-button-unchecked'
-              "
-              class="cv-icon"
-              :class="{ active: activeEl === '2' }"
-            />
-          </div>
-          <img src="@/assets/img/uploadCv.png" alt="" />
-        </div>
-        <div class="details">
-          <h6>Upload my current resume</h6>
-          <p>Taking what you have to give you what you want</p>
-        </div>
-      </div>
-    </div>
-    <div class="mt-4 text-center">
-      <button class="primary--button" @click="getStarted">Get Started</button>
+    <div v-else>
+      <CreatePreviewer />
     </div>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
+import CreatePreviewer from './createResumePreviewer.vue'
+
 export default {
+  components: {  CreatePreviewer },
+
   data() {
     return {
       activeEl: "1",
@@ -90,6 +34,10 @@ export default {
     ...mapState("auth", {
       user: (state) => state.user,
     }),
+
+    ...mapState('cvs', {
+      resumePercentage: (state) => (state.data.progress >= 80) ? true : false
+    })
   },
 };
 </script>
