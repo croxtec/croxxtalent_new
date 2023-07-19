@@ -5,6 +5,7 @@
       Input details you would like to have on your CV
     </p>
     
+    {{contactInfo}}
     <validation-observer  ref="form" v-slot="{ invalid, handleSubmit }">
       <form  @submit.prevent="handleSubmit(updateContactInfo)">
         <div class="form-details mt-4">
@@ -169,7 +170,7 @@ export default {
         error: state => state.error,
         success: state => state.success,
         validationErrors: state => state.validationErrors,
-        data: state => state.data,
+        contactInfo: state => state.data,
         dataSet: state => state.dataSet,
         dataSetTotal: state => state.dataSetTotal,
         uploadProgress: state => state.uploadProgress
@@ -181,9 +182,9 @@ export default {
   },
 
   watch: {
-    data: function(newValue, oldValue) {
+    contactInfo: function(newValue, oldValue) {
       let vm = this;
-      console.log('Contact Value',newValue);
+      console.log('Contact Value', newValue);
       if(newValue){
         this.form = {
           email: newValue.email,

@@ -115,16 +115,27 @@
                 </div>
                 <el-dropdown-menu slot="dropdown" class="settings-dropdown">
                   <el-dropdown-item>
-                    <router-link  to="/profile" class="d-flex justify-content-between w-100" style="gap: 5px">
+                    <router-link
+                      to="/profile"
+                      class="d-flex justify-content-between w-100"
+                      style="gap: 5px"
+                    >
                       <span>Profile</span>
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </router-link>
                   </el-dropdown-item>
 
                   <el-dropdown-item>
-                    <router-link to="/settings" class="d-flex justify-content-between w-100" style="gap: 5px">
-                      <span>Settings
-                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                    <router-link
+                      to="/settings"
+                      class="d-flex justify-content-between w-100"
+                      style="gap: 5px"
+                    >
+                      <span
+                        >Settings
+                        <sup class="coming-soon" style="position: relative"
+                          >soon</sup
+                        >
                       </span>
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </router-link>
@@ -145,21 +156,31 @@
                   </el-dropdown-item>
 
                   <el-dropdown-item>
-                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
-                      <span>Professionals
-                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                    <span
+                      class="d-flex justify-content-between w-100"
+                      style="gap: 5px"
+                    >
+                      <span
+                        >Professionals
+                        <sup class="coming-soon" style="position: relative"
+                          >soon</sup
+                        >
                       </span>
                       <!-- <span class="info-card">3</span> -->
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
                   </el-dropdown-item>
 
-
-
-                <el-dropdown-item>
-                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
-                      <span>Affiliate
-                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                  <el-dropdown-item>
+                    <span
+                      class="d-flex justify-content-between w-100"
+                      style="gap: 5px"
+                    >
+                      <span
+                        >Affiliate
+                        <sup class="coming-soon" style="position: relative"
+                          >soon</sup
+                        >
                       </span>
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
@@ -168,10 +189,15 @@
                   <el-divider class="my-0"></el-divider>
 
                   <el-dropdown-item>
-                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
+                   <router-link to="/logout">
+                    <span
+                      class="d-flex justify-content-between w-100"
+                      style="gap: 5px"
+                    >
                       <span>Logout</span>
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
+                   </router-link>
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
@@ -179,17 +205,17 @@
           </ul>
 
           <div class="mobile-menu">
-            <div class="d-flex align-items-center" style="gap:20px">
+            <div class="d-flex align-items-center" style="gap: 20px">
               <router-link to="/">
-                  <i-icon icon="ri:search-line" class="mobile-menu-icon" />
-                  <sup class="coming-soon">soon</sup>
-                </router-link>
+                <i-icon icon="ri:search-line" class="mobile-menu-icon" />
+                <sup class="coming-soon">soon</sup>
+              </router-link>
               <router-link to="/">
-                  <i-icon icon="tabler:message-2" class="mobile-menu-icon" />
-                  <sup class="coming-soon">soon</sup>
-                </router-link>
-                
-            <el-dropdown trigger="click">
+                <i-icon icon="tabler:message-2" class="mobile-menu-icon" />
+                <sup class="coming-soon">soon</sup>
+              </router-link>
+
+              <el-dropdown trigger="click">
                 <div
                   class="el-dropdown-link d-flex align-items-center"
                   style="gap: 1px"
@@ -205,16 +231,27 @@
                 </div>
                 <el-dropdown-menu slot="dropdown" class="settings-dropdown">
                   <el-dropdown-item>
-                    <router-link  to="/profile" class="d-flex justify-content-between w-100" style="gap: 5px">
+                    <router-link
+                      to="/profile"
+                      class="d-flex justify-content-between w-100"
+                      style="gap: 5px"
+                    >
                       <span>Profile</span>
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </router-link>
                   </el-dropdown-item>
 
                   <el-dropdown-item>
-                    <router-link to="/settings" class="d-flex justify-content-between w-100" style="gap: 5px">
-                      <span>Settings
-                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                    <router-link
+                      to="/settings"
+                      class="d-flex justify-content-between w-100"
+                      style="gap: 5px"
+                    >
+                      <span
+                        >Settings
+                        <sup class="coming-soon" style="position: relative"
+                          >soon</sup
+                        >
                       </span>
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </router-link>
@@ -235,21 +272,31 @@
                   </el-dropdown-item>
 
                   <el-dropdown-item>
-                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
-                      <span>Professionals
-                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                    <span
+                      class="d-flex justify-content-between w-100"
+                      style="gap: 5px"
+                    >
+                      <span
+                        >Professionals
+                        <sup class="coming-soon" style="position: relative"
+                          >soon</sup
+                        >
                       </span>
                       <!-- <span class="info-card">3</span> -->
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
                   </el-dropdown-item>
 
-
-
-                <el-dropdown-item>
-                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
-                      <span>Affiliate
-                        <sup class="coming-soon" style="position: relative;">soon</sup>
+                  <el-dropdown-item>
+                    <span
+                      class="d-flex justify-content-between w-100"
+                      style="gap: 5px"
+                    >
+                      <span
+                        >Affiliate
+                        <sup class="coming-soon" style="position: relative"
+                          >soon</sup
+                        >
                       </span>
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
@@ -258,15 +305,19 @@
                   <el-divider class="my-0"></el-divider>
 
                   <el-dropdown-item>
-                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
-                      <span>Logout</span>
-                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
-                    </span>
+                    <router-link to="/logout">
+                      <span
+                        class="d-flex justify-content-between w-100"
+                        style="gap: 5px"
+                      >
+                        <span>Logout</span>
+                        <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
+                      </span>
+                    </router-link>
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
-              
-          </div>
+            </div>
           </div>
         </div>
       </div>
@@ -324,6 +375,7 @@
               >Competencies</router-link
             >
           </li>
+
           <li>
             <router-link
               to="/jobs"
@@ -333,6 +385,7 @@
               >Jobs</router-link
             >
           </li>
+
           <li>
             <router-link
               to="/training"
@@ -341,9 +394,8 @@
                   this.$route.meta.parent === 'training',
               }"
               >Trainings
-              <sup class="coming-soon" style="position: relative;">soon</sup>
-              </router-link
-            >
+              <sup class="coming-soon" style="position: relative">soon</sup>
+            </router-link>
           </li>
           <!-- <li>
               <div class="search">
@@ -398,6 +450,11 @@ export default {
   },
 
   methods: {
+    logout() {
+      alert("Hello");
+      // return this.$router.push('/logout')
+    },
+
     gotoMyJobs() {
       return this.$router.push({ name: "my-jobs" });
     },
