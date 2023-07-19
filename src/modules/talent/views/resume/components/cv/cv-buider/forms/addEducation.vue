@@ -148,7 +148,7 @@
  
              <div class="text-center">
                <button
-                 @click="addEducation"
+                 @click="submitAction"
                  class="primary--button py-3"
                  style="font-weight: 500"
                  :class="{ 'in-active': loading }"
@@ -157,7 +157,7 @@
                  <span v-if="loading">
                    <i-icon icon="eos-icons:bubble-loading" width="20px" />
                  </span>
-                 <span v-else>Save</span>
+                 <span v-else>{{ action }}</span>
                </button>
              </div>
            </div>
@@ -169,28 +169,49 @@
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
+  props: {
+    payload: {
+      type: Object,
+      default: (()=> {})
+    }
+  },
   data() {
     return {
-      payload: {
-        school: "",
-        course_of_study_id: "",
-        degree_id: "",
-        city: "",
-        country_code: "",
-        start_date: "",
-        is_current: false,
-        end_date: "",
-        description: "",
-      },
+      action: "Save"
+      // payload: {
+      //   school: "",
+      //   course_of_study_id: "",
+      //   degree_id: "",
+      //   city: "",
+      //   country_code: "",
+      //   start_date: "",
+      //   is_current: false,
+      //   end_date: "",
+      //   description: "",
+      // },
     };
   },
   methods: {
     ...mapActions("cvEducation", ["create"]),
     addEducation() {
-      // console.log(this.payload);
       this.create(this.payload);
       if (this.success) {
         this.payload = {};
+      }
+    },
+
+    submitAction(){
+      this.action === 'Save' ? this.addEducation : this.editEducation()
+    },
+
+    editEducation(){
+      console.log('Edited Successfully');
+    }
+  },
+  watch: {
+    payload(val) {
+      if (val) {
+       this.action =  "Edit"
       }
     },
   },

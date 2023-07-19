@@ -69,9 +69,14 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import toastify from "toastify-js";
-import Vue from "vue";
+// import Vue from "vue";
 
 export default {
+  props: {
+    formObject: {
+      type: Object,
+    }
+  },
 
   data(){
       return {
@@ -119,9 +124,6 @@ export default {
           is_current: 0,
           editMode: true
         }
-        // console.log(this.form);
-        // this.form = newData;
-        Vue.set(this, 'form', newData)
       },
 
      
@@ -134,10 +136,9 @@ export default {
   },
 
   mounted() {
-    this.$eventBus.on('editCertification', this.editResumeCertification);
   },
+
   beforeDestroy() {
-    // this.$eventBus.off('editCertification', this.handleEvent);
   },
 };
 

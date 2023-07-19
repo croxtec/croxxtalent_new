@@ -26,7 +26,7 @@
         </div>
     </div>
     <!-- Form -->
-    <div  v-if="show_form">
+    <!-- <div  v-if="show_form">
       <div class="d-flex align-items-end"  v-if="form.editMode">
         <div class="delete-icon " role="button"   @click="deleteRecord(form.id, form.institution) ">
           <span> <i-icon icon="material-symbols:restore-from-trash-outline" /> </span>
@@ -45,10 +45,6 @@
                 <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
             </validation-provider>
           </div>
-          <!-- <div class="mb-3">
-            <label for="">Course <span class="text-danger">*</span></label>
-            <input type="text" placeholder="Course Name" />
-          </div> -->
           <div class="mb-3">
             <validation-provider v-slot="validationContext" vid="degree"  name="degree" rules="required">
               <label for="">Course of Study <span class="text-danger">*</span></label>
@@ -73,7 +69,6 @@
               <div class="w-100">
                 <validation-provider v-slot="validationContext" vid="degree"  name="degree" rules="required">
                   <label for="">Start Date<span class="text-danger">*</span></label>
-                  <!-- <input type="text" placeholder="Input postal code" /> -->
                   <input  v-model="form.start_date" type="date" name="" id="" />
                   <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
                 </validation-provider>
@@ -81,7 +76,6 @@
               <div class="w-100">
                 <validation-provider v-slot="validationContext" vid="degree"  name="degree" rules="required">
                     <label for="">End Date<span class="text-danger">*</span></label>
-                    <!-- <input type="text" placeholder="Input postal code" /> -->
                     <input  v-model="form.end_date" type="date" name="" id="" />
                     <small class="text-danger my-2" v-text="validationContext.errors[0]"></small>
                 </validation-provider>
@@ -107,7 +101,7 @@
           </div>
         </form>
       </validation-observer>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -167,7 +161,7 @@ export default {
     },
 
     updateRecord(){
-        console.log('Update rec',this.form);
+        console.log('Update rec', this.form);
         this.update({
             work_experience_id: this.form.id,
             payload: this.form
