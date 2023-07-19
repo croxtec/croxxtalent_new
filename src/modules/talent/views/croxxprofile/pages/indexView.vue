@@ -129,7 +129,7 @@ export default {
 
   methods: {
     gotoBackpack() {
-      return this.$router.push({ name: "profile-detail" });
+      return this.$router.push({ name: "profile-detail", params: {id: '112267wte8fgydbh' }});
     },
     gotoSettings() {
       return this.$router.push({ name: "settings" });
