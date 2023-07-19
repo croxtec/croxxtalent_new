@@ -12,7 +12,7 @@
       </div>
 
       <div class="mt-2" v-if="add_education">
-        <AddEducation :payload="educationData" />
+        <AddEducation :payload="educationData" :editMode="editing" @close="close"/>
       </div>
 
       <hr />
@@ -103,6 +103,10 @@ export default {
         this.add_certification = !this.add_certification;
       }
     },
+
+    close(){
+      this.add_education = false
+    }
   },
 
   watch: {},

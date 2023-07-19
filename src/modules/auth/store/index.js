@@ -4,6 +4,8 @@ import $request from "@/axios";
 import Cookies from "js-cookie";
 import config from "@/config.js";
 
+import router from "@/router"
+
 Vue.use(require("vue-moment"));
 
 import toastify from "toastify-js";
@@ -128,6 +130,7 @@ export default {
       localStorage.removeItem("vuex");
       localStorage.clear();
     },
+
     RESET(state) {
       Object.keys(state).forEach((key) => {
         Object.assign(state[key], null);
@@ -272,6 +275,28 @@ export default {
         }
         commit("SET_ERROR", "Internal connection error, please try again.");
       }
+    },
+
+    // Logout
+    // Logout Request
+    async logout({ commit }) {
+      commit("RESET");
+      localStorage.clear();
+      Cookies.set(config.accessTokenStorageKey, {
+        path: "/",
+        domain: window.location.hostname,
+      });
+      Cookies.remove("token");
+      toastify({
+        text: `Logged Out`,
+        className: "info",
+        style: {
+          background: "green",
+          fontSize: "12px",
+          borderRadius: "5px",
+        },
+      }).showToast();
+      router.push("/login");
     },
   },
 };
