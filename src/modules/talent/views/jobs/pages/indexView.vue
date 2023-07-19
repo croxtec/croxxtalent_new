@@ -319,8 +319,8 @@
                 </svg>
               </div>
               <div class="">
-                <!-- <span class="px-2 pagination_number">1</span> -->
                 <span
+                  role="button"
                   v-for="(pageNumber, index) in pageNumbers"
                   :key="pageNumber"
                   @click="goToPage(pageNumber)"
@@ -372,7 +372,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      pageSize: 4,
+      pageSize: 10,
       activeView: "1",
       layout: "row",
       vertical: false,
@@ -633,7 +633,7 @@ export default {
       this.currentPage = pageNumber;
     },
     displayPageNumber(index, pageNumber) {
-      if (this.totalPages <= 7) {
+      if (this.totalPages <= 5) {
         return pageNumber;
       } else {
         if (index === 2 || index === this.totalPages - 3) {
