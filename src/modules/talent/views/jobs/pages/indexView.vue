@@ -386,7 +386,7 @@ export default {
       show2: false,
       show3: false,
       show4: false,
-      jobs: [
+      jobss: [
         {
           title: "Chemical Engineer",
           id: 1,
@@ -508,6 +508,9 @@ export default {
     },
   },
   computed: {
+    jobs() {
+      return this.$store.getters["jobsModule/jobs"];
+    },
     paginatedItems() {
       const startIndex = (this.currentPage - 1) * this.pageSize;
       const endIndex = startIndex + this.pageSize;
@@ -523,6 +526,10 @@ export default {
       }
       return numbers;
     },
+  },
+  mounted() {
+    this.$store.dispatch("jobsModule/getJobs");
+    console.log(Array.isArray(this.jobs));
   },
 };
 </script>
