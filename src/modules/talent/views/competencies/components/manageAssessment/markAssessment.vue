@@ -343,14 +343,14 @@ export default {
       this.confirmSubmission = false;
     },
     async handleConfirmation() {
-      let id = this.assessmentsId;
-      console.log(id);
+      const id = this.assessmentsId;
+      // console.log(id);
       const payload = {
         feedback: this.feedback,
       };
       const resp = await this.$store.dispatch("assessmentModule/submitManagerFeedback", {
-        id,
-        payload,
+        id: id,
+        payload: payload,
       });
       this.closeQuiz();
       console.log(resp);
