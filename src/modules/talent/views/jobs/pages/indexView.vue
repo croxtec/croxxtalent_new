@@ -3,6 +3,15 @@
     <header class="d-flex justify-content-between">
       <h6>Jobs</h6>
     </header>
+    <div class="">
+      <div class="mobile_fliter_section p-2">
+        <img src="@/assets/icons/search-normal.svg" alt="" srcset="" class="" style="" />
+        <input class="search-bar" type="search" placeholder="Job title or keyword" />
+        <img src="@/assets/icons/setting-5.svg" alt="" srcset="" class="" />
+        <button class="primary--button text-white px-3">Search</button>
+      </div>
+    </div>
+
     <div class="job-grid">
       <div class="job-filter pr-2">
         <span @click="showEmployment">
@@ -199,7 +208,7 @@
         </div>
       </div>
       <div class="">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex hidden justify-content-between">
           <p class="pt-3">Showing 73 results</p>
           <div class="sorting d-flex">
             <div class="sortBy mr-2 pt-3 d-flex">
@@ -294,7 +303,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-5">
+          <div class="mt-5 mx-auto pagination_section">
             <div class="d-flex">
               <div
                 @click="previousPage"
@@ -386,7 +395,7 @@ export default {
       show2: false,
       show3: false,
       show4: false,
-      jobss: [
+      jobs: [
         {
           title: "Chemical Engineer",
           id: 1,
@@ -508,9 +517,9 @@ export default {
     },
   },
   computed: {
-    jobs() {
-      return this.$store.getters["jobsModule/jobs"];
-    },
+    // jobs() {
+    //   return this.$store.getters["jobsModule/jobs"];
+    // },
     paginatedItems() {
       const startIndex = (this.currentPage - 1) * this.pageSize;
       const endIndex = startIndex + this.pageSize;
@@ -535,6 +544,31 @@ export default {
 </script>
 
 <style scoped>
+.mobile_fliter_section {
+  border-radius: 60px;
+  display: flex;
+  gap: 4px;
+  display: inline-flex;
+  display: -webkit-flex;
+  align-items: center;
+  border: 0.5px solid #e0e0e0;
+  box-shadow: 0px 2px 8px 0px #e0e0e0;
+  padding: 16px;
+}
+.search-bar {
+  width: 100%;
+  padding: 12px 14px;
+  font-weight: 400;
+  outline: none;
+  border-bottom: 4px solid var(--blue-200);
+  border: 4px 0px 5px solid var(--blue-200);
+  border-radius: 0px;
+  background-color: transparent;
+  font-size: 14px;
+}
+.pagination_section {
+  margin: 100px auto;
+}
 .pagination_button {
   padding: 0px 20px;
   /* border: 1px solid #e5e7eb; */
