@@ -5,7 +5,7 @@
       Input details you would like to have on your CV
     </p>
     
-    {{contactInfo}}
+    <!-- {{contactInfo}} -->
     <validation-observer  ref="form" v-slot="{ invalid, handleSubmit }">
       <form  @submit.prevent="handleSubmit(updateContactInfo)">
         <div class="form-details mt-4">

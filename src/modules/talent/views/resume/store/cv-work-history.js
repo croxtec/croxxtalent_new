@@ -80,7 +80,7 @@ export default {
       NProgress.start();
       commit("SET_LOADING", true);
       try {
-        let res = await $request.get(`talent/resume/educations`);
+        let res = await $request.get(`talent/resume/work-experiences`);
         console.log(res.data);
         let responsePayload = res.data.data;
         commit("SET_DATA", responsePayload);
@@ -113,11 +113,45 @@ export default {
       }
     },
 
-    // Create Education
+    // Create Work Experience
     async create({ commit, dispatch }, payload) {
       commit("SET_LOADING");
       try {
-        let response = await $request.post("talent/resume/educations", payload);
+        let response = await $request.post("talent/resume/work-experiences", payload);
+        console.log(response);
+        let responsePayload = response.data;
+        toastify({
+          text: `${responsePayload.message}`,
+          className: "info",
+          style: {
+            background: "green",
+            fontSize: "12px",
+            borderRadius: "5px",
+          },
+        }).showToast();
+        commit("SET_SUCCESS", true);
+        dispatch("list");
+      } catch (error) {
+        console.log(error.data);
+        if (error && error.data) {
+          let errorPayload = error.data;
+          if (errorPayload.message) {
+            commit("SET_ERROR", errorPayload.message);
+            if (errorPayload.errors) {
+              commit("SET_VALIDATION_ERRORS", errorPayload.errors);
+            }
+            return;
+          }
+        }
+        commit("SET_ERROR", "Internal connection error, please try again.");
+      }
+    },
+
+    // Update Work Experience
+    async update({ commit, dispatch }, {id, payload}) {
+      commit("SET_LOADING");
+      try {
+        let response = await $request.put("talent/resume/work-experiences/"+id, payload);
         console.log(response);
         let responsePayload = response.data;
         toastify({
