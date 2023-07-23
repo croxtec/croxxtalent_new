@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 export default {
   data() {
     return {
@@ -37,6 +37,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions('cvs', ['list']),
     gotoCompleteResume(){
       this.$router.push({name: 'create-cv'});
     },
@@ -44,6 +45,10 @@ export default {
     gotoProfile(){
       this.$router.push({name: 'profile'});
     }
+  },
+
+  beforeMount(){
+    this.list()
   },
 
   computed: {

@@ -75,7 +75,7 @@ import CompetenciesCard from '@/components/cards/CompetenciesCard.vue';
 export default {
 
   components: { ProfileCard, SideBar, CxJobs, CxEmployers, CxTraining, CompetenciesCard, CxJobGrid },
-
+ 
   data(){
     return{
       // resumePercentage: false,

@@ -147,13 +147,14 @@ const storeModule = {
       }
     },
 
-    async updateResumeContact({ commit }, {  payload }) {
+    async updateResumeContact({ commit, dispatch }, {  payload }) {
       commit("SET_LOADING");
       try {
         let response = await $http.post(`/talent/resume/contact`, payload);
         let responsePayload = response.data;
         commit("SET_DATA", responsePayload);
         commit("SET_SUCCESS", responsePayload.message);
+        dispatch("list")
       } catch (error) {
         if (error && error.data) {
           let errorPayload = error.data;

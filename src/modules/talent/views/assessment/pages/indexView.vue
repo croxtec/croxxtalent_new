@@ -11,29 +11,24 @@
         <h5 class="surface my-3">{{ assessment.name }}</h5>
         <p class="mb-5 text-left content">
           {{ assessment.description }}
-          <!-- Dropbox is looking for Brand Designer to help the team By coupling
-          smart assessment protocols with our tiered Work-Experience-Model, we
-          are able to drive deep data profiling on every individual in our
-          ecosystem, to make intelligent matching decisions for companies across
-          the world. ... -->
         </p>
-        <div class="credentials mb-5 text-left">
+        <div class="credentials mb-5 text-center mx-auto">
           <div class="credential">
             <h6>Level</h6>
-            <small>{{ assessment.level }}</small>
+            <small class="text-capitalize">{{ assessment.level }}</small>
           </div>
           <div class="credential">
             <h6>Date</h6>
-            <small>22/10/2022</small>
+            <small>{{ assessment.date }}</small>
           </div>
-          <div class="credential">
+          <div class="credential" v-if="assessment.validity_period">
             <h6>Validity</h6>
-            <small>3 years</small>
+            <small>{{ assessment.validity_period }}</small>
           </div>
-          <div class="credential">
+          <!-- <div class="credential">
             <h6>Validation type</h6>
             <small>Automatic</small>
-          </div>
+          </div> -->
           <div class="credential">
             <h6>Delivery type</h6>
             <small>{{ assessment.delivery_type }}</small>
@@ -110,14 +105,14 @@ export default {
   /* width: 1006px; */
 }
 .credentials {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  display: flex;
+  /* grid-template-columns: auto auto auto auto auto; */
   justify-content: space-around;
   /* padding: 0px 100px; */
 }
 @media only screen and (max-width: 768px) {
   .credentials {
-    display: grid;
+    display: flex;
     grid-template-columns: auto auto;
     gap: 10px;
     justify-content: space-between;

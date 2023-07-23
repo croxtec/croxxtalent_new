@@ -1,4 +1,5 @@
 const Login = () => import("../pages/loginPage.vue");
+const Logout = () => import("../pages/logoutView.vue");
 const forgetPassword = () => import("../components/login/forgetPassword.vue");
 const newPassword = () => import("../components/login/newPassword.vue");
 const passwordCode = () => import("../components/login/passwordCode.vue");
@@ -15,6 +16,16 @@ const routes = [
     path: "/login",
     name: "login",
     component: Login,
+    beforeEnter: checkLoggedIn,
+    meta: {
+      layout: "AppAuthLayout",
+    },
+  },
+
+  {
+    path: "/logout",
+    name: "logout",
+    component: Logout,
     beforeEnter: checkLoggedIn,
     meta: {
       layout: "AppAuthLayout",
