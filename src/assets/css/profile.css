@@ -248,6 +248,10 @@ width: 130px;
     color: #ffffff;
     border: none;
   }
+    .justify_content_between {
+      -ms-flex-pack: justify !important;
+      justify-content: space-between !important;
+    }
             @media only screen and (max-width: 768px) {
               .contain {
                 display: grid;
@@ -258,7 +262,7 @@ width: 130px;
         justify-self: center;
         text-align: center;
       }
-            .justify-content-between {
+            .justify_content_between {
               -ms-flex-pack: center !important;
               justify-content:center !important;
             }
