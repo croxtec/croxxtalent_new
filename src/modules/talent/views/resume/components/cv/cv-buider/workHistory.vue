@@ -32,10 +32,10 @@
                 <span> <i-icon icon="material-symbols:edit-outline" /> </span>
               </div>
               <div
-              v-if="editing"
+                v-if="editing"
                 class="edit-icon bg-danger"
                 role="button"
-                @click="deleteRecord(item.id, item.school)"
+                @click="deleteRecord(item.id)"
               >
                 <span> <i-icon icon="fluent:delete-12-regular" /> </span>
               </div>
@@ -169,7 +169,9 @@
           </div>
 
           <div class="text-center">
-            <button class="primary--button" > {{ editing ? 'Edit' : 'Save' }} </button>
+            <button class="primary--button">
+              {{ editing ? "Edit" : "Save" }}
+            </button>
           </div>
         </form>
       </div>
@@ -192,47 +194,68 @@ export default {
     };
   },
   methods: {
-    ...mapActions("cvWorkHistory", ["list", "create", "update"]),
+    ...mapActions("cvWorkHistory", [
+      "list",
+      "create",
+      "update",
+      "deleteWorkExperience",
+    ]),
 
     getWorkExperiences() {
       this.list();
     },
 
-    createWorkExperience(){
-      this.create().then(() => {
-        this.list();
+    createWorkExperience() {
+      this.create(this.form)
+        this.list().then(() => {
         this.show_form = false;
       });
     },
 
-    updateWorkExperience(){
-      this.update({id: this.singleData.id, payload: this.form}).then(() => {
+    updateWorkExperience() {
+      this.update({ id: this.singleData.id, payload: this.form }).then(() => {
         this.list();
         this.editing = false;
       });
     },
 
     handleSubmit() {
-      if(this.editing) {
-        this.updateWorkExperience()
-      }
-      else {
-        this.createWorkExperience()
+      if (this.editing) {
+        this.updateWorkExperience();
+      } else {
+        this.createWorkExperience();
       }
     },
 
     edit(value) {
-      if(this.editing) {
-        this.editing = false
-        this.singleData = {}
-      }
-      else {
+      if (this.editing) {
+        this.editing = false;
+        this.singleData = {};
+      } else {
         this.singleData = value;
-        this.editing = true
+        this.editing = true;
       }
     },
 
-    deleteRecord() {},
+    deleteRecord(value) {
+      this.$swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.deleteWorkExperience(value).then(() => {
+            this.$swal.fire("Deleted!", "Your work experience has been deleted.", "success");
+            this.list();
+            this.editing = false
+          });
+        }
+      });
+    },
 
     loadStates() {
       let payload = {
@@ -269,18 +292,18 @@ export default {
   },
 
   watch: {
-    singleData: function(newValue) {
+    singleData: function (newValue) {
       if(newValue) {
         this.form = {
-        job_title_id: newValue.job_title_id,
-        employer: newValue.employer,
-        description: newValue.description,
-        city: newValue.city,
-        country_code: newValue.country_code,
-        start_date: newValue.start_date,
-        is_current: newValue.is_current,
-        end_date: newValue.end_date,
-      };
+          job_title_id: newValue.job_title_id,
+          employer: newValue.employer,
+          description: newValue.description,
+          city: newValue.city,
+          country_code: newValue.country_code,
+          start_date: newValue.start_date,
+          is_current: newValue.is_current,
+          end_date: newValue.end_date,
+        };
       }
     },
 

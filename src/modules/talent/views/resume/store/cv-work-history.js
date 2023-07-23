@@ -180,5 +180,39 @@ export default {
         commit("SET_ERROR", "Internal connection error, please try again.");
       }
     },
+
+     // Delete Work Experience
+     async deleteWorkExperience({ commit, dispatch }, id) {
+      commit("SET_LOADING");
+      try {
+        let response = await $request.delete("talent/resume/work-experiences/"+id);
+        console.log(response);
+        let responsePayload = response.data;
+        toastify({
+          text: `${responsePayload.message}`,
+          className: "info",
+          style: {
+            background: "green",
+            fontSize: "12px",
+            borderRadius: "5px",
+          },
+        }).showToast();
+        commit("SET_SUCCESS", true);
+        dispatch("list");
+      } catch (error) {
+        console.log(error.data);
+        if (error && error.data) {
+          let errorPayload = error.data;
+          if (errorPayload.message) {
+            commit("SET_ERROR", errorPayload.message);
+            if (errorPayload.errors) {
+              commit("SET_VALIDATION_ERRORS", errorPayload.errors);
+            }
+            return;
+          }
+        }
+        commit("SET_ERROR", "Internal connection error, please try again.");
+      }
+    },
   },
 };
