@@ -49,6 +49,8 @@
           >
         </div>
 
+      </div>
+      <div class="d-flex">
         <div class="mb-3 w-100">
           <label for="">Phone Number</label>
           <input
@@ -162,11 +164,12 @@
           Previous
         </button>
       </div>
+      <!-- 'secondary-btn': slide === 1  -->
       <div class="mb-3 mt-3 w-100">
         <button
           class="primary--button w-100 py-3"
           style="font-weight: 500"
-          :class="{ 'in-active': loading, 'secondary-btn': slide === 1 }"
+          :class="{ 'in-active': loading }"
           :disabled="loading"
           @click="register"
         >

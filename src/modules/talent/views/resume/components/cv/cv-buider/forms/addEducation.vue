@@ -156,10 +156,10 @@
                   v-slot="validationContext"
                   vid="end_date"
                   name="end_date"
-                  rules="required"
+                  rules=""
                 >
                   <label for=""
-                    >End Date<span class="text-danger">*</span></label
+                    >End Date</label
                   >
                   <input
                     :disabled="payload.is_current"
