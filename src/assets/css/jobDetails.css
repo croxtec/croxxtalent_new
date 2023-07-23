@@ -133,3 +133,13 @@
         line-height: 18.75px;
         font-weight: 700;
 }
+  @media only screen and (max-width: 768px) {
+.hidden_on_mobile{
+display: none !important;
+}	
+  }
+ @media only screen and (min-width: 768px) {
+.hidden_on_desktop {
+     display: none;
+    }      
+  }

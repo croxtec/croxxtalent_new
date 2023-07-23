@@ -3,11 +3,18 @@
     <header class="d-flex justify-content-between">
       <h6>Jobs</h6>
     </header>
-    <div class="">
+    <div class="hidden_on_desktop my-4">
       <div class="mobile_fliter_section p-2">
-        <img src="@/assets/icons/search-normal.svg" alt="" srcset="" class="" style="" />
+        <img
+          role="button"
+          src="@/assets/icons/search-normal.svg"
+          alt=""
+          srcset=""
+          class=""
+          style=""
+        />
         <input class="search-bar" type="search" placeholder="Job title or keyword" />
-        <img src="@/assets/icons/setting-5.svg" alt="" srcset="" class="" />
+        <img role="button" src="@/assets/icons/setting-5.svg" alt="" srcset="" class="" />
         <button class="primary--button text-white px-3">Search</button>
       </div>
     </div>
@@ -208,7 +215,7 @@
         </div>
       </div>
       <div class="">
-        <div class="d-flex hidden justify-content-between">
+        <div class="d-flex hidden_on_mobile justify-content-between">
           <p class="pt-3">Showing 73 results</p>
           <div class="sorting d-flex">
             <div class="sortBy mr-2 pt-3 d-flex">
