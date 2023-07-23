@@ -390,10 +390,10 @@ export default {
     this.questions = assessment.assesment.questions;
     this.assessments = assessment.assesment;
     this.assessmentsId = assessment.assesment.id;
-    console.log(this.assessments);
-    console.log(this.questions);
-    console.log(this.managerComment);
-    console.log(this.assessmentsId);
+    // console.log(this.assessments);
+    // console.log(this.questions);
+    // console.log(this.managerComment);
+    // console.log(this.assessmentsId);
   },
   watch: {},
 };
