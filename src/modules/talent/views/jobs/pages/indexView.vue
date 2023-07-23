@@ -228,7 +228,7 @@
         </div>
         <div class="job-list">
           <div v-if="activeView === '1'" class="column">
-            <div class="floter" v-for="job in jobs.slice(0, 7)" :key="job.id">
+            <div class="floter" v-for="job in paginatedItems" :key="job.id">
               <div class="job-card">
                 <div class="d-flex justify-content-between">
                   <img
@@ -263,11 +263,7 @@
             </div>
           </div>
           <div v-if="activeView === '2'" class="list">
-            <div
-              class="list-job my-3 d-flex"
-              v-for="job in jobs.slice(0, 7)"
-              :key="job.id"
-            >
+            <div class="list-job my-3 d-flex" v-for="job in paginatedItems" :key="job.id">
               <img
                 src="@/assets/img/round-logo.png"
                 alt=""
@@ -298,9 +294,14 @@
               </div>
             </div>
           </div>
-          <div class="mt-3">
-            <div class="d-flex gap-8 mt-4 mx-auto">
-              <button class="border-[1px] text-sm rounded-md py-1 px-2">
+          <div class="mt-5">
+            <div class="d-flex">
+              <div
+                @click="previousPage"
+                :disabled="currentPage === 1"
+                role="button"
+                class="pagination_button"
+              >
                 <svg
                   width="8"
                   height="14"
@@ -316,13 +317,27 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-              </button>
-              <div class="mt-4">
-                <span class="">1</span>
-                <span class="">2</span>
-                <span class=" ">3</span>
               </div>
-              <button class="border-[1px] text-sm rounded-md py-1 px-2">
+              <div class="">
+                <span
+                  role="button"
+                  v-for="(pageNumber, index) in pageNumbers"
+                  :key="pageNumber"
+                  @click="goToPage(pageNumber)"
+                  :class="{
+                    pagination_number_active: pageNumber === currentPage,
+                    pagination_number_inactive: pageNumber !== currentPage,
+                  }"
+                  class=""
+                  >{{ displayPageNumber(index, pageNumber) }}</span
+                >
+              </div>
+              <div
+                @click="nextPage"
+                :disabled="currentPage === totalPages"
+                role="button"
+                class="pagination_button"
+              >
                 <svg
                   width="9"
                   height="14"
@@ -338,7 +353,7 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-              </button>
+              </div>
             </div>
           </div>
         </div>
@@ -356,6 +371,8 @@ export default {
 
   data() {
     return {
+      currentPage: 1,
+      pageSize: 10,
       activeView: "1",
       layout: "row",
       vertical: false,
@@ -459,11 +476,76 @@ export default {
       this.salaryRange = !this.salaryRange;
       this.show4 = !this.show4;
     },
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+    goToPage(pageNumber) {
+      this.currentPage = pageNumber;
+    },
+    displayPageNumber(index, pageNumber) {
+      if (this.totalPages <= 5) {
+        return pageNumber;
+      } else {
+        if (index === 2 || index === this.totalPages - 3) {
+          return "...";
+        } else if (index > 1 && index < this.totalPages - 2) {
+          if (this.currentPage >= pageNumber - 1 && this.currentPage <= pageNumber + 1) {
+            return pageNumber;
+          } else {
+            return "";
+          }
+        } else {
+          return pageNumber;
+        }
+      }
+    },
+  },
+  computed: {
+    paginatedItems() {
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      return this.jobs.slice(startIndex, endIndex);
+    },
+    totalPages() {
+      return Math.ceil(this.jobs.length / this.pageSize);
+    },
+    pageNumbers() {
+      const numbers = [];
+      for (let i = 1; i <= this.totalPages; i++) {
+        numbers.push(i);
+      }
+      return numbers;
+    },
   },
 };
 </script>
 
 <style scoped>
+.pagination_button {
+  padding: 0px 20px;
+  /* border: 1px solid #e5e7eb; */
+  border-radius: 0.375rem;
+}
+.pagination_number_active {
+  background-color: #0040a1;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+.pagination_number_inactive {
+  background-color: #ffffff;
+  color: #0040a1;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
 .rotate-180 {
   transform: rotate(180deg);
 }
@@ -561,7 +643,7 @@ h5 {
 .job-grid {
   display: grid;
   grid-template-columns: 20% 80%;
-  gap: 1px;
+  gap: 1.4rem;
 }
 .fa-ellipsis-h {
   cursor: pointer;
@@ -613,7 +695,8 @@ h5 {
 .employment-card div > input {
   width: 24px;
   height: 24px;
-  outline: 2px solid #c2dbff;
+  border: 2px solid #c2dbff !important;
+  border-radius: 4px;
   /* margin-top: 50px; */
 }
 .job-filter h6 {
@@ -734,5 +817,12 @@ progress {
 .justify-between {
   justify-content: space-between;
   display: flex;
+}
+@media only screen and (max-width: 768px) {
+  .job-grid {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 1.4rem;
+  }
 }
 </style>
