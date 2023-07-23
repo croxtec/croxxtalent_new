@@ -799,6 +799,7 @@ export default {
 }
 .pagination_section {
   margin: 100px auto;
+  width: 40%;
 }
 .pagination_button {
   padding: 0px 20px;
