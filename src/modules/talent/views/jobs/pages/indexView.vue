@@ -512,8 +512,8 @@
               </div>
             </div>
           </div>
-          <div class="mt-5 mx-auto pagination_section">
-            <div class="d-flex">
+          <div class="pagination_section">
+            <div class="mt-5 pagination_buttons">
               <div
                 @click="previousPage"
                 :disabled="currentPage === 1"
@@ -536,7 +536,7 @@
                   />
                 </svg>
               </div>
-              <div class="">
+              <div>
                 <span
                   role="button"
                   v-for="(pageNumber, index) in pageNumbers"
@@ -757,6 +757,9 @@ export default {
 </script>
 
 <style scoped>
+.job-list {
+  min-height: 100vh;
+}
 .drop_down_section {
   position: absolute;
   top: 70px;
@@ -797,10 +800,14 @@ export default {
   background-color: transparent;
   font-size: 14px;
 }
-.pagination_section {
+.pagination_buttons {
+  display: flex;
+  width: 10%;
   margin: 100px auto;
-  width: 40%;
 }
+/* .pagination_section {
+  margin: 100px auto;
+} */
 .pagination_button {
   padding: 0px 20px;
   /* border: 1px solid #e5e7eb; */
@@ -1096,6 +1103,11 @@ progress {
     display: grid;
     grid-template-columns: auto;
     gap: 1.4rem;
+  }
+  .pagination_buttons {
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
   }
 }
 </style>
