@@ -44,14 +44,9 @@
     <div class="mt-5">
       <h5 style="font-size: 18px; font-weight: 600">Hobbies</h5>
       <p class="small text-muted">Tell us what you do for fun</p>
-      <div class="mt-2" v-if="add_hobbies">
+      <div class="mt-2">
         <AddHobbies />
       </div>
-      <hr />
-      <button class="add-item-button" @click="add_hobbies = !add_hobbies">
-        <span> <i-icon icon="clarity:plus-line" /> </span>
-        <span>Add Hobbies</span>
-      </button>
     </div>
   </div>
 </template>
