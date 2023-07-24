@@ -91,25 +91,15 @@
         </validation-observer>
       </div>
     </div>
-
-    <success-alert v-if="result === 'success'" @close="close">
-      <p>{{ success }}</p>
-    </success-alert>
-
-    <error-alert v-if="result === 'error'" @close="close">
-      <p>{{ error }}</p>
-    </error-alert>
-
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
-import ErrorAlert from "@/components/alerts/errorAlert.vue";
-import successAlert from "@/components/alerts/successAlert.vue";
+import Swal from 'sweetalert2'
 
 export default {
-  components: { successAlert, ErrorAlert },
+  components: { },
   data() {
     return {
       form: {
@@ -136,17 +126,25 @@ export default {
     createRecord(){
       this.$store.dispatch("cvCompetency/create", {payload: this.form}).then(() => {
           if(this.error){
-            this.result = 'error'
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: this.error,
+            });
           }else{
-            this.result = 'success'
-            this.close();
+            Swal.fire({
+              icon: 'success',
+              title: 'Successful',
+              text: "Competency created successfully",
+            });
+            this.$emit('close')
           }
       });  
 
     },
 
     close() {
-      // this.form
+     
     },
   },
 

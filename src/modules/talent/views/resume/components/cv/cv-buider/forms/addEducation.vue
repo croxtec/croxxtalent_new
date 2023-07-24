@@ -159,8 +159,7 @@
                   rules="required"
                 >
                   <label for=""
-                    >End Date<span class="text-danger">*</span></label
-                  >
+                    >End Date</label>
                   <input
                     :disabled="payload.is_current"
                     type="date"
