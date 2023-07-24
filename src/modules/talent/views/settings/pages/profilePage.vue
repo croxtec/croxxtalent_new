@@ -4,6 +4,7 @@
     <div>
       <div class="user-img-container">
         <img class="user-img" src="@/assets/icons/no-user.png" />
+        <img class="" src="@/assets/icons/editIcon.svg" />
       </div>
       <p class="text-center">Upload A Profile Picture</p>
     </div>

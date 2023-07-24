@@ -2,7 +2,7 @@
   <div>
     <!-- <h5 class="title">Profile</h5> -->
     <div class="contain mt-5">
-      <div class="user-profile justify-content-between">
+      <div class="user-profile justify_content_between">
         <!-- <div class="profile-pic"> -->
         <img
           src="@/assets/img/profilePics.png"
@@ -21,7 +21,7 @@
             <span class="location my-3 ml-2">Lagos, Nigeria</span>
           </div>
         </div>
-        <div class="buttons_section justify-content-between">
+        <div class="buttons_section justify_content_between">
           <button @click="gotoSettings()" class="primary-button">Edit profile</button>
           <button class="button-outline">View resume</button>
         </div>
@@ -50,7 +50,7 @@
 
     <div class="my-5">
       <h5 class="competencies-badge my-4">Competencies/Badge</h5>
-      <div class="badge-section justify-content-between">
+      <div class="badge-section justify_content_between">
         <img
           src="@/assets/img/licence.png"
           alt=""
@@ -82,11 +82,11 @@
       <h5 class="experiences my-4">Experiences</h5>
       <div class="experience-card my-5">
         <div
-          class="experience-details justify-content-between my-4"
+          class="experience-details justify_content_between my-4"
           v-for="competency in competencies"
           :key="competency"
         >
-          <div class="details justify-content-between">
+          <div class="details justify_content_between">
             <img src="@/assets/img/round-logo.png" alt="" />
 
             <div class="details-name my-2">
@@ -94,7 +94,7 @@
               <span class="details-location">Rainoil . warri,Delta . full-Time</span>
             </div>
           </div>
-          <div class="details justify-content-between">
+          <div class="details justify_content_between">
             <div class="details-duration my-2">
               <h6>Duration</h6>
               <span>July 2016 - May 2017</span>
@@ -129,7 +129,10 @@ export default {
 
   methods: {
     gotoBackpack() {
-      return this.$router.push({ name: "profile-detail", params: {id: '112267wte8fgydbh' }});
+      return this.$router.push({
+        name: "profile-detail",
+        params: { id: "112267wte8fgydbh" },
+      });
     },
     gotoSettings() {
       return this.$router.push({ name: "settings" });

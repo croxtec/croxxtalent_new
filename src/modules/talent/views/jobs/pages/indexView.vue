@@ -3,6 +3,224 @@
     <header class="d-flex justify-content-between">
       <h6>Jobs</h6>
     </header>
+    <div class="hidden_on_desktop mobile_fliter_section_container my-4">
+      <div class="mobile_fliter_section p-2">
+        <img
+          role="button"
+          src="@/assets/icons/search-normal.svg"
+          alt=""
+          srcset=""
+          class=""
+          style=""
+        />
+        <input class="search-bar" type="search" placeholder="Job title or keyword" />
+        <img
+          @click="showMobileFilter"
+          role="button"
+          src="@/assets/icons/setting-5.svg"
+          alt=""
+          srcset=""
+          class=""
+        />
+        <button class="primary--button text-white px-3">Search</button>
+      </div>
+      <div v-if="mobileFilter" class="drop_down_section py-4">
+        filter
+        <span @click="showEmployment">
+          <h6 class="my-3 justify-between">
+            Type of Employment
+            <!-- <ArrowUp class="rotate-defult" :class="{ 'rotate-180': show1 }" /> -->
+            <svg
+              :class="{ 'rotate-180': show1 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show1"></i> -->
+          </h6>
+        </span>
+        <div class="employment-card" v-if="employment">
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Full-time (3)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">part-time (5)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Remote (2)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Internship (24)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Contract (3)</span>
+          </div>
+        </div>
+        <span @click="showCategories">
+          <h6 class="my-3 justify-between">
+            Categories
+            <svg
+              :class="{ 'rotate-180': show2 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i> -->
+          </h6>
+        </span>
+        <div class="employment-card" v-if="categories">
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Design (24)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">sales (3)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Marketing (3)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Human Resource (6)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Finance (4)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Engineering (4)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Technology (5)</span>
+          </div>
+        </div>
+        <span @click="showJobLevel">
+          <h6 class="my-3 justify-between">
+            Job Level
+            <svg
+              :class="{ 'rotate-180': show3 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i> -->
+          </h6>
+        </span>
+        <div class="employment-card" v-if="jobLevel">
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Entry Level (57)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">mid level (3)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Senior Level (5)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Director (6)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">Vp or Above (4)</span>
+          </div>
+        </div>
+        <span @click="showSalaryRange">
+          <h6 class="my-3 justify-between">
+            Salary Range
+            <svg
+              :class="{ 'rotate-180': show4 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i
+            ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i> -->
+          </h6>
+        </span>
+        <div class="employment-card" v-if="salaryRange">
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">N700 - N1000 (57)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">N100 - N1500 (3)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">N1500 - N2000 (5)</span>
+          </div>
+          <div class="my-3">
+            <input type="checkbox" name="" id="" />
+            <span class="ml-3">N3000 or Above (6)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="job-grid">
       <div class="job-filter pr-2">
         <span @click="showEmployment">
@@ -199,7 +417,7 @@
         </div>
       </div>
       <div class="">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex hidden_on_mobile justify-content-between">
           <p class="pt-3">Showing 73 results</p>
           <div class="sorting d-flex">
             <div class="sortBy mr-2 pt-3 d-flex">
@@ -294,7 +512,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-5">
+          <div class="mt-5 mx-auto pagination_section">
             <div class="d-flex">
               <div
                 @click="previousPage"
@@ -386,6 +604,7 @@ export default {
       show2: false,
       show3: false,
       show4: false,
+      mobileFilter: false,
       jobs: [
         {
           title: "Chemical Engineer",
@@ -472,6 +691,9 @@ export default {
       this.jobLevel = !this.jobLevel;
       this.show3 = !this.show3;
     },
+    showMobileFilter() {
+      this.mobileFilter = !this.mobileFilter;
+    },
     showSalaryRange() {
       this.salaryRange = !this.salaryRange;
       this.show4 = !this.show4;
@@ -508,6 +730,9 @@ export default {
     },
   },
   computed: {
+    // jobs() {
+    //   return this.$store.getters["jobsModule/jobs"];
+    // },
     paginatedItems() {
       const startIndex = (this.currentPage - 1) * this.pageSize;
       const endIndex = startIndex + this.pageSize;
@@ -524,10 +749,58 @@ export default {
       return numbers;
     },
   },
+  mounted() {
+    this.$store.dispatch("jobsModule/getJobs");
+    console.log(Array.isArray(this.jobs));
+  },
 };
 </script>
 
 <style scoped>
+.drop_down_section {
+  position: absolute;
+  top: 70px;
+  /* left: 1041px; */
+  transform-origin: center top;
+  z-index: 2003;
+  border: 1px solid var(--blue-100) !important;
+  box-shadow: unset !important;
+  width: 100% !important;
+  border-radius: 35px !important;
+  padding: 12px;
+  background: #ffffff;
+  max-height: 100vh;
+  overflow: auto;
+}
+.mobile_fliter_section_container {
+  position: relative;
+}
+.mobile_fliter_section {
+  border-radius: 60px;
+  display: flex;
+  gap: 4px;
+  display: inline-flex;
+  display: -webkit-flex;
+  align-items: center;
+  border: 0.5px solid #e0e0e0;
+  box-shadow: 0px 2px 8px 0px #e0e0e0;
+  padding: 16px;
+}
+.search-bar {
+  width: 100%;
+  padding: 12px 14px;
+  font-weight: 400;
+  outline: none;
+  border-bottom: 4px solid var(--blue-200);
+  border: 4px 0px 5px solid var(--blue-200);
+  border-radius: 0px;
+  background-color: transparent;
+  font-size: 14px;
+}
+.pagination_section {
+  margin: 100px auto;
+  width: 40%;
+}
 .pagination_button {
   padding: 0px 20px;
   /* border: 1px solid #e5e7eb; */
