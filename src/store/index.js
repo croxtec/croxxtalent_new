@@ -45,13 +45,10 @@ export default new Vuex.Store({
     cvEducation,
     cvCertification,
     cvCompetency,
-<<<<<<< HEAD
     jobsModule,
-=======
     cvWorkHistory,
     cvHobby,
     
->>>>>>> 1a2f4995996c1aaa17fbfacaea989d2d5587774d
     manager,
     competencies,
 

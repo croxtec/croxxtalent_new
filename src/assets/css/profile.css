@@ -295,26 +295,24 @@
     -ms-flex-pack: center !important;
     /* justify-content: center !important; */
   }
-<<<<<<< HEAD
-    .justify_content_between {
-      -ms-flex-pack: justify !important;
-      justify-content: space-between !important;
-    }
-            @media only screen and (max-width: 768px) {
-              .contain {
-                display: grid;
-                grid-template-columns: auto;
-                gap: 20px;
-              }
+  .justify_content_between {
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
+  }
+
+  @media only screen and (max-width: 768px) {
+      .contain {
+        display: grid;
+        grid-template-columns: auto;
+        gap: 20px;
+      }
       .justify-center{
         justify-self: center;
         text-align: center;
       }
-            .justify_content_between {
-              -ms-flex-pack: center !important;
-              justify-content:center !important;
-            }
-            }
-=======
+      .justify_content_between {
+        -ms-flex-pack: center !important;
+        justify-content:center !important;
+      }
+    }
 }
->>>>>>> 1a2f4995996c1aaa17fbfacaea989d2d5587774d
