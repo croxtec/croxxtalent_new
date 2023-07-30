@@ -455,8 +455,14 @@
                     srcset=""
                     class="img-fluid"
                     style="width: 40px"
+                    @click="redirectToJobDetails(job.id)"
+                    role="button"
                   />
-                  <i class="fa fa-ellipsis-h" @click="showOptionModal(job.id)"></i>
+                  <!-- <MoreIcon role="button" @click="showOptionModal(job.id)" /> -->
+
+                  <i class="" role="button" @click="showOptionModal(job.id)">
+                    <MoreIcon />
+                  </i>
                   <div class="option-modal py-2" v-if="optionModal === job.id">
                     <span>Apply</span>
                     <hr />
@@ -467,7 +473,8 @@
                 </div>
                 <div class="my-3">
                   <h5>{{ job.title }}</h5>
-                  <span>Agency</span> . <span>San Fransisco, US</span>
+                  <span>{{ job.section }}</span> .
+                  <span>{{ job.location }}</span>
                 </div>
                 <p class="d-block text-truncate content">
                   Dropbox is looking for Brand <br />
@@ -481,33 +488,44 @@
             </div>
           </div>
           <div v-if="activeView === '2'" class="list">
-            <div class="list-job my-3 d-flex" v-for="job in paginatedItems" :key="job.id">
-              <img
-                src="@/assets/img/round-logo.png"
-                alt=""
-                class="img-fluid m-3"
-                style="width: 64px; height: 64px"
-              />
+            <div
+              class="list-job my-3 d-flex justify-content-between"
+              v-for="job in paginatedItems"
+              :key="job.id"
+            >
+              <div class="d-flex">
+                <img
+                  src="@/assets/img/round-logo.png"
+                  alt=""
+                  class="img-fluid m-3"
+                  style="width: 64px; height: 64px"
+                  @click="redirectToJobDetails(job.id)"
+                  role="button"
+                />
+                <div>
+                  <div class="job-content">
+                    <div class="job-container">
+                      <h5 class="content-header">{{ job.title }}</h5>
+                    </div>
+                    <div class="location">
+                      <span>{{ job.section }}</span> .
+                      <span>{{ job.location }}</span>
+                    </div>
+                    <div class="options d-flex">
+                      <div class="option-tags mt-3">
+                        <span class="full-time">Full-Time</span> |
+                        <span class="off-shore mr-2">Off-shore</span>
+                        <span class="design">Design</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div>
-                <div class="job-content">
-                  <div class="job-container">
-                    <h5 class="content-header">{{ job.title }}</h5>
-                    <i class="fa fa-ellipsis-h"></i>
-                  </div>
-                  <div class="location">
-                    <span>Rain Oil</span> . <span>Paris, France</span>
-                  </div>
-                  <div class="options d-flex justify-content-between">
-                    <div class="option-tags mt-3">
-                      <span class="full-time">Full-Time</span> |
-                      <span class="off-shore mr-2">Off-shore</span>
-                      <span class="design">Design</span>
-                    </div>
-                    <div class="option-progress">
-                      <progress value="45" max="100"></progress><br />
-                      <span>5 applied of 10 capacity</span>
-                    </div>
-                  </div>
+                <MoreIcon />
+                <div class="option-progress">
+                  <progress value="45" max="100"></progress><br />
+                  <span>5 applied of 10 capacity</span>
                 </div>
               </div>
             </div>
@@ -584,8 +602,9 @@
 import ColumnIcon from "../components/icons/ColumnIcon.vue";
 import RowIcon from "../components/icons/RowIcon.vue";
 import ArrowUp from "../components/icons/ArrowUp.vue";
+import MoreIcon from "../components/icons/MoreIcon.vue";
 export default {
-  components: { ArrowUp, RowIcon, ColumnIcon },
+  components: { ArrowUp, RowIcon, ColumnIcon, MoreIcon },
 
   data() {
     return {
@@ -641,7 +660,7 @@ export default {
         },
         {
           title: "Software Engineer",
-          id: 16,
+          id: 4,
           section: "Agency",
           location: "San Fransisco, US",
           description:
@@ -652,7 +671,7 @@ export default {
         },
         {
           title: "Software Engineer",
-          id: 16,
+          id: 5,
           section: "Agency",
           location: "San Fransisco, US",
           description:
@@ -665,6 +684,9 @@ export default {
     };
   },
   methods: {
+    redirectToJobDetails(jobId) {
+      this.$router.push({ name: "job-Details", params: { id: jobId } });
+    },
     setLayout(layout) {
       this.layout = layout;
     },

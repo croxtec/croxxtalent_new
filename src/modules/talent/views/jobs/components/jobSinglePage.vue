@@ -9,12 +9,21 @@ export default {
       percentage: 30,
     };
   },
+  methods: {
+    goBack() {
+      this.$router.push({ name: "jobs" });
+    },
+  },
 };
 </script>
 <template>
   <div>
     <header class="d-flex mb-4">
-      <BackIcon />
+                        <i class="" role="button" @click="goBack()">
+                      <BackIcon />
+                    </i>
+
+      <!-- <BackIcon role="button" @click="goBack()" /> -->
       <h6 class="py-2 pl-2">Job Description</h6>
     </header>
     <div class="job-details-container">
@@ -60,7 +69,7 @@ export default {
           </div>
         </div>
         <div>
-          <div style="display: none" class=" apply_button gap-2">
+          <div style="display: none" class="apply_button gap-2">
             <div>
               <button class="primary--button_border mt-5 p-2 px-5 align-items-center">
                 <span>Save</span>
