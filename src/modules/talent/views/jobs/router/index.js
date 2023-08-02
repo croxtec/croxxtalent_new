@@ -33,7 +33,7 @@ const routes = [
     },
   },
   {
-    path: "/job-details",
+    path: "/job-details/:id",
     name: "job-Details",
     component: JobDetails,
     meta: {

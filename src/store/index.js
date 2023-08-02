@@ -45,6 +45,9 @@ export default new Vuex.Store({
     cvEducation,
     cvCertification,
     cvCompetency,
+    cvWorkHistory,
+    cvHobby,
+    
     jobsModule,
     cvWorkHistory,
     cvHobby,
