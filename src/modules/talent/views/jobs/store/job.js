@@ -13,24 +13,28 @@ const getDefaultState = () => {
 
 const jobsModule = {
     namespaced: true,
-    state: getDefaultState(),
+    state: getDefaultState,
     getters: {
+          jobs: (state) => state.jobs,
+
     },
     mutations: {
-        SUCCESS(state) {
-            state.status.success = true
-        },
+        SUCCESS(state, jobs) {
+        state.jobs = jobs;
+        state.status.success = true;
+    },
         FAILURE(state) {
             state.status.success = false
         }
 
     },
     actions: {
+      // List All action
 
         async getJobs({ commit }){
             try {
                 let response = await $request.get(`/jobs`);
-                commit('SUCCESS')
+                commit('SUCCESS', response.data.data.data); // Pass the jobs data to the mutation
                 return Promise.resolve(response.data.data.data);
               } catch (errors) {
                 commit('FAILURE')
@@ -40,8 +44,8 @@ const jobsModule = {
           async getJobsDetails({ commit }, id){
             try {
                 let response = await $request.get(`/jobs/${id}`);
-                commit('SUCCESS')
-                return Promise.resolve(response.data.data.data);
+                commit('SUCCESS', response.data); // Pass the jobs data to the mutation
+                return Promise.resolve(response.data);
               } catch (errors) {
                 commit('FAILURE')
                 console.log(errors);

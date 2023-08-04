@@ -251,23 +251,53 @@
         </span>
         <div class="employment-card" v-if="employment">
           <div class="my-3">
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              v-model="filterMappings.typeOfEmployment.fullTime"
+              @change="applyFilters"
+            />
             <span class="ml-3">Full-time (3)</span>
           </div>
           <div class="my-3">
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              v-model="filterMappings.typeOfEmployment.fullTime"
+              @change="applyFilters"
+            />
             <span class="ml-3">part-time (5)</span>
           </div>
           <div class="my-3">
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              v-model="filterMappings.typeOfEmployment.fullTime"
+              @change="applyFilters"
+            />
             <span class="ml-3">Remote (2)</span>
           </div>
           <div class="my-3">
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              v-model="filterMappings.typeOfEmployment.fullTime"
+              @change="applyFilters"
+            />
             <span class="ml-3">Internship (24)</span>
           </div>
           <div class="my-3">
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              v-model="filterMappings.typeOfEmployment.fullTime"
+              @change="applyFilters"
+            />
             <span class="ml-3">Contract (3)</span>
           </div>
         </div>
@@ -472,7 +502,7 @@
                   </div>
                 </div>
                 <div class="my-3">
-                  <h5>{{ job.title }}</h5>
+                  <h5>{{ job.job_title }}</h5>
                   <span>{{ job.section }}</span> .
                   <span>{{ job.location }}</span>
                 </div>
@@ -521,8 +551,8 @@
                   </div>
                 </div>
               </div>
-              <div>
-                <MoreIcon />
+              <div class="d-block justify-content-between">
+                <MoreIcon class="justify-self-end" />
                 <div class="option-progress">
                   <progress value="45" max="100"></progress><br />
                   <span>5 applied of 10 capacity</span>
@@ -599,13 +629,13 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 import ColumnIcon from "../components/icons/ColumnIcon.vue";
 import RowIcon from "../components/icons/RowIcon.vue";
 import ArrowUp from "../components/icons/ArrowUp.vue";
 import MoreIcon from "../components/icons/MoreIcon.vue";
 export default {
   components: { ArrowUp, RowIcon, ColumnIcon, MoreIcon },
-
   data() {
     return {
       currentPage: 1,
@@ -624,7 +654,8 @@ export default {
       show3: false,
       show4: false,
       mobileFilter: false,
-      jobs: [
+      // jobs: [],
+      jobss: [
         {
           title: "Chemical Engineer",
           id: 1,
@@ -681,9 +712,44 @@ export default {
           //  ]
         },
       ],
+      filterMappings: {
+        typeOfEmployment: {
+          fullTime: false,
+          partTime: false,
+          remote: false,
+          internship: false,
+          contract: false,
+        },
+        categories: {
+          Design: 1,
+          sales: 2,
+          Marketing: 3,
+          "Human Resource": 4,
+          Finance: 5,
+          Engineering: 6,
+          Technology: 7,
+        },
+        jobLevel: {
+          "Entry Level": 1,
+          "mid level": 2,
+          "Senior Level": 3,
+          Director: 4,
+          "Vp or Above": 5,
+        },
+        salaryRange: {
+          "N700 - N1000": 1,
+          "N100 - N1500": 2,
+          "N1500 - N2000": 3,
+          "N3000 or Above": 4,
+        },
+      },
     };
   },
   methods: {
+    applyFilters() {
+      // Trigger filtering when checkboxes change
+      this.$forceUpdate(); // Force update the computed property filteredItems
+    },
     redirectToJobDetails(jobId) {
       this.$router.push({ name: "job-Details", params: { id: jobId } });
     },
@@ -751,10 +817,59 @@ export default {
       }
     },
   },
+  created() {
+    // Dispatch the getJobs action when the component is created
+    // this.getJobs();
+  },
+
   computed: {
-    // jobs() {
-    //   return this.$store.getters["jobsModule/jobs"];
-    // },
+    ...mapActions("jobsModule", ["getJobs"]),
+    // ...mapGetters("jobsModule", ["jobs"]),
+
+    filteredItem() {
+      let filteredItems = this.paginatedItems.slice(); // Create a copy of the original paginatedItems array
+
+      // Sorting by Type of Employment
+      if (this.filters.typeOfEmployment) {
+        filteredItems.sort((a, b) => {
+          const typeA = this.filterMappings.typeOfEmployment[a.typeOfEmploymentProperty];
+          const typeB = this.filterMappings.typeOfEmployment[b.typeOfEmploymentProperty];
+          return typeA - typeB;
+        });
+      }
+
+      // Sorting by Categories
+      if (this.filters.categories) {
+        filteredItems.sort((a, b) => {
+          const categoryA = this.filterMappings.categories[a.categoriesProperty];
+          const categoryB = this.filterMappings.categories[b.categoriesProperty];
+          return categoryA - categoryB;
+        });
+      }
+
+      // Sorting by Job Level
+      if (this.filters.jobLevel) {
+        filteredItems.sort((a, b) => {
+          const jobLevelA = this.filterMappings.jobLevel[a.jobLevelProperty];
+          const jobLevelB = this.filterMappings.jobLevel[b.jobLevelProperty];
+          return jobLevelA - jobLevelB;
+        });
+      }
+
+      // Sorting by Salary Range
+      if (this.filters.salaryRange) {
+        filteredItems.sort((a, b) => {
+          const salaryRangeA = this.filterMappings.salaryRange[a.salaryRangeProperty];
+          const salaryRangeB = this.filterMappings.salaryRange[b.salaryRangeProperty];
+          return salaryRangeA - salaryRangeB;
+        });
+      }
+
+      return filteredItems;
+    },
+    jobs() {
+      return this.$store.getters["jobsModule/jobs"];
+    },
     paginatedItems() {
       const startIndex = (this.currentPage - 1) * this.pageSize;
       const endIndex = startIndex + this.pageSize;
@@ -773,12 +888,16 @@ export default {
   },
   mounted() {
     this.$store.dispatch("jobsModule/getJobs");
-    console.log(Array.isArray(this.jobs));
+    // console.log(Array.isArray(this.jobs));
+    // console.log(this.getJobs);
   },
 };
 </script>
 
 <style scoped>
+.justify-self-end {
+  justify-self: end;
+}
 .job-list {
   min-height: 100vh;
 }
