@@ -494,21 +494,20 @@
                     <MoreIcon />
                   </i>
                   <div class="option-modal py-2" v-if="optionModal === job.id">
-                    <span>Apply</span>
+                    <span @click="handleAppliedforjobs(job.id)" role="button">Apply</span>
                     <hr />
-                    <span>Save</span>
+                    <span @click="handleSavejobs(job.id)" role="button">Save</span>
                     <hr />
                     <span>Archive</span>
                   </div>
                 </div>
                 <div class="my-3">
                   <h5>{{ job.job_title }}</h5>
-                  <span>{{ job.section }}</span> .
-                  <span>{{ job.location }}</span>
+                  <span>{{ job.industry_name }}</span> .
+                  <span> {{ job.state_name }}, {{ job.country_name }}</span>
                 </div>
                 <p class="d-block text-truncate content">
-                  Dropbox is looking for Brand <br />
-                  Designer to help the team to be able to access all of the required state
+                  {{ job.summary }}
                 </p>
                 <div class="d-flex mt-4 justify-content-between">
                   <span class="drilling">Drilling</span>
@@ -543,7 +542,8 @@
                     </div>
                     <div class="options d-flex">
                       <div class="option-tags mt-3">
-                        <span class="full-time">Full-Time</span> |
+                        <span class="full-time"> {{ job.work_type }} </span>
+                        |
                         <span class="off-shore mr-2">Off-shore</span>
                         <span class="design">Design</span>
                       </div>
@@ -816,6 +816,14 @@ export default {
         }
       }
     },
+    async handleAppliedforjobs(id) {
+      const resp = await this.$store.dispatch("jobsModule/applyForJobs", id);
+      console.log(resp);
+    },
+    async handleSavejobs(id) {
+      const resp = await this.$store.dispatch("jobsModule/savedJobs", id);
+      console.log(resp);
+    },
   },
   created() {
     // Dispatch the getJobs action when the component is created
@@ -823,7 +831,7 @@ export default {
   },
 
   computed: {
-    ...mapActions("jobsModule", ["getJobs"]),
+    // ...mapActions("jobsModule", ["getJobs"]),
     // ...mapGetters("jobsModule", ["jobs"]),
 
     filteredItem() {

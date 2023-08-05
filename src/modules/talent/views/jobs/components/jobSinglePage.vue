@@ -14,6 +14,10 @@ export default {
     goBack() {
       this.$router.push({ name: "jobs" });
     },
+    async handleAppliedforjobs(id) {
+      const resp = await this.$store.dispatch("jobsModule/applyForJobs", id);
+      console.log(resp);
+    },
   },
   mounted() {
     this.$store.dispatch("jobsModule/getJobsDetails", this.$route.params.id).then(
@@ -44,12 +48,14 @@ export default {
           <img class="img-fluid" src="@/assets/img/round-logo.png" />
           <div class="pl-4">
             <h6 class="job-title">{{ job.job_title }}</h6>
-            <p class="job-sub-title">Dest oil . {{ job.city }}, {{ job.country.name }}</p>
+            <p class="job-sub-title">
+              {{ job.industry_name }} . {{ job.state_name }}, {{ job.country_name }}
+            </p>
 
             <div class="d-flex justify-content-between">
               <div class="d-flex lable-section">
                 <div>
-                  <div class="green-label">Full-Time</div>
+                  <div class="green-label">{{ job.work_type }}</div>
                 </div>
                 <div><div class="line"></div></div>
                 <div><div class="yellow-label">Mudlogging</div></div>
@@ -176,6 +182,7 @@ export default {
         <button
           class="primary--button mt-5 p-3 px-5 d-flex align-items-center mx-auto"
           style="gap: 10px"
+          @click="handleAppliedforjobs(job.id)"
         >
           <span>Apply Now</span>
         </button>

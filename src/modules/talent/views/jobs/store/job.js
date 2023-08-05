@@ -71,9 +71,9 @@ const jobsModule = {
                 console.log(errors);
               }
         },
-       async appliedForJobs({ commit },payload){
+       async applyForJobs({ commit },id){
             try {
-                let response = await $request.post(`/jobs/applied`,payload);
+                let response = await $request.post(`/jobs/applied`,id);
                 commit('SUCCESS')
                 return Promise.resolve(response.data.data.data);
               } catch (errors) {
@@ -82,9 +82,9 @@ const jobsModule = {
               }
         },
         
-       async savedJobs({ commit },payload){
+       async savedJobs({ commit },id){
             try {
-                let response = await $request.post(`/jobs/saved`,payload);
+                let response = await $request.post(`/jobs/saved`,id);
                 commit('SUCCESS')
                 return Promise.resolve(response.data.data.data);
               } catch (errors) {
