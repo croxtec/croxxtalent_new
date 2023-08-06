@@ -50,6 +50,10 @@
     .container {
         width: 85%;
     }
+    .col-widget-4{
+        flex: 0 0 31.5%;
+        max-width: 31.5%;
+    }
 }
 @media (min-width: 992px) {
     .container {

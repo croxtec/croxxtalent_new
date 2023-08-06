@@ -394,17 +394,17 @@ export default {
       } else if (this.currentQuestion.type === "checkbox") {
         this.selectedOption = this.checkedOptions;
       } else {
-                this.selectedOption = null;
+          this.selectedOption = null;
 
       }
+
       const payload = {
         assesment_id: this.assessments.id,
         question_id: this.currentQuestion.id,
         answer: this.selectedOption,
       };
-      const resp = await this.$store.dispatch("assessmentModule/submitAssesmentAnswers", {
-        payload,
-      });
+
+      const resp = await this.$store.dispatch("assessmentModule/submitAssesmentAnswers", payload);
     },
 
     async handleConfirmation() {

@@ -30,9 +30,9 @@
                 <div class="d-flex align-items-center" style="gap: 15px">
                   <img src="https://menofvalue.com/wp-content/uploads/2015/04/bigstock-Skeptical-74315989-e1438791711725.jpg" alt="" style="" />
                   <div class="td">
-                    <h6 class="cell-content">Stanley Joshua</h6>
+                    <h6 class="cell-content">{{  item?.talent?.name  }}</h6>
                     <h6 class="cell-header">
-                      Rain Oil
+                      {{  item?.talent?.job_code.job_title  }}
                       <span> <i-icon icon="ph:dot" /> </span>
                       Warri, Rivers
                       <span> <i-icon icon="ph:dot" /> </span>
@@ -58,7 +58,7 @@
                   class="button primary-btn py-2"
                   style="width: max-content"
                 >
-                  Mark Test
+                  Mark Test ({{ item.score_average }})
                 </button>
                 <!-- v-if="item.is_published === 0" -->
                 <!-- <button @click="viewScore(item)"

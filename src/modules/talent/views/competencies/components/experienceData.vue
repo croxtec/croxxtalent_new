@@ -25,7 +25,7 @@
               <el-collapse-item  v-for="(employee, key) in experience" :key="employee.id"
                 :title="employee.employer.display_name +' - '+ employee.job_code.job_title " :name="key">
                 <div class="skills-content mt-3">
-                  <CompetenciesCard class="col-md-4"  v-for="skill in employee.competence" :key="skill.id" :cxCompetence="skill"/>
+                  <CompetenciesCard class="col-widget-4"  v-for="skill in employee.competence" :key="skill.id" :cxCompetence="skill"/>
                 </div>
               </el-collapse-item>
             </el-collapse>
