@@ -13,24 +13,28 @@ const getDefaultState = () => {
 
 const jobsModule = {
     namespaced: true,
-    state: getDefaultState(),
+    state: getDefaultState,
     getters: {
+          jobs: (state) => state.jobs,
+
     },
     mutations: {
-        SUCCESS(state) {
-            state.status.success = true
-        },
+        SUCCESS(state, jobs) {
+        state.jobs = jobs;
+        state.status.success = true;
+    },
         FAILURE(state) {
             state.status.success = false
         }
 
     },
     actions: {
+      // List All action
 
         async getJobs({ commit }){
             try {
                 let response = await $request.get(`/jobs`);
-                commit('SUCCESS')
+                commit('SUCCESS', response.data.data.data); // Pass the jobs data to the mutation
                 return Promise.resolve(response.data.data.data);
               } catch (errors) {
                 commit('FAILURE')
@@ -40,8 +44,8 @@ const jobsModule = {
           async getJobsDetails({ commit }, id){
             try {
                 let response = await $request.get(`/jobs/${id}`);
-                commit('SUCCESS')
-                return Promise.resolve(response.data.data.data);
+                commit('SUCCESS', response.data); // Pass the jobs data to the mutation
+                return Promise.resolve(response.data);
               } catch (errors) {
                 commit('FAILURE')
                 console.log(errors);
@@ -67,9 +71,9 @@ const jobsModule = {
                 console.log(errors);
               }
         },
-       async appliedForJobs({ commit },payload){
+       async applyForJobs({ commit },id){
             try {
-                let response = await $request.post(`/jobs/applied`,payload);
+                let response = await $request.post(`/jobs/applied`,id);
                 commit('SUCCESS')
                 return Promise.resolve(response.data.data.data);
               } catch (errors) {
@@ -78,9 +82,9 @@ const jobsModule = {
               }
         },
         
-       async savedJobs({ commit },payload){
+       async savedJobs({ commit },id){
             try {
-                let response = await $request.post(`/jobs/saved`,payload);
+                let response = await $request.post(`/jobs/saved`,id);
                 commit('SUCCESS')
                 return Promise.resolve(response.data.data.data);
               } catch (errors) {
