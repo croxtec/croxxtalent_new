@@ -7,21 +7,37 @@ export default {
     return {
       customColor: "#56CDAD",
       percentage: 30,
+      job: "",
     };
   },
   methods: {
     goBack() {
       this.$router.push({ name: "jobs" });
     },
+    async handleAppliedforjobs(id) {
+      const resp = await this.$store.dispatch("jobsModule/applyForJobs", id);
+      console.log(resp);
+    },
+  },
+  mounted() {
+    this.$store.dispatch("jobsModule/getJobsDetails", this.$route.params.id).then(
+      (response) => {
+        this.job = response.data;
+        console.log(this.job);
+      },
+      (error) => {
+        this.noty.error(error.response.data.msg);
+      }
+    );
   },
 };
 </script>
 <template>
   <div>
     <header class="d-flex mb-4">
-                        <i class="" role="button" @click="goBack()">
-                      <BackIcon />
-                    </i>
+      <i class="" role="button" @click="goBack()">
+        <BackIcon />
+      </i>
 
       <!-- <BackIcon role="button" @click="goBack()" /> -->
       <h6 class="py-2 pl-2">Job Description</h6>
@@ -31,13 +47,15 @@ export default {
         <div class="d-flex">
           <img class="img-fluid" src="@/assets/img/round-logo.png" />
           <div class="pl-4">
-            <h6 class="job-title">Petroleum Engineer</h6>
-            <p class="job-sub-title">Dest oil . Paris, France</p>
+            <h6 class="job-title">{{ job.job_title }}</h6>
+            <p class="job-sub-title">
+              {{ job.industry_name }} . {{ job.state_name }}, {{ job.country_name }}
+            </p>
 
             <div class="d-flex justify-content-between">
               <div class="d-flex lable-section">
                 <div>
-                  <div class="green-label">Full-Time</div>
+                  <div class="green-label">{{ job.work_type }}</div>
                 </div>
                 <div><div class="line"></div></div>
                 <div><div class="yellow-label">Mudlogging</div></div>
@@ -98,14 +116,7 @@ export default {
         <div class="Schlumbe-section">
           <h6 class="Schlumbe-heading mb-4">Schlumbe</h6>
           <p class="Schlumbe-memo mb-4">
-            Lorem ipsum dolor sit amet consectetur. At a eu fusce et suspendisse
-            condimentum. Cursus at orci tempor ut aliquet in leo. Gravida tortor varius
-            phasellus viverra elementum. Quis faucibus vel sem duis. Mattis praesent ac
-            nunc eget feugiat varius est non gravida. Ipsum convallis quis ornare
-            vulputate amet. Morbi nunc tincidunt in fermentum pharetra massa phasellus
-            faucibus nibh. Quis gravida lorem malesuada porttitor. Dignissim sagittis arcu
-            faucibus ultrices integer at bibendum. Nibh egestas arcu interdum vitae sit
-            ornare.rger
+            {{ job.summary }}
           </p>
         </div>
         <div class="Competency-section mt-4">
@@ -171,6 +182,7 @@ export default {
         <button
           class="primary--button mt-5 p-3 px-5 d-flex align-items-center mx-auto"
           style="gap: 10px"
+          @click="handleAppliedforjobs(job.id)"
         >
           <span>Apply Now</span>
         </button>
