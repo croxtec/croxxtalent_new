@@ -31,14 +31,9 @@
       <p class="small text-muted">
         Tell us about your language and proficiency.
       </p>
-      <div class="mt-2" v-if="add_languages">
+      <div class="mt-2">
         <AddLanguages />
       </div>
-      <hr />
-      <button class="add-item-button" @click="add_languages = !add_languages">
-        <span> <i-icon icon="clarity:plus-line" /> </span>
-        <span>Add Language</span>
-      </button>
     </div>
 
     <div class="mt-5">
