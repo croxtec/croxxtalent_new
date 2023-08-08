@@ -5,15 +5,9 @@
       <p class="small text-muted">
         Provide your references and their contact information
       </p>
-      <div class="mt-2" v-if="add_referee">
+      <div class="mt-2">
         <AddReferences />
       </div>
-
-      <hr />
-      <button class="add-item-button" @click="add_referee = !add_referee">
-        <span> <i-icon icon="clarity:plus-line" /> </span>
-        <span>Add References</span>
-      </button>
     </div>
   </div>
 </template>

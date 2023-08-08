@@ -86,7 +86,7 @@
       </div>
 
       <div class="text-center">
-        <button class="primary--button" @click="handleSubmit">Save</button>
+        <button class="primary--button" @click="handleSubmit">{{ editing ? "Edit" : "Save"}}</button>
       </div>
     </div>
 
@@ -155,7 +155,11 @@ export default {
     },
 
     handleSubmit() {
-      this.create(this.form);
+      if (this.editing !== null) {
+        this.updateAwards();
+      } else {
+        this.create(this.form);
+      }
     },
 
     edit(value) {
@@ -170,14 +174,10 @@ export default {
   },
 
   beforeMount() {
-    this.getAwards();
     this.list();
   },
 
   computed: {
-    ...mapState("config", {
-      languages: (state) => state.languages,
-    }),
     ...mapState("cvAwards", {
       dataSet: (state) => state.dataSet,
     }),

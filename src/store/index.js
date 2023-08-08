@@ -22,7 +22,8 @@ import cvCompetency from "@/modules/talent/views/resume/store/cv-competency";
 import cvWorkHistory from "@/modules/talent/views/resume/store/cv-work-history";
 import cvHobby from "@/modules/talent/views/resume/store/cv-hobbies";
 import cvLanguages from "@/modules/talent/views/resume/store/cv-languages";
-import cvAwards from "@/modules/talent/views/resume/store/cv-honours"
+import cvAwards from "@/modules/talent/views/resume/store/cv-honours";
+import cvReferences from "@/modules/talent/views/resume/store/cv-references";
 
 import createPersistedState from "vuex-persistedstate";
 
@@ -49,6 +50,7 @@ export default new Vuex.Store({
     cvHobby,
     cvLanguages,
     cvAwards,
+    cvReferences,
     
     manager,
     competencies,

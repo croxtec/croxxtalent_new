@@ -94,7 +94,7 @@
         </div>
       </form>
     </div>
-    
+
     <div v-if="!editing">
       <hr />
       <button class="add-item-button" @click="show_form = !show_form">
@@ -187,7 +187,11 @@ export default {
     },
 
     handleSubmit() {
-      this.create(this.form);
+      if (this.editing !== null) {
+        this.updateLanguages();
+      } else {
+        this.create(this.form);
+      }
     },
 
     edit(value) {
