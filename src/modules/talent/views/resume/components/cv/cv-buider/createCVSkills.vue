@@ -16,14 +16,9 @@
     <div class="mt-5">
       <h5 style="font-size: 18px; font-weight: 600">Honours/Awards</h5>
       <p class="small text-muted">Add all awards and achievements</p>
-      <div class="mt-2" v-if="add_honours">
+      <div class="mt-2">
         <AddHonours />
       </div>
-      <hr />
-      <button class="add-item-button" @click="add_honours = !add_honours">
-        <span> <i-icon icon="clarity:plus-line" /> </span>
-        <span>Add Honours/Awards</span>
-      </button>
     </div>
 
     <div class="mt-5">
