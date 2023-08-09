@@ -24,8 +24,8 @@ export default {
   <div class="settings-main">
     <settingsHeader>
       <template #view1> <profilePage /> </template>
-      <template #view2> <Notifications /> </template>
-      <template #view3> </template>
+      <template #view2> </template>
+      <template #view3> <Notifications /></template>
     </settingsHeader>
   </div>
 </template>
