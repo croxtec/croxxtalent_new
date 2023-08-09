@@ -1,9 +1,19 @@
 <template>
   <div id="notifications" class="my-4">
     <div class="notification-list">
-      <div class="notifier unseen">
+      <NotificationCard v-for="msg in 2" :key="msg" />
+      <!-- <div v-for="msg in 1" :key="msg" class="notifier unseen">
         <div class="d-flex">
-          <span class="mr-4" style="background: #36a100; width: 5px; height: 5px"></span>
+          <span class="mr-4"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="12"
+              viewBox="0 0 10 12"
+              fill="none"
+            >
+              <ellipse cx="5" cy="6.25926" rx="5" ry="5.50926" fill="#36A100" /></svg
+          ></span>
           <img
             data-v-679ece4d=""
             src="data:image/png;base64,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"
@@ -36,9 +46,18 @@
         </div>
         <div style="padding-left: 30px" class="d-flex ml-6 py-2"><span>Now</span></div>
       </div>
-      <div class="notifier seen">
+      <div v-for="msg in 3" :key="msg" class="notifier seen">
         <div class="d-flex">
-          <span class="mr-4" style="background: #36a100; width: 5px; height: 5px"></span>
+          <span class="mr-4"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              fill="none"
+            >
+              <circle cx="5" cy="5" r="5" fill="#C4C4C4" /></svg
+          ></span>
           <img
             data-v-679ece4d=""
             src="data:image/png;base64,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"
@@ -70,21 +89,50 @@
           </div>
         </div>
         <div style="padding-left: 30px" class="d-flex ml-6 pt-2"><span>Now</span></div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
-
+<script>
+import NotificationCard from "../components/notificationCard.vue";
+export default {
+  components: { NotificationCard },
+  data() {
+    return {};
+  },
+};
+</script>
 <style>
-.notifiction-list {
+.notification-list {
   display: flex;
   flex-direction: column;
+  border-radius: 18.877px;
+  border: 1px solid #c2dbff;
+  background: #fff;
+  overflow-x: auto;
+  height: 100vh;
+}
+
+.notification-list::-webkit-scrollbar {
+  width: 0.3vw;
+  cursor: pointer;
+  height: 0.3vw !important;
+}
+
+.notification-list ::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.notification-list::-webkit-scrollbar-thumb {
+  border-radius: 9px;
+  background: #00ec83;
+  width: 10px;
+  height: 50px !important;
 }
 .notifier {
-  border-radius: 8px 8px 0px 0px;
   padding: 16px 8px;
   width: 100%;
-  border: 1px solid rgba(0, 64, 161, 0.2);
+  border: 0px 1px 0px 0px solid rgba(0, 64, 161, 0.2);
 }
 .notifier.unseen {
   background: #f5f5f5;
