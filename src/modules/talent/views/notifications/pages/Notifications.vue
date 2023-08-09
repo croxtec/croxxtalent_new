@@ -1,7 +1,11 @@
 <template>
   <div id="notifications" class="my-4">
     <div class="notification-list">
-      <NotificationCard v-for="msg in 2" :key="msg" />
+      <NotificationCard
+        v-for="content in notifications"
+        :key="content.id"
+        :content="content"
+      />
       <!-- <div v-for="msg in 1" :key="msg" class="notifier unseen">
         <div class="d-flex">
           <span class="mr-4"
@@ -98,7 +102,24 @@ import NotificationCard from "../components/notificationCard.vue";
 export default {
   components: { NotificationCard },
   data() {
-    return {};
+    return {
+      notifications: [
+        {
+          id: 1,
+
+          status: "now",
+          msg:
+            "aptent taciti sociosqu ad litora torquent per conubia nostra, per incept  himenaeos",
+        },
+        {
+          id: 2,
+          status: "10hr",
+
+          msg:
+            " aptent taciti sociosqu ad litora torquent per conubia nostra, per incept  himenaeos",
+        },
+      ],
+    };
   },
 };
 </script>
@@ -111,6 +132,7 @@ export default {
   background: #fff;
   overflow-x: auto;
   height: 100vh;
+  position: relative;
 }
 
 .notification-list::-webkit-scrollbar {
