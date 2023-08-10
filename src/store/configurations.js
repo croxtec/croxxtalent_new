@@ -21,26 +21,26 @@ const getDefaultState = () => {
     cores: null,
     levels: [
       {
-        id: 1, 
-        name: 'Beginner',
-        value: 'beginner'
+        id: 1,
+        name: "Beginner",
+        value: "beginner",
       },
       {
-        id: 2, 
-        name: 'Intermediate',
-        value: 'intermediate'
+        id: 2,
+        name: "Intermediate",
+        value: "intermediate",
       },
       {
-        id: 3, 
-        name: 'Advance',
-        value: 'advance'
+        id: 3,
+        name: "Advance",
+        value: "advance",
       },
       {
-        id: 4, 
-        name: 'Expert',
-        value: 'expert'
-      }
-    ]
+        id: 4,
+        name: "Expert",
+        value: "expert",
+      },
+    ],
   };
 };
 
@@ -78,6 +78,9 @@ export default {
     SET_SKILLS(state, payload) {
       state.skills = payload;
     },
+    SET_LANGUAGES(state, payload) {
+      state.languages = payload;
+    },
   },
   actions: {
     // get Countries
@@ -104,7 +107,7 @@ export default {
       }
     },
 
-    async getDomains ({commit}) {
+    async getDomains({ commit }) {
       try {
         let response = await $request.get("settings/competence");
         console.log(response.data.data);
@@ -115,8 +118,9 @@ export default {
       }
     },
 
-    async getCore({commit}, domain) {
-      try { console.log(domain);
+    async getCore({ commit }, domain) {
+      try {
+        console.log(domain);
         let response = await $request.get(`settings/competence/core/${domain}`);
         console.log(response.data.data);
         let responsePayload = response.data.data.core;
@@ -126,7 +130,7 @@ export default {
       }
     },
 
-    async getSkills({commit}, core) {
+    async getSkills({ commit }, core) {
       try {
         let response = await $request.get(`settings/competence/skill/${core}`);
         console.log(response.data.data);
@@ -136,7 +140,6 @@ export default {
         console.log(error);
       }
     },
-   
 
     // get Countries
     async getCourses({ commit }) {
@@ -172,11 +175,23 @@ export default {
     },
 
     // get Degrees
-   async  getDegrees({ commit }) {
+    async getDegrees({ commit }) {
       try {
         let response = await $request.get("settings/degrees");
         let responsePayload = response.data.data;
         commit("SET_DEGREES", responsePayload);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    // get Languages
+    async getLanguages({ commit }) {
+      try {
+        let response = await $request.get("settings/languages");
+        let responsePayload = response.data.data;
+        console.log(responsePayload);
+        commit("SET_LANGUAGES", responsePayload);
       } catch (error) {
         console.log(error);
       }
