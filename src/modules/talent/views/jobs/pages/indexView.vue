@@ -714,33 +714,33 @@ export default {
       ],
       filterMappings: {
         typeOfEmployment: {
-          fullTime: false,
-          partTime: false,
-          remote: false,
-          internship: false,
-          contract: false,
+          fullTime: '',
+          partTime: '',
+          remote: '',
+          internship: '',
+          contract: '',
         },
         categories: {
-          Design: 1,
-          sales: 2,
-          Marketing: 3,
-          "Human Resource": 4,
-          Finance: 5,
-          Engineering: 6,
-          Technology: 7,
+          Design: '',
+          sales: '',
+          Marketing: '',
+          "Human Resource": '',
+          Finance: '',
+          Engineering: '',
+          Technology: '',
         },
         jobLevel: {
-          "Entry Level": 1,
-          "mid level": 2,
-          "Senior Level": 3,
+          "Entry Level": '',
+          "mid level": '',
+          "Senior Level": '',
           Director: 4,
-          "Vp or Above": 5,
+          "Vp or Above": '',
         },
         salaryRange: {
-          "N700 - N1000": 1,
-          "N100 - N1500": 2,
-          "N1500 - N2000": 3,
-          "N3000 or Above": 4,
+          "N700 - N1000": '',
+          "N100 - N1500": '',
+          "N1500 - N2000": '',
+          "N3000 or Above": '',
         },
       },
     };
@@ -835,16 +835,16 @@ export default {
     // ...mapGetters("jobsModule", ["jobs"]),
 
     filteredItem() {
-      let filteredItems = this.paginatedItems.slice(); // Create a copy of the original paginatedItems array
+      let filteredItems = this.paginatedItems; // Create a copy of the original paginatedItems array
 
       // Sorting by Type of Employment
-      if (this.filters.typeOfEmployment) {
-        filteredItems.sort((a, b) => {
-          const typeA = this.filterMappings.typeOfEmployment[a.typeOfEmploymentProperty];
-          const typeB = this.filterMappings.typeOfEmployment[b.typeOfEmploymentProperty];
-          return typeA - typeB;
-        });
-      }
+      // if (this.filters.typeOfEmployment) {
+      //   filteredItems.sort((a, b) => {
+      //     const typeA = this.filterMappings.typeOfEmployment[a.typeOfEmploymentProperty];
+      //     const typeB = this.filterMappings.typeOfEmployment[b.typeOfEmploymentProperty];
+      //     return typeA - typeB;
+      //   });
+      // }
 
       // Sorting by Categories
       if (this.filters.categories) {
@@ -908,6 +908,11 @@ export default {
 }
 .job-list {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+
 }
 .drop_down_section {
   position: absolute;
@@ -1149,6 +1154,7 @@ h5 {
   display: grid;
   justify-content: center;
   align-content: center;
+  min-height: 100vh;
 }
 .list-job {
   padding: 10px;
