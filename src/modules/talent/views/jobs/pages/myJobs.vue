@@ -6,7 +6,7 @@
       <header class="d-flex justify-content-between">
         <div></div>
 
-        <div class="sorting d-flex">
+        <div class="sorting hidden d-flex">
           <div class="sortBy mr-2 d-flex mt-2">
             <small class="muted mt-1 mr-2">Sort by:</small>
             <span class="mr-2">Most relevant</span>
@@ -35,7 +35,7 @@
       </header>
       <p class="mb-3">Showing 73 results</p>
       <div class="job-grid">
-        <div class="job-filter">
+        <!-- <div class="job-filter">
           <span @click="showEmployment">
             <h6 class="my-3">
             Type of Employment <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
@@ -142,10 +142,18 @@
               <span class="ml-3">N3000 or Above (6)</span>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="job-list">
           <div class="list">
-            <div class="list-job my-3 d-flex" v-for="job in jobs" :key="job.id">
+                              <RowJobCard
+            v-for="job in jobs"
+            :key="job.id"
+            :job="job"
+            :optionModal="optionModal"
+            @option-clicked="showOptionModal(job.id)"
+          />
+
+            <!-- <div class="list-job my-3 d-flex" v-for="job in jobs" :key="job.id">
               <img
                 src="@/assets/img/round-logo.png"
                 alt=""
@@ -174,7 +182,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -185,10 +193,11 @@
 <script>
 
 import JobHeader from '../components/myJobsHeader.vue';
+import RowJobCard from '../components/Cards/RowCard.vue'
 
 
 export default {
-  components: { JobHeader },
+  components: { JobHeader, RowJobCard },
 
   data() {
     return {
@@ -519,7 +528,7 @@ h5 {
 }
 .job-grid {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: auto;
 }
 .fa-ellipsis-h {
   cursor: pointer;
@@ -587,18 +596,19 @@ h5 {
   /* margin-top: 100px; */
 }
 .list {
-  display: grid;
-  justify-content: center;
-  align-content: center;
+    margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
 }
-.list-job {
+/* .list-job {
   padding: 10px;
   width: 919px;
   height: 149px;
   background: #ffffff;
   border: 1px solid #cbd7e7;
   border-radius: 40px;
-}
+} */
 .job-container {
   margin-top: 20px;
   display: flex;

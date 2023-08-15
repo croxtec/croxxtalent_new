@@ -457,76 +457,94 @@
             <span class="vertical">|</span>
             <div class="images d-flex g-2">
               <a class="pt-3 px-2" @click="activeView = '1'">
-                <!-- <img
-              src="@/assets/img/vertical.png"
-              alt=""
-              srcset=""
-              class="img-fluid mx-3"
-            /> -->
-                <!-- @click="setLayout('column')" -->
                 <ColumnIcon />
               </a>
               <a class="pt-3 pb-0 px-2" @click="activeView = '2'">
                 <RowIcon />
-
-                <!-- <img src="@/assets/img/horizontal.png" alt="" srcset="" class="img-fluid" /> -->
               </a>
             </div>
           </div>
         </div>
-        <div class="job-list">
+        <div class="job-list pt-4">
           <div v-if="activeView === '1'" class="column">
-            <div class="floter" v-for="job in paginatedItems" :key="job.id">
-              <div class="job-card">
-                <div class="d-flex justify-content-between">
-                  <img
-                    src="@/assets/img/box.png"
-                    alt=""
-                    srcset=""
-                    class="img-fluid"
-                    style="width: 40px"
-                    @click="redirectToJobDetails(job.id)"
-                    role="button"
-                  />
-                  <!-- <MoreIcon role="button" @click="showOptionModal(job.id)" /> -->
+                <ColumnJobCard
+        v-for="job in paginatedItems"
+        :key="job.id"
+        :job="job"
+        :optionModal="optionModal"
+        @option-clicked="showOptionModal(job.id)"
+        @apply-clicked="handleAppliedforjobs(job.id)"
+        @save-clicked="handleSavejobs(job.id)"
+        />
 
-                  <i class="" role="button" @click="showOptionModal(job.id)">
-                    <MoreIcon />
+            <!-- <div class="floter" v-for="job in paginatedItems" :key="job.id">
+              <div class="job-card">
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <img
+                      src="@/assets/img/box.png"
+                      alt=""
+                      srcset=""
+                      class="img-fluid"
+                      style="width: 40px"
+                      @click="redirectToJobDetails(job.id)"
+                      role="button"
+                    />
+
+                    <i class="" role="button" @click="showOptionModal(job.id)">
+                      <MoreIcon />
+                    </i>
+                    <div class="option-modal py-2" v-if="optionModal === job.id">
+                      <span @click="handleAppliedforjobs(job.id)" role="button">Apply</span>
+                      <hr />
+                      <span @click="handleSavejobs(job.id)" role="button">Save</span>
+                      <hr />
+                      <span>Archive</span>
+                    </div>
+                  </div>
+                  <div class="my-3">
+                  <i class="" role="button" @click="redirectToJobDetails(job.id)">
+                      <h5>{{ job.job_title }}</h5>
                   </i>
-                  <div class="option-modal py-2" v-if="optionModal === job.id">
-                    <span @click="handleAppliedforjobs(job.id)" role="button">Apply</span>
-                    <hr />
-                    <span @click="handleSavejobs(job.id)" role="button">Save</span>
-                    <hr />
-                    <span>Archive</span>
+                    <span>{{ job.industry_name }}</span> .
+                    <span> {{ job.state_name }}, {{ job.country_name }}</span>
+                  </div>
+                  <p class="d-block text-truncate content">
+                    {{ job.summary }}
+                  </p>                
+                  </div>
+
+                <div class="skills">               
+                   <div class="d-flex mt-4  justify-content-between">
+                    <span class="drilling">Drilling</span>
+                    <span class="Management">Management</span>
                   </div>
                 </div>
-                <div class="my-3">
-                  <h5>{{ job.job_title }}</h5>
-                  <span>{{ job.industry_name }}</span> .
-                  <span> {{ job.state_name }}, {{ job.country_name }}</span>
-                </div>
-                <p class="d-block text-truncate content">
-                  {{ job.summary }}
-                </p>
-                <div class="d-flex mt-4 justify-content-between">
-                  <span class="drilling">Drilling</span>
-                  <span class="Management">Management</span>
-                </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div v-if="activeView === '2'" class="list">
-            <div
+                  <RowJobCard
+          v-for="job in paginatedItems"
+          :key="job.id"
+          :job="job"
+          :optionModal="optionModal"
+          @option-clicked="showOptionModal(job.id)"
+          @apply-clicked="handleAppliedforjobs(job.id)"
+          @save-clicked="handleSavejobs(job.id)"
+        />
+              <!-- <div
               class="list-job my-3 d-flex justify-content-between"
               v-for="job in paginatedItems"
               :key="job.id"
             >
-              <div class="d-flex">
+              <div class="d-flex"        
+                         style="gap: 10px;"
+  >
                 <img
                   src="@/assets/img/round-logo.png"
                   alt=""
-                  class="img-fluid m-3"
+                  class="img-fluid m-0"
                   style="width: 64px; height: 64px"
                   @click="redirectToJobDetails(job.id)"
                   role="button"
@@ -537,9 +555,9 @@
                       <h5 class="content-header">{{ job.title }}</h5>
                     </div>
                     <div class="location">
-                      <span>{{ job.section }}</span> .
-                      <span>{{ job.location }}</span>
-                    </div>
+                      <span>{{ job.industry_name }}</span> .
+                      <span> {{ job.state_name }}, {{ job.country_name }}</span>
+                      </div>
                     <div class="options d-flex">
                       <div class="option-tags mt-3">
                         <span class="full-time"> {{ job.work_type }} </span>
@@ -551,17 +569,27 @@
                   </div>
                 </div>
               </div>
-              <div class="d-block justify-content-between">
-                <MoreIcon class="justify-self-end" />
+              <div class=" left_section justify-content-between">
+                    <i class="" role="button" @click="showOptionModal(job.id)">
+                  <MoreIcon class="justify-self-end" />
+                        </i>
+                      <div class="option-modal py-2" v-if="optionModal === job.id">
+                        <span @click="handleAppliedforjobs(job.id)" role="button">Apply</span>
+                        <hr />
+                        <span @click="handleSavejobs(job.id)" role="button">Save</span>
+                        <hr />
+                        <span>Archive</span>
+                      </div>
+
                 <div class="option-progress">
                   <progress value="45" max="100"></progress><br />
                   <span>5 applied of 10 capacity</span>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="pagination_section">
-            <div class="mt-5 pagination_buttons">
+            <div  class=" pagination_buttons">
               <div
                 @click="previousPage"
                 :disabled="currentPage === 1"
@@ -634,8 +662,10 @@ import ColumnIcon from "../components/icons/ColumnIcon.vue";
 import RowIcon from "../components/icons/RowIcon.vue";
 import ArrowUp from "../components/icons/ArrowUp.vue";
 import MoreIcon from "../components/icons/MoreIcon.vue";
+import RowJobCard from '../components/Cards/RowCard.vue'
+import ColumnJobCard from '../components/Cards/ColumnCard.vue'
 export default {
-  components: { ArrowUp, RowIcon, ColumnIcon, MoreIcon },
+  components: { ArrowUp, RowIcon, ColumnIcon, MoreIcon, RowJobCard, ColumnJobCard },
   data() {
     return {
       currentPage: 1,
@@ -654,77 +684,19 @@ export default {
       show3: false,
       show4: false,
       mobileFilter: false,
-      // jobs: [],
-      jobss: [
-        {
-          title: "Chemical Engineer",
-          id: 1,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Civil Engineer",
-          id: 3,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 4,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Software Engineer",
-          id: 4,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Software Engineer",
-          id: 5,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-      ],
       filterMappings: {
         typeOfEmployment: {
-          fullTime: '',
-          partTime: '',
+          fullTime: '"full_time"',
+          partTime: 'parttime',
           remote: '',
-          internship: '',
+          internship: 'internship',
           contract: '',
         },
         categories: {
           Design: '',
           sales: '',
           Marketing: '',
-          "Human Resource": '',
+          humanResource: '',
           Finance: '',
           Engineering: '',
           Technology: '',
@@ -898,20 +870,29 @@ export default {
     this.$store.dispatch("jobsModule/getJobs");
     // console.log(Array.isArray(this.jobs));
     // console.log(this.getJobs);
+      console.log("this.jobs:", this.jobs);
+    this.$store.dispatch("jobsModule/getJobs");
+
   },
 };
 </script>
 
 <style scoped>
+.left_section{  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .justify-self-end {
-  justify-self: end;
+justify-items: end;
+    display: grid;
 }
 .job-list {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  position: relative;
 
 }
 .drop_down_section {
@@ -957,11 +938,14 @@ export default {
 .pagination_buttons {
   display: flex;
   width: 10%;
-  margin: 100px auto;
+  margin: 0 auto;
 }
-/* .pagination_section {
-  margin: 100px auto;
-} */
+.pagination_section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 .pagination_button {
   padding: 0px 20px;
   /* border: 1px solid #e5e7eb; */
@@ -995,6 +979,8 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1.4rem;
+  margin-bottom: 100px;
+
 }
 .images a {
   cursor: pointer;
@@ -1022,6 +1008,11 @@ header h6 {
   border: 1px solid #c2dbff;
   border-radius: 20px;
   padding: 24px;
+  position: relative;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+
 }
 .tag {
   font-family: "Poppins";
@@ -1082,7 +1073,7 @@ h5 {
 .fa-ellipsis-h {
   cursor: pointer;
 }
-.option-modal {
+/* .option-modal {
   margin-left: 120px;
   margin-top: 15px;
   text-align: center;
@@ -1110,7 +1101,7 @@ h5 {
 }
 .option-modal > hr {
   background: #c2dbff;
-}
+} */
 .employment-card {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -1151,15 +1142,19 @@ h5 {
   /* margin-top: 100px; */
 }
 .list {
-  display: grid;
+  /* display: grid;
   justify-content: center;
-  align-content: center;
-  min-height: 100vh;
+  align-content: center; */
+  /* min-height: 100vh; */
+    margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
 }
 .list-job {
-  padding: 10px;
-  width: 919px;
-  height: 149px;
+  padding: 24px;
+  /* width: 919px; */
+  /* height: 149px; */
   background: #ffffff;
   border: 1px solid #cbd7e7;
   border-radius: 40px;
