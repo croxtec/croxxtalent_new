@@ -135,31 +135,5 @@ export default {
   position: relative;
 }
 
-.notification-list::-webkit-scrollbar {
-  width: 0.3vw;
-  cursor: pointer;
-  height: 0.3vw !important;
-}
 
-.notification-list ::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-.notification-list::-webkit-scrollbar-thumb {
-  border-radius: 9px;
-  background: #00ec83;
-  width: 10px;
-  height: 50px !important;
-}
-.notifier {
-  padding: 16px 8px;
-  width: 100%;
-  border: 0px 1px 0px 0px solid rgba(0, 64, 161, 0.2);
-}
-.notifier.unseen {
-  background: #f5f5f5;
-}
-.notifier.seen {
-  background: #fff;
-}
 </style>
