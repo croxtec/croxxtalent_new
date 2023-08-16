@@ -45,7 +45,7 @@
 
             <div class="option-progress">
                 <progress :value="(job.total_applications / job.number_of_positions) * 100" max="100"></progress><br />
-                <span>{{ job.applied }} applied of {{ job.capacity }} capacity</span>
+                <span>{{ job.total_applications }} applied of {{ job.number_of_positions }} capacity</span>
             </div>
         </div>
     </div>
