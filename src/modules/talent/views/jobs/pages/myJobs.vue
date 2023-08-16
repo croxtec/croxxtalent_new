@@ -5,7 +5,7 @@
       <job-header>
         <template #view1>      
          <header class="d-flex sorting_section justify-content-between">
-            <div class="d-flex">Filter
+            <div class="d-flex"> <span class="place-center filter pr-2">Filter</span>
                <div>          
                   <div class="search">
                   <i-icon icon="ri:search-2-line" class="nav-icon" />
@@ -13,12 +13,12 @@
                 </div>
   </div>
   </div>
-            <div>Showing 73 results</div>
+            <div class="place-center">Showing 73 results</div>
 
           <div class="sorting hidden d-flex">
             <div class="sortBy mr-2 d-flex mt-2">
               <small class="muted py-1  mr-2">Sort by:</small>
-              <span class="mr-2">Most relevant</span>
+              <span class="mr-2">Most relevant</span><SmallArrowDown />
             </div>
           </div>
         </header>
@@ -29,6 +29,7 @@
               v-for="job in jobs"
               :key="job.id"
               :job="job"
+              :showButton="true"
               :optionModal="optionModal"
               @option-clicked="showOptionModal(job.id)"
             />
@@ -48,10 +49,11 @@
 
 import JobHeader from '../components/myJobsHeader.vue';
 import RowJobCard from '../components/Cards/RowCard.vue'
+import SmallArrowDown from '../components/icons/SmallArrowDown.vue';
 
 
 export default {
-  components: { JobHeader, RowJobCard },
+  components: { JobHeader, RowJobCard, SmallArrowDown },
 
   data() {
     return {
@@ -303,6 +305,18 @@ export default {
 </script>
 
 <style scoped>
+.filter{
+color: #282929;
+font-family: Poppins;
+font-size: 22px;
+font-style: normal;
+font-weight: 600;
+line-height: 120%; /* 26.4px */}
+.place-center{
+    display: grid;
+    place-self: center;
+}
+
 .search {
   display: flex;
   display: inline-flex;
