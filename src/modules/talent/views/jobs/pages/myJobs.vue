@@ -1,7 +1,6 @@
 <template>
   <div>
-  
-    <div>
+  <header class="d-flex justify-content-between mb-5"><h6>My Jobs</h6></header>    <div>
       <job-header>
         <template #view1>      
          <header class="d-flex sorting_section justify-content-between">
