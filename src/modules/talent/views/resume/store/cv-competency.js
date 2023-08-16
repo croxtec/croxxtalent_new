@@ -1,6 +1,7 @@
 /* src/store/modules/cv-skills.js */
 
 import $request from "@/axios";
+import toastify from "toastify-js";
 
 function initialState() {
   return {
@@ -12,19 +13,18 @@ function initialState() {
     data: {},
     dataSet: [],
     dataSetTotal: 0,
-    dataSetLastPage: 1
+    dataSetLastPage: 1,
   };
 }
 
 const storeModule = {
   namespaced: true,
-
   state: initialState,
 
   getters: {
-    isLoading: state => state.loading,
-    isLoadingDataSet: state => state.loadingDataSet,
-    getData: state => state.data
+    isLoading: (state) => state.loading,
+    isLoadingDataSet: (state) => state.loadingDataSet,
+    getData: (state) => state.data,
   },
 
   mutations: {
@@ -73,28 +73,40 @@ const storeModule = {
       state.dataSetTotal = payload.total;
       state.dataSetLastPage = payload.last_page;
       state.loadingDataSet = false;
-    }
+    },
   },
 
   actions: {
     // List All action
-    async list({ commit }, { payload }) {
+    async list({ commit }) {
+      NProgress.start();
       try {
         commit("SET_LOADING_DATASET");
-        let response = await $request.get(`talent/resume/competence`, {
-          params: payload
-        }); 
+        let response = await $request.get(`talent/resume/competence`);
         let responsePayload = response.data;
+        console.log(responsePayload);
         commit("SET_DATASET", responsePayload);
+        toastify({
+          text: `${responsePayload.message}`,
+          className: "info",
+          style: {
+            background: "green",
+            fontSize: "12px",
+            borderRadius: "5px",
+          },
+        }).showToast();
       } catch (error) {
         //
+      } finally {
+        NProgress.done();
       }
     },
 
     // Create action
-    async create({ commit }, { payload }) {
+    async create({ commit }, payload) {
+      NProgress.start();
       commit("SET_LOADING");
-      try { 
+      try {
         let response = await $request.post(`talent/resume/competence`, payload);
         let responsePayload = response.data;
         commit("SET_DATA", responsePayload);
@@ -111,6 +123,8 @@ const storeModule = {
           }
         }
         commit("SET_ERROR", "Internal connection error, please try again.");
+      } finally {
+        NProgress.done();
       }
     },
 
@@ -118,7 +132,8 @@ const storeModule = {
     async view({ commit }, { work_experience_id }) {
       commit("SET_LOADING");
       try {
-        let response = await $request.get(`talent/resume/competence/${work_experience_id}`
+        let response = await $request.get(
+          `talent/resume/competences/${work_experience_id}`
         );
         let responsePayload = response.data;
         commit("SET_DATA", responsePayload);
@@ -132,14 +147,17 @@ const storeModule = {
           }
         }
         commit("SET_ERROR", "Internal connection error, please try again.");
+      } finally {
+        NProgress.done();
       }
     },
 
     // Update action
-    async update({ commit }, { work_experience_id, payload }) {
+    async update({ commit }, { id, payload }) {
       commit("SET_LOADING");
       try {
-        let response = await $request.put(`resume/cvs/competence/${work_experience_id}`,
+        let response = await $request.put(
+          `talent/resume/competences/${id}`,
           payload
         );
         let responsePayload = response.data;
@@ -157,15 +175,16 @@ const storeModule = {
           }
         }
         commit("SET_ERROR", "Internal connection error, please try again.");
+      } finally {
+        NProgress.done();
       }
     },
 
     // Delete action
-    async delete({ commit }, { work_experience_id }) {
-      commit("SET_LOADING");
+    async deleteCompetency({ commit }, id) {
+      NProgress.start();
       try {
-        let response = await $request.delete(`resume/cvs/competence/${work_experience_id}`
-        );
+        let response = await $request.delete(`talent/resume/competences/${id}`);
         let responsePayload = response.data;
         commit("SET_SUCCESS", responsePayload.message);
       } catch (error) {
@@ -177,8 +196,10 @@ const storeModule = {
           }
         }
         commit("SET_ERROR", "Internal connection error, please try again.");
+      } finally {
+        NProgress.done();
       }
-    }
-  }
+    },
+  },
 };
 export default storeModule;
