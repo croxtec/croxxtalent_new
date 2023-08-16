@@ -1,7 +1,7 @@
 <template>
   <div :class="[content.status === 'now' ? 'unseen' : 'seen']" class="notifier">
     <div class="d-flex justify-content-between">
-      <div class="d-flex">
+      <div class="d-flex notify_section">
         <span class="active_state_icon"
           ><svg
             v-if="content.status == 'now'"
@@ -31,11 +31,11 @@
         </div>
         <div>
           <div class="">
-            <p class="">
+            <p class="notification_msg">
               {{ content.msg }}
             </p>
           </div>
-          <div class="d-flex py-2"><span>Now</span></div>
+          <div class="d-flex py-2 time_text"><span>{{ content.status }}</span></div>
         </div>
       </div>
 
@@ -71,9 +71,11 @@
           </svg>
         </a>
         <div class="option-modal py-2" v-if="optionModal">
-          <span role="button"
+          <span @click="handleOptions()" role="button"
             >Option
             <svg
+                          :class="{ 'rotate-180': options }"
+
               xmlns="http://www.w3.org/2000/svg"
               width="17"
               height="17"
@@ -85,10 +87,12 @@
                 fill="#2B2B2B"
               /></svg
           ></span>
-          <hr />
-          <span role="button">View</span>
-          <hr />
-          <span role="button">Delete</span>
+          <div v-if="options">        
+              <hr />
+            <span role="button">View</span>
+            <hr />
+            <span role="button">Delete</span>
+  </div>
         </div>
       </div>
     </div>
@@ -101,25 +105,45 @@ export default {
     content: Object,
   },
   data() {
-    return { optionModal: null };
+    return { optionModal: null ,
+    options: false
+    };
   },
   methods: {
     showOptionModal(item) {
       this.optionModal = this.optionModal === item ? null : item;
     },
+        handleOptions() {
+      this.options = !this.options;
+    },
+
   },
 };
 </script>
 
-<style>
-.notification-list {
-  display: flex;
-  flex-direction: column;
-  border-radius: 18.877px;
-  border: 1px solid #c2dbff;
-  background: #fff;
-  overflow-x: auto;
-  height: 100vh;
+<style scoped>
+.notification_msg{
+  color: #303030;
+  line-height: 20px;
+letter-spacing: 0.898px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+
+
+}
+.time_text{
+  color: #ACACAC;
+font-family: Poppins;
+font-size: 13px;
+font-style: normal;
+font-weight: 600;
+line-height: 160%; 
+text-transform: capitalize;
+
+}
+.notify_section{
+  gap: 10px;
 }
 
 .notification-list::-webkit-scrollbar {
@@ -143,6 +167,7 @@ export default {
   width: 100%;
   border-bottom: 1px solid #c2dbff;
   position: relative;
+
 }
 .notifier.unseen {
   background: #f5f5f5;
@@ -182,8 +207,7 @@ export default {
   border: 0.685px solid #e9eff2;
   box-shadow: 0px 2.0538461208343506px 5.476922988891602px 0px rgba(0, 0, 0, 0.04);
 }
-.option-modal > span {
-  font-family: "Poppins";
+.option-modal > div > span {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -191,9 +215,16 @@ export default {
   opacity: 0.5;
   cursor: pointer;
 }
-.option-modal > hr {
-  background: #c2dbff;
-  margin-top: 0.4rem;
-  margin-bottom: 0.4rem;
+.option-modal > div > span:focus {
+  background: #06E594;
+  
 }
+.option-modal > div > hr {
+  background: #c2dbff;
+  margin: 0.3rem 0rem !important;
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
 </style>

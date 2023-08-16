@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="resumePercentage">
-        <p>CV Template here</p>
+      
     </div>
     <div v-else>
       <CreatePreviewer />
