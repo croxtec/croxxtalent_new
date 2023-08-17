@@ -1,7 +1,14 @@
 <template>
   <div>
     <div v-if="resumePercentage">
-      
+      <div class="d-flex">
+        <div class="col-md-8">
+          <CvPreviewer />
+        </div>
+        <div class="col-4">
+
+        </div>
+      </div>
     </div>
     <div v-else>
       <CreatePreviewer />
@@ -12,9 +19,10 @@
 <script>
 import { mapState } from "vuex";
 import CreatePreviewer from './createResumePreviewer.vue'
+import CvPreviewer from '../components/cv/cv-templates/cvPreviewer.vue'
 
 export default {
-  components: {  CreatePreviewer },
+  components: {  CreatePreviewer, CvPreviewer },
 
   data() {
     return {
