@@ -29,9 +29,9 @@
                 </div>
             </div>
         </div>
-
-        <!-- Options and Progress Section -->
-        <div class="left_section justify-content-between">
+            <div v-if="showButton" class="d-flex justify-content-between"><button @click="handleAppliedforjobs(job.id)" class="primary--button place-center p-3 px-5  align-items-center mx-auto" style="gap: 10px;"><span>Apply</span></button></div>
+            <!-- Options and Progress Section -->
+        <div v-if="!showButton" class="left_section justify-content-between">
             <i class="" role="button" @click="showOptionModal(job.id)">
                 <MoreIcon class="justify-self-end" />
             </i>
@@ -45,7 +45,7 @@
 
             <div class="option-progress">
                 <progress :value="(job.total_applications / job.number_of_positions) * 100" max="100"></progress><br />
-                <span>{{ job.applied }} applied of {{ job.capacity }} capacity</span>
+                <span>{{ job.total_applications }} applied of {{ job.number_of_positions }} capacity</span>
             </div>
         </div>
     </div>
@@ -62,6 +62,7 @@ export default {
     props: {
         job: Object, // Prop to pass the job data to the component
         optionModal: null, // Initialize the optionModal prop
+        showButton: Boolean, // Initialize the optionModal prop
     },
     methods: {
         redirectToJobDetails(id) {
@@ -81,6 +82,10 @@ export default {
 </script>
 
 <style scoped>
+.place-center{
+    display: grid;
+    place-self: center;
+}
 .left_section {
     display: flex;
     flex-direction: column;
