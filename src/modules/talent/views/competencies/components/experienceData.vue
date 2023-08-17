@@ -2,18 +2,37 @@
   
   <div class="pb-4">
     <competences-header />
-    <div class="mt-4" v-if="experience">
-      <div class="skills">
-        <el-collapse v-model="activeNames" @change="handleChange">
-          <el-collapse-item  v-for="(employee, key) in experience" :key="employee.id"
-            :title="employee.employer.display_name +' - '+ employee.job_code.job_title " :name="key">
-            <div class="skills-content mt-3">
-              <CompetenciesCard class="col-md-4"  v-for="skill in employee.competence" :key="skill.id" :cxCompetence="skill"/>
-            </div>
-          </el-collapse-item>
-        </el-collapse>
-      </div>
+
+    <div v-if="loading">
+      <span>Retrieving Data</span>
+      <i-icon
+        icon="eos-icons:three-dots-loading"
+        style="color: var(--primary-500)"
+        width="60px"
+      />
     </div>
+    <div v-else>
+      <div
+        class="d-flex justify-content-center"
+        v-if="!experience"
+      >
+        <img src="@/assets/img/empty.svg" alt="" />
+      </div>
+      <div v-else>
+        <div class="mt-4">
+          <div class="skills">
+            <el-collapse v-model="activeNames" @change="handleChange">
+              <el-collapse-item  v-for="(employee, key) in experience" :key="employee.id"
+                :title="employee.employer.display_name +' - '+ employee.job_code.job_title " :name="key">
+                <div class="skills-content mt-3">
+                  <CompetenciesCard class="col-widget-4"  v-for="skill in employee.competence" :key="skill.id" :cxCompetence="skill"/>
+                </div>
+              </el-collapse-item>
+            </el-collapse>
+          </div>
+        </div>
+      </div>
+     </div>
   </div>
 </template>
 
@@ -42,7 +61,8 @@ export default {
 
   computed: {
     ...mapState("competencies", {
-      experience: (state) => state.experience
+      experience: (state) => state.experience,
+      loading : (state) => state.loading
     })
   },
 

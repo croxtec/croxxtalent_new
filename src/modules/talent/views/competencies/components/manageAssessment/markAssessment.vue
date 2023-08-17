@@ -343,14 +343,14 @@ export default {
       this.confirmSubmission = false;
     },
     async handleConfirmation() {
-      let id = this.assessmentsId;
-      console.log(id);
+      const id = this.assessmentsId;
+      // console.log(id);
       const payload = {
         feedback: this.feedback,
       };
       const resp = await this.$store.dispatch("assessmentModule/submitManagerFeedback", {
-        id,
-        payload,
+        id: id,
+        payload: payload,
       });
       this.closeQuiz();
       console.log(resp);
@@ -390,10 +390,10 @@ export default {
     this.questions = assessment.assesment.questions;
     this.assessments = assessment.assesment;
     this.assessmentsId = assessment.assesment.id;
-    console.log(this.assessments);
-    console.log(this.questions);
-    console.log(this.managerComment);
-    console.log(this.assessmentsId);
+    // console.log(this.assessments);
+    // console.log(this.questions);
+    // console.log(this.managerComment);
+    // console.log(this.assessmentsId);
   },
   watch: {},
 };

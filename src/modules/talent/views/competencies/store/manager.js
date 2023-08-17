@@ -32,9 +32,8 @@ export default {
     actions: {
         async getManagerCompetency({ commit }){
             try {
-                // talent/competence/manager
-                let response = await $request.get("/assesments");
-                // console.log(response.data.data);
+                let response = await $request.get("/talent/competence/manager");
+                console.log(response.data.data);
                 let responsePayload = response.data.data;
                 commit("SET_MANAGER_COMPETENCY", responsePayload);
               } catch (error) {

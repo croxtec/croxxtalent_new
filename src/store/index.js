@@ -13,6 +13,8 @@ import competencies from "@/modules/talent/views/competencies/store/competencies
 import assessmentModule from "@/modules/talent/views/assessment/store/assessment";
 // Configurations
 import config from "./configurations";
+// JOBS
+import jobsModule from "@/modules/talent/views/jobs/store/job";
 
 // CV STORE DATA
 import cvs from "./modules/cvs";
@@ -51,6 +53,10 @@ export default new Vuex.Store({
     cvLanguages,
     cvAwards,
     cvReferences,
+    
+    jobsModule,
+    cvWorkHistory,
+    cvHobby,
     
     manager,
     competencies,

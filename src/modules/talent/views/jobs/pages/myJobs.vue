@@ -1,183 +1,45 @@
 <template>
   <div>
-  
-    <div>
-      <job-header />
-      <header class="d-flex justify-content-between">
-        <div></div>
-
-        <div class="sorting d-flex">
-          <div class="sortBy mr-2 d-flex mt-2">
-            <small class="muted mt-1 mr-2">Sort by:</small>
-            <span class="mr-2">Most relevant</span>
-          </div>
-          <span class="vertical">|</span>
-          <div class="images">
-            <router-link to="jobs">
-              <img
-              src="@/assets/img/vertical.png"
-              alt=""
-              srcset=""
-              class="img-fluid mx-3"
-            />
-            </router-link>
-            <router-link to="rows">
-              <img
-              src="@/assets/img/horizontal.png"
-              alt=""
-              srcset=""
-              class="img-fluid"
-              @click="showHorizontal"
-            />
-            </router-link>
-          </div>
-        </div>
-      </header>
-      <p class="mb-3">Showing 73 results</p>
-      <div class="job-grid">
-        <div class="job-filter">
-          <span @click="showEmployment">
-            <h6 class="my-3">
-            Type of Employment <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i>
-          </h6>
-          </span>
-          <div class="employment-card" v-if="employment">
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Full-time (3)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">part-time (5)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Remote (2)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Internship (24)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Contract (3)</span>
-            </div>
-          </div>
-          <span @click="showCategories">
-            <h6 class="my-3">Categories <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i></h6>
-          </span>
-          <div class="employment-card" v-if="categories">
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Design (24)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">sales (3)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Marketing (3)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Human Resource (6)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Finance (4)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Engineering (4)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Technology (5)</span>
-            </div>
-          </div>
-          <span @click="showJobLevel">
-            <h6 class="my-3">Job Level <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i></h6>
-          </span>
-          <div class="employment-card" v-if="jobLevel">
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Entry Level (57)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">mid level (3)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Senior Level (5)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Director (6)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">Vp or Above (4)</span>
-            </div>
-          </div>
-          <span @click="showSalaryRange">
-            <h6 class="my-3">Salary Range <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i></h6>
-          </span>
-          <div class="employment-card" v-if="salaryRange">
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">N700 - N1000 (57)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">N100 - N1500 (3)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">N1500 - N2000 (5)</span>
-            </div>
-            <div class="my-3">
-              <input type="checkbox" name="" id="" />
-              <span class="ml-3">N3000 or Above (6)</span>
-            </div>
-          </div>
-        </div>
-        <div class="job-list">
-          <div class="list">
-            <div class="list-job my-3 d-flex" v-for="job in jobs" :key="job.id">
-              <img
-                src="@/assets/img/round-logo.png"
-                alt=""
-                class="img-fluid m-3"
-                style="width: 64px; height: 64px"
-              />
-              <div>
-                <div class="job-content">
-                  <div class="job-container">
-                    <h5 class="content-header">{{ job.title }}</h5>
-                    <i class="fa fa-ellipsis-h"></i>
-                  </div>
-                  <div class="location">
-                    <span>Rain Oil</span> . <span>Paris, France</span>
-                  </div>
-                  <div class="options d-flex justify-content-between">
-                    <div class="option-tags mt-3">
-                      <span class="full-time">Full-Time</span> |
-                      <span class="off-shore mr-2">Off-shore</span>
-                      <span class="design">Design</span>
-                    </div>
-                    <div class="option-progress">
-                      <progress value="45" max="100"></progress><br />
-                      <span>5 applied of 10 capacity</span>
-                    </div>
-                  </div>
+  <header class="d-flex justify-content-between mb-5"><h6>My Jobs</h6></header>    <div>
+      <job-header>
+        <template #view1>      
+         <header class="d-flex sorting_section justify-content-between">
+            <div class="d-flex"> <span class="place-center filter pr-2">Filter</span>
+               <div>          
+                  <div class="search">
+                  <i-icon icon="ri:search-2-line" class="nav-icon" />
+                  <input type="search" placeholder="Search" />
                 </div>
-              </div>
+  </div>
+  </div>
+            <div class="place-center">Showing 73 results</div>
+
+          <div class="sorting hidden d-flex">
+            <div class="sortBy mr-2 d-flex mt-2">
+              <small class="muted py-1  mr-2">Sort by:</small>
+              <span class="mr-2">Most relevant</span><SmallArrowDown />
+            </div>
+          </div>
+        </header>
+        <div class="job-grid">
+        <div class="job-list">
+            <div class="list">
+            <RowJobCard
+              v-for="job in jobs"
+              :key="job.id"
+              :job="job"
+              :showButton="true"
+              :optionModal="optionModal"
+              @option-clicked="showOptionModal(job.id)"
+            />
+
             </div>
           </div>
         </div>
-      </div>
+        </template>
+        <template #view2> </template>
+        <template #view3> </template>
+      </job-header>
     </div>
   </div>
 </template>
@@ -185,10 +47,12 @@
 <script>
 
 import JobHeader from '../components/myJobsHeader.vue';
+import RowJobCard from '../components/Cards/RowCard.vue'
+import SmallArrowDown from '../components/icons/SmallArrowDown.vue';
 
 
 export default {
-  components: { JobHeader },
+  components: { JobHeader, RowJobCard, SmallArrowDown },
 
   data() {
     return {
@@ -440,6 +304,41 @@ export default {
 </script>
 
 <style scoped>
+.filter{
+color: #282929;
+font-family: Poppins;
+font-size: 22px;
+font-style: normal;
+font-weight: 600;
+line-height: 120%; /* 26.4px */}
+.place-center{
+    display: grid;
+    place-self: center;
+}
+
+.search {
+  display: flex;
+  display: inline-flex;
+  display: -webkit-flex;
+  align-items: center;
+}
+
+.sorting_section{
+  padding: 12px 0px;
+  border-bottom: 1px solid #C2DBFF;
+  border-top: 1px solid #C2DBFF;
+  margin: 25px 0;
+}
+div .search {
+    border: 1px solid var(--blue-300);
+    background: #fff;
+    border-radius: 25px;
+    padding: 0 25px;
+    width: 100%;
+}
+div .search input {
+  border: none;
+}
 .images img {
   cursor: pointer;
 }
@@ -519,7 +418,7 @@ h5 {
 }
 .job-grid {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: auto;
 }
 .fa-ellipsis-h {
   cursor: pointer;
@@ -568,12 +467,12 @@ h5 {
   line-height: 160%;
   color: #646868;
 }
-.employment-card div > input {
+/* .employment-card div > input {
   width: 24px;
   height: 24px;
   outline: 2px solid #c2dbff;
-  /* margin-top: 50px; */
-}
+   margin-top: 50px; 
+} */
 .job-filter h6 {
   font-family: "Poppins";
   font-style: normal;
@@ -587,18 +486,19 @@ h5 {
   /* margin-top: 100px; */
 }
 .list {
-  display: grid;
-  justify-content: center;
-  align-content: center;
+    margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
 }
-.list-job {
+/* .list-job {
   padding: 10px;
   width: 919px;
   height: 149px;
   background: #ffffff;
   border: 1px solid #cbd7e7;
   border-radius: 40px;
-}
+} */
 .job-container {
   margin-top: 20px;
   display: flex;

@@ -22,7 +22,6 @@ const assessmentModule = {
         FAILURE(state) {
             state.status.success = false
         }
-
     },
     actions: {
 
@@ -36,16 +35,18 @@ const assessmentModule = {
                 console.log(errors);
               }
         },
+
         async submitAssesmentAnswers({ commit }, payload){
             try {
                 let response = await $request.post(`/assesments/talent/answer`,payload);
-                commit('SUCCESS')
+                commit('SUCCESS', response)
                 return Promise.resolve(response.data.data);
               } catch (errors) {
                 commit('FAILURE')
                 console.log(errors);
               }
         },
+
         async markAssessment({ commit }, payload){
             try {
                 let response = await $request.post(`/assesments/management/scoresheet`,payload);
