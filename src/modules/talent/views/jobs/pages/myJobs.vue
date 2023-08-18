@@ -298,7 +298,18 @@ export default {
       this.salaryRange = !this.salaryRange
       this.show4 = !this.show4
     }
-  }
+  },
+  computed: {
+
+    jobs() {
+      return this.$store.getters["jobsModule/jobs"];
+    },
+  },
+  mounted() {
+    this.$store.dispatch("jobsModule/getSavedJobs");
+    this.$store.dispatch("jobsModule/getAppliedJobs");
+
+  },
 
 };
 </script>
