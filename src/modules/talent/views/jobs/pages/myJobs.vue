@@ -2,7 +2,7 @@
   <div>
   <header class="d-flex justify-content-between mb-5"><h6>My Jobs</h6></header>    <div>
       <job-header>
-        <template #view1>      
+        <template #view2>      
          <header class="d-flex sorting_section justify-content-between">
             <div class="d-flex"> <span class="place-center filter pr-2">Filter</span>
                <div>          
@@ -37,7 +37,7 @@
           </div>
         </div>
         </template>
-        <template #view2> </template>
+        <template #view1> </template>
         <template #view3> </template>
       </job-header>
     </div>
@@ -67,7 +67,7 @@ export default {
       show2: false,
       show3: false,
       show4: false,
-      jobs: [
+      jobss: [
         {
           title: "Chemical Engineer",
           id: 1,
@@ -307,7 +307,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch("jobsModule/getSavedJobs");
-    this.$store.dispatch("jobsModule/getAppliedJobs");
+    // this.$store.dispatch("jobsModule/getAppliedJobs");
+          console.log("Saved jobs:", this.jobs);
+
 
   },
 
