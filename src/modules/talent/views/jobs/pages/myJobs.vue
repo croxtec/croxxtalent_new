@@ -2,42 +2,49 @@
   <div>
   <header class="d-flex justify-content-between mb-5"><h6>My Jobs</h6></header>    <div>
       <job-header>
-        <template #view2>      
-         <header class="d-flex sorting_section justify-content-between">
-            <div class="d-flex"> <span class="place-center filter pr-2">Filter</span>
-               <div>          
-                  <div class="search">
-                  <i-icon icon="ri:search-2-line" class="nav-icon" />
-                  <input type="search" placeholder="Search" />
+          <template #view1>
+           <header class="d-flex sorting_section justify-content-between">
+              <div class="d-flex"> <span class="place-center filter pr-2">Filter</span>
+                 <div>          
+                    <div class="search">
+                    <i-icon icon="ri:search-2-line" class="nav-icon" />
+                    <input type="search" placeholder="Search" />
+                  </div>
+    </div>
+    </div>
+              <div class="place-center">Showing 73 results</div>
+
+            <div class="sorting hidden d-flex">
+              <div class="sortBy mr-2 d-flex mt-2">
+                <small class="muted py-1  mr-2">Sort by:</small>
+                <span class="mr-2">Most relevant</span><SmallArrowDown />
+              </div>
+            </div>
+          </header>
+            <AppliedJobs />
+         </template>
+          <template #view2>
+             <header class="d-flex sorting_section justify-content-between">
+                <div class="d-flex"> <span class="place-center filter pr-2">Filter</span>
+                   <div>          
+                      <div class="search">
+                      <i-icon icon="ri:search-2-line" class="nav-icon" />
+                      <input type="search" placeholder="Search" />
+                    </div>
+      </div>
+      </div>
+                <div class="place-center">Showing 73 results</div>
+
+              <div class="sorting hidden d-flex">
+                <div class="sortBy mr-2 d-flex mt-2">
+                  <small class="muted py-1  mr-2">Sort by:</small>
+                  <span class="mr-2">Most relevant</span><SmallArrowDown />
                 </div>
-  </div>
-  </div>
-            <div class="place-center">Showing 73 results</div>
-
-          <div class="sorting hidden d-flex">
-            <div class="sortBy mr-2 d-flex mt-2">
-              <small class="muted py-1  mr-2">Sort by:</small>
-              <span class="mr-2">Most relevant</span><SmallArrowDown />
-            </div>
-          </div>
-        </header>
-        <div class="job-grid">
-        <div class="job-list">
-            <div class="list">
-            <RowJobCard
-              v-for="job in jobs"
-              :key="job.id"
-              :job="job"
-              :showButton="true"
-              :optionModal="optionModal"
-              @option-clicked="showOptionModal(job.id)"
-            />
-
-            </div>
-          </div>
-        </div>
-        </template>
-        <template #view1> </template>
+              </div>
+            </header>
+             <SavedJobs />
+          </template>
+      
         <template #view3> </template>
       </job-header>
     </div>
@@ -49,10 +56,11 @@
 import JobHeader from '../components/myJobsHeader.vue';
 import RowJobCard from '../components/Cards/RowCard.vue'
 import SmallArrowDown from '../components/icons/SmallArrowDown.vue';
-
+import AppliedJobs from '../components/AppliedJobs.vue';
+import SavedJobs from '../components/SavedJobs.vue';
 
 export default {
-  components: { JobHeader, RowJobCard, SmallArrowDown },
+  components: { JobHeader, RowJobCard, SmallArrowDown, SavedJobs, AppliedJobs },
 
   data() {
     return {

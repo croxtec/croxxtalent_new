@@ -15,8 +15,6 @@
                         <span @click="handleAppliedforjobs(job.id)" role="button">Apply</span>
                         <hr />
                         <span @click="handleSavejobs(job.id)" role="button">Save</span>
-                        <hr />
-                        <span>Archive</span>
                     </div>
                 </div>
                 <div class="my-3">
@@ -147,7 +145,7 @@ h5 {
     width: 175px;
     position: absolute;
     background-color: white;
-    height: 150px;
+    height: auto;
     border: 0.5px solid #e0e0e0;
     box-shadow: 0px 79px 128px rgba(192, 192, 192, 0.09),
         0px 28.8363px 46.7221px rgba(192, 192, 192, 0.0598508),
