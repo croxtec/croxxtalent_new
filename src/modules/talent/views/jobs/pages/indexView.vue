@@ -578,9 +578,6 @@ export default {
       currentPage: 1,
       pageSize: 10,
       activeView: "1",
-      layout: "row",
-      vertical: false,
-      horizontal: false,
       employment: true,
       categories: true,
       jobLevel: true,
@@ -622,36 +619,6 @@ export default {
           "N3000 or Above",
       ],
       },
-      paymentRangeOptions: [
-        "₦ 1,000/hr - ₦ 2,000/hr",
-        "₦ 2,000/hr - ₦ 4,000/hr",
-        "₦ 4,000/hr - ₦ 6,000/hr",
-        "₦ 6,000/hr - ₦ 6,000/hr",
-      ],
-      categories: [
-        "Carpenter",
-        "Mason",
-        "Electrician",
-        "Locksmith",
-        "Mason",
-        "Electrician",
-      ],
-      locationOptions: [
-        "Abia",
-        "Adamawa",
-        "Akwa-Ibom",
-        "Anambra",
-        "Bauchi",
-        "Bayelsa",
-      ],
-      skillLevelOptions: [
-        "Artisan",
-        "Expert",
-        "Journeyman",
-        "Apprentice",
-        "intern",
-        "intermindate",
-      ],
       displayedTypeOfEmployment: [],
       displayedCategories: [],
       displayedJobLevelOptions: [],
@@ -660,7 +627,7 @@ export default {
     };
   },
   methods: {
-        toggleTypeOfEmployment(item) {
+    toggleTypeOfEmployment(item) {
       console.log(item + " checked:", this.filterMappings.typeOfEmployment.includes(item));
     },
     togglecategoriesCheck(item) {
@@ -676,19 +643,8 @@ export default {
     redirectToJobDetails(jobId) {
       this.$router.push({ name: "job-Details", params: { id: jobId } });
     },
-    setLayout(layout) {
-      this.layout = layout;
-    },
     showOptionModal(item) {
       this.optionModal = this.optionModal === item ? null : item;
-    },
-    showVertical() {
-      this.vertical = true;
-      this.horizontal = false;
-    },
-    showHorizontal() {
-      this.vertical = false;
-      this.horizontal = true;
     },
     showEmployment() {
       this.employment = !this.employment;
@@ -753,8 +709,6 @@ export default {
 
   },
   created() {
-    // Dispatch the getJobs action when the component is created
-    // this.getJobs();
      this.displayedTypeOfEmployment = this.filterMappings.typeOfEmployment.slice(0, 4);
     this.displayedCategories = this.filterMappings.categories.slice(0, 4);
     this.displayedJobLevelOptions= this.filterMappings.jobLevel.slice(0, 4);
