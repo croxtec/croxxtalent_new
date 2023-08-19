@@ -13,9 +13,7 @@ const getDefaultState = () => {
 
 const jobsModule = {
     namespaced: true,
-  state: {
-    ...getDefaultState(),
-  },
+    state: getDefaultState,
     getters: {
           jobs: (state) => state.jobs,
 
