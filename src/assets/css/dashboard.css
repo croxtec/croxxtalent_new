@@ -1,6 +1,8 @@
 .talent-nav {
   background-color: var(--blue-100);
   border-radius: 0px 0px 40px 40px;
+  z-index: 10;
+  position: relative;
 }
 
 .talent-nav ul {

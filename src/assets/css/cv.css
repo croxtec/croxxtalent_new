@@ -250,12 +250,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-   padding: 30px 0 15px 15px;
+  padding: 20px 0 5px 15px;
 }
 
 .cv-header-text {
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 12px;
 }
 
@@ -327,7 +327,7 @@
   width: max-content;
 }
 
-.cv-image img {
+.cv-image img, .cv-image .img {
   width: 100px;
   height: 100px;
   object-fit: cover;
@@ -336,6 +336,7 @@
   -o-object-position: top;
   position: relative;
   z-index: 10;
+  background-color: #fff;
 }
 
 .cv-image .img-spacer {

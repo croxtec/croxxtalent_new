@@ -116,7 +116,7 @@
                     <p class="personal-description" style="font-size: 17px;  font-weight: 600">{{cvData.topSkill.skill_name}}</p>
                      
                     <p class="h5 personal-detail">Core</p> 
-                    <p class="personal-description" style="font-size: 17px;  font-weight: 600">{{cvData.topSkill.secondary.name}} </p>  
+                    <p class="personal-description" style="font-size: 17px;  font-weight: 600" v-if="cvData.topSkill.secondary">{{cvData.topSkill.secondary.name}} </p>  
                     <ul class=" text-left" v-if="cvData.skill_groups">  
                         <li  v-for="(groups, index) in Object.values(cvData.skill_groups)[0]"
                             class="py-1" :key="index">   
@@ -451,7 +451,7 @@
                     <p class="personal-description" style="font-size: 17px;  font-weight: 600">{{cvData.topSkill.skill_name}}</p>
                     
                     <p class="h5 personal-detail">Core</p> 
-                    <p class="personal-description" style="font-size: 17px;  font-weight: 600">{{cvData.topSkill.secondary.name}} </p>  
+                    <!-- <p class="personal-description" style="font-size: 17px;  font-weight: 600" v-if="cvData.topSkill.secondary">{{cvData.topSkill.secondary.name}} </p>   -->
                      <ul class=" text-left" v-if="cvData.skill_groups">  
                         <li  v-for="(groups, index) in Object.values(cvData.skill_groups)[0]"
                             class="py-1" :key="index">   

@@ -24,7 +24,7 @@
       </div>
       <div class="cv-preview">
         <!-- <CvPreview /> -->
-        <cvTemplate2 />
+        <cvTemplate1 />
       </div>
     </div>
 
@@ -45,7 +45,7 @@ import WorkHistory from "../components/cv/cv-buider/workHistory.vue";
 import ProfessionalSummary from "../components/cv/cv-buider/professionalSummary.vue";
 
 import CvPreview from "../components/cv/cv-templates/cvPreviewer.vue";
-import CvTemplate2 from "../components/cv/cv-templates/cvTemplate2.vue";
+import CvTemplate1 from "../components/cv/cv-templates/cvTemplate1.vue";
 
 import { mapState, mapActions } from 'vuex'
 export default {
@@ -57,7 +57,7 @@ export default {
     ProfessionalSummary,
     WorkHistory,
     CvPreview,
-    CvTemplate2
+    CvTemplate1
   },
 
   data: () => {

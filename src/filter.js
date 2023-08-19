@@ -10,6 +10,14 @@ const timeStamp = (value) => {
   }
 };
 
+const timeStamp3 = (value) => {
+  if (value) {
+    // return moment(String(value)).format();
+    let date = new Date(value);
+    return moment(String(date)).format("MMM DD, YYYY");
+  }
+};
+
 const timeStamp2 = (value) => {
   if (value) {
     return moment(String(value)).format();
@@ -86,6 +94,7 @@ export {
   percentageFilter,
   timeStamp,
   timeStamp2,
+  timeStamp3,
   timeRange,
   dollarFilter2,
   sliceHash,

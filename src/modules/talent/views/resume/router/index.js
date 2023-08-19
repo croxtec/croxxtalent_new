@@ -12,6 +12,7 @@ const routes = [
     meta: {
       layout: "AppDashboardLayout",
       header: "CV Previewer",
+      isBackground: true,
     },
   },
 
@@ -23,6 +24,7 @@ const routes = [
       layout: "AppDashboardLayout",
       header: "CV Previewer",
       parent: "resume",
+      isBackground: true,
     },
     children: [
       {
@@ -33,6 +35,7 @@ const routes = [
           layout: "AppDashboardLayout",
           header: "CV Previewer",
           parent: "resume",
+          isBackground: true,
         },
       },
       {
@@ -43,6 +46,7 @@ const routes = [
           layout: "AppDashboardLayout",
           header: "CV Previewer",
           parent: "resume",
+          isBackground: true,
         },
       },
       {
@@ -53,6 +57,7 @@ const routes = [
           layout: "AppDashboardLayout",
           header: "CV Previewer",
           parent: "resume",
+          isBackground: true,
         },
       },
       {
@@ -63,6 +68,7 @@ const routes = [
           layout: "AppDashboardLayout",
           header: "CV Previewer",
           parent: "resume",
+          isBackground: true,
         },
       },
       {
@@ -73,6 +79,7 @@ const routes = [
           layout: "AppDashboardLayout",
           header: "CV Previewer",
           parent: "resume",
+          isBackground: true,
         },
       },
       {
@@ -83,6 +90,7 @@ const routes = [
           layout: "AppDashboardLayout",
           header: "CV Previewer",
           parent: "resume",
+          isBackground: true,
         },
       },
     ],
@@ -95,6 +103,7 @@ const routes = [
       layout: "AppDashboardLayout",
       header: "CV Previewer",
       parent: "resume",
+      isBackground: true,
     },
     children: [
       {
@@ -105,6 +114,7 @@ const routes = [
           layout: "AppDashboardLayout",
           header: "CV Previewer",
           parent: "resume",
+          isBackground: true,
         },
       },
     ],
