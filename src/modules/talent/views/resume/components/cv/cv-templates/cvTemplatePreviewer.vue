@@ -3,10 +3,10 @@
     <!-- <div v-html="link"></div> -->
     <div class="cv-template-preview">
       <div>
-        <div v-if="template === 'template-1'">
-          <cv-template-1 id="cv"/>
+        <div id="cv1" v-if="template === 'template-1'">
+          <cv-template-1 />
         </div>
-        <div v-else>Template 2</div>
+        <div id="cv2" v-else>Template 2</div>
       </div>
       <resume-options @download="download" @switchTemplate="switchTemplate($event)"/>
     </div>
@@ -42,7 +42,7 @@ export default {
     },
 
     async downloadAsImage(){
-      const template = document.querySelector("#cv"); // Get the template element
+      const template = document.querySelector(this.template === 'template-2' ? "#cv2" : "#cv1"); // Get the template element
 
       const canvas = await html2canvas(template); // Convert the template to a canvas
       const image = canvas.toDataURL("image/png"); // Convert the canvas to a data URL
@@ -55,7 +55,7 @@ export default {
     },
 
     async downloadAsPDF(){
-      const element = document.getElementById('cv'); // Get the specific element to download
+      const element = document.getElementById(this.template === 'template-2' ? 'cv2' : 'cv1'); // Get the specific element to download
 
       // Define options for the PDF generation
       const options = {
@@ -67,7 +67,6 @@ export default {
       };
 
       // Generate PDF from the element's HTML content
-      // const pdf = await html2pdf().set(options).from(element).save();
       const pdf = await html2pdf().set(options).from(element).save();
       // const pdf = await html2pdf().from(element).set(options).outputPdf();
 
