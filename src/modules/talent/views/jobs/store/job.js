@@ -13,14 +13,16 @@ const getDefaultState = () => {
 
 const jobsModule = {
     namespaced: true,
-    state: getDefaultState,
+  state: {
+    ...getDefaultState(),
+  },
     getters: {
           jobs: (state) => state.jobs,
 
     },
     mutations: {
-        SUCCESS(state, jobs) {
-        state.jobs = jobs;
+        SUCCESS(state, data) {
+        state.jobs = data;
         state.status.success = true;
     },
         FAILURE(state) {

@@ -764,6 +764,10 @@ export default {
 
   computed: {
         sortedPaginatedItems() {
+              if (!this.jobs.length) {
+        return [];
+      }
+
       const filteredItems = this.paginatedItems.filter(job => {
         return (
           this.filterMappings.typeOfEmployment.includes(job.work_type) &&
@@ -781,6 +785,11 @@ export default {
       return this.$store.getters["jobsModule/jobs"];
     },
     paginatedItems() {
+          if (!this.jobs.length) {
+        return [];
+      }
+
+
       const startIndex = (this.currentPage - 1) * this.pageSize;
       const endIndex = startIndex + this.pageSize;
       return this.jobs.slice(startIndex, endIndex);
