@@ -26,7 +26,7 @@ export default {
 
   data(){
     return {
-      template: 'template-2',
+      template: 'template-1',
       link: "",
       pdf_link: ""
     }
