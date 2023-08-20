@@ -251,7 +251,7 @@
         </span>
         <div class="employment-card" v-if="employment">
                     <div v-for="item in displayedTypeOfEmployment" :key="item" class="my-3">
-              <input type="checkbox" :value="item" @change="toggleTypeOfEmployment(item)">
+              <input type="checkbox" :value="item" v-model="typeOfEmployment"  @change="toggleTypeOfEmployment(item)">
                 <span class="ml-3">  {{ item }}</span>
             </div>
 
@@ -283,8 +283,7 @@
         </span>
         <div class="employment-card" v-if="categories">
             <div v-for="item in displayedCategories" :key="item" class="my-3">
-              <input type="checkbox" :value="item"      
-                 v-model="filterMappings.categories"
+              <input type="checkbox" :value="item"     v-model="categories" 
    @change="togglecategoriesCheck(item)">
                 <span class="ml-3">  {{ item }}</span>
             </div>
@@ -316,7 +315,7 @@
         </span>
         <div class="employment-card" v-if="jobLevel">
               <div v-for="item in displayedJobLevelOptions" :key="item" class="my-3">
-                <input type="checkbox" :value="item" @change="toggleJobLevelOptionsCheck(item)">
+                <input type="checkbox" :value="item" v-model="jobLevel" @change="toggleJobLevelOptionsCheck(item)">
                   <span class="ml-3">  {{ item }}</span>
               </div>
           
@@ -348,7 +347,7 @@
         <div class="employment-card" v-if="salaryRange">
 
                 <div v-for="item in displayedSalaryRangeOptions" :key="item" class="my-3">
-                  <input type="checkbox" :value="item" @change="toggleSalaryRangeOptions(item)">
+                  <input type="checkbox" :value="item" v-model="salaryRange" @change=" toggleSalaryRangeOptions(item)">
                     <span class="ml-3">  {{ item }}</span>
                 </div>
         </div>
@@ -375,126 +374,27 @@
         <div class="job-list pt-4">
           <div v-if="activeView === '1'" class="column">
                 <ColumnJobCard
-        v-for="job in paginatedItems"
-        :key="job.id"
-        :job="job"
-        :optionModal="optionModal"
-        @option-clicked="showOptionModal(job.id)"
-        @apply-clicked="handleAppliedforjobs(job.id)"
-        @save-clicked="handleSavejobs(job.id)"
+                v-for="job in filteredJobs"
+                :key="job.id"
+                :job="job"
+                :optionModal="optionModal"
+                @option-clicked="showOptionModal(job.id)"
+                @apply-clicked="handleAppliedforjobs(job.id)"
+                @save-clicked="handleSavejobs(job.id)"
         />
 
-            <!-- <div class="floter" v-for="job in paginatedItems" :key="job.id">
-              <div class="job-card">
-                <div>
-                  <div class="d-flex justify-content-between">
-                    <img
-                      src="@/assets/img/box.png"
-                      alt=""
-                      srcset=""
-                      class="img-fluid"
-                      style="width: 40px"
-                      @click="redirectToJobDetails(job.id)"
-                      role="button"
-                    />
-
-                    <i class="" role="button" @click="showOptionModal(job.id)">
-                      <MoreIcon />
-                    </i>
-                    <div class="option-modal py-2" v-if="optionModal === job.id">
-                      <span @click="handleAppliedforjobs(job.id)" role="button">Apply</span>
-                      <hr />
-                      <span @click="handleSavejobs(job.id)" role="button">Save</span>
-                      <hr />
-                      <span>Archive</span>
-                    </div>
-                  </div>
-                  <div class="my-3">
-                  <i class="" role="button" @click="redirectToJobDetails(job.id)">
-                      <h5>{{ job.job_title }}</h5>
-                  </i>
-                    <span>{{ job.industry_name }}</span> .
-                    <span> {{ job.state_name }}, {{ job.country_name }}</span>
-                  </div>
-                  <p class="d-block text-truncate content">
-                    {{ job.summary }}
-                  </p>                
-                  </div>
-
-                <div class="skills">               
-                   <div class="d-flex mt-4  justify-content-between">
-                    <span class="drilling">Drilling</span>
-                    <span class="Management">Management</span>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-          </div>
+         </div>
           <div v-if="activeView === '2'" class="list">
                   <RowJobCard
-          v-for="job in paginatedItems"
-          :key="job.id"
-          :job="job"
-          :optionModal="optionModal"
-          @option-clicked="showOptionModal(job.id)"
-          @apply-clicked="handleAppliedforjobs(job.id)"
-          @save-clicked="handleSavejobs(job.id)"
+                    v-for="job in filteredJobs"
+                    :key="job.id"
+                    :job="job"
+                    :optionModal="optionModal"
+                    @option-clicked="showOptionModal(job.id)"
+                    @apply-clicked="handleAppliedforjobs(job.id)"
+                    @save-clicked="handleSavejobs(job.id)"
         />
-              <!-- <div
-              class="list-job my-3 d-flex justify-content-between"
-              v-for="job in paginatedItems"
-              :key="job.id"
-            >
-              <div class="d-flex"        
-                         style="gap: 10px;"
-  >
-                <img
-                  src="@/assets/img/round-logo.png"
-                  alt=""
-                  class="img-fluid m-0"
-                  style="width: 64px; height: 64px"
-                  @click="redirectToJobDetails(job.id)"
-                  role="button"
-                />
-                <div>
-                  <div class="job-content">
-                    <div class="job-container">
-                      <h5 class="content-header">{{ job.title }}</h5>
-                    </div>
-                    <div class="location">
-                      <span>{{ job.industry_name }}</span> .
-                      <span> {{ job.state_name }}, {{ job.country_name }}</span>
-                      </div>
-                    <div class="options d-flex">
-                      <div class="option-tags mt-3">
-                        <span class="full-time"> {{ job.work_type }} </span>
-                        |
-                        <span class="off-shore mr-2">Off-shore</span>
-                        <span class="design">Design</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class=" left_section justify-content-between">
-                    <i class="" role="button" @click="showOptionModal(job.id)">
-                  <MoreIcon class="justify-self-end" />
-                        </i>
-                      <div class="option-modal py-2" v-if="optionModal === job.id">
-                        <span @click="handleAppliedforjobs(job.id)" role="button">Apply</span>
-                        <hr />
-                        <span @click="handleSavejobs(job.id)" role="button">Save</span>
-                        <hr />
-                        <span>Archive</span>
-                      </div>
-
-                <div class="option-progress">
-                  <progress value="45" max="100"></progress><br />
-                  <span>5 applied of 10 capacity</span>
-                </div>
-              </div>
-            </div> -->
-          </div>
+         </div>
           <div class="pagination_section">
             <div  class=" pagination_buttons">
               <div
@@ -588,13 +488,42 @@ export default {
       show3: false,
       show4: false,
       mobileFilter: false,
+      typeOfEmployment: [
+        "full_time",
+        "parttime",
+        'remote',
+        'internship',
+        'contract ',
+      ],
+      categories: [
+        "Design",
+        "sales",
+        "Marketing",
+        "humanResource",
+        "Finance",
+        "Engineering",
+        "Technology",
+      ],
+      jobLevel: [
+        "Entry Level",
+        "mid level",
+        "Senior Level",
+        "Director",
+        "Vp or Above",
+      ],
+      salaryRange: [
+        "N700 - N1000",
+        "N100 - N1500",
+        "N1500 - N2000",
+        "N3000 or Above",
+      ],
       filterMappings: {
         typeOfEmployment: [ 
-          "Full Time",
-          "Part Time",
-          'Remote',
-          'Internship',
-          'Contract ',
+          "full_time",
+          "parttime",
+          'remote',
+          'internship',
+          'contract ',
       ],
         categories: [ 
           "Design",
@@ -628,16 +557,16 @@ export default {
   },
   methods: {
     toggleTypeOfEmployment(item) {
-      console.log(item + " checked:", this.filterMappings.typeOfEmployment.includes(item));
+      console.log(item + " checked:", this.typeOfEmployment.includes(item));
     },
     togglecategoriesCheck(item) {
-      console.log(item + " checked:", this.filterMappings.categories.includes(item));
+      console.log(item + " checked:", this.categories.includes(item));
     },
     toggleJobLevelOptionsCheck(item) {
-      console.log(item + " checked:", this.filterMappings.jobLevel.includes(item));
+      console.log(item + " checked:", this.jobLevel.includes(item));
     },
     toggleSalaryRangeOptions(item) {
-      console.log(item + " checked:", this.filterMappings.salaryRange.includes(item));
+      console.log(item + " checked:", this.salaryRange.includes(item));
     },
 
     redirectToJobDetails(jobId) {
@@ -704,37 +633,82 @@ export default {
       console.log(resp);
     },
     handleFilterChange(filterType, selectedOptions) {
-      this.filterMappings[filterType] = selectedOptions;
+      this[filterType] = selectedOptions;
+         this.$forceUpdate();
     }
 
   },
   created() {
-     this.displayedTypeOfEmployment = this.filterMappings.typeOfEmployment.slice(0, 4);
-    this.displayedCategories = this.filterMappings.categories.slice(0, 4);
-    this.displayedJobLevelOptions= this.filterMappings.jobLevel.slice(0, 4);
-    this.displayedSalaryRangeOptions = this.filterMappings.salaryRange.slice(0, 4);
+    this.displayedTypeOfEmployment = this.typeOfEmployment.slice(0, 4);
+    this.displayedCategories = this.categories.slice(0, 4);
+    this.displayedJobLevelOptions= this.jobLevel.slice(0, 4);
+    this.displayedSalaryRangeOptions = this.salaryRange.slice(0, 4);
 
   },
 
   computed: {
-        sortedPaginatedItems() {
-              if (!this.jobs.length) {
-        return [];
+      filteredJobs() {
+            let filteredItems = this.paginatedItems;
+
+      if (this.typeOfEmployment.length > 0) {
+       return filteredItems = filteredItems.filter(job => this.typeOfEmployment.includes(job.work_type));
       }
 
-      const filteredItems = this.paginatedItems.filter(job => {
-        return (
-          this.filterMappings.typeOfEmployment.includes(job.work_type) &&
-          this.filterMappings.categories.includes(job.categories) &&
-          this.filterMappings.jobLevel.includes(job.jobLevel) &&
-          this.filterMappings.salaryRange.includes(job.salaryRange)
-        );
-      });
+      if (this.categories.length > 0) {
+       return filteredItems = filteredItems.filter(job => this.categories.includes(job.categories));
+      }
 
-      return filteredItems.sort((a, b) => {
-        return a.date - b.date;
-      });
+      if (this.jobLevel.length > 0) {
+       return filteredItems = filteredItems.filter(job => this.jobLevel.includes(job.jobLevel));
+      }
+
+      if (this.categories.length > 0) {
+       return filteredItems = filteredItems.filter(job => this.salaryRange.includes(job.salaryRange));
+      }
+
+      return filteredItems;
+
+    //   if (this.typeOfEmployment.length)
+    //   return this.paginatedItems.filter(job => this.typeOfEmployment.includes(job.work_type))
+    //   else if (this.categories.length)
+    //   return this.paginatedItems.filter(job => this.categories.includes(job.categories))
+    //   else if (this.jobLevel.length)
+    //   return this.paginatedItems.filter(job => this.jobLevel.includes(job.jobLevel))
+    //   else if (this.salaryRange.length)
+    //   return this.paginatedItems.filter(job => this.salaryRange.includes(job.salaryRange))
+    //   else
+    //  return this.paginatedItems
     },
+
+    // sortedPaginatedItems() {
+    //   if (!this.paginatedItems.length) {
+    //     return this.paginatedItems;
+    //   }
+
+    //   const filteredItems = this.paginatedItems.filter(item => {
+    //     return (
+    //       (this.typeOfEmployment.length === 0 || this.typeOfEmployment.includes(item.work_type))
+    //       // Apply similar conditions for other filter categories
+    //     );
+    //   });
+
+    //   if (this.typeOfEmployment.length > 0) {
+    //     return filteredItems.sort((a, b) => {
+    //       if (a.work_type === 'full time' && b.work_type !== 'full time') {
+    //         return -1;
+    //       } else if (a.work_type !== 'full time' && b.work_type === 'full time') {
+    //         return 1;
+    //       }
+
+    //       // Sort by other criteria if needed
+    //       // ...
+
+    //       return 0;
+    //     });
+    //   }
+
+    //   return filteredItems;
+    // },
     jobs() {
       return this.$store.getters["jobsModule/jobs"];
     },
@@ -763,7 +737,9 @@ export default {
     this.$store.dispatch("jobsModule/getJobs");
     // console.log(Array.isArray(this.jobs));
     // console.log(this.getJobs);
-      console.log("this.jobs:", this.jobs);
+    console.log("jobs:", this.jobs);
+    console.log("paginatedItems:", this.paginatedItems);
+    console.log("filteredJobs:", this.filteredJobs);
     this.$store.dispatch("jobsModule/getJobs");
 
   },
