@@ -112,6 +112,26 @@ const jobsModule = {
                 console.log(errors);
               }
         },
+        async getJobsInvitations({ commit }){
+            try {
+                let response = await $request.get(`/job-invitations`);
+                commit('SUCCESS', response.data.data); // Pass the jobs data to the mutation
+                return Promise.resolve(response.data.data);
+              } catch (errors) {
+                commit('FAILURE')
+                console.log(errors);
+              }
+        },
+        async viewJobsInvitations({ commit },id){
+            try {
+                let response = await $request.get(`/job-invitations/${id}`);
+                commit('SUCCESS', response.data.data); // Pass the jobs data to the mutation
+                return Promise.resolve(response.data.data);
+              } catch (errors) {
+                commit('FAILURE')
+                console.log(errors);
+              }
+        },
 
     }
 }
