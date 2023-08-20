@@ -19,8 +19,8 @@ const jobsModule = {
 
     },
     mutations: {
-        SUCCESS(state, jobs) {
-        state.jobs = jobs;
+        SUCCESS(state, data) {
+        state.jobs = data;
         state.status.success = true;
     },
         FAILURE(state) {
@@ -71,9 +71,9 @@ const jobsModule = {
                 console.log(errors);
               }
         },
-       async applyForJobs({ commit },id){
+       async applyForJobs({ commit },payload){
             try {
-                let response = await $request.post(`/jobs/applied`,id);
+                let response = await $request.post(`/jobs/applied`,payload);
                 commit('SUCCESS')
                 return Promise.resolve(response.data.data.data);
               } catch (errors) {
@@ -82,11 +82,31 @@ const jobsModule = {
               }
         },
         
-       async savedJobs({ commit },id){
+       async savedJobs({ commit },payload){
             try {
-                let response = await $request.post(`/jobs/saved`,id);
+                let response = await $request.post(`/jobs/saved`,payload);
                 commit('SUCCESS')
                 return Promise.resolve(response.data.data.data);
+              } catch (errors) {
+                commit('FAILURE')
+                console.log(errors);
+              }
+        },
+        async getAppliedJobs({ commit }){
+            try {
+                let response = await $request.get(`/myjob/applied`);
+                commit('SUCCESS', response.data.data.data); // Pass the jobs data to the mutation
+                return Promise.resolve(response.data.data.data);
+              } catch (errors) {
+                commit('FAILURE')
+                console.log(errors);
+              }
+        },
+        async getSavedJobs({ commit }){
+            try {
+                let response = await $request.get(`/myjob/saved`);
+                commit('SUCCESS', response.data.data); // Pass the jobs data to the mutation
+                return Promise.resolve(response.data.data);
               } catch (errors) {
                 commit('FAILURE')
                 console.log(errors);

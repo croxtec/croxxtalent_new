@@ -10,8 +10,6 @@
             role="button">Applied</span>
           <span class="report-header-item" @click="activetab = '4'" :class="[activetab === '4' ? 'active-item' : '']"
             role="button">CroxxTalent Invitations</span>
-          <span class="report-header-item" @click="activetab = '5'" :class="[activetab === '5' ? 'active-item' : '']"
-            role="button">Archived</span>
         </div>
     </div>
     <div>
