@@ -3,14 +3,10 @@
     <div>
       <h5 style="font-size: 18px; font-weight: 600">Competency</h5>
       <p class="small text-muted">Tell us about your skills.</p>
-      <div class="mt-2" v-if="add_competency">
+      <div class="mt-2">
         <AddCompetency />
       </div>
-      <hr />
-      <button class="add-item-button" @click="add_competency = !add_competency">
-        <span> <i-icon icon="clarity:plus-line" /> </span>
-        <span>Add Competency</span>
-      </button>
+      
     </div>
 
     <div class="mt-5">
