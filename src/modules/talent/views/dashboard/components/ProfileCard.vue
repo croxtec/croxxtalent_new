@@ -10,7 +10,7 @@
       alt=""
     />
      <div class="linker" @click.prevent="gotoProfile()">
-      <h5 class="profile-name">{{ user.name }}</h5>
+      <h5 class="profile-name">{{ user.cv.name }}</h5>
       <h6 class="profile-profession">{{ cvs.job_title_name }}</h6>
      </div>
     </div>

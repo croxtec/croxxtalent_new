@@ -1,14 +1,7 @@
 <template>
   <div>
     <div v-if="resumePercentage">
-      <div class="d-flex">
-        <div class="col-md-8">
-          <CvPreviewer />
-        </div>
-        <div class="col-4">
-
-        </div>
-      </div>
+      <Cv-template-previewer />
     </div>
     <div v-else>
       <CreatePreviewer />
@@ -18,12 +11,11 @@
 
 <script>
 import { mapState } from "vuex";
-import CreatePreviewer from './createResumePreviewer.vue'
-import CvPreviewer from '../components/cv/cv-templates/cvPreviewer.vue'
+import CvTemplatePreviewer from "../components/cv/cv-templates/cvTemplatePreviewer.vue";
+import CreatePreviewer from "./createResumePreviewer.vue";
 
 export default {
-  components: {  CreatePreviewer, CvPreviewer },
-
+  components: { CreatePreviewer, CvTemplatePreviewer },
   data() {
     return {
       activeEl: "1",
@@ -43,21 +35,21 @@ export default {
       user: (state) => state.user,
     }),
 
-    ...mapState('cvs', {
-      resumePercentage: (state) => (state.data.progress >= 80) ? true : false
-    })
+    ...mapState("cvs", {
+      resumePercentage: (state) => (state.data.progress >= 80 ? true : false),
+    }),
   },
 };
 </script>
 
 <style>
-  @media (max-width: 990px) {
-    .create-cv {
-      flex-direction: column;
+@media (max-width: 990px) {
+  .create-cv {
+    flex-direction: column;
   }
 
   .cv-option {
     width: 100%;
   }
-  }
+}
 </style>
