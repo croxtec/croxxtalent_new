@@ -654,17 +654,17 @@ export default {
        return filteredItems = filteredItems.filter(job => this.typeOfEmployment.includes(job.work_type));
       }
 
-      if (this.categories.length > 0) {
-       return filteredItems = filteredItems.filter(job => this.categories.includes(job.categories));
-      }
+      // if (this.categories.length > 0) {
+      //  return filteredItems = filteredItems.filter(job => this.categories.includes(job.categories));
+      // }
 
-      if (this.jobLevel.length > 0) {
-       return filteredItems = filteredItems.filter(job => this.jobLevel.includes(job.jobLevel));
-      }
+      // if (this.jobLevel.length > 0) {
+      //  return filteredItems = filteredItems.filter(job => this.jobLevel.includes(job.jobLevel));
+      // }
 
-      if (this.categories.length > 0) {
-       return filteredItems = filteredItems.filter(job => this.salaryRange.includes(job.salaryRange));
-      }
+      // if (this.categories.length > 0) {
+      //  return filteredItems = filteredItems.filter(job => this.salaryRange.includes(job.salaryRange));
+      // }
 
       return filteredItems;
 
@@ -714,7 +714,7 @@ export default {
     },
     paginatedItems() {
           if (!this.jobs.length) {
-        return [];
+        return this.jobs;
       }
 
 

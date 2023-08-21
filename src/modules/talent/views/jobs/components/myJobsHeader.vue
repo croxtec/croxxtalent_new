@@ -19,10 +19,13 @@
       <div v-if="activetab === '2'">
         <slot name="view2"></slot>
       </div>
-      <div v-if="activetab === '3'">
-        <slot name="view3"></slot>
+        <div v-if="activetab === '3'">
+          <slot name="view3"></slot>
+        </div>
+        <div v-if="activetab === '4'">
+          <slot name="view3"></slot>
+        </div>
       </div>
-    </div>
   </div>
 </template>
 

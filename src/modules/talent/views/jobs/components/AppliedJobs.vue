@@ -3,10 +3,10 @@
                     <div class="job-grid">
                         <div class="job-list">
                             <div class="list">
-                                <RowJobCard v-for="job in jobs" :key="job.id" :job="job" :showButton="true"
-                                    :optionModal="optionModal" @option-clicked="showOptionModal(job.id)" />
+                    <RowJobCard v-for="job in jobs" :key="job.id" :job="job.saved_campaign" :showButton="true" :optionModal="optionModal"
+                        @option-clicked="showOptionModal(job.id)" />
 
-                            </div>
+                                </div>
                         </div>
                     </div>
 </template>
@@ -35,6 +35,8 @@ export default {
         },
     },
     mounted() {
+                // this.$store.dispatch("jobsModule/getSavedJobs");
+
         this.$store.dispatch("jobsModule/getAppliedJobs");
         console.log("Applied jobs:", this.jobs);
 

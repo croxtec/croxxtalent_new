@@ -2,8 +2,8 @@
     <div class="job-grid">
         <div class="job-list">
             <div class="list">
-                <RowJobCard v-for="job in jobs" :key="job.id" :job="job.saved_campaign" :showButton="true" :optionModal="optionModal"
-                    @option-clicked="showOptionModal(job.id)" />
+                <RowJobCard v-for="job in jobs" :key="job.id" :job="job.saved_campaign" :showButton="true"
+                    :optionModal="optionModal" @option-clicked="showOptionModal(job.id)" />
 
             </div>
         </div>
@@ -34,8 +34,11 @@ export default {
         },
     },
     mounted() {
-        this.$store.dispatch("jobsModule/getSavedJobs");
-        console.log("Saved jobs:", this.jobs);
+
+        this.$store.dispatch("jobsModule/getJobsInvitations");
+        console.log("Jobs Invitations :", this.jobs);
+
+
     },
 
 };

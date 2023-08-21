@@ -3,7 +3,25 @@
   <header class="d-flex justify-content-between mb-5"><h6>My Jobs</h6></header>    <div>
       <job-header>
           <template #view1>
+               <header class="d-flex sorting_section justify-content-between">
+                  <div class="d-flex"> <span class="place-center filter pr-2">Filter</span>
+                     <div>          
+                        <div class="search">
+                        <i-icon icon="ri:search-2-line" class="nav-icon" />
+                        <input type="search" placeholder="Search" />
+                      </div>
+        </div>
+        </div>
+                  <div class="place-center">Showing 73 results</div>
 
+                <div class="sorting hidden d-flex">
+                  <div class="sortBy mr-2 d-flex mt-2">
+                    <small class="muted py-1  mr-2">Sort by:</small>
+                    <span class="mr-2">Most relevant</span><SmallArrowDown />
+                  </div>
+                </div>
+              </header>
+  <Inprogress />
          </template>
           <template #view2>
              <header class="d-flex sorting_section justify-content-between">
@@ -47,7 +65,29 @@
               </div>
             </header>
               <AppliedJobs />
-                         </template>
+          </template>        
+         <template #view4>
+               <header class="d-flex sorting_section justify-content-between">
+                  <div class="d-flex"> <span class="place-center filter pr-2">Filter</span>
+                     <div>          
+                        <div class="search">
+                        <i-icon icon="ri:search-2-line" class="nav-icon" />
+                        <input type="search" placeholder="Search" />
+                      </div>
+        </div>
+        </div>
+                  <div class="place-center">Showing 73 results</div>
+
+                <div class="sorting hidden d-flex">
+                  <div class="sortBy mr-2 d-flex mt-2">
+                    <small class="muted py-1  mr-2">Sort by:</small>
+                    <span class="mr-2">Most relevant</span><SmallArrowDown />
+                  </div>
+                </div>
+              </header>
+               <JobsInvite />
+
+</template>
       </job-header>
     </div>
   </div>
@@ -60,9 +100,11 @@ import RowJobCard from '../components/Cards/RowCard.vue'
 import SmallArrowDown from '../components/icons/SmallArrowDown.vue';
 import AppliedJobs from '../components/AppliedJobs.vue';
 import SavedJobs from '../components/SavedJobs.vue';
+import JobsInvite from '../components/JobsInvite.vue';
+import Inprogress from '../components/Inprogress.vue';
 
 export default {
-  components: { JobHeader, RowJobCard, SmallArrowDown, SavedJobs, AppliedJobs },
+  components: { JobHeader, RowJobCard, SmallArrowDown, SavedJobs, AppliedJobs, JobsInvite },
 
   data() {
     return {

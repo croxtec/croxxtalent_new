@@ -95,8 +95,8 @@ const jobsModule = {
         async getAppliedJobs({ commit }){
             try {
                 let response = await $request.get(`/myjob/applied`);
-                commit('SUCCESS', response.data.data.data); // Pass the jobs data to the mutation
-                return Promise.resolve(response.data.data.data);
+                commit('SUCCESS', response.data.data); // Pass the jobs data to the mutation
+                return Promise.resolve(response.data.data);
               } catch (errors) {
                 commit('FAILURE')
                 console.log(errors);
