@@ -35,7 +35,7 @@
       </div>
       <div class="d-lg-flex" style="gap: 25px">
         <div class="mb-3 w-100">
-          <label for="">Email Address</label>
+          <label for="">Company Email Address</label>
           <input
             type="email"
             v-model="credentials.email"
