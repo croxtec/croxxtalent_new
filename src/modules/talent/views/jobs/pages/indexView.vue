@@ -374,7 +374,7 @@
         <div class="job-list pt-4">
           <div v-if="activeView === '1'" class="column">
                 <ColumnJobCard
-                v-for="job in filteredJobs"
+                v-for="job in paginatedItems"
                 :key="job.id"
                 :job="job"
                 :optionModal="optionModal"
@@ -386,7 +386,7 @@
          </div>
           <div v-if="activeView === '2'" class="list">
                   <RowJobCard
-                    v-for="job in filteredJobs"
+                    v-for="job in paginatedItems"
                     :key="job.id"
                     :job="job"
                     :optionModal="optionModal"
