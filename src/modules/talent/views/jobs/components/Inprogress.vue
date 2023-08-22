@@ -9,7 +9,7 @@
                           </div>
             </div>
             </div>
-                          <div class="place-center">Showing {{ jobs.length }} results</div>
+                          <div class="place-center">Showing 0 results</div>
 
                     <div class="sorting hidden d-flex">
                       <div class="sortBy mr-2 d-flex mt-2">
@@ -21,9 +21,9 @@
     <div class="job-grid">
         <div class="job-list">
             <div class="list">
-                <RowJobCard v-for="job in jobs" :key="job.id" :job="job.saved_campaign" :showButton="true"
+                <!-- <RowJobCard v-for="job in jobs" :key="job.id" :job="job.saved_campaign" :showButton="true"
                     :optionModal="optionModal" @option-clicked="showOptionModal(job.id)" />
-
+ -->
             </div>
         </div>
     </div>
@@ -49,12 +49,12 @@ export default {
     },
     computed: {
 
-        jobs() {
-            return this.$store.getters["jobsModule/jobs"];
-        },
+        // jobs() {
+        //     return this.$store.getters["jobsModule/jobs"];
+        // },
     },
     mounted() {
-        this.$store.dispatch("jobsModule/getSavedJobs");
+        // this.$store.dispatch("jobsModule/getSavedJobs");
         console.log("Saved jobs:", this.jobs);
     },
 
