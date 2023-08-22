@@ -3,7 +3,25 @@
   <header class="d-flex justify-content-between mb-5"><h6>My Jobs</h6></header>    <div>
       <job-header>
           <template #view1>
+               <header class="d-flex sorting_section justify-content-between">
+                  <div class="d-flex"> <span class="place-center filter pr-2">Filter</span>
+                     <div>          
+                        <div class="search">
+                        <i-icon icon="ri:search-2-line" class="nav-icon" />
+                        <input type="search" placeholder="Search" />
+                      </div>
+        </div>
+        </div>
+                  <div class="place-center">Showing 73 results</div>
 
+                <div class="sorting hidden d-flex">
+                  <div class="sortBy mr-2 d-flex mt-2">
+                    <small class="muted py-1  mr-2">Sort by:</small>
+                    <span class="mr-2">Most relevant</span><SmallArrowDown />
+                  </div>
+                </div>
+              </header>
+  <Inprogress />
          </template>
           <template #view2>
              <header class="d-flex sorting_section justify-content-between">
@@ -47,7 +65,29 @@
               </div>
             </header>
               <AppliedJobs />
-                         </template>
+          </template>        
+         <template #view4>
+               <header class="d-flex sorting_section justify-content-between">
+                  <div class="d-flex"> <span class="place-center filter pr-2">Filter</span>
+                     <div>          
+                        <div class="search">
+                        <i-icon icon="ri:search-2-line" class="nav-icon" />
+                        <input type="search" placeholder="Search" />
+                      </div>
+        </div>
+        </div>
+                  <div class="place-center">Showing 73 results</div>
+
+                <div class="sorting hidden d-flex">
+                  <div class="sortBy mr-2 d-flex mt-2">
+                    <small class="muted py-1  mr-2">Sort by:</small>
+                    <span class="mr-2">Most relevant</span><SmallArrowDown />
+                  </div>
+                </div>
+              </header>
+               <JobsInvite />
+
+</template>
       </job-header>
     </div>
   </div>
@@ -60,267 +100,22 @@ import RowJobCard from '../components/Cards/RowCard.vue'
 import SmallArrowDown from '../components/icons/SmallArrowDown.vue';
 import AppliedJobs from '../components/AppliedJobs.vue';
 import SavedJobs from '../components/SavedJobs.vue';
+import JobsInvite from '../components/JobsInvite.vue';
+import Inprogress from '../components/Inprogress.vue';
 
 export default {
-  components: { JobHeader, RowJobCard, SmallArrowDown, SavedJobs, AppliedJobs },
+  components: { JobHeader, RowJobCard, SmallArrowDown, SavedJobs, AppliedJobs, JobsInvite },
 
   data() {
     return {
-      vertical: false,
-      horizontal: false,
-      employment: true,
-      categories:true,
-      jobLevel: true,
-      salaryRange: true,
-      optionModal: null,
-      show1: false,
-      show2: false,
-      show3: false,
-      show4: false,
-      jobss: [
-        {
-          title: "Chemical Engineer",
-          id: 1,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Electrical Engineer",
-          id: 2,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Civil Engineer",
-          id: 3,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 4,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 5,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 6,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 7,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 8,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 9,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 10,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 11,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Chemical Engineer",
-          id: 12,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Mechanical Engineer",
-          id: 13,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "BioChemical Engineer",
-          id: 14,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Technical Engineer",
-          id: 15,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Software Engineer",
-          id: 16,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Software Engineer",
-          id: 16,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-        {
-          title: "Software Engineer",
-          id: 16,
-          section: "Agency",
-          location: "San Fransisco, US",
-          description:
-            "Dropbox is looking for brand designer to help the team to be able to access all of the required state",
-          //  category: [
-          //   {tag: 'Drilling', 'Management'}
-          //  ]
-        },
-      ],
     };
   },
 
   methods: {
-    showOptionModal(item) {
-      this.optionModal = this.optionModal === item ? null:item;
-    },
-    showVertical () {
-      this.vertical = true
-      this.horizontal = false
-    },
-    showHorizontal () {
-      this.vertical = false
-      this.horizontal = true
-    },
-    showEmployment () {
-      this.employment = !this.employment
-      this.show1 = !this.show1
-    },
-    showCategories () {
-      this.categories = !this.categories
-      this.show2 = !this.show2
-    },
-    showJobLevel () {
-      this.jobLevel = !this.jobLevel
-      this.show3 = !this.show3
-    },
-    showSalaryRange () {
-      this.salaryRange = !this.salaryRange
-      this.show4 = !this.show4
-    }
   },
   computed: {
-
-    jobs() {
-      return this.$store.getters["jobsModule/jobs"];
-    },
   },
   mounted() {
-    this.$store.dispatch("jobsModule/getSavedJobs");
-    // this.$store.dispatch("jobsModule/getAppliedJobs");
-          console.log("Saved jobs:", this.jobs);
-
-
   },
 
 };
