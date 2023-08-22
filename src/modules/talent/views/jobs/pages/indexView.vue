@@ -250,9 +250,9 @@
           </h6>
         </span>
         <div class="employment-card" v-if="employment">
-                    <div v-for="item in displayedTypeOfEmployment" :key="item" class="my-3">
-              <input type="checkbox" :value="item" v-model="typeOfEmployment"  @change="toggleTypeOfEmployment(item)">
-                <span class="ml-3">  {{ item }}</span>
+                    <div v-for="item in displayedTypeOfEmployment" :key="item.id" class="my-3">
+              <input type="checkbox" :value="item.value" v-model="selectedTypeOfEmployment"  @change="toggleTypeOfEmployment(item.value)">
+                <span class="ml-3 capitalize">  {{ item.title }}</span>
             </div>
 
         </div>
@@ -282,10 +282,10 @@
           </h6>
         </span>
         <div class="employment-card" v-if="categories">
-            <div v-for="item in displayedCategories" :key="item" class="my-3">
-              <input type="checkbox" :value="item"     v-model="categories" 
-   @change="togglecategoriesCheck(item)">
-                <span class="ml-3">  {{ item }}</span>
+            <div v-for="item in displayedCategories" :key="item.id" class="my-3">
+              <input type="checkbox" :value="item.value"     v-model="selectedCategories" 
+   @change="togglecategoriesCheck(item.id)">
+                <span class="ml-3 capitalize">  {{ item.title }}</span>
             </div>
         </div>
         <span @click="showJobLevel">
@@ -314,9 +314,9 @@
           </h6>
         </span>
         <div class="employment-card" v-if="jobLevel">
-              <div v-for="item in displayedJobLevelOptions" :key="item" class="my-3">
-                <input type="checkbox" :value="item" v-model="jobLevel" @change="toggleJobLevelOptionsCheck(item)">
-                  <span class="ml-3">  {{ item }}</span>
+              <div v-for="item in displayedJobLevelOptions" :key="item.id" class="my-3">
+                <input type="checkbox" :value="item.value" v-model="selectedJobLevelOptions" @change="toggleJobLevelOptionsCheck(item.value)">
+                  <span class="ml-3 capitalize">  {{ item.title }}</span>
               </div>
           
         </div>
@@ -346,9 +346,9 @@
         </span>
         <div class="employment-card" v-if="salaryRange">
 
-                <div v-for="item in displayedSalaryRangeOptions" :key="item" class="my-3">
-                  <input type="checkbox" :value="item" v-model="salaryRange" @change=" toggleSalaryRangeOptions(item)">
-                    <span class="ml-3">  {{ item }}</span>
+                <div v-for="item in displayedSalaryRangeOptions" :key="item.id" class="my-3">
+                  <input type="checkbox" :value="item.value" v-model="selectedSalaryRangeOptions" @change=" toggleSalaryRangeOptions(item.value)">
+                    <span class="ml-3">  {{ item.title }}</span>
                 </div>
         </div>
       </div>
@@ -374,7 +374,7 @@
         <div class="job-list pt-4">
           <div v-if="activeView === '1'" class="column">
                 <ColumnJobCard
-                v-for="job in paginatedItems"
+                v-for="job in filteredJobs"
                 :key="job.id"
                 :job="job"
                 :optionModal="optionModal"
@@ -489,65 +489,37 @@ export default {
       show4: false,
       mobileFilter: false,
       typeOfEmployment: [
-        "full_time",
-        "parttime",
-        'remote',
-        'internship',
-        'contract ',
+        { id: 1, title: 'full time', value: 'full_time', checked: null },
+        { id: 2, title: 'part time', value: 'parttime', checked: null },
+        { id: 3, title: 'remote', value: 'remote', checked: null },
+        { id: 4, title: 'internship', value: 'internship', checked: null },
+        { id: 5, title: 'contract', value: 'contract', checked: null },
       ],
       categories: [
-        "Design",
-        "sales",
-        "Marketing",
-        "humanResource",
-        "Finance",
-        "Engineering",
-        "Technology",
+        { id: 1, title: 'design', value: 'design', checked: null },
+        { id: 4, title: 'humanResource', value: 'humanResource', checked: null },
+        { id: 5, title: 'finance', value: 'finance', checked: null },
+        { id: 6, title: 'engineering', value: 'engineering', checked: null },
+        { id: 7, title: 'technology', value: 'technology', checked: null },
       ],
       jobLevel: [
-        "Entry Level",
-        "mid level",
-        "Senior Level",
-        "Director",
-        "Vp or Above",
+        { id: 1, title: 'entry level', value: 'entry level', checked: null },
+        { id: 2, title: 'mid level', value: 'mid level', checked: null },
+        { id: 3, title: 'senior level', value: 'senior level', checked: null },
+        { id: 4, title: 'director', value: 'director', checked: null },
+        { id: 5, title: 'Vp or Above', value: 'Vp or Above', checked: null },
       ],
       salaryRange: [
-        "N700 - N1000",
-        "N100 - N1500",
-        "N1500 - N2000",
-        "N3000 or Above",
+        { id: 1, title: 'N700 - N1000', value: 'N700 - N1000', checked: null },
+        { id: 2, title: 'N100 - N1500', value: 'N100 - N1500', checked: null },
+        { id: 3, title: 'N1500 - N2000', value: 'N1500 - N2000', checked: null },
+        { id: 4, title: 'N3000 or Above', value: 'N3000 or Above', checked: null },
       ],
-      filterMappings: {
-        typeOfEmployment: [ 
-          "full_time",
-          "parttime",
-          'remote',
-          'internship',
-          'contract ',
-      ],
-        categories: [ 
-          "Design",
-          "sales",
-          "Marketing",
-          "humanResource",
-          "Finance",
-          "Engineering",
-          "Technology",
-      ],
-        jobLevel: [ 
-          "Entry Level",
-          "mid level",
-          "Senior Level",
-          "Director",
-          "Vp or Above",
-        ],
-        salaryRange: [ 
-          "N700 - N1000",
-          "N100 - N1500",
-          "N1500 - N2000",
-          "N3000 or Above",
-      ],
-      },
+      selectedTypeOfEmployment: [],
+      selectedCategories: [],
+      selectedJobLevelOptions: [],
+      selectedSalaryRangeOptions: [],
+
       displayedTypeOfEmployment: [],
       displayedCategories: [],
       displayedJobLevelOptions: [],
@@ -557,15 +529,34 @@ export default {
   },
   methods: {
     toggleTypeOfEmployment(item) {
-      console.log(item + " checked:", this.typeOfEmployment.includes(item));
+      if (this.selectedTypeOfEmployment.includes(item.value)) {
+        this.selectedTypeOfEmployment = this.selectedTypeOfEmployment.filter(value => value !== item.value);
+      } else {
+        this.selectedTypeOfEmployment.push(item.value);
+      }
     },
     togglecategoriesCheck(item) {
+      if (this.selectedCategories.includes(item.value)) {
+        this.selectedCategories = this.selectedCategories.filter(value => value!== item.value);
+      } else {
+        this.selectedCategories.push(item.value);
+      }
       console.log(item + " checked:", this.categories.includes(item));
     },
     toggleJobLevelOptionsCheck(item) {
+      if (this.selectedJobLevelOptions.includes(item.value)) {
+        this.selectedJobLevelOptions = this.selectedJobLevelOptions.filter(value => value!== item.value);
+      } else {
+        this.selectedJobLevelOptions.push(item.value);
+      }
       console.log(item + " checked:", this.jobLevel.includes(item));
     },
     toggleSalaryRangeOptions(item) {
+      if (this.selectedSalaryRangeOptions.includes(item.value)) {
+        this.selectedSalaryRangeOptions = this.selectedSalaryRangeOptions.filter(value => value!== item.value);
+      } else {
+        this.selectedSalaryRangeOptions.push(item.value);
+      }
       console.log(item + " checked:", this.salaryRange.includes(item));
     },
 
@@ -632,83 +623,41 @@ export default {
       const resp = await this.$store.dispatch("jobsModule/savedJobs", { campaign_id: id });
       console.log(resp);
     },
-    handleFilterChange(filterType, selectedOptions) {
-      this[filterType] = selectedOptions;
-         this.$forceUpdate();
-    }
+
 
   },
   created() {
-    this.displayedTypeOfEmployment = this.typeOfEmployment.slice(0, 4);
-    this.displayedCategories = this.categories.slice(0, 4);
-    this.displayedJobLevelOptions= this.jobLevel.slice(0, 4);
-    this.displayedSalaryRangeOptions = this.salaryRange.slice(0, 4);
+    this.displayedTypeOfEmployment = this.typeOfEmployment;
+    this.displayedCategories = this.categories;
+    this.displayedJobLevelOptions= this.jobLevel;
+    this.displayedSalaryRangeOptions = this.salaryRange;
 
   },
 
   computed: {
       filteredJobs() {
-            let filteredItems = this.paginatedItems;
+       let filteredItems = this.paginatedItems;
 
-      if (this.typeOfEmployment.length > 0) {
-       return filteredItems = filteredItems.filter(job => this.typeOfEmployment.includes(job.work_type));
+      if (this.selectedTypeOfEmployment.length > 0) {
+        filteredItems = filteredItems.filter(job => this.selectedTypeOfEmployment.includes(job.work_type));
+      }
+      if (this.selectedCategories.length > 0) {
+        filteredItems = filteredItems.filter(job => this.selectedCategories.includes(job.category));
+      }
+      if (this.selectedJobLevelOptions.length > 0) {
+        filteredItems = filteredItems.filter(job => this.selectedJobLevelOptions.includes(job.job_level));
+      }
+      if (this.selectedSalaryRangeOptions.length > 0) {
+        filteredItems = filteredItems.filter(job => this.selectedSalaryRangeOptions.includes(job.salary_range));
       }
 
-      // if (this.categories.length > 0) {
-      //  return filteredItems = filteredItems.filter(job => this.categories.includes(job.categories));
-      // }
 
-      // if (this.jobLevel.length > 0) {
-      //  return filteredItems = filteredItems.filter(job => this.jobLevel.includes(job.jobLevel));
-      // }
 
-      // if (this.categories.length > 0) {
-      //  return filteredItems = filteredItems.filter(job => this.salaryRange.includes(job.salaryRange));
-      // }
 
       return filteredItems;
 
-    //   if (this.typeOfEmployment.length)
-    //   return this.paginatedItems.filter(job => this.typeOfEmployment.includes(job.work_type))
-    //   else if (this.categories.length)
-    //   return this.paginatedItems.filter(job => this.categories.includes(job.categories))
-    //   else if (this.jobLevel.length)
-    //   return this.paginatedItems.filter(job => this.jobLevel.includes(job.jobLevel))
-    //   else if (this.salaryRange.length)
-    //   return this.paginatedItems.filter(job => this.salaryRange.includes(job.salaryRange))
-    //   else
-    //  return this.paginatedItems
     },
 
-    // sortedPaginatedItems() {
-    //   if (!this.paginatedItems.length) {
-    //     return this.paginatedItems;
-    //   }
-
-    //   const filteredItems = this.paginatedItems.filter(item => {
-    //     return (
-    //       (this.typeOfEmployment.length === 0 || this.typeOfEmployment.includes(item.work_type))
-    //       // Apply similar conditions for other filter categories
-    //     );
-    //   });
-
-    //   if (this.typeOfEmployment.length > 0) {
-    //     return filteredItems.sort((a, b) => {
-    //       if (a.work_type === 'full time' && b.work_type !== 'full time') {
-    //         return -1;
-    //       } else if (a.work_type !== 'full time' && b.work_type === 'full time') {
-    //         return 1;
-    //       }
-
-    //       // Sort by other criteria if needed
-    //       // ...
-
-    //       return 0;
-    //     });
-    //   }
-
-    //   return filteredItems;
-    // },
     jobs() {
       return this.$store.getters["jobsModule/jobs"];
     },
@@ -716,8 +665,6 @@ export default {
           if (!this.jobs.length) {
         return this.jobs;
       }
-
-
       const startIndex = (this.currentPage - 1) * this.pageSize;
       const endIndex = startIndex + this.pageSize;
       return this.jobs.slice(startIndex, endIndex);
@@ -735,8 +682,8 @@ export default {
   },
   mounted() {
     this.$store.dispatch("jobsModule/getJobs");
-    // console.log(Array.isArray(this.jobs));
-    // console.log(this.getJobs);
+    console.log(Array.isArray(this.jobs));
+    console.log(Array.isArray(this.filteredJobs));
     console.log("jobs:", this.jobs);
     console.log("paginatedItems:", this.paginatedItems);
     console.log("filteredJobs:", this.filteredJobs);
