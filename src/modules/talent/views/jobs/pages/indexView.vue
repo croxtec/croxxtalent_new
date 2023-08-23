@@ -25,199 +25,135 @@
         <button class="primary--button text-white px-3">Search</button>
       </div>
       <div v-if="mobileFilter" class="drop_down_section py-4">
-        filter
-        <span @click="showEmployment">
-          <h6 class="my-3 justify-between">
-            Type of Employment
-            <!-- <ArrowUp class="rotate-defult" :class="{ 'rotate-180': show1 }" /> -->
-            <svg
-              :class="{ 'rotate-180': show1 }"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+        Filter
+          <span @click="showEmployment">
+            <h6 class="my-3 justify-between">
+              Type of Employment
+              <!-- <ArrowUp class="rotate-defult" :class="{ 'rotate-180': show1 }" /> -->
+              <svg
+                :class="{ 'rotate-180': show1 }"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                  stroke="#292D32"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
 
-            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i
+              <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show1"></i> -->
-          </h6>
-        </span>
-        <div class="employment-card" v-if="employment">
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Full-time (3)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">part-time (5)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Remote (2)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Internship (24)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Contract (3)</span>
-          </div>
-        </div>
-        <span @click="showCategories">
-          <h6 class="my-3 justify-between">
-            Categories
-            <svg
-              :class="{ 'rotate-180': show2 }"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            </h6>
+          </span>
+          <div class="employment-card" v-if="employment">
+                      <div v-for="item in displayedTypeOfEmployment" :key="item.id" class="my-3">
+                <input type="checkbox" :value="item.value" v-model="selectedTypeOfEmployment"  @change="toggleTypeOfEmployment(item.value)">
+                  <span class="ml-3 capitalize">  {{ item.title }}</span>
+              </div>
 
-            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i
+          </div>
+          <span @click="showCategories">
+            <h6 class="my-3 justify-between">
+              Categories
+              <svg
+                :class="{ 'rotate-180': show2 }"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                  stroke="#292D32"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i> -->
-          </h6>
-        </span>
-        <div class="employment-card" v-if="categories">
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Design (24)</span>
+            </h6>
+          </span>
+          <div class="employment-card" v-if="categories">
+              <div v-for="item in displayedCategories" :key="item.id" class="my-3">
+                <input type="checkbox" :value="item.value"     v-model="selectedCategories" 
+     @change="togglecategoriesCheck(item.id)">
+                  <span class="ml-3 capitalize">  {{ item.title }}</span>
+              </div>
           </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">sales (3)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Marketing (3)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Human Resource (6)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Finance (4)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Engineering (4)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Technology (5)</span>
-          </div>
-        </div>
-        <span @click="showJobLevel">
-          <h6 class="my-3 justify-between">
-            Job Level
-            <svg
-              :class="{ 'rotate-180': show3 }"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+          <span @click="showJobLevel">
+            <h6 class="my-3 justify-between">
+              Job Level
+              <svg
+                :class="{ 'rotate-180': show3 }"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                  stroke="#292D32"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
 
-            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
+              <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i> -->
-          </h6>
-        </span>
-        <div class="employment-card" v-if="jobLevel">
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Entry Level (57)</span>
+            </h6>
+          </span>
+          <div class="employment-card" v-if="jobLevel">
+                <div v-for="item in displayedJobLevelOptions" :key="item.id" class="my-3">
+                  <input type="checkbox" :value="item.value" v-model="selectedJobLevelOptions" @change="toggleJobLevelOptionsCheck(item.value)">
+                    <span class="ml-3 capitalize">  {{ item.title }}</span>
+                </div>
+          
           </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">mid level (3)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Senior Level (5)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Director (6)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">Vp or Above (4)</span>
-          </div>
-        </div>
-        <span @click="showSalaryRange">
-          <h6 class="my-3 justify-between">
-            Salary Range
-            <svg
-              :class="{ 'rotate-180': show4 }"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
-                stroke="#292D32"
-                stroke-width="1.5"
-                stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i
+          <span @click="showSalaryRange">
+            <h6 class="my-3 justify-between">
+              Salary Range
+              <svg
+                :class="{ 'rotate-180': show4 }"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                  stroke="#292D32"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i> -->
-          </h6>
-        </span>
-        <div class="employment-card" v-if="salaryRange">
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">N700 - N1000 (57)</span>
+            </h6>
+          </span>
+          <div class="employment-card" v-if="salaryRange">
+
+                  <div v-for="item in displayedSalaryRangeOptions" :key="item.id" class="my-3">
+                    <input type="checkbox" :value="item.value" v-model="selectedSalaryRangeOptions" @change=" toggleSalaryRangeOptions(item.value)">
+                      <span class="ml-3">  {{ item.title }}</span>
+                  </div>
           </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">N100 - N1500 (3)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">N1500 - N2000 (5)</span>
-          </div>
-          <div class="my-3">
-            <input type="checkbox" name="" id="" />
-            <span class="ml-3">N3000 or Above (6)</span>
-          </div>
-        </div>
       </div>
     </div>
 
