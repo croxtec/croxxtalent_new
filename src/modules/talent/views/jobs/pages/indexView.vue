@@ -13,16 +13,18 @@
           class=""
           style=""
         />
-        <input class="search-bar" type="search" placeholder="Job title or keyword" />
+        <input class="search-bar" type="search"      
+         v-model="searchInput"
+   placeholder="Job title or keyword" />
         <img
           @click="showMobileFilter"
           role="button"
           src="@/assets/icons/setting-5.svg"
           alt=""
           srcset=""
-          class=""
+          class="mx-3"
         />
-        <button class="primary--button text-white px-3">Search</button>
+        <!-- <button class="primary--button text-white px-3">Search</button> -->
       </div>
       <div v-if="mobileFilter" class="drop_down_section py-4">
         Filter
@@ -424,6 +426,7 @@ export default {
       show3: false,
       show4: false,
       mobileFilter: false,
+      searchInput: '',
       typeOfEmployment: [
         { id: 1, title: 'full time', value: 'full_time', checked: null },
         { id: 2, title: 'part time', value: 'parttime', checked: null },
@@ -587,8 +590,13 @@ export default {
         filteredItems = filteredItems.filter(job => this.selectedSalaryRangeOptions.includes(job.salary_range));
       }
 
-
-
+      if (this.searchInput.trim() !== "") {
+        const searchQuery = this.searchInput.toLowerCase();
+        filteredItems = filteredItems.filter(job =>
+          (job.job_title && job.job_title.toLowerCase().includes(searchQuery)) ||
+          (job.description && job.description.toLowerCase().includes(searchQuery))
+        );
+      }
 
       return filteredItems;
 
