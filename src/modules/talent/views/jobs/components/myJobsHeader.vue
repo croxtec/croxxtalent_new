@@ -23,7 +23,7 @@
           <slot name="view3"></slot>
         </div>
         <div v-if="activetab === '4'">
-          <slot name="view3"></slot>
+          <slot name="view4"></slot>
         </div>
       </div>
   </div>

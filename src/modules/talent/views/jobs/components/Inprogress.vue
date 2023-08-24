@@ -1,13 +1,33 @@
 <template>
+    <div>
+                   <header class="d-flex sorting_section justify-content-between">
+                      <div class="d-flex"> <span class="place-center filter pr-2">Filter</span>
+                         <div>          
+                            <div class="search">
+                            <i-icon icon="ri:search-2-line" class="nav-icon" />
+                            <input type="search" placeholder="Search" />
+                          </div>
+            </div>
+            </div>
+                          <div class="place-center">Showing 0 results</div>
+
+                    <div class="sorting hidden d-flex">
+                      <div class="sortBy mr-2 d-flex mt-2">
+                        <small class="muted py-1  mr-2">Sort by:</small>
+                        <span class="mr-2">Most relevant</span><SmallArrowDown />
+                      </div>
+                    </div>
+                  </header>
     <div class="job-grid">
         <div class="job-list">
             <div class="list">
-                <RowJobCard v-for="job in jobs" :key="job.id" :job="job.saved_campaign" :showButton="true"
+                <!-- <RowJobCard v-for="job in jobs" :key="job.id" :job="job.saved_campaign" :showButton="true"
                     :optionModal="optionModal" @option-clicked="showOptionModal(job.id)" />
-
+ -->
             </div>
         </div>
     </div>
+                          </div>
 </template>
 
 <script>
@@ -29,12 +49,12 @@ export default {
     },
     computed: {
 
-        jobs() {
-            return this.$store.getters["jobsModule/jobs"];
-        },
+        // jobs() {
+        //     return this.$store.getters["jobsModule/jobs"];
+        // },
     },
     mounted() {
-        this.$store.dispatch("jobsModule/getSavedJobs");
+        // this.$store.dispatch("jobsModule/getSavedJobs");
         console.log("Saved jobs:", this.jobs);
     },
 
