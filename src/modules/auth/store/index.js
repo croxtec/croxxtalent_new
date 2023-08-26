@@ -3,8 +3,10 @@ import Vue from "vue";
 import $request from "@/axios";
 import Cookies from "js-cookie";
 import config from "@/config.js";
-
+import { auth }  from '@/firebase.js';
+import firebase from 'firebase/compat/app';
 import router from "@/router"
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 
 Vue.use(require("vue-moment"));
 
@@ -277,6 +279,53 @@ export default {
       }
     },
 
+    // signInWithGoogle request
+  async signInWithGoogle({ commit }) {
+    try {
+      const provider = new GoogleAuthProvider()
+      const userCredential = await signInWithPopup(auth, provider);
+      const res = userCredential;
+        Cookies.set("token", res);
+        console.log(res);
+        let responsePayload = res.user;
+        commit("LOGIN", {
+          accessToken: responsePayload.stsTokenManager.accessToken,
+          accessTokenExpiresIn: responsePayload.stsTokenManager.expirationTime,
+          // accessTokenExpiresAt: responsePayload.expires_at,
+        });
+        commit("SET_USER", responsePayload.user);
+        commit("SET_SUCCESS", responsePayload.message);
+
+        toastify({
+          text: `Login with Google Successfully`,
+          className: "info",
+          style: {
+            background: "green",
+            fontSize: "12px",
+            borderRadius: "5px",
+          },
+        }).showToast();
+        return res;
+
+    } catch (error) {
+        console.log(error.data);
+        if (error.data) {
+          let errorPayload = error.data;
+          if (errorPayload.message) {
+            commit("SET_ERROR", errorPayload.message);
+            if (errorPayload.errors) {
+              console.log(errorPayload.errors);
+              commit("SET_VALIDATION_ERRORS", errorPayload.errors);
+            }
+            return;
+          }
+        }
+        commit("SET_ERROR", "Internal connection error, please try again.");
+        return error.response;
+      } finally {
+        NProgress.done();
+      }
+  },
     // Logout
     // Logout Request
     async logout({ commit }) {
