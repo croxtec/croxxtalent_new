@@ -14,7 +14,7 @@
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.8.3",
     "element-ui": "^2.15.12",
-    "firebase": "^9.18.0",
+    "firebase": "^10.3.0",
     "html2canvas": "^1.4.1",
     "html2pdf.js": "^0.10.1",
     "js-cookie": "^3.0.1",
