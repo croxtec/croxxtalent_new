@@ -1,6 +1,6 @@
 <template>
   <div class="auth-form">
-    <button
+    <button @click="signUpWithGoogle"
       class="blue-border justify-content-center d-flex align-items-center w-100 my-4"
       style="gap: 10px"
     >
@@ -127,7 +127,7 @@ export default {
   },
 
   methods: {
-    ...mapActions("auth", ["registerUser"]),
+    ...mapActions("auth", ["registerUser","signUpWithGoogle"]),
     registerTalent() {
       // this.$store.dispatch("auth/registerUser", this.credentials);
       this.registerUser(this.credentials);

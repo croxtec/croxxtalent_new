@@ -10,7 +10,7 @@
 
     <div class="auth-content">
       <h4 class="text-center">Welcome Back</h4>
-      <button
+      <button @click="signInWithGoogle"
         class="blue-border justify-content-center d-flex align-items-center w-100 my-4"
         style="gap: 10px"
       >
@@ -85,6 +85,7 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
+
 export default {
   data: () => {
     return {
@@ -95,7 +96,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions("auth", ["loginUser"]),
+    ...mapActions("auth", ["loginUser","signInWithGoogle"]),
     userLogin() {
       let formData = new FormData();
       formData.append("login", this.credentials.login);
