@@ -368,16 +368,14 @@ export default {
       const provider = new GoogleAuthProvider()
       const userCredential = await signInWithPopup(auth, provider);
       const user = userCredential.user;
-
           // Send user data to your login endpoint
-        const res = await $request.post('/auth/register', {
-        type: " talent",
+      const res = await $request.post('/auth/register', {
+        type: "talent",
         first_name: userCredential._tokenResponse.firstName,
         last_name: userCredential._tokenResponse.lastName,
         email: user.email,
         password: user.uid,
-
-        });
+      });
         Cookies.set("token", res.data.data);
         console.log(res.data);
         let responsePayload = res.data;
