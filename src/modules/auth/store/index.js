@@ -308,7 +308,7 @@ export default {
             this.$router.replace(this.$route.query.returnTo);
           } else {
             if (responsePayload.data.user.type === "talent") {
-              this.$router.replace({
+              this.$router.push({
                 name: "talent-home",
               });
             } else {
@@ -389,7 +389,7 @@ export default {
         commit("SET_USER", responsePayload.data.user);
         commit("SET_SUCCESS", responsePayload.message);
         if (responsePayload.status === true ) {
-          this.$router.replace({ name: "cvBuilder" });
+          this.$router.push({ name: "cvBuilder" });
         }else if (responsePayload.status === false) { 
           console.log(responsePayload.message); 
         }      
