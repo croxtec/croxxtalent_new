@@ -10,7 +10,7 @@
           </div>
         </div>
       </div>
-      <div class="place-center">Showing 0 results</div>
+      <div class="place-center">Showing {{ jobs.length }} results</div>
 
       <div class="sorting hidden d-flex">
         <div class="sortBy mr-2 d-flex mt-2">
