@@ -60,9 +60,7 @@ export default {
       return this.$store.getters["jobsModule/jobs"];
     },
   },
-  mounted() {
-    // this.$store.dispatch("jobsModule/getSavedJobs");
-
+  beforeMount() {
     this.$store.dispatch("jobsModule/getAppliedJobs");
     console.log("Applied jobs:", this.jobs);
   },
