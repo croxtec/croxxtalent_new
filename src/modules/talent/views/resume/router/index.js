@@ -18,7 +18,7 @@ const routes = [
 
   {
     path: "/create-cv",
-    name: "",
+    name: "cvBuilder",
     component: CreateCV,
     meta: {
       layout: "AppDashboardLayout",
