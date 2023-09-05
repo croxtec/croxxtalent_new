@@ -22,14 +22,15 @@
     <div class="job-grid">
       <div class="job-list">
         <div class="list">
-          <RowJobCard
+          <JobInviteCard
             v-for="job in jobs"
             :key="job.id"
             :job="job.campaign"
             :showButton="false"
             :optionModal="optionModal"
-            :showViewButton="true"
             @option-clicked="showOptionModal(job.id)"
+            @acceptJob-clicked="handleAcceptJob(job.id)"
+            @declineJob-clicked="handleDeclineJob(job.id)"
           />
         </div>
       </div>
@@ -38,10 +39,10 @@
 </template>
 
 <script>
-import RowJobCard from "../components/Cards/RowCard.vue";
+import JobInviteCard from "../components/Cards/JobInviteCard.vue";
 import SmallArrowDown from "../components/SmallArrowDown.vue";
 export default {
-  components: { RowJobCard, SmallArrowDown },
+  components: { JobInviteCard, SmallArrowDown },
 
   data() {
     return {
@@ -52,6 +53,18 @@ export default {
   methods: {
     showOptionModal(item) {
       this.optionModal = this.optionModal === item ? null : item;
+    },
+    async handleAcceptJob(id) {
+      const resp = await this.$store.dispatch("jobsModule/acceptJobsInvitations", {
+        campaign_id: id,
+      });
+      console.log(resp);
+    },
+    async handleDeclineJob(id) {
+      const resp = await this.$store.dispatch("jobsModule/declineJobsInvitations", {
+        campaign_id: id,
+      });
+      console.log(resp);
     },
   },
   computed: {
