@@ -4,22 +4,56 @@
       ><p class="">Drag and Drop file or <span class="underline">Browse</span> CV</p>
       <p class="">max 10MB each.</p>
       <UploadIcon class="mx-auto mt-4" />
+      <img
+        v-for="(imageUrl, index) in imageUrls"
+        :key="index"
+        :src="imageUrl"
+        alt="Uploaded Image"
+        class="image_container"
+      />
     </label>
-    <input type="file" hidden id="upload_file" />
+    <input
+      type="file"
+      multiple
+      accept="image/*"
+      hidden
+      id="upload_file"
+      @change="handleFiles($event.target.files)"
+    />
   </div>
 </template>
 <script>
 import UploadIcon from "../../UploadIcon.vue";
 export default {
+  data() {
+    return {
+      imageUrls: [], // Store image URLs here
+    };
+  },
   components: {
     UploadIcon,
   },
 
-  data: () => {
-    return {};
-  },
+  methods: {
+    handleFiles(files) {
+      Array.from(files).forEach((file) => {
+        this.previewFile(file);
+        this.uploadFile(file);
+      });
+    },
+    previewFile(file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        this.imageUrls.push(reader.result); // Push the image URL directly
+      };
+    },
 
-  methods: {},
+    uploadFile(file) {
+      const formData = new FormData();
+      formData.append("file", file);
+    },
+  },
 };
 </script>
 <style scoped>
@@ -41,5 +75,8 @@ export default {
 .upload_container {
   display: flex;
   align-items: center;
+}
+.image_container {
+  width: 60%;
 }
 </style>
