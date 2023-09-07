@@ -35,7 +35,9 @@
               {{ content.msg }}
             </p>
           </div>
-          <div class="d-flex py-2 time_text"><span>{{ content.status }}</span></div>
+          <div class="d-flex py-2 time_text">
+            <span>{{ content.status }}</span>
+          </div>
         </div>
       </div>
 
@@ -74,8 +76,7 @@
           <span @click="handleOptions()" role="button"
             >Option
             <svg
-                          :class="{ 'rotate-180': options }"
-
+              :class="{ 'rotate-180': options }"
               xmlns="http://www.w3.org/2000/svg"
               width="17"
               height="17"
@@ -87,12 +88,12 @@
                 fill="#2B2B2B"
               /></svg
           ></span>
-          <div v-if="options">        
-              <hr />
+          <div v-if="options">
+            <hr />
             <span role="button">View</span>
             <hr />
             <span role="button">Delete</span>
-  </div>
+          </div>
         </div>
       </div>
     </div>
@@ -105,44 +106,38 @@ export default {
     content: Object,
   },
   data() {
-    return { optionModal: null ,
-    options: false
-    };
+    return { optionModal: null, options: false };
   },
   methods: {
     showOptionModal(item) {
       this.optionModal = this.optionModal === item ? null : item;
     },
-        handleOptions() {
+    handleOptions() {
       this.options = !this.options;
     },
-
   },
 };
 </script>
 
 <style scoped>
-.notification_msg{
+.notification_msg {
   color: #303030;
   line-height: 20px;
-letter-spacing: 0.898px;
+  letter-spacing: 0.898px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-
-
 }
-.time_text{
-  color: #ACACAC;
-font-family: Poppins;
-font-size: 13px;
-font-style: normal;
-font-weight: 600;
-line-height: 160%; 
-text-transform: capitalize;
-
+.time_text {
+  color: #acacac;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 160%;
+  text-transform: capitalize;
 }
-.notify_section{
+.notify_section {
   gap: 10px;
 }
 
@@ -167,7 +162,6 @@ text-transform: capitalize;
   width: 100%;
   border-bottom: 1px solid #c2dbff;
   position: relative;
-
 }
 .notifier.unseen {
   background: #f5f5f5;
@@ -216,8 +210,7 @@ text-transform: capitalize;
   cursor: pointer;
 }
 .option-modal > div > span:focus {
-  background: #06E594;
-  
+  background: #06e594;
 }
 .option-modal > div > hr {
   background: #c2dbff;
@@ -226,5 +219,4 @@ text-transform: capitalize;
 .rotate-180 {
   transform: rotate(180deg);
 }
-
 </style>

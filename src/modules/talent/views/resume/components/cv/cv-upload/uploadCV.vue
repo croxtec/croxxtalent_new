@@ -2,7 +2,7 @@
   <div class="upload_container">
     <label class="upload" for="upload_file"
       ><p class="">Drag and Drop file or <span class="underline">Browse</span> CV</p>
-      <p class="">max 10MB each.</p>
+      <p class="">max 5MB each.</p>
       <UploadIcon class="mx-auto mt-4" />
       <img
         v-for="(imageUrl, index) in imageUrls"

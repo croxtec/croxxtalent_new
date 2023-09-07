@@ -128,12 +128,11 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 18.877px;
-  border: 1px solid #c2dbff;
+  border: 1px solid #0040a1;
   background: #fff;
   overflow-x: auto;
   height: 100vh;
   position: relative;
+  box-shadow: 0px 22.65241px 45.30483px -7.5508px rgba(39, 76, 119, 0.16);
 }
-
-
 </style>
