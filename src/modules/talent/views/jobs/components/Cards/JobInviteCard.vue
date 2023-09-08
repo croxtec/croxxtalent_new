@@ -32,44 +32,19 @@
         </div>
       </div>
     </div>
-    <div v-if="showButton" class="d-flex justify-content-between">
-      <button
-        @click="handleAppliedforjobs(job.id)"
-        class="primary--button place-center p-3 px-5 align-items-center mx-auto"
-        style="gap: 10px"
-      >
-        <span>Apply</span>
-      </button>
-    </div>
-    <div v-if="showViewButton" class="d-flex justify-content-between">
-      <button
-        @click="redirectToJobDetails(job.id)"
-        class="primary--button place-center p-3 px-5 align-items-center mx-auto"
-        style="gap: 10px"
-      >
-        <span>View</span>
-      </button>
-    </div>
+
     <!-- Options and Progress Section -->
-    <div v-if="showProgressButton" class="left_section justify-content-between">
+    <div class="left_section justify-content-between">
       <i class="" role="button" @click="showOptionModal(job.id)">
         <MoreIcon class="justify-self-end" />
       </i>
       <div class="option-modal py-2" v-if="optionModal === job.id">
-        <span @click="handleAppliedforjobs(job.id)" role="button">Apply</span>
+        <span class="text-success" @click="handleAcceptJob(job.id)" role="button"
+          >Accept</span
+        >
         <hr />
-        <span @click="handleSavejobs(job.id)" role="button">Save</span>
-      </div>
-
-      <div class="option-progress">
-        <progress
-          :value="(job.total_applications / job.number_of_positions) * 100"
-          max="100"
-        ></progress
-        ><br />
-        <span
-          >{{ job.total_applications }} applied of
-          {{ job.number_of_positions }} capacity</span
+        <span class="text-danger" @click="handleDeclineJob(job.id)" role="button"
+          >Decline</span
         >
       </div>
     </div>
@@ -98,11 +73,11 @@ export default {
     showOptionModal(id) {
       this.$emit("option-clicked", id); // Emit an event when an option is clicked
     },
-    handleAppliedforjobs(id) {
-      this.$emit("apply-clicked", id); // Emit an event when Apply is clicked
+    handleAcceptJob(id) {
+      this.$emit("acceptJob-clicked", id); // Emit an event when Apply is clicked
     },
-    handleSavejobs(id) {
-      this.$emit("save-clicked", id); // Emit an event when Save is clicked
+    handleDeclineJob(id) {
+      this.$emit("declineJob-clicked", id); // Emit an event when Save is clicked
     },
   },
 };
@@ -113,10 +88,12 @@ export default {
   display: grid;
   place-self: center;
 }
+
 .left_section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .justify-self-end {
@@ -140,8 +117,8 @@ h5 {
 }
 
 .option-modal {
-  /* left: 120px; */
-  top: 55px;
+  left: -130px;
+  top: 45px;
   text-align: center;
   gap: 10px;
   width: 175px;

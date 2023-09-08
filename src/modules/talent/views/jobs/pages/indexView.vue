@@ -13,9 +13,12 @@
           class=""
           style=""
         />
-        <input class="search-bar" type="search"      
-         v-model="searchInput"
-   placeholder="Job title or keyword" />
+        <input
+          class="search-bar"
+          type="search"
+          v-model="searchInput"
+          placeholder="Job title or keyword"
+        />
         <img
           @click="showMobileFilter"
           role="button"
@@ -28,134 +31,150 @@
       </div>
       <div v-if="mobileFilter" class="drop_down_section py-4">
         Filter
-          <span @click="showEmployment">
-            <h6 class="my-3 justify-between">
-              Type of Employment
-              <!-- <ArrowUp class="rotate-defult" :class="{ 'rotate-180': show1 }" /> -->
-              <svg
-                :class="{ 'rotate-180': show1 }"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
-                  stroke="#292D32"
-                  stroke-width="1.5"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+        <span @click="showEmployment">
+          <h6 class="my-3 justify-between">
+            Type of Employment
+            <!-- <ArrowUp class="rotate-defult" :class="{ 'rotate-180': show1 }" /> -->
+            <svg
+              :class="{ 'rotate-180': show1 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
 
-              <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show1"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show1"></i> -->
-            </h6>
-          </span>
-          <div class="employment-card" v-if="employment">
-                      <div v-for="item in displayedTypeOfEmployment" :key="item.id" class="my-3">
-                <input type="checkbox" :value="item.value" v-model="selectedTypeOfEmployment"  @change="toggleTypeOfEmployment(item.value)">
-                  <span class="ml-3 capitalize">  {{ item.title }}</span>
-              </div>
-
+          </h6>
+        </span>
+        <div class="employment-card" v-if="employment">
+          <div v-for="item in displayedTypeOfEmployment" :key="item.id" class="my-3">
+            <input
+              type="checkbox"
+              :value="item.value"
+              v-model="selectedTypeOfEmployment"
+              @change="toggleTypeOfEmployment(item.value)"
+            />
+            <span class="ml-3 capitalize"> {{ item.title }}</span>
           </div>
-          <span @click="showCategories">
-            <h6 class="my-3 justify-between">
-              Categories
-              <svg
-                :class="{ 'rotate-180': show2 }"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
-                  stroke="#292D32"
-                  stroke-width="1.5"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+        </div>
+        <span @click="showCategories">
+          <h6 class="my-3 justify-between">
+            Categories
+            <svg
+              :class="{ 'rotate-180': show2 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
 
-              <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show2"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show2"></i> -->
-            </h6>
-          </span>
-          <div class="employment-card" v-if="categories">
-              <div v-for="item in displayedCategories" :key="item.id" class="my-3">
-                <input type="checkbox" :value="item.value"     v-model="selectedCategories" 
-     @change="togglecategoriesCheck(item.id)">
-                  <span class="ml-3 capitalize">  {{ item.title }}</span>
-              </div>
+          </h6>
+        </span>
+        <div class="employment-card" v-if="categories">
+          <div v-for="item in displayedCategories" :key="item.id" class="my-3">
+            <input
+              type="checkbox"
+              :value="item.value"
+              v-model="selectedCategories"
+              @change="togglecategoriesCheck(item.id)"
+            />
+            <span class="ml-3 capitalize"> {{ item.title }}</span>
           </div>
-          <span @click="showJobLevel">
-            <h6 class="my-3 justify-between">
-              Job Level
-              <svg
-                :class="{ 'rotate-180': show3 }"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
-                  stroke="#292D32"
-                  stroke-width="1.5"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+        </div>
+        <span @click="showJobLevel">
+          <h6 class="my-3 justify-between">
+            Job Level
+            <svg
+              :class="{ 'rotate-180': show3 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
 
-              <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show3"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show3"></i> -->
-            </h6>
-          </span>
-          <div class="employment-card" v-if="jobLevel">
-                <div v-for="item in displayedJobLevelOptions" :key="item.id" class="my-3">
-                  <input type="checkbox" :value="item.value" v-model="selectedJobLevelOptions" @change="toggleJobLevelOptionsCheck(item.value)">
-                    <span class="ml-3 capitalize">  {{ item.title }}</span>
-                </div>
-          
+          </h6>
+        </span>
+        <div class="employment-card" v-if="jobLevel">
+          <div v-for="item in displayedJobLevelOptions" :key="item.id" class="my-3">
+            <input
+              type="checkbox"
+              :value="item.value"
+              v-model="selectedJobLevelOptions"
+              @change="toggleJobLevelOptionsCheck(item.value)"
+            />
+            <span class="ml-3 capitalize"> {{ item.title }}</span>
           </div>
-          <span @click="showSalaryRange">
-            <h6 class="my-3 justify-between">
-              Salary Range
-              <svg
-                :class="{ 'rotate-180': show4 }"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
-                  stroke="#292D32"
-                  stroke-width="1.5"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i
+        </div>
+        <span @click="showSalaryRange">
+          <h6 class="my-3 justify-between">
+            Salary Range
+            <svg
+              :class="{ 'rotate-180': show4 }"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.5984 12.5435L11.1651 7.11016C10.5234 6.46849 9.47344 6.46849 8.83177 7.11016L3.39844 12.5435"
+                stroke="#292D32"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <!-- <i class="fa fa-solid fa-chevron-up mx-3" v-if="show4"></i
             ><i class="fa fa-solid fa-chevron-down mx-3" v-if="!show4"></i> -->
-            </h6>
-          </span>
-          <div class="employment-card" v-if="salaryRange">
-
-                  <div v-for="item in displayedSalaryRangeOptions" :key="item.id" class="my-3">
-                    <input type="checkbox" :value="item.value" v-model="selectedSalaryRangeOptions" @change=" toggleSalaryRangeOptions(item.value)">
-                      <span class="ml-3">  {{ item.title }}</span>
-                  </div>
+          </h6>
+        </span>
+        <div class="employment-card" v-if="salaryRange">
+          <div v-for="item in displayedSalaryRangeOptions" :key="item.id" class="my-3">
+            <input
+              type="checkbox"
+              :value="item.value"
+              v-model="selectedSalaryRangeOptions"
+              @change="toggleSalaryRangeOptions(item.value)"
+            />
+            <span class="ml-3"> {{ item.title }}</span>
           </div>
+        </div>
       </div>
     </div>
 
@@ -188,11 +207,15 @@
           </h6>
         </span>
         <div class="employment-card" v-if="employment">
-                    <div v-for="item in displayedTypeOfEmployment" :key="item.id" class="my-3">
-              <input type="checkbox" :value="item.value" v-model="selectedTypeOfEmployment"  @change="toggleTypeOfEmployment(item.value)">
-                <span class="ml-3 capitalize">  {{ item.title }}</span>
-            </div>
-
+          <div v-for="item in displayedTypeOfEmployment" :key="item.id" class="my-3">
+            <input
+              type="checkbox"
+              :value="item.value"
+              v-model="selectedTypeOfEmployment"
+              @change="toggleTypeOfEmployment(item.value)"
+            />
+            <span class="ml-3 capitalize"> {{ item.title }}</span>
+          </div>
         </div>
         <span @click="showCategories">
           <h6 class="my-3 justify-between">
@@ -220,11 +243,15 @@
           </h6>
         </span>
         <div class="employment-card" v-if="categories">
-            <div v-for="item in displayedCategories" :key="item.id" class="my-3">
-              <input type="checkbox" :value="item.value"     v-model="selectedCategories" 
-   @change="togglecategoriesCheck(item.id)">
-                <span class="ml-3 capitalize">  {{ item.title }}</span>
-            </div>
+          <div v-for="item in displayedCategories" :key="item.id" class="my-3">
+            <input
+              type="checkbox"
+              :value="item.value"
+              v-model="selectedCategories"
+              @change="togglecategoriesCheck(item.id)"
+            />
+            <span class="ml-3 capitalize"> {{ item.title }}</span>
+          </div>
         </div>
         <span @click="showJobLevel">
           <h6 class="my-3 justify-between">
@@ -252,11 +279,15 @@
           </h6>
         </span>
         <div class="employment-card" v-if="jobLevel">
-              <div v-for="item in displayedJobLevelOptions" :key="item.id" class="my-3">
-                <input type="checkbox" :value="item.value" v-model="selectedJobLevelOptions" @change="toggleJobLevelOptionsCheck(item.value)">
-                  <span class="ml-3 capitalize">  {{ item.title }}</span>
-              </div>
-          
+          <div v-for="item in displayedJobLevelOptions" :key="item.id" class="my-3">
+            <input
+              type="checkbox"
+              :value="item.value"
+              v-model="selectedJobLevelOptions"
+              @change="toggleJobLevelOptionsCheck(item.value)"
+            />
+            <span class="ml-3 capitalize"> {{ item.title }}</span>
+          </div>
         </div>
         <span @click="showSalaryRange">
           <h6 class="my-3 justify-between">
@@ -283,11 +314,15 @@
           </h6>
         </span>
         <div class="employment-card" v-if="salaryRange">
-
-                <div v-for="item in displayedSalaryRangeOptions" :key="item.id" class="my-3">
-                  <input type="checkbox" :value="item.value" v-model="selectedSalaryRangeOptions" @change=" toggleSalaryRangeOptions(item.value)">
-                    <span class="ml-3">  {{ item.title }}</span>
-                </div>
+          <div v-for="item in displayedSalaryRangeOptions" :key="item.id" class="my-3">
+            <input
+              type="checkbox"
+              :value="item.value"
+              v-model="selectedSalaryRangeOptions"
+              @change="toggleSalaryRangeOptions(item.value)"
+            />
+            <span class="ml-3"> {{ item.title }}</span>
+          </div>
         </div>
       </div>
       <div class="">
@@ -311,30 +346,30 @@
         </div>
         <div class="job-list pt-4">
           <div v-if="activeView === '1'" class="column">
-                <ColumnJobCard
-                v-for="job in filteredJobs"
-                :key="job.id"
-                :job="job"
-                :optionModal="optionModal"
-                @option-clicked="showOptionModal(job.id)"
-                @apply-clicked="handleAppliedforjobs(job.id)"
-                @save-clicked="handleSavejobs(job.id)"
-        />
-
-         </div>
+            <ColumnJobCard
+              v-for="job in filteredJobs"
+              :key="job.id"
+              :job="job"
+              :optionModal="optionModal"
+              @option-clicked="showOptionModal(job.id)"
+              @apply-clicked="handleAppliedforjobs(job.id)"
+              @save-clicked="handleSavejobs(job.id)"
+            />
+          </div>
           <div v-if="activeView === '2'" class="list">
-                  <RowJobCard
-                    v-for="job in paginatedItems"
-                    :key="job.id"
-                    :job="job"
-                    :optionModal="optionModal"
-                    @option-clicked="showOptionModal(job.id)"
-                    @apply-clicked="handleAppliedforjobs(job.id)"
-                    @save-clicked="handleSavejobs(job.id)"
-        />
-         </div>
+            <RowJobCard
+              v-for="job in paginatedItems"
+              :key="job.id"
+              :job="job"
+              :optionModal="optionModal"
+              :showProgressButton="true"
+              @option-clicked="showOptionModal(job.id)"
+              @apply-clicked="handleAppliedforjobs(job.id)"
+              @save-clicked="handleSavejobs(job.id)"
+            />
+          </div>
           <div class="pagination_section">
-            <div  class=" pagination_buttons">
+            <div class="pagination_buttons">
               <div
                 @click="previousPage"
                 :disabled="currentPage === 1"
@@ -407,8 +442,8 @@ import ColumnIcon from "../components/icons/ColumnIcon.vue";
 import RowIcon from "../components/icons/RowIcon.vue";
 import ArrowUp from "../components/icons/ArrowUp.vue";
 import MoreIcon from "../components/icons/MoreIcon.vue";
-import RowJobCard from '../components/Cards/RowCard.vue'
-import ColumnJobCard from '../components/Cards/ColumnCard.vue'
+import RowJobCard from "../components/Cards/RowCard.vue";
+import ColumnJobCard from "../components/Cards/ColumnCard.vue";
 export default {
   components: { ArrowUp, RowIcon, ColumnIcon, MoreIcon, RowJobCard, ColumnJobCard },
   data() {
@@ -426,33 +461,33 @@ export default {
       show3: false,
       show4: false,
       mobileFilter: false,
-      searchInput: '',
+      searchInput: "",
       typeOfEmployment: [
-        { id: 1, title: 'full time', value: 'full_time', checked: null },
-        { id: 2, title: 'part time', value: 'parttime', checked: null },
-        { id: 3, title: 'remote', value: 'remote', checked: null },
-        { id: 4, title: 'internship', value: 'internship', checked: null },
-        { id: 5, title: 'contract', value: 'contract', checked: null },
+        { id: 1, title: "full time", value: "full_time", checked: null },
+        { id: 2, title: "part time", value: "parttime", checked: null },
+        { id: 3, title: "remote", value: "remote", checked: null },
+        { id: 4, title: "internship", value: "internship", checked: null },
+        { id: 5, title: "contract", value: "contract", checked: null },
       ],
       categories: [
-        { id: 1, title: 'design', value: 'design', checked: null },
-        { id: 4, title: 'humanResource', value: 'humanResource', checked: null },
-        { id: 5, title: 'finance', value: 'finance', checked: null },
-        { id: 6, title: 'engineering', value: 'engineering', checked: null },
-        { id: 7, title: 'technology', value: 'technology', checked: null },
+        { id: 1, title: "design", value: "design", checked: null },
+        { id: 4, title: "humanResource", value: "humanResource", checked: null },
+        { id: 5, title: "finance", value: "finance", checked: null },
+        { id: 6, title: "engineering", value: "engineering", checked: null },
+        { id: 7, title: "technology", value: "technology", checked: null },
       ],
       jobLevel: [
-        { id: 1, title: 'entry level', value: 'entry level', checked: null },
-        { id: 2, title: 'mid level', value: 'mid level', checked: null },
-        { id: 3, title: 'senior level', value: 'senior level', checked: null },
-        { id: 4, title: 'director', value: 'director', checked: null },
-        { id: 5, title: 'Vp or Above', value: 'Vp or Above', checked: null },
+        { id: 1, title: "entry level", value: "entry level", checked: null },
+        { id: 2, title: "mid level", value: "mid level", checked: null },
+        { id: 3, title: "senior level", value: "senior level", checked: null },
+        { id: 4, title: "director", value: "director", checked: null },
+        { id: 5, title: "Vp or Above", value: "Vp or Above", checked: null },
       ],
       salaryRange: [
-        { id: 1, title: 'N700 - N1000', value: 'N700 - N1000', checked: null },
-        { id: 2, title: 'N100 - N1500', value: 'N100 - N1500', checked: null },
-        { id: 3, title: 'N1500 - N2000', value: 'N1500 - N2000', checked: null },
-        { id: 4, title: 'N3000 or Above', value: 'N3000 or Above', checked: null },
+        { id: 1, title: "N700 - N1000", value: "N700 - N1000", checked: null },
+        { id: 2, title: "N100 - N1500", value: "N100 - N1500", checked: null },
+        { id: 3, title: "N1500 - N2000", value: "N1500 - N2000", checked: null },
+        { id: 4, title: "N3000 or Above", value: "N3000 or Above", checked: null },
       ],
       selectedTypeOfEmployment: [],
       selectedCategories: [],
@@ -463,20 +498,23 @@ export default {
       displayedCategories: [],
       displayedJobLevelOptions: [],
       displayedSalaryRangeOptions: [],
-
     };
   },
   methods: {
     toggleTypeOfEmployment(item) {
       if (this.selectedTypeOfEmployment.includes(item.value)) {
-        this.selectedTypeOfEmployment = this.selectedTypeOfEmployment.filter(value => value !== item.value);
+        this.selectedTypeOfEmployment = this.selectedTypeOfEmployment.filter(
+          (value) => value !== item.value
+        );
       } else {
         this.selectedTypeOfEmployment.push(item.value);
       }
     },
     togglecategoriesCheck(item) {
       if (this.selectedCategories.includes(item.value)) {
-        this.selectedCategories = this.selectedCategories.filter(value => value!== item.value);
+        this.selectedCategories = this.selectedCategories.filter(
+          (value) => value !== item.value
+        );
       } else {
         this.selectedCategories.push(item.value);
       }
@@ -484,7 +522,9 @@ export default {
     },
     toggleJobLevelOptionsCheck(item) {
       if (this.selectedJobLevelOptions.includes(item.value)) {
-        this.selectedJobLevelOptions = this.selectedJobLevelOptions.filter(value => value!== item.value);
+        this.selectedJobLevelOptions = this.selectedJobLevelOptions.filter(
+          (value) => value !== item.value
+        );
       } else {
         this.selectedJobLevelOptions.push(item.value);
       }
@@ -492,7 +532,9 @@ export default {
     },
     toggleSalaryRangeOptions(item) {
       if (this.selectedSalaryRangeOptions.includes(item.value)) {
-        this.selectedSalaryRangeOptions = this.selectedSalaryRangeOptions.filter(value => value!== item.value);
+        this.selectedSalaryRangeOptions = this.selectedSalaryRangeOptions.filter(
+          (value) => value !== item.value
+        );
       } else {
         this.selectedSalaryRangeOptions.push(item.value);
       }
@@ -555,58 +597,67 @@ export default {
       }
     },
     async handleAppliedforjobs(id) {
-      const resp = await this.$store.dispatch("jobsModule/applyForJobs", { campaign_id: id });
+      const resp = await this.$store.dispatch("jobsModule/applyForJobs", {
+        campaign_id: id,
+      });
       console.log(resp);
     },
     async handleSavejobs(id) {
-      const resp = await this.$store.dispatch("jobsModule/savedJobs", { campaign_id: id });
+      const resp = await this.$store.dispatch("jobsModule/savedJobs", {
+        campaign_id: id,
+      });
       console.log(resp);
     },
-
-
   },
   created() {
     this.displayedTypeOfEmployment = this.typeOfEmployment;
     this.displayedCategories = this.categories;
-    this.displayedJobLevelOptions= this.jobLevel;
+    this.displayedJobLevelOptions = this.jobLevel;
     this.displayedSalaryRangeOptions = this.salaryRange;
-
   },
 
   computed: {
-      filteredJobs() {
-       let filteredItems = this.paginatedItems;
+    filteredJobs() {
+      let filteredItems = this.paginatedItems;
 
       if (this.selectedTypeOfEmployment.length > 0) {
-        filteredItems = filteredItems.filter(job => this.selectedTypeOfEmployment.includes(job.work_type));
+        filteredItems = filteredItems.filter((job) =>
+          this.selectedTypeOfEmployment.includes(job.work_type)
+        );
       }
       if (this.selectedCategories.length > 0) {
-        filteredItems = filteredItems.filter(job => this.selectedCategories.includes(job.category));
+        filteredItems = filteredItems.filter((job) =>
+          this.selectedCategories.includes(job.category)
+        );
       }
       if (this.selectedJobLevelOptions.length > 0) {
-        filteredItems = filteredItems.filter(job => this.selectedJobLevelOptions.includes(job.job_level));
+        filteredItems = filteredItems.filter((job) =>
+          this.selectedJobLevelOptions.includes(job.job_level)
+        );
       }
       if (this.selectedSalaryRangeOptions.length > 0) {
-        filteredItems = filteredItems.filter(job => this.selectedSalaryRangeOptions.includes(job.salary_range));
+        filteredItems = filteredItems.filter((job) =>
+          this.selectedSalaryRangeOptions.includes(job.salary_range)
+        );
       }
 
       if (this.searchInput.trim() !== "") {
         const searchQuery = this.searchInput.toLowerCase();
-        filteredItems = filteredItems.filter(job =>
-          (job.job_title && job.job_title.toLowerCase().includes(searchQuery)) ||
-          (job.description && job.description.toLowerCase().includes(searchQuery))
+        filteredItems = filteredItems.filter(
+          (job) =>
+            (job.job_title && job.job_title.toLowerCase().includes(searchQuery)) ||
+            (job.description && job.description.toLowerCase().includes(searchQuery))
         );
       }
 
       return filteredItems;
-
     },
 
     jobs() {
       return this.$store.getters["jobsModule/jobs"];
     },
     paginatedItems() {
-          if (!this.jobs.length) {
+      if (!this.jobs.length) {
         return this.jobs;
       }
       const startIndex = (this.currentPage - 1) * this.pageSize;
@@ -632,20 +683,19 @@ export default {
     console.log("paginatedItems:", this.paginatedItems);
     console.log("filteredJobs:", this.filteredJobs);
     this.$store.dispatch("jobsModule/getJobs");
-
   },
 };
 </script>
 
 <style scoped>
-.left_section{  
+.left_section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .justify-self-end {
-justify-items: end;
-    display: grid;
+  justify-items: end;
+  display: grid;
 }
 .job-list {
   min-height: 100vh;
@@ -653,7 +703,6 @@ justify-items: end;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-
 }
 .drop_down_section {
   position: absolute;
@@ -741,7 +790,6 @@ justify-items: end;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1.4rem;
   margin-bottom: 100px;
-
 }
 .images a {
   cursor: pointer;
@@ -773,7 +821,6 @@ header h6 {
   justify-content: space-between;
   display: flex;
   flex-direction: column;
-
 }
 .tag {
   font-family: "Poppins";
@@ -907,7 +954,7 @@ h5 {
   justify-content: center;
   align-content: center; */
   /* min-height: 100vh; */
-    margin-bottom: 100px;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   gap: 1.4rem;

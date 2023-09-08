@@ -1,62 +1,58 @@
 <template>
   <div>
-  <header class="d-flex justify-content-between mb-5"><h6>My Jobs</h6></header>    <div>
+    <header class="d-flex justify-content-between mb-5"><h6>My Jobs</h6></header>
+    <div>
       <job-header>
-          <template #view1>
-            <Inprogress />
-         </template>
-          <template #view2>
-             <SavedJobs />
-          </template>
-          <template #view3>
-              <AppliedJobs />
-          </template>        
-         <template #view4>
-              <JobsInvite />
-          </template>
+        <template #view1>
+          <Inprogress />
+        </template>
+        <template #view2>
+          <SavedJobs />
+        </template>
+        <template #view3>
+          <AppliedJobs />
+        </template>
+        <template #view4>
+          <JobsInvite />
+        </template>
       </job-header>
     </div>
   </div>
 </template>
 
 <script>
-
-import JobHeader from '../components/myJobsHeader.vue';
-import RowJobCard from '../components/Cards/RowCard.vue'
-import AppliedJobs from '../components/AppliedJobs.vue';
-import SavedJobs from '../components/SavedJobs.vue';
-import JobsInvite from '../components/JobsInvite.vue';
-import Inprogress from '../components/Inprogress.vue';
+import JobHeader from "../components/myJobsHeader.vue";
+import RowJobCard from "../components/Cards/RowCard.vue";
+import AppliedJobs from "../components/AppliedJobs.vue";
+import SavedJobs from "../components/SavedJobs.vue";
+import JobsInvite from "../components/JobsInvite.vue";
+import Inprogress from "../components/Inprogress.vue";
 
 export default {
   components: { JobHeader, RowJobCard, Inprogress, SavedJobs, AppliedJobs, JobsInvite },
 
   data() {
-    return {
-    };
+    return {};
   },
 
-  methods: {
-  },
-  computed: {
-  },
-  mounted() {
-  },
-
+  methods: {},
+  computed: {},
+  mounted() {},
 };
 </script>
 
 <style scoped>
-.filter{
-color: #282929;
-font-family: Poppins;
-font-size: 22px;
-font-style: normal;
-font-weight: 600;
-line-height: 120%; /* 26.4px */}
-.place-center{
-    display: grid;
-    place-self: center;
+.filter {
+  color: #282929;
+  font-family: Poppins;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 26.4px */
+}
+.place-center {
+  display: grid;
+  place-self: center;
 }
 
 .search {
@@ -66,18 +62,18 @@ line-height: 120%; /* 26.4px */}
   align-items: center;
 }
 
-.sorting_section{
+.sorting_section {
   padding: 12px 0px;
-  border-bottom: 1px solid #C2DBFF;
-  border-top: 1px solid #C2DBFF;
+  border-bottom: 1px solid #c2dbff;
+  border-top: 1px solid #c2dbff;
   margin: 25px 0;
 }
 div .search {
-    border: 1px solid var(--blue-300);
-    background: #fff;
-    border-radius: 25px;
-    padding: 0 25px;
-    width: 100%;
+  border: 1px solid var(--blue-300);
+  background: #fff;
+  border-radius: 25px;
+  padding: 0 25px;
+  width: 100%;
 }
 div .search input {
   border: none;
@@ -229,7 +225,7 @@ h5 {
   /* margin-top: 100px; */
 }
 .list {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   gap: 1.4rem;

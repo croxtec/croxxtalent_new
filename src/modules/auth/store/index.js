@@ -193,7 +193,6 @@ export default {
         }
       }
     },
-
     // Login request
     async loginUser({ commit }, payload) {
       NProgress.start();
@@ -303,16 +302,18 @@ export default {
         });
         commit("SET_USER", responsePayload.data.user);
         commit("SET_SUCCESS", responsePayload.message);
-        if (responsePayload.status === true ) {
-          if (this.$route.query.returnTo) {
-            this.$router.replace(this.$route.query.returnTo);
+                  console.log(responsePayload,"omor"); 
+          const url = window.location.search;
+          const params = new URLSearchParams(url);
+          const d = params.get("redirectFrom");
+          if (d !== null) {
+            router.replace(d);
           } else {
             if (responsePayload.data.user.type === "talent") {
-              this.$router.replace({
+              router.replace({
                 name: "talent-home",
               });
             } else {
-              console.log(responsePayload.data.user);
               let type = responsePayload.data.user.type;
               let company = responsePayload.data.user.company_name;
               let sessionId = window.btoa(user.uid);
@@ -321,12 +322,10 @@ export default {
                 `https://croxxtalent-employers-yc63o.ondigitalocean.app/redirecting?userType=${type}&sessionId=${sessionId}&userID=${UserId}&company=${company}`,
                 "_blank"
               );
+              // window.open(`https://croxxtalent-employers.netlify.app/redirecting?userType=${type}&sessionId=${sessionId}&userID=${UserId}&company=${company}`, "_blank");
             }
-          }
-        }else if (responsePayload.status === false) { 
-          console.log(responsePayload.message); 
-        }      
-        toastify({
+        } 
+               toastify({
           text: `${responsePayload.message}`,
           className: "info",
           style: {
@@ -339,7 +338,7 @@ export default {
         return res;
 
     } catch (error) {
-        console.log(error.data);
+        console.log(error);
         if (error.data) {
           let errorPayload = error.data;
           if (errorPayload.message) {
@@ -368,16 +367,14 @@ export default {
       const provider = new GoogleAuthProvider()
       const userCredential = await signInWithPopup(auth, provider);
       const user = userCredential.user;
-
           // Send user data to your login endpoint
-        const res = await $request.post('/auth/register', {
-        type: " talent",
+      const res = await $request.post('/auth/register', {
+        type: "talent",
         first_name: userCredential._tokenResponse.firstName,
         last_name: userCredential._tokenResponse.lastName,
         email: user.email,
         password: user.uid,
-
-        });
+      });
         Cookies.set("token", res.data.data);
         console.log(res.data);
         let responsePayload = res.data;
@@ -389,7 +386,7 @@ export default {
         commit("SET_USER", responsePayload.data.user);
         commit("SET_SUCCESS", responsePayload.message);
         if (responsePayload.status === true ) {
-          this.$router.replace({ name: "cvBuilder" });
+          router.push({ name: "cvBuilder" });
         }else if (responsePayload.status === false) { 
           console.log(responsePayload.message); 
         }      
@@ -406,7 +403,7 @@ export default {
         return res;
 
     } catch (error) {
-        console.log(error.data);
+        console.log(error);
         if (error.data) {
           let errorPayload = error.data;
           if (errorPayload.message) {

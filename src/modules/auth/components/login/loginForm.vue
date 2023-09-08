@@ -112,7 +112,6 @@ export default {
                 name: "talent-home",
               });
             } else {
-              console.log(this.user);
               let type = this.user.type;
               let company = this.user.company_name;
               let sessionId = window.btoa(this.credentials.password);
