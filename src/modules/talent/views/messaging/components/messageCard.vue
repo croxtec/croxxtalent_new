@@ -1,5 +1,6 @@
 <template>
   <div
+    role="button"
     :class="[content.status === 'now' ? 'unread_message' : 'read_message']"
     class="message_card"
   >
