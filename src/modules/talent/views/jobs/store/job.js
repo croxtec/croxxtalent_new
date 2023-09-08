@@ -242,6 +242,52 @@ const jobsModule = {
           NProgress.done();
         }
         },
+        async acceptJobsInvitations({ commit },id){
+                NProgress.start();
+                commit("SET_LOADING", true);
+            try {
+                let response = await $request.patch(`/job-invitations/${id}/accept`);
+                commit('SUCCESS', response.data.data); // Pass the jobs data to the mutation
+                toastify({
+                  text: `${response.data.message}`,
+                  className: "info",
+                  style: {
+                    background: "green",
+                    fontSize: "12px",
+                    borderRadius: "5px",
+                  },
+                }).showToast();
+                return Promise.resolve(response.data.data);
+              } catch (errors) {
+                commit('SET_ERROR')
+                console.log(errors);
+              }finally {
+          NProgress.done();
+        }
+        },
+        async declineJobsInvitations({ commit },id){
+                NProgress.start();
+                commit("SET_LOADING", true);
+            try {
+                let response = await $request.patch(`/job-invitations/${id}/reject`);
+                commit('SUCCESS', response.data.data); // Pass the jobs data to the mutation
+                toastify({
+                  text: `${response.data.message}`,
+                  className: "info",
+                  style: {
+                    background: "green",
+                    fontSize: "12px",
+                    borderRadius: "5px",
+                  },
+                }).showToast();
+                return Promise.resolve(response.data.data);
+              } catch (errors) {
+                commit('SET_ERROR')
+                console.log(errors);
+              }finally {
+          NProgress.done();
+        }
+        },
         async viewJobsInvitations({ commit },id){
                 NProgress.start();
                 commit("SET_LOADING", true);
