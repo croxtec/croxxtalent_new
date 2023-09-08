@@ -20,6 +20,7 @@
       id="upload_file"
       @change="handleFiles($event.target.files)"
     />
+    <button class="primary--button">Upload</button>
   </div>
 </template>
 <script>
@@ -63,7 +64,8 @@ export default {
   cursor: pointer;
   padding: 20px;
   width: 60%;
-  margin: 100px auto;
+  margin: 10px auto;
+  margin-top: 100px;
   border-radius: 20px;
   min-height: 40vh;
   display: flex;
@@ -74,6 +76,7 @@ export default {
 }
 .upload_container {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 .image_container {
