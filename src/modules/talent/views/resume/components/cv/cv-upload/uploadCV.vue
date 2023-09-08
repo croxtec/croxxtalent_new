@@ -15,7 +15,7 @@
     <input
       type="file"
       multiple
-      accept="image/*"
+      accept=""
       hidden
       id="upload_file"
       @change="handleFiles($event.target.files)"
