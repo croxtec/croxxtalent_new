@@ -15,7 +15,7 @@
     <input
       type="file"
       multiple
-      accept=""
+      accept=".pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       hidden
       id="upload_file"
       @change="handleFiles($event.target.files)"
