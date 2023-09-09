@@ -4,18 +4,15 @@
       ><p class="">Drag and Drop file or <span class="underline">Browse</span> CV</p>
       <p class="">max 5MB each.</p>
       <UploadIcon class="mx-auto mt-4" />
-      <img
-        v-for="(imageUrl, index) in imageUrls"
-        :key="index"
-        :src="imageUrl"
-        alt="Uploaded Image"
-        class="image_container"
-      />
+
+      <div class="uploaded-files">
+        <p v-for="(fileName, index) in uploadedFileNames" :key="index">{{ fileName }}</p>
+      </div>
     </label>
     <input
       type="file"
       multiple
-      accept=""
+      accept=".pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       hidden
       id="upload_file"
       @change="handleFiles($event.target.files)"
@@ -29,6 +26,7 @@ export default {
   data() {
     return {
       imageUrls: [], // Store image URLs here
+      uploadedFileNames: [], // Store uploaded file names here
     };
   },
   components: {
@@ -38,6 +36,7 @@ export default {
   methods: {
     handleFiles(files) {
       Array.from(files).forEach((file) => {
+        this.uploadedFileNames.push(file.name); // Store the uploaded file names
         this.previewFile(file);
         this.uploadFile(file);
       });
