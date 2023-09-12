@@ -253,7 +253,7 @@ export default {
   width: 60%;
   border-radius: 17.27px;
   background: #fff;
-  box-shadow: 0px 2.76319px 10px 1.38159px #c4c4c4;
+  box-shadow: 0px 2.76319px 10px 1.38159px #c4c4c45b;
   /* height: 100vh; */
   flex-shrink: 0;
   padding: 20px;
@@ -261,7 +261,7 @@ export default {
 .searchbar_section {
   border-radius: 17.97px;
   background: #fff;
-  box-shadow: 0px 2px 10px 2px #d7d3d3;
+  box-shadow: 0px 2.76319px 10px 1.38159px #c4c4c45b;
   height: 68px;
   width: 100%;
   display: flex;
@@ -275,7 +275,7 @@ export default {
 .message_list_section {
   border-radius: 20.511px;
   background: #fff;
-  box-shadow: 0px 4.10227px 20.51136px -5.86327px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2.76319px 10px 1.38159px #c4c4c45b;
   width: 100%;
   overflow-x: auto;
   height: 60vh;
