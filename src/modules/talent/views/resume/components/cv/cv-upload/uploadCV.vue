@@ -1,11 +1,20 @@
 <template>
   <div class="upload_container">
-    <label v-if="!uploadedFileContents.length" class="upload" for="upload_file"
-      ><p class="">Drag and Drop file or <span class="underline">Browse</span> CV</p>
-      <p class="">max 5MB each.</p>
-      <UploadIcon class="mx-auto mt-4" />
+    <p class="heading_text">Upload your current resume</p>
+    <label class="upload" for="upload_file">
+      <UploadIcon class="mx-auto my-4" />
+      <p v-if="!uploadedFileNames.length" class="instruction">
+        Drag and Drop file or <span class="">Browse</span> files
+      </p>
+      <div v-if="uploadedFileNames.length" class="uploaded-files">
+        <p v-for="(fileName, index) in uploadedFileNames" :key="index">
+          Uploaded file: {{ fileName }}
+        </p>
+      </div>
+
+      <p class="">You can upload DOC, DOCX, PDF, HTML, RTF, or TXT files max 5MB each.</p>
     </label>
-    <div v-if="uploadedFileContents.length" class="uploaded-files">
+    <!-- <div v-if="uploadedFileContents.length" class="uploaded-files">
       <div
         v-for="(fileContent, index) in uploadedFileContents"
         :key="index"
@@ -23,7 +32,6 @@
           <p v-html="fileContent.content"></p>
         </div>
         <div>
-          <!-- Embed the DOCX file using Microsoft Word Online viewer -->
           <iframe
             width="100%"
             height="600px"
@@ -32,10 +40,6 @@
           ></iframe>
         </div>
       </div>
-    </div>
-
-    <!-- <div class="uploaded-files">
-      <p v-for="(fileName, index) in uploadedFileNames" :key="index">{{ fileName }}</p>
     </div> -->
 
     <input
@@ -46,7 +50,12 @@
       id="upload_file"
       @change="handleFiles($event.target.files)"
     />
-    <button class="primary--button">Upload</button>
+    <div class="button_section">
+      <button class="primary--button_border">Back</button>
+      <button :disabled="!uploadedFileNames.length" class="primary--button">
+        Continue
+      </button>
+    </div>
   </div>
 </template>
 <script>
@@ -140,6 +149,49 @@ export default {
 };
 </script>
 <style scoped>
+.primary--button_border {
+  padding: 19px 57px !important;
+}
+.button_section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.instruction {
+  color: #282929;
+  font-family: Poppins;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 160%; /* 35.2px */
+}
+.instruction span {
+  color: #06e594;
+  font-family: Poppins;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 160%;
+  text-decoration-line: underline !important;
+}
+.doc_type {
+  color: #282929;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 25.6px */
+}
+.heading_text {
+  color: #282929;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
+  margin-top: 80px !important;
+}
 .file-pdf-content embed {
   width: 100%;
 }
@@ -150,6 +202,14 @@ export default {
 .uploaded-files {
   width: 100%;
   display: flex;
+  text-align: center;
+  justify-content: center;
+  color: #282929;
+  font-family: Poppins;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 160%;
 }
 .file-content {
   margin-bottom: 20px;
@@ -161,13 +221,12 @@ export default {
   width: 100%;
 }
 .upload {
-  border: 1.5px solid var(--primary-color);
+  border: 4px solid #c2dbff;
   border-style: dashed;
   cursor: pointer;
-  padding: 20px;
+  padding: 60px 20px;
   width: 60%;
   margin: 10px auto;
-  margin-top: 100px;
   border-radius: 20px;
   min-height: 40vh;
   display: flex;
