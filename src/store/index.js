@@ -15,7 +15,8 @@ import assessmentModule from "@/modules/talent/views/assessment/store/assessment
 import config from "./configurations";
 // JOBS
 import jobsModule from "@/modules/talent/views/jobs/store/job";
-
+// ACTIVE TAB 
+import activeTabModule from '@/modules/talent/views/jobs/store/activeTab';
 // CV STORE DATA
 import cvs from "./modules/cvs";
 import cvEducation from "@/modules/talent/views/resume/store/cv-education";
@@ -53,15 +54,15 @@ export default new Vuex.Store({
     cvLanguages,
     cvAwards,
     cvReferences,
-    
+
     jobsModule,
     cvWorkHistory,
     cvHobby,
-    
+
     manager,
     competencies,
 
-    assessmentModule
-
-  },
+    assessmentModule,
+    activeTabModule
+  }
 });
