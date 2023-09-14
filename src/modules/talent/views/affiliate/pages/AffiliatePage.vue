@@ -178,7 +178,7 @@ export default {
   components: { ReferralIcon, RewardIcon, BoxIcon, ThreeDots },
 
   data() {
-    return { currentPage: 1, pageSize: 5, totalPages: 5, pageNumbers: 5 };
+    return { currentPage: 1, pageSize: 3, totalPages: 5, pageNumbers: 3 };
   },
   methods: {
     nextPage() {
@@ -197,11 +197,11 @@ export default {
     },
 
     displayPageNumber(index, pageNumber) {
-      if (this.totalPages <= 5) {
+      if (this.totalPages <= 4) {
         return pageNumber;
       } else {
         if (index === 2 || index === this.totalPages - 3) {
-          return "...";
+          return "";
         } else if (index > 1 && index < this.totalPages - 2) {
           if (this.currentPage >= pageNumber - 1 && this.currentPage <= pageNumber + 1) {
             return pageNumber;
