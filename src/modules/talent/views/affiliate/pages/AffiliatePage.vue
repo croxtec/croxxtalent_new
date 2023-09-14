@@ -431,5 +431,17 @@ div .search input {
     justify-content: center;
     align-items: center;
   }
+  .referral-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 0.848px solid #c2dbff;
+    padding-bottom: 10px !important;
+    padding: 0px 23px;
+    margin-bottom: 25px;
+  }
 }
 </style>
