@@ -34,13 +34,13 @@ export default {
 
   methods: {
     gotoAppliedJobs() {
-      this.updateActivetab("1"); // Update activetab to '1' (In Progress) and navigate
+      this.updateActivetab("1"); // Update activetab to '1' (In Applied Jobs) and navigate
     },
     gotoSavedJobs() {
-      this.updateActivetab("2"); // Update activetab to '1' (In Progress) and navigate
+      this.updateActivetab("2"); // Update activetab to '2' (In Saved Jobs) and navigate
     },
     gotoJobsInvite() {
-      this.updateActivetab("3"); // Update activetab to '1' (In Progress) and navigate
+      this.updateActivetab("4"); // Update activetab to '4' (In Croxxtalent Invite) and navigate
     },
     updateActivetab(tab) {
       this.$store.dispatch("activeTabModule/updateActiveTab", tab); // Dispatch action to update activetab in Vuex store

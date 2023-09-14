@@ -8,7 +8,7 @@ import TrainingRoutes from "../views/training/router"
 import Messaging from "../views/messaging/router"
 import Settings from "../views/settings/router"
 import Notifications from "../views/notifications/router"
-
+import Affiliate from "../views/affiliate/router"
 const routes = [];
 
 const router = routes.concat(
@@ -21,7 +21,8 @@ const router = routes.concat(
   TrainingRoutes,
   Messaging,
   Settings,
-  Notifications
+  Notifications,
+  Affiliate
 );
 
 export default router;
