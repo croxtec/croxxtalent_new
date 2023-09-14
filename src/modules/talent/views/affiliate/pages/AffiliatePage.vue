@@ -1,5 +1,5 @@
 <template>
-  <div id="affiliate">
+  <div id="affiliate" class="mb-5">
     <div class="affiliate_container">
       <div class="user-afiliate-card">
         <img
@@ -75,7 +75,95 @@
         </div>
 
         <div class="referral-list">
-          <div v-for="item in 4" :key="item" class="referral-card"></div>
+          <div v-for="item in 4" :key="item" class="referral-card">
+            <div class="referral-item">
+              <span>Name</span>
+              <p>Shola Asiwaju</p>
+            </div>
+            <div class="referral-item hidden_on_mobile">
+              <span>Email</span>
+              <p>sholawaju10@gmail.com</p>
+            </div>
+            <div class="referral-item hidden_on_mobile">
+              <span>Phone</span>
+              <p>07080446200</p>
+            </div>
+            <div class="referral-item hidden_on_mobile">
+              <span>Job Title</span>
+              <p>Well Site Manager</p>
+            </div>
+            <div class="referral-item hidden_on_mobile">
+              <span>Location</span>
+              <p>Lagos</p>
+            </div>
+            <div class="referral-item">
+              <ThreeDots />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pagination">
+      <div class="pagination_section">
+        <div class="pagination_buttons">
+          <div
+            @click="previousPage"
+            :disabled="currentPage === 1"
+            role="button"
+            class="pagination_button"
+          >
+            <svg
+              width="8"
+              height="14"
+              viewBox="0 0 8 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 1L1 7L7 13"
+                stroke="#282929"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div>
+            <span
+              role="button"
+              v-for="(pageNumber, index) in pageNumbers"
+              :key="pageNumber"
+              @click="goToPage(pageNumber)"
+              :class="{
+                pagination_number_active: pageNumber === currentPage,
+                pagination_number_inactive: pageNumber !== currentPage,
+              }"
+              class=""
+              >{{ displayPageNumber(index, pageNumber) }}</span
+            >
+          </div>
+          <div
+            @click="nextPage"
+            :disabled="currentPage === totalPages"
+            role="button"
+            class="pagination_button"
+          >
+            <svg
+              width="9"
+              height="14"
+              viewBox="0 0 9 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.375 1L7.625 7L1.375 13"
+                stroke="#282929"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -85,15 +173,85 @@
 import ReferralIcon from "@/modules/talent/views/affiliate/components/icons/referralIcon.vue";
 import RewardIcon from "@/modules/talent/views/affiliate/components/icons/rewardIcon.vue";
 import BoxIcon from "@/modules/talent/views/affiliate/components/icons/boxIcon.vue";
+import ThreeDots from "@/modules/talent/views/affiliate/components/icons/threeDots.vue";
 export default {
-  components: { ReferralIcon, RewardIcon, BoxIcon },
+  components: { ReferralIcon, RewardIcon, BoxIcon, ThreeDots },
 
   data() {
-    return {};
+    return { currentPage: 1, pageSize: 5, totalPages: 5, pageNumbers: 5 };
+  },
+  methods: {
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+
+    goToPage(pageNumber) {
+      this.currentPage = pageNumber;
+    },
+
+    displayPageNumber(index, pageNumber) {
+      if (this.totalPages <= 5) {
+        return pageNumber;
+      } else {
+        if (index === 2 || index === this.totalPages - 3) {
+          return "...";
+        } else if (index > 1 && index < this.totalPages - 2) {
+          if (this.currentPage >= pageNumber - 1 && this.currentPage <= pageNumber + 1) {
+            return pageNumber;
+          } else {
+            return "";
+          }
+        } else {
+          return pageNumber;
+        }
+      }
+    },
   },
 };
 </script>
 <style scoped>
+#affiliate {
+  padding-bottom: 100px;
+}
+.pagination {
+  position: relative;
+}
+.pagination_buttons {
+  display: flex;
+  /* width: 10%;
+  margin: 0 auto; */
+}
+.pagination_section {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 60px;
+}
+.pagination_button {
+  padding: 0px 20px;
+  /* border: 1px solid #e5e7eb; */
+  border-radius: 0.375rem;
+}
+.pagination_number_active {
+  background-color: #0040a1;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+.pagination_number_inactive {
+  background-color: #ffffff;
+  color: #0040a1;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
 .referral-list {
   padding: 23px;
   display: flex;
@@ -105,10 +263,33 @@ export default {
   border: 1px solid #cbd7e7;
   background: #fff;
   display: flex;
+  flex-direction: row;
   padding: 13px 24.64px 13px 40px;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 46px;
+}
+.referral-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.referral-item p {
+  color: #000;
+  font-family: Poppins;
+  font-size: 13.57px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 21.712px */
+}
+.referral-item span {
+  color: #646868;
+  font-family: Poppins;
+  font-size: 13.573px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%; /* 21.717px */
 }
 .referral-heading h4 {
   color: #282929;
