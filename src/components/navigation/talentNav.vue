@@ -140,7 +140,7 @@
                       style="gap: 5px"
                       @click.prevent="gotoManagers()"
                     >
-                      <span>Manager</span>
+                      <span>Supervisor</span>
                       <!-- <span class="info-card">3</span> -->
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>

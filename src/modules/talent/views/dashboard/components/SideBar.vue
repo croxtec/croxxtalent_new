@@ -11,7 +11,7 @@
     </div>
 
     <div class="bordered sidebar-card linker icon-text" @click.prevent="gotoJobsInvite">
-      <h6>CroxxTalent Invitations</h6>
+      <h6>Profile View</h6>
       <h1 class="">{{ jobInvitationsLength }}</h1>
     </div>
 
