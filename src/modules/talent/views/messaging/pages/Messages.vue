@@ -10,7 +10,7 @@
           <messageCard v-for="content in message" :key="content.id" :content="content" />
         </div>
       </div>
-      <div class="view_message_container">
+      <div class="view_message_container hidden">
         <div>
           <div class="chat_header">
             <img
@@ -279,5 +279,39 @@ export default {
   width: 100%;
   overflow-x: auto;
   height: 60vh;
+}
+@media only screen and (max-width: 768px) {
+  .hidden {
+    display: none;
+  }
+  .all_message_section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .view_message_container {
+    width: 100%;
+    border-radius: 17.27px;
+    background: #fff;
+    box-shadow: none;
+    /* height: 100vh; */
+    flex-shrink: 0;
+    padding: 20px;
+  }
+  .searchbar_section {
+    border-radius: 17.97px;
+    background: #fff;
+    box-shadow: none;
+    height: 68px;
+    width: 100%;
+    display: flex;
+    gap: 4px;
+    display: inline-flex;
+    display: -webkit-flex;
+    align-items: center;
+    padding: 10px;
+    flex-shrink: 0;
+  }
 }
 </style>

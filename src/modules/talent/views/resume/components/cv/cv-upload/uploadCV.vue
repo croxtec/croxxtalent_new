@@ -1,7 +1,11 @@
 <template>
   <div class="upload_container">
     <p class="heading_text">Upload your current resume</p>
-    <label class="upload" for="upload_file">
+    <label
+      :class="uploadedFileNames.length ? 'isUploaded' : ''"
+      class="upload"
+      for="upload_file"
+    >
       <UploadIcon class="mx-auto my-4" />
       <p v-if="!uploadedFileNames.length" class="instruction">
         Drag and Drop file or <span class="">Browse</span> files
@@ -219,6 +223,9 @@ export default {
   display: flex;
   flex-direction: row;
   width: 100%;
+}
+.isUploaded {
+  background-color: #ebf3ff;
 }
 .upload {
   border: 4px solid #c2dbff;
