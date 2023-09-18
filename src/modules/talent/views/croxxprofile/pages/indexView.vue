@@ -23,7 +23,7 @@
         </div>
         <div class="buttons_section justify_content_between">
           <button @click="gotoSettings()" class="primary-button">Edit profile</button>
-          <button class="button-outline">View resume</button>
+          <button @click="gotoResume()" class="button-outline">View resume</button>
         </div>
       </div>
       <div class="user-contact">
@@ -136,6 +136,9 @@ export default {
     },
     gotoSettings() {
       return this.$router.push({ name: "settings" });
+    },
+    gotoResume() {
+      return this.$router.push({ name: "resume" });
     },
   },
 };

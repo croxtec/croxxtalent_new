@@ -30,13 +30,11 @@ import Inprogress from "../components/Inprogress.vue";
 
 export default {
   components: { JobHeader, RowJobCard, Inprogress, SavedJobs, AppliedJobs, JobsInvite },
-
   data() {
     return {};
   },
-
   methods: {},
-  computed: {},
+
   mounted() {},
 };
 </script>

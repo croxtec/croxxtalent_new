@@ -177,19 +177,21 @@ const jobsModule = {
                 NProgress.start();
                 commit("SET_LOADING", true);
             try {
-                let response = await $request.get(`/myjob/applied`);
-                commit('SUCCESS', response.data.data); // Pass the jobs data to the mutation
-                toastify({
-                  text: `${response.data.message}`,
-                  className: "info",
-                  style: {
-                    background: "green",
-                    fontSize: "12px",
-                    borderRadius: "5px",
-                  },
-                }).showToast();
-                return Promise.resolve(response.data.data);
-              } catch (errors) {
+              let response = await $request.get(`/myjob/applied`);
+              const data = response.data.data;
+              const length = data.length; // Get the length of the data
+              commit('SUCCESS', data); // Pass the jobs data to the mutation
+              toastify({
+                text: `${response.data.message}`,
+                className: 'info',
+                style: {
+                  background: 'green',
+                  fontSize: '12px',
+                  borderRadius: '5px'
+                }
+              }).showToast();
+              return Promise.resolve(data, length);
+            } catch (errors) {
                 commit('SET_ERROR')
                 console.log(errors);
               }finally {
@@ -200,19 +202,21 @@ const jobsModule = {
                 NProgress.start();
                 commit("SET_LOADING", true);
             try {
-                let response = await $request.get(`/myjob/saved`);
-                commit('SUCCESS', response.data.data); // Pass the jobs data to the mutation
-                toastify({
-                  text: `${response.data.message}`,
-                  className: "info",
-                  style: {
-                    background: "green",
-                    fontSize: "12px",
-                    borderRadius: "5px",
-                  },
-                }).showToast();
-                return Promise.resolve(response.data.data);
-              } catch (errors) {
+              let response = await $request.get(`/myjob/saved`);
+              const data = response.data.data;
+              const length = data.length; // Get the length of the data
+              commit('SUCCESS', data); // Pass the jobs data to the mutation
+              toastify({
+                text: `${response.data.message}`,
+                className: 'info',
+                style: {
+                  background: 'green',
+                  fontSize: '12px',
+                  borderRadius: '5px'
+                }
+              }).showToast();
+              return Promise.resolve(data, length);
+            } catch (errors) {
                 commit('SET_ERROR')
                 console.log(errors);
               }finally {
@@ -223,19 +227,21 @@ const jobsModule = {
                 NProgress.start();
                 commit("SET_LOADING", true);
             try {
-                let response = await $request.get(`/job-invitations`);
-                commit('SUCCESS', response.data.data); // Pass the jobs data to the mutation
-                toastify({
-                  text: `${response.data.message}`,
-                  className: "info",
-                  style: {
-                    background: "green",
-                    fontSize: "12px",
-                    borderRadius: "5px",
-                  },
-                }).showToast();
-                return Promise.resolve(response.data.data);
-              } catch (errors) {
+              let response = await $request.get(`/job-invitations`);
+              const data = response.data.data;
+              const length = data.length; // Get the length of the data
+              commit('SUCCESS', data); // Pass the jobs data to the mutation
+              toastify({
+                text: `${response.data.message}`,
+                className: 'info',
+                style: {
+                  background: 'green',
+                  fontSize: '12px',
+                  borderRadius: '5px'
+                }
+              }).showToast();
+              return Promise.resolve(data, length);
+            } catch (errors) {
                 commit('SET_ERROR')
                 console.log(errors);
               }finally {
