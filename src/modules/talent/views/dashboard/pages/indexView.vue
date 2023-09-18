@@ -21,9 +21,7 @@
           <!-- <CompetenciesCard :class="{ 'flex-30' : !resumePercentage,  'flex-50' : resumePercentage}" class="" v-for="skill in recommended.competency" :key="skill.id" :cxCompetence="skill"/> -->
         </div>
       </div>
-      <div v-if="resumePercentage" class="w-25">
-        <SideBar />
-      </div>
+      <div v-if="resumePercentage" class="w-25"><SideBar /></div>
     </div>
 
     <!-- Recommended Jobs -->
@@ -63,10 +61,7 @@
       <!-- @click.prevent="$router.push('/training')" -->
       <div class="top d-flex align-items-center justify-content-between mb-4">
         <h5 class="header--text">Courses</h5>
-        <div
-          class="d-lg-flex align-items-center see--all linker"
-          style="gap: 4px"
-        >
+        <div class="d-lg-flex align-items-center see--all linker" style="gap: 4px">
           <span>Coming Soon</span>
           <!-- <i class="isax isax-arrow-right-1"></i> -->
           <!-- <sup class="coming-soon">soon</sup> -->
