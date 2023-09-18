@@ -10,7 +10,7 @@
           <messageCard v-for="content in message" :key="content.id" :content="content" />
         </div>
       </div>
-      <div class="view_message_container">
+      <div class="view_message_container hidden">
         <div>
           <div class="chat_header">
             <img
@@ -253,7 +253,7 @@ export default {
   width: 60%;
   border-radius: 17.27px;
   background: #fff;
-  box-shadow: 0px 2.76319px 10px 1.38159px #c4c4c4;
+  box-shadow: 0px 2.76319px 10px 1.38159px #c4c4c45b;
   /* height: 100vh; */
   flex-shrink: 0;
   padding: 20px;
@@ -261,7 +261,7 @@ export default {
 .searchbar_section {
   border-radius: 17.97px;
   background: #fff;
-  box-shadow: 0px 2px 10px 2px #d7d3d3;
+  box-shadow: 0px 2.76319px 10px 1.38159px #c4c4c45b;
   height: 68px;
   width: 100%;
   display: flex;
@@ -275,9 +275,43 @@ export default {
 .message_list_section {
   border-radius: 20.511px;
   background: #fff;
-  box-shadow: 0px 4.10227px 20.51136px -5.86327px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2.76319px 10px 1.38159px #c4c4c45b;
   width: 100%;
   overflow-x: auto;
   height: 60vh;
+}
+@media only screen and (max-width: 768px) {
+  .hidden {
+    display: none;
+  }
+  .all_message_section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .view_message_container {
+    width: 100%;
+    border-radius: 17.27px;
+    background: #fff;
+    box-shadow: none;
+    /* height: 100vh; */
+    flex-shrink: 0;
+    padding: 20px;
+  }
+  .searchbar_section {
+    border-radius: 17.97px;
+    background: #fff;
+    box-shadow: none;
+    height: 68px;
+    width: 100%;
+    display: flex;
+    gap: 4px;
+    display: inline-flex;
+    display: -webkit-flex;
+    align-items: center;
+    padding: 10px;
+    flex-shrink: 0;
+  }
 }
 </style>
