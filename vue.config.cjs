@@ -13,14 +13,23 @@ module.exports = defineConfig({
         chunks: "all",
       },
     },
+    resolve: {
+      fallback: {
+        util: require.resolve("util/"),
+        path: require.resolve("path-browserify"),
+      },
+      alias: {
+        "pdfjs-dist": "pdfjs-dist/build/pdf",
+      },
+    },
   },
-  
+
   devServer: {
-    allowedHosts: 'all',
+    allowedHosts: "all",
     client: {
-        webSocketURL: 'auto://0.0.0.0:0/ws'
-    }
-  }
+      webSocketURL: "auto://0.0.0.0:0/ws",
+    },
+  },
 
   // devServer: {
   //   port: 8080,

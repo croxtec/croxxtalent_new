@@ -16,8 +16,7 @@
               <router-link
                 to="/resume"
                 :class="{
-                  'router-link-exact-active':
-                    this.$route.meta.parent === 'resume',
+                  'router-link-exact-active': this.$route.meta.parent === 'resume',
                 }"
                 >Resume</router-link
               >
@@ -36,8 +35,7 @@
               <router-link
                 to="/competencies"
                 :class="{
-                  'router-link-exact-active':
-                    this.$route.meta.parent === 'competencies',
+                  'router-link-exact-active': this.$route.meta.parent === 'competencies',
                 }"
                 >Competencies</router-link
               >
@@ -46,8 +44,7 @@
               <router-link
                 to="/jobs"
                 :class="{
-                  'router-link-exact-active':
-                    this.$route.meta.parent === 'jobs',
+                  'router-link-exact-active': this.$route.meta.parent === 'jobs',
                 }"
                 >Jobs</router-link
               >
@@ -56,8 +53,7 @@
               <router-link
                 to="/training"
                 :class="{
-                  'router-link-exact-active':
-                    this.$route.meta.parent === 'training',
+                  'router-link-exact-active': this.$route.meta.parent === 'training',
                 }"
                 >Trainings
                 <sup class="coming-soon">soon</sup>
@@ -100,10 +96,7 @@
                 </router-link>
               </div> -->
               <el-dropdown trigger="click">
-                <div
-                  class="el-dropdown-link d-flex align-items-center"
-                  style="gap: 1px"
-                >
+                <div class="el-dropdown-link d-flex align-items-center" style="gap: 1px">
                   <!-- <i-icon icon="carbon:settings" /> <span>Settings</span> -->
                   <img
                     src="https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/10-1024.png"
@@ -133,9 +126,7 @@
                     >
                       <span
                         >Settings
-                        <sup class="coming-soon" style="position: relative"
-                          >soon</sup
-                        >
+                        <sup class="coming-soon" style="position: relative">soon</sup>
                       </span>
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </router-link>
@@ -149,22 +140,17 @@
                       style="gap: 5px"
                       @click.prevent="gotoManagers()"
                     >
-                      <span>Manager</span>
+                      <span>Supervisor</span>
                       <!-- <span class="info-card">3</span> -->
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
                   </el-dropdown-item>
 
                   <el-dropdown-item>
-                    <span
-                      class="d-flex justify-content-between w-100"
-                      style="gap: 5px"
-                    >
+                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
                       <span
                         >Professionals
-                        <sup class="coming-soon" style="position: relative"
-                          >soon</sup
-                        >
+                        <sup class="coming-soon" style="position: relative">soon</sup>
                       </span>
                       <!-- <span class="info-card">3</span> -->
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
@@ -172,32 +158,26 @@
                   </el-dropdown-item>
 
                   <el-dropdown-item>
-                    <span
-                      class="d-flex justify-content-between w-100"
-                      style="gap: 5px"
-                    >
-                      <span
-                        >Affiliate
-                        <sup class="coming-soon" style="position: relative"
-                          >soon</sup
-                        >
+                    <router-link to="/affiliate">
+                      <span class="d-flex justify-content-between w-100" style="gap: 5px">
+                        <span
+                          >Affiliate
+                          <sup class="coming-soon" style="position: relative">soon</sup>
+                        </span>
+                        <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                       </span>
-                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
-                    </span>
+                    </router-link>
                   </el-dropdown-item>
 
                   <el-divider class="my-0"></el-divider>
 
                   <el-dropdown-item>
-                   <router-link to="/logout">
-                    <span
-                      class="d-flex justify-content-between w-100"
-                      style="gap: 5px"
-                    >
-                      <span>Logout</span>
-                      <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
-                    </span>
-                   </router-link>
+                    <router-link to="/logout">
+                      <span class="d-flex justify-content-between w-100" style="gap: 5px">
+                        <span>Logout</span>
+                        <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
+                      </span>
+                    </router-link>
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
@@ -216,10 +196,7 @@
               </router-link>
 
               <el-dropdown trigger="click">
-                <div
-                  class="el-dropdown-link d-flex align-items-center"
-                  style="gap: 1px"
-                >
+                <div class="el-dropdown-link d-flex align-items-center" style="gap: 1px">
                   <!-- <i-icon icon="carbon:settings" /> <span>Settings</span> -->
                   <img
                     src="https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/10-1024.png"
@@ -249,9 +226,7 @@
                     >
                       <span
                         >Settings
-                        <sup class="coming-soon" style="position: relative"
-                          >soon</sup
-                        >
+                        <sup class="coming-soon" style="position: relative">soon</sup>
                       </span>
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </router-link>
@@ -272,15 +247,10 @@
                   </el-dropdown-item>
 
                   <el-dropdown-item>
-                    <span
-                      class="d-flex justify-content-between w-100"
-                      style="gap: 5px"
-                    >
+                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
                       <span
                         >Professionals
-                        <sup class="coming-soon" style="position: relative"
-                          >soon</sup
-                        >
+                        <sup class="coming-soon" style="position: relative">soon</sup>
                       </span>
                       <!-- <span class="info-card">3</span> -->
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
@@ -288,15 +258,10 @@
                   </el-dropdown-item>
 
                   <el-dropdown-item>
-                    <span
-                      class="d-flex justify-content-between w-100"
-                      style="gap: 5px"
-                    >
+                    <span class="d-flex justify-content-between w-100" style="gap: 5px">
                       <span
                         >Affiliate
-                        <sup class="coming-soon" style="position: relative"
-                          >soon</sup
-                        >
+                        <sup class="coming-soon" style="position: relative">soon</sup>
                       </span>
                       <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                     </span>
@@ -306,10 +271,7 @@
 
                   <el-dropdown-item>
                     <router-link to="/logout">
-                      <span
-                        class="d-flex justify-content-between w-100"
-                        style="gap: 5px"
-                      >
+                      <span class="d-flex justify-content-between w-100" style="gap: 5px">
                         <span>Logout</span>
                         <!-- <i-icon icon="material-symbols:arrow-forward" /> -->
                       </span>
@@ -323,12 +285,7 @@
       </div>
     </div>
     <!-- Drawer -->
-    <el-drawer
-      :visible.sync="drawer"
-      direction="rtl"
-      size="90%"
-      :withHeader="false"
-    >
+    <el-drawer :visible.sync="drawer" direction="rtl" size="90%" :withHeader="false">
       <div
         class="top container-fluid pt-4 pb-2 d-flex align-items-center justify-content-between"
       >
@@ -349,8 +306,7 @@
             <router-link
               to="/resume"
               :class="{
-                'router-link-exact-active':
-                  this.$route.meta.parent === 'resume',
+                'router-link-exact-active': this.$route.meta.parent === 'resume',
               }"
               >Resume</router-link
             >
@@ -369,8 +325,7 @@
             <router-link
               to="/competencies"
               :class="{
-                'router-link-exact-active':
-                  this.$route.meta.parent === 'competencies',
+                'router-link-exact-active': this.$route.meta.parent === 'competencies',
               }"
               >Competencies</router-link
             >
@@ -390,8 +345,7 @@
             <router-link
               to="/training"
               :class="{
-                'router-link-exact-active':
-                  this.$route.meta.parent === 'training',
+                'router-link-exact-active': this.$route.meta.parent === 'training',
               }"
               >Trainings
               <sup class="coming-soon" style="position: relative">soon</sup>
