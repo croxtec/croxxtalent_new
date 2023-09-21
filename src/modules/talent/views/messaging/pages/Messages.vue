@@ -1,5 +1,19 @@
 <template>
   <div id="notifications">
+    <!-- <div v-if="selectedMessage || isMobile" class="message_container">
+      <div class="all_message_section">
+        <div class="searchbar_section">
+          <searchIcon />
+          <input class="search_bar" type="search" placeholder="Search" />
+        </div>
+        <div class="message_list_section">
+          <messageCard :messages="messages" @select-message="selectMessage" />
+        </div>
+      </div>
+      <div class="view_message_container">
+        <ChatScreen :message="selectedMessage" @go-back="goBack" />
+      </div>
+    </div> -->
     <div class="message_container">
       <div class="all_message_section">
         <div class="searchbar_section">
@@ -7,41 +21,11 @@
           <input class="search_bar" type="search" placeholder="Search" />
         </div>
         <div class="message_list_section">
-          <messageCard v-for="content in message" :key="content.id" :content="content" />
+          <messageCard :messages="messages" @select-message="selectMessage" />
         </div>
       </div>
-      <div class="view_message_container hidden">
-        <div>
-          <div class="chat_header">
-            <img
-              class="user_profile_image"
-              src="@/assets/img/user_message_image.png"
-              alt=""
-            />
-            <div class="chat_header_content">
-              <div class="message_details">
-                <div class="sender_name">
-                  <h3>Liliana tobi</h3>
-                </div>
-
-                <p class="last_seen">Online - Last seen, 2.02pm</p>
-              </div>
-              <div><ThreeDotVertical /></div>
-            </div>
-          </div>
-          <div class="chat_screen"></div>
-          <div class="chat_input_section">
-            <div class="input_message_section">
-              <paperClipIcon />
-              <input
-                class="search_bar"
-                type="text"
-                placeholder="Type your message here..."
-              /><emojiIcon /><cameraIcon />
-            </div>
-            <div class="record_message"><micIcon class="mx-auto" /></div>
-          </div>
-        </div>
+      <div class="view_message_container">
+        <ChatScreen :message="selectedMessage" @go-back="goBack" />
       </div>
     </div>
   </div>
@@ -54,6 +38,7 @@ import paperClipIcon from "@/modules/talent/views/messaging/components/paperClip
 import ThreeDotVertical from "@/modules/talent/views/messaging/components/three_dot_vertical.vue";
 import messageCard from "@/modules/talent/views/messaging/components/messageCard.vue";
 import searchIcon from "@/modules/talent/views/messaging/components/searchIcon.vue";
+import ChatScreen from "../components/ChatScreen.vue";
 export default {
   components: {
     searchIcon,
@@ -63,11 +48,12 @@ export default {
     cameraIcon,
     paperClipIcon,
     micIcon,
+    ChatScreen,
   },
 
   data() {
     return {
-      message: [
+      messages: [
         {
           id: 1,
           active: true,
@@ -85,14 +71,14 @@ export default {
         {
           id: 3,
           active: false,
-          user: "Liliana tobi",
+          user: "Ben tobi",
           status: "now",
           msg: "Amet minimerunt ulla...",
         },
         {
           id: 4,
           active: false,
-          user: "Liliana tobi",
+          user: "Alex tobi",
           status: "now",
           msg: "Amet minimerunt ulla...",
         },
@@ -106,9 +92,9 @@ export default {
         {
           id: 6,
           active: false,
-          user: "Liliana tobi",
+          user: "Codie tobi",
           status: "now",
-          msg: "Amet minimerunt ulla...",
+          msg: "Hi",
         },
         {
           id: 7,
@@ -118,113 +104,26 @@ export default {
           msg: "Amet minimerunt ulla...",
         },
       ],
+      selectedMessage: null,
+      isMobile: false, // Add a flag to track if it's mobile view
     };
+  },
+  methods: {
+    selectMessage(index) {
+      this.selectedMessage = this.messages[index];
+    },
+    goBack() {
+      if (this.isMobile) {
+        this.selectedMessage = null;
+        this.isMobile = false; // Close the chat on mobile
+      } else {
+        this.selectedMessage = null;
+      }
+    },
   },
 };
 </script>
 <style scoped>
-.input_message_section {
-  border-radius: 17.27px;
-  background: #ebf3ff;
-  width: 90%;
-  height: 55.98px;
-  flex-shrink: 0;
-  display: flex;
-  padding: 1px 10px;
-  align-items: center;
-  gap: 8px;
-}
-.record_message {
-  border-radius: 13.816px;
-  background: #0040a1;
-  display: flex;
-  padding: 10px;
-  align-items: center;
-  gap: 8px;
-  width: 20%;
-}
-.chat_input_section {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  justify-content: space-between;
-}
-.chat_screen {
-  height: 50vh;
-}
-.chat_header_content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.last_seen {
-  color: #303030;
-  font-family: Poppins;
-  font-size: 13.816px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  letter-spacing: 0.691px;
-}
-.chat_header {
-  border-bottom: 0.691px solid #b4ababa8;
-  display: flex;
-  padding: 10px 0;
-  gap: 10px;
-}
-.sender_message {
-  color: #282929b1;
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: Poppins;
-  font-size: 12.307px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 25.639px; /* 208.333% */
-}
-.sender_name {
-  display: flex;
-  justify-content: space-between;
-}
-.message_details {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.message_details h3 {
-  color: #282929;
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: Poppins;
-  font-size: 16.409px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 25.639px; /* 156.25% */
-}
-.user_profile_image {
-  width: 58.486px;
-  height: 58.486px;
-  flex-shrink: 0;
-  border-radius: 100%;
-}
-.unread_message {
-  width: 100%;
-  background: #f5f5f5;
-  height: 102.557px;
-  flex-shrink: 0;
-  padding: 19px;
-  display: flex;
-  gap: 10px;
-}
-.read_message {
-  width: 100%;
-  background: #ffffff;
-  height: 102.557px;
-  flex-shrink: 0;
-  padding: 19px;
-  display: flex;
-  gap: 10px;
-}
 .search_bar {
   width: 100%;
   height: 100%;
@@ -279,8 +178,19 @@ export default {
   width: 100%;
   overflow-x: auto;
   height: 60vh;
+  padding: 10px;
 }
 @media only screen and (max-width: 768px) {
+  .message_list_section {
+    border-radius: none;
+    background: none;
+    box-shadow: none;
+    width: 100%;
+    overflow-x: auto;
+    height: 50vh;
+    padding: 2px;
+  }
+
   .hidden {
     display: none;
   }
@@ -292,12 +202,12 @@ export default {
   }
   .view_message_container {
     width: 100%;
-    border-radius: 17.27px;
-    background: #fff;
+    border-radius: none;
+    background: none;
     box-shadow: none;
     /* height: 100vh; */
     flex-shrink: 0;
-    padding: 20px;
+    padding: 2px;
   }
   .searchbar_section {
     border-radius: 17.97px;
