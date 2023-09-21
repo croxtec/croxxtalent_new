@@ -14,13 +14,13 @@
               'flex-50': resumePercentage,
             }"
             class=""
-            v-for="skill in 1"
+            v-for="skill in recommended.competency"
             :key="skill"
             :cxCompetence="skill"
           />
           <CalenderCard class="flex-50" />
         </div>
-        <div class="skills-task">
+        <div class="skills-task hide-scrollbar">
           <div class="skills-data">
             <div>
               <h5>Bridge Cementing</h5>
@@ -254,7 +254,12 @@ export default {
   /* display: inline-flex; */
   display: -webkit-flex;
   gap: 20px;
+  overflow: hidden;
   /* flex-wrap: wrap; */
+  overflow-x: scroll;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width: 990px) {
