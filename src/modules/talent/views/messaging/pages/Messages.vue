@@ -21,11 +21,17 @@
           <input class="search_bar" type="search" placeholder="Search" />
         </div>
         <div class="message_list_section">
-          <messageCard :messages="messages" @select-message="selectMessage" />
+          {{ selectedMessages }}
+          <messageCard :messages="users" @select-message="selectMessage" />
         </div>
       </div>
       <div class="view_message_container">
-        <ChatScreen :message="selectedMessage" @go-back="goBack" />
+        <ChatScreen
+          :newMessage="newMessage"
+          :message="selectedMessages"
+          @go-back="goBack"
+          @send="send"
+        />
       </div>
     </div>
   </div>
@@ -39,6 +45,9 @@ import ThreeDotVertical from "@/modules/talent/views/messaging/components/three_
 import messageCard from "@/modules/talent/views/messaging/components/messageCard.vue";
 import searchIcon from "@/modules/talent/views/messaging/components/searchIcon.vue";
 import ChatScreen from "../components/ChatScreen.vue";
+import { useChat } from "@/firebase";
+const { messages, sendMessage } = useChat();
+
 export default {
   components: {
     searchIcon,
@@ -53,64 +62,101 @@ export default {
 
   data() {
     return {
-      messages: [
+      user: null,
+      newMessage: "jnhjbhhbbhb",
+      chats: [],
+      messages: [],
+      users: [
         {
           id: 1,
           active: true,
-          user: "admin",
-          status: "now",
-          msg: "Amet minimerunt ulla...",
-        },
-        {
-          id: 2,
-          active: true,
-          user: "Liliana tobi",
-          status: "10hr",
-          msg: "Amet minimerunt ulla...",
-        },
-        {
-          id: 3,
-          active: false,
-          user: "Ben tobi",
-          status: "now",
-          msg: "Amet minimerunt ulla...",
-        },
-        {
-          id: 4,
-          active: false,
-          user: "Alex tobi",
-          status: "now",
-          msg: "Amet minimerunt ulla...",
-        },
-        {
-          id: 5,
-          active: true,
-          user: "Liliana tobi",
-          status: "10hr",
-          msg: "Amet minimerunt ulla...",
-        },
-        {
-          id: 6,
-          active: false,
-          user: "Codie tobi",
-          status: "now",
-          msg: "Hi",
-        },
-        {
-          id: 7,
-          active: false,
-          user: "Liliana tobi",
+          user: "george tobi",
           status: "now",
           msg: "Amet minimerunt ulla...",
         },
       ],
-      selectedMessage: null,
+      selectedMessages: [],
+      // messages: [
+      //   {
+      //     id: 1,
+      //     active: true,
+      //     user: "admin",
+      //     status: "now",
+      //     msg: "Amet minimerunt ulla...",
+      //   },
+      //   {
+      //     id: 2,
+      //     active: true,
+      //     user: "Liliana tobi",
+      //     status: "10hr",
+      //     msg: "Amet minimerunt ulla...",
+      //   },
+      //   {
+      //     id: 3,
+      //     active: false,
+      //     user: "Ben tobi",
+      //     status: "now",
+      //     msg: "Amet minimerunt ulla...",
+      //   },
+      //   {
+      //     id: 4,
+      //     active: false,
+      //     user: "Alex tobi",
+      //     status: "now",
+      //     msg: "Amet minimerunt ulla...",
+      //   },
+      //   {
+      //     id: 5,
+      //     active: true,
+      //     user: "Liliana tobi",
+      //     status: "10hr",
+      //     msg: "Amet minimerunt ulla...",
+      //   },
+      //   {
+      //     id: 6,
+      //     active: false,
+      //     user: "Codie tobi",
+      //     status: "now",
+      //     msg: "Hi",
+      //   },
+      //   {
+      //     id: 7,
+      //     active: false,
+      //     user: "Liliana tobi",
+      //     status: "now",
+      //     msg: "Amet minimerunt ulla...",
+      //   },
+      // ],
+      // selectedMessage: null,
       isMobile: false, // Add a flag to track if it's mobile view
     };
   },
+  watch: {
+    // console.log(this.newMessage);
+    //   chatId: {
+    //     immediate: true,
+    //     handler(newVal) {
+    //       if (newVal) {
+    //         db.collection("chats")
+    //           .doc(newVal)
+    //           .collection("messages")
+    //           .orderBy("timestamp")
+    //           .onSnapshot((querySnapshot) => {
+    //             this.messages = querySnapshot.docs.map((doc) => doc.data());
+    //           });
+    //       }
+    //     },
+    //   },
+  },
+
+  mounted() {
+    console.log(this.newMessage);
+  },
+
   methods: {
     selectMessage(index) {
-      this.selectedMessage = this.messages[index];
+      // this.loadSelectedMessages();
+      // this.selectedMessages = this.messages[index];
     },
     goBack() {
       if (this.isMobile) {
@@ -120,6 +166,43 @@ export default {
         this.selectedMessage = null;
       }
     },
+    send() {
+      sendMessage(this.newMessage);
+      this.newMessage = "";
+    },
+
+    // createEmployee(name, date) {
+    //   if (name != "") {
+    //     db.collection("users")
+    //       .add({ date: date, name: name })
+    //       .then(() => {
+    //         console.log("user successfully written!");
+    //         this.readEmployees();
+    //       })
+    //       .catch((error) => {
+    //         console.error("Error writing user: ", error);
+    //       });
+    //   }
+    // },
+
+    // loadSelectedMessages() {
+    //   chat.collection("genera-101").onSnapot((snapshot) => {
+    //     console.log(snapshot);
+    //     this.selectedMessages = snapshot.docs.map((doc) => doc.data());
+    //   });
+    // },
+    // loadSelectedMessages() {
+    //   chat
+    //     .collection("genera-101")
+    //     .get()
+    //     .then((querySnapshot) => {
+    //       console.log(querySnapshot);
+    //       this.selectedMessages = querySnapshot.docs.map((doc) => doc.data());
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error getting documents: ", error);
+    //     });
+    // },
   },
 };
 </script>
@@ -225,3 +308,5 @@ export default {
   }
 }
 </style>
+messages mo chat. collection() ch chat. collection ('genera-101') hat shot (()) shnap th
+ndMessage (()) sap s hot => { } shapshot.m({ }) ; user: this.user, message: this.message

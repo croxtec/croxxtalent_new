@@ -49,12 +49,15 @@
         <div class="input_message_section">
           <paperClipIcon />
           <input
+            v-model="newMessage"
             class="search_bar"
             type="text"
             placeholder="Type your message here..."
           /><emojiIcon /><cameraIcon />
         </div>
-        <div class="record_message"><micIcon class="mx-auto" /></div>
+        <div role="button" @click="$emit('send')" class="record_message">
+          <micIcon class="mx-auto" />
+        </div>
       </div>
     </div>
     <div v-else class="defult_message_screen">
@@ -71,7 +74,7 @@ import paperClipIcon from "@/modules/talent/views/messaging/components/paperClip
 import ThreeDotVertical from "@/modules/talent/views/messaging/components/three_dot_vertical.vue";
 import searchIcon from "@/modules/talent/views/messaging/components/searchIcon.vue";
 export default {
-  props: ["message"],
+  props: ["message", "newMessage"],
 
   components: {
     searchIcon,
