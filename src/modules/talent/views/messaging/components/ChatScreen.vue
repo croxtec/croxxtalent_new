@@ -49,7 +49,7 @@
         <div class="input_message_section">
           <paperClipIcon />
           <input
-            v-model="newMessage"
+            v-model="messages"
             class="search_bar"
             type="text"
             placeholder="Type your message here..."
@@ -75,7 +75,11 @@ import ThreeDotVertical from "@/modules/talent/views/messaging/components/three_
 import searchIcon from "@/modules/talent/views/messaging/components/searchIcon.vue";
 export default {
   props: ["message", "newMessage"],
-
+  data() {
+    return {
+      messages: this.props.newMessage,
+    };
+  },
   components: {
     searchIcon,
     ThreeDotVertical,

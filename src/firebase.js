@@ -37,7 +37,6 @@ const filter = new Filter();
 
 
 mapState('auth', ['user']); // Change the mapState to an array with 'user' property
-this.$store.dispatch('auth/setUser', user);
 
 export function useChat() {
   const messages = [];
@@ -49,16 +48,16 @@ export function useChat() {
 
   const sendMessage = async (text) => {
 
-    console.log(this.user);
+    // console.log(this.user);
     // if (!this.user){
     //   return
     // }
   
     try {
       const docRef = await addDoc(collection(chat, 'messages'), {
-        userName: this.user.display_name,
-        userId: this.user.id,
-        userPhotoURL: this.user.photo,
+        userName: 'ben',
+        userId: 1,
+        userPhotoURL: '',
         text: filter.clean(text),
         createdAt: serverTimestamp()
       });
