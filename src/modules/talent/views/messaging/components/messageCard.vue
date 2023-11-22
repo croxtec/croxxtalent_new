@@ -1,20 +1,29 @@
 <template>
-  <div
-    role="button"
-    :class="[content.status === 'now' ? 'unread_message' : 'read_message']"
-    class="message_card"
-  >
-    <div class="user_profile_container">
-      <activeIcon v-if="content.active" class="active_state_icon" />
-      <img class="user_profile_image" src="@/assets/img/user_message_image.png" alt="" />
-    </div>
-    <div class="message_details">
-      <div class="sender_name">
-        <h3>{{ content.user }}</h3>
-        <span>{{ content.status }}</span>
+  <div>
+    <div
+      v-for="(message, index) in messages"
+      :key="message.id"
+      role="button"
+      @click="$emit('select-message', index)"
+      :class="[message.status === 'now' ? 'unread_message' : 'read_message']"
+      class="message_card"
+    >
+      <div class="user_profile_container">
+        <activeIcon v-if="message.active" class="active_state_icon" />
+        <img
+          class="user_profile_image"
+          src="@/assets/img/user_message_image.png"
+          alt=""
+        />
       </div>
+      <div class="message_details">
+        <div class="sender_name">
+          <h3>{{ message.user }}</h3>
+          <span>{{ message.status }}</span>
+        </div>
 
-      <p class="sender_message">{{ content.msg }}</p>
+        <p class="sender_message">{{ message.msg }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -24,7 +33,7 @@ import activeIcon from "@/modules/talent/views/messaging/components/activeIcon";
 export default {
   components: { activeIcon },
   props: {
-    content: Object,
+    messages: Array,
   },
   data() {
     return {};
@@ -42,8 +51,12 @@ export default {
 }
 .message_card {
   border-bottom: 1.026px solid #282929;
-  width: 60%;
-  margin: 0 auto;
+  /* width: 60%; */
+  /* margin: 0 auto; */
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .sender_message {
   color: #282929b1;
@@ -78,23 +91,5 @@ export default {
   height: 58.486px;
   flex-shrink: 0;
   border-radius: 100%;
-}
-.unread_message {
-  width: 100%;
-  background: #f5f5f5;
-  height: 102.557px;
-  flex-shrink: 0;
-  padding: 19px;
-  display: flex;
-  gap: 10px;
-}
-.read_message {
-  width: 100%;
-  background: #ffffff;
-  height: 102.557px;
-  flex-shrink: 0;
-  padding: 19px;
-  display: flex;
-  gap: 10px;
 }
 </style>
