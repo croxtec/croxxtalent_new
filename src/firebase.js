@@ -42,7 +42,8 @@ const filter = new Filter();
 mapState('auth', ['user']); // Change the mapState to an array with 'user' property
 
 export function useChat() {
-  let messages = {};
+  let messages = null;
+  let allMessages = [];
   // const unsubscribe = onSnapshot(messagesQuery, (snapshot) => {
   //   messages.value = snapshot.docs
   //     .map((doc) => ({ id: doc.id, ...doc.data() }))
@@ -73,19 +74,26 @@ export function useChat() {
   
     const displayMessage = async () => {
       try {
-        messages = await getDocs(collection(chat, 'messages'));
+        let msgdata = await getDocs(collection(chat, 'messages'));
+            messages = msgdata.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data()
+            }));
+
+        // msgdata.forEach((doc) => {messages = doc.data()});
         // messages.forEach((doc) => {
+        //   allMessages = doc.data();
         //   // doc.data() is never undefined for query doc snapshots
         //   console.log(doc.id, ' => ', doc.data());
         // });
-          console.log(messages);
-        return messages;
+        console.log('mesg', messages, 'data', msgdata);
+        return  messages;
       } catch (e) {
         console.error('Error adding document: ', e);
       }
     };
 
-  return { messages, sendMessage, displayMessage };
+  return { messages, sendMessage, displayMessage, allMessages };
 }
 
 export { auth, chat };

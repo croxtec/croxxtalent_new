@@ -43,7 +43,9 @@
         </div>
       </div>
       <div class="chat_screen">
-        <div>{{ messagesList }}</div>
+        <div v-for="message in messagesList" :key="message.id">
+          {{ message.text }}
+        </div>
       </div>
       <div class="chat_input_section">
         <div class="input_message_section">
@@ -74,7 +76,7 @@ import paperClipIcon from "@/modules/talent/views/messaging/components/paperClip
 import ThreeDotVertical from "@/modules/talent/views/messaging/components/three_dot_vertical.vue";
 import searchIcon from "@/modules/talent/views/messaging/components/searchIcon.vue";
 import { useChat } from "@/firebase";
-const { messages, sendMessage, displayMessage } = useChat();
+const { messages, sendMessage, displayMessage, allMessages } = useChat();
 import {
   getFirestore,
   collection,
@@ -93,8 +95,8 @@ export default {
   props: ["message"],
   data() {
     return {
-      newMessage: "hello",
-      messagesList: [],
+      newMessage: "",
+      messagesList: messages,
     };
   },
   components: {
@@ -108,11 +110,9 @@ export default {
   mounted() {
     console.log(this.newMessage);
     console.log(this.messages);
-    displayMessage();
-    messages.forEach((doc) => {
-      this.messagesList = doc;
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+    console.log(this.messagesList);
+    displayMessage().then((updatedMessages) => {
+      this.messagesList = updatedMessages;
     });
   },
 
@@ -120,27 +120,10 @@ export default {
     send() {
       sendMessage(this.newMessage);
       this.newMessage = "";
-      displayMessage();
+      displayMessage().then((updatedMessages) => {
+        this.messagesList = updatedMessages;
+      });
     },
-
-    // loadSelectedMessages() {
-    //   chat.collection("genera-101").onSnapot((snapshot) => {
-    //     console.log(snapshot);
-    //     this.selectedMessages = snapshot.docs.map((doc) => doc.data());
-    //   });
-    // },
-    // loadSelectedMessages() {
-    //   chat
-    //     .collection("genera-101")
-    //     .get()
-    //     .then((querySnapshot) => {
-    //       console.log(querySnapshot);
-    //       this.selectedMessages = querySnapshot.docs.map((doc) => doc.data());
-    //     })
-    //     .catch((error) => {
-    //       console.error("Error getting documents: ", error);
-    //     });
-    // },
   },
 };
 </script>
