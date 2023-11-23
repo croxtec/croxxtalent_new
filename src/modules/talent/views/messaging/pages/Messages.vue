@@ -26,12 +26,7 @@
         </div>
       </div>
       <div class="view_message_container">
-        <ChatScreen
-          :newMessage="newMessage"
-          :message="selectedMessages"
-          @go-back="goBack"
-          @send="send"
-        />
+        <ChatScreen :message="selectedMessages" @go-back="goBack" @send="send" />
       </div>
     </div>
   </div>
@@ -45,6 +40,7 @@ import ThreeDotVertical from "@/modules/talent/views/messaging/components/three_
 import messageCard from "@/modules/talent/views/messaging/components/messageCard.vue";
 import searchIcon from "@/modules/talent/views/messaging/components/searchIcon.vue";
 import ChatScreen from "../components/ChatScreen.vue";
+
 import { useChat } from "@/firebase";
 const { messages, sendMessage } = useChat();
 
@@ -63,7 +59,7 @@ export default {
   data() {
     return {
       user: null,
-      newMessage: "jnhjbhhbbhb",
+      newMessage: "hello",
       chats: [],
       messages: [],
       users: [
@@ -131,23 +127,7 @@ export default {
       isMobile: false, // Add a flag to track if it's mobile view
     };
   },
-  watch: {
-    // console.log(this.newMessage);
-    //   chatId: {
-    //     immediate: true,
-    //     handler(newVal) {
-    //       if (newVal) {
-    //         db.collection("chats")
-    //           .doc(newVal)
-    //           .collection("messages")
-    //           .orderBy("timestamp")
-    //           .onSnapshot((querySnapshot) => {
-    //             this.messages = querySnapshot.docs.map((doc) => doc.data());
-    //           });
-    //       }
-    //     },
-    //   },
-  },
+  watch: {},
 
   mounted() {
     console.log(this.newMessage);
@@ -170,39 +150,6 @@ export default {
       sendMessage(this.newMessage);
       this.newMessage = "";
     },
-
-    // createEmployee(name, date) {
-    //   if (name != "") {
-    //     db.collection("users")
-    //       .add({ date: date, name: name })
-    //       .then(() => {
-    //         console.log("user successfully written!");
-    //         this.readEmployees();
-    //       })
-    //       .catch((error) => {
-    //         console.error("Error writing user: ", error);
-    //       });
-    //   }
-    // },
-
-    // loadSelectedMessages() {
-    //   chat.collection("genera-101").onSnapot((snapshot) => {
-    //     console.log(snapshot);
-    //     this.selectedMessages = snapshot.docs.map((doc) => doc.data());
-    //   });
-    // },
-    // loadSelectedMessages() {
-    //   chat
-    //     .collection("genera-101")
-    //     .get()
-    //     .then((querySnapshot) => {
-    //       console.log(querySnapshot);
-    //       this.selectedMessages = querySnapshot.docs.map((doc) => doc.data());
-    //     })
-    //     .catch((error) => {
-    //       console.error("Error getting documents: ", error);
-    //     });
-    // },
   },
 };
 </script>
@@ -292,6 +239,16 @@ export default {
     flex-shrink: 0;
     padding: 2px;
   }
+  .record_message {
+    border-radius: 13.816px;
+    background: #0040a1;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    gap: 8px;
+    width: 20%;
+  }
+
   .searchbar_section {
     border-radius: 17.97px;
     background: #fff;

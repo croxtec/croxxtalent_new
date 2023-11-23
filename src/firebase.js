@@ -8,6 +8,9 @@ import {
   query,
   limit,
   onSnapshot,
+  getDoc,
+  doc,
+  getDocs,
   serverTimestamp
 } from 'firebase/firestore';
 import 'firebase/firestore';
@@ -39,12 +42,12 @@ const filter = new Filter();
 mapState('auth', ['user']); // Change the mapState to an array with 'user' property
 
 export function useChat() {
-  const messages = [];
-  const unsubscribe = onSnapshot(messagesQuery, (snapshot) => {
-    messages.value = snapshot.docs
-      .map((doc) => ({ id: doc.id, ...doc.data() }))
-      .reverse();
-  });
+  let messages = {};
+  // const unsubscribe = onSnapshot(messagesQuery, (snapshot) => {
+  //   messages.value = snapshot.docs
+  //     .map((doc) => ({ id: doc.id, ...doc.data() }))
+  //     .reverse();
+  // });
 
   const sendMessage = async (text) => {
 
@@ -67,7 +70,22 @@ export function useChat() {
     }
 
   };
-  return { messages, sendMessage, unsubscribe };
+  
+    const displayMessage = async () => {
+      try {
+        messages = await getDocs(collection(chat, 'messages'));
+        // messages.forEach((doc) => {
+        //   // doc.data() is never undefined for query doc snapshots
+        //   console.log(doc.id, ' => ', doc.data());
+        // });
+          console.log(messages);
+        return messages;
+      } catch (e) {
+        console.error('Error adding document: ', e);
+      }
+    };
+
+  return { messages, sendMessage, displayMessage };
 }
 
 export { auth, chat };

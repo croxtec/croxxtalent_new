@@ -43,19 +43,19 @@
         </div>
       </div>
       <div class="chat_screen">
-        <div>{{ message.msg }}</div>
+        <div>{{ messagesList }}</div>
       </div>
       <div class="chat_input_section">
         <div class="input_message_section">
           <paperClipIcon />
           <input
-            v-model="messages"
+            v-model="newMessage"
             class="search_bar"
             type="text"
             placeholder="Type your message here..."
           /><emojiIcon /><cameraIcon />
         </div>
-        <div role="button" @click="$emit('send')" class="record_message">
+        <div role="button" @click="send" class="record_message">
           <micIcon class="mx-auto" />
         </div>
       </div>
@@ -73,11 +73,28 @@ import emojiIcon from "@/modules/talent/views/messaging/components/emojiIcon";
 import paperClipIcon from "@/modules/talent/views/messaging/components/paperClipIcon";
 import ThreeDotVertical from "@/modules/talent/views/messaging/components/three_dot_vertical.vue";
 import searchIcon from "@/modules/talent/views/messaging/components/searchIcon.vue";
+import { useChat } from "@/firebase";
+const { messages, sendMessage, displayMessage } = useChat();
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  orderBy,
+  query,
+  limit,
+  onSnapshot,
+  getDoc,
+  doc,
+  getDocs,
+  serverTimestamp,
+} from "firebase/firestore";
+
 export default {
-  props: ["message", "newMessage"],
+  props: ["message"],
   data() {
     return {
-      messages: this.props.newMessage,
+      newMessage: "hello",
+      messagesList: [],
     };
   },
   components: {
@@ -87,6 +104,43 @@ export default {
     cameraIcon,
     paperClipIcon,
     micIcon,
+  },
+  mounted() {
+    console.log(this.newMessage);
+    console.log(this.messages);
+    displayMessage();
+    messages.forEach((doc) => {
+      this.messagesList = doc;
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+    });
+  },
+
+  methods: {
+    send() {
+      sendMessage(this.newMessage);
+      this.newMessage = "";
+      displayMessage();
+    },
+
+    // loadSelectedMessages() {
+    //   chat.collection("genera-101").onSnapot((snapshot) => {
+    //     console.log(snapshot);
+    //     this.selectedMessages = snapshot.docs.map((doc) => doc.data());
+    //   });
+    // },
+    // loadSelectedMessages() {
+    //   chat
+    //     .collection("genera-101")
+    //     .get()
+    //     .then((querySnapshot) => {
+    //       console.log(querySnapshot);
+    //       this.selectedMessages = querySnapshot.docs.map((doc) => doc.data());
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error getting documents: ", error);
+    //     });
+    // },
   },
 };
 </script>
