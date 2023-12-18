@@ -22,7 +22,7 @@
         </div>
         <div class="message_list_section">
           {{ selectedMessages }}
-          <messageCard :messages="users" @select-message="selectMessage" />
+          <messageCard @select-message="selectMessage" />
         </div>
       </div>
       <div class="view_message_container">

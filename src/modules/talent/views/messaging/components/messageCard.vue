@@ -5,11 +5,10 @@
       :key="message.id"
       role="button"
       @click="$emit('select-message', index)"
-      :class="[message.status === 'now' ? 'unread_message' : 'read_message']"
       class="message_card"
     >
       <div class="user_profile_container">
-        <activeIcon v-if="message.active" class="active_state_icon" />
+        <activeIcon v-if="message" class="active_state_icon" />
         <img
           class="user_profile_image"
           src="@/assets/img/user_message_image.png"
@@ -18,11 +17,11 @@
       </div>
       <div class="message_details">
         <div class="sender_name">
-          <h3>{{ message.user }}</h3>
-          <span>{{ message.status }}</span>
+          <h3>{{ message.first_name }}</h3>
+          <span>{{ message.type }}</span>
         </div>
-
-        <p class="sender_message">{{ message.msg }}</p>
+        ll
+        <p class="sender_message">{{ message.company_name }}</p>
       </div>
     </div>
   </div>
@@ -33,12 +32,21 @@ import activeIcon from "@/modules/talent/views/messaging/components/activeIcon";
 export default {
   components: { activeIcon },
   props: {
-    messages: Array,
+    // messages: Array,
   },
   data() {
     return {};
   },
   methods: {},
+  computed: {
+    messages() {
+      return this.$store.getters["messagesModule/messages"];
+    },
+  },
+  mounted() {
+    this.$store.dispatch("messagesModule/getMessages");
+    console.log(this.messages);
+  },
 };
 </script>
 <style scoped>
