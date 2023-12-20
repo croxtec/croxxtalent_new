@@ -4,7 +4,7 @@
       v-for="(message, index) in messages.data"
       :key="message.id"
       role="button"
-      @click="$emit('select-message', index)"
+      @click="$emit('select-message', message.id)"
       class="message_card"
     >
       <div class="user_profile_container">

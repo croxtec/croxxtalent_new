@@ -32,7 +32,7 @@
         <div class="chat_header_content">
           <div class="message_details">
             <div class="sender_name">
-              <h3>{{ message.user }}</h3>
+              <!-- <h3>{{ message.user }}</h3> -->
             </div>
 
             <p class="last_seen">Online - Last seen, 2.02pm</p>
@@ -43,8 +43,8 @@
         </div>
       </div>
       <div class="chat_screen">
-        <div v-for="message in messagesList" :key="message.id">
-          {{ message.text }}
+        <div v-for="chat in message" :key="chat.id">
+          {{ chat.message }}
         </div>
       </div>
       <div class="chat_input_section">

@@ -25,7 +25,14 @@
         </div>
       </div>
       <div class="view_message_container">
-        <ChatScreen :message="selectedMessages" @go-back="goBack" @send="send" />
+        <!-- <div v-for="message in chats?.data" :key="message.id">
+          {{ message.message }}
+        </div>
+        <div v-for="message in selectedMessages" :key="message.id">
+          {{ message.message }}
+        </div> -->
+        {{ (selectedMessages, chatsMessages?.data) }}
+        <ChatScreen :message="chatsMessages?.data" @go-back="goBack" @send="send" />
       </div>
     </div>
   </div>
@@ -58,8 +65,7 @@ export default {
   data() {
     return {
       user: null,
-      newMessage: "hello",
-      chats: [],
+      newMessage: "",
       messages: [],
       users: [
         {
@@ -131,11 +137,15 @@ export default {
   mounted() {
     console.log(this.newMessage);
   },
-
+  computed: {
+    chatsMessages() {
+      return this.$store.getters["messagesModule/chats"];
+    },
+  },
   methods: {
     selectMessage(id) {
-      // this.loadSelectedMessages();
-      // this.selectedMessages = this.messages[index];
+      this.$store.dispatch("messagesModule/showConversation", id);
+      console.log(this.chats);
     },
     goBack() {
       if (this.isMobile) {

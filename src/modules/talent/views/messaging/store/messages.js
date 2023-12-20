@@ -8,7 +8,7 @@ const getDefaultState = () => {
       error: false
     },
     messages: [],
-    chats: {},
+    chats: [],
     loading: false
   };
 };
@@ -18,6 +18,7 @@ const messagesModule = {
   state: getDefaultState,
   getters: {
     messages: (state) => state.messages,
+    chats: (state) => state.chats,
     isLoading: (state) => state.loading
   },
   mutations: {
@@ -31,7 +32,7 @@ const messagesModule = {
       state.status.success = true;
       state.loading = true;
     },
-    SET_CHAT(state, data) {
+    SET_CHATS(state, data) {
       state.chats = data;
       state.status.success = true;
       state.loading = true;
@@ -82,8 +83,8 @@ const messagesModule = {
             Authorization: 'Bearer ' + accessToken
           }
         });
-        console.log(res.data);
-        commit('SET_CHAT', res.data); // Pass the messages data to the mutation
+        console.log(res?.data?.data);
+        commit('SET_CHATS', res.data); // Pass the messages data to the mutation
         toastify({
           text: `${res?.data?.message}`,
           className: 'info',
