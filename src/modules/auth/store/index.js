@@ -93,7 +93,7 @@ export default {
     LOGIN(state, payload) {
       state.loading = false;
       state.loggedIn = true;
-
+      localStorage.setItem('realtimeToken', payload.realTimeToken);
       Cookies.set(config.accessRealTimeToken, payload.realTimeToken, {
         expires: new Date(payload.accessTokenExpiresAt),
         path: 'home/',
@@ -260,6 +260,7 @@ export default {
         let responsePayload = response.data;
         commit('LOGIN', {
           accessToken: responsePayload.data.access_token,
+          realTimeToken: responsePayload.data.realtime_token,
           accessTokenExpiresIn: responsePayload.data.expires_in,
           accessTokenExpiresAt: responsePayload.data.expires_at
         });
@@ -309,6 +310,7 @@ export default {
         let responsePayload = res.data;
         commit('LOGIN', {
           accessToken: responsePayload.data.access_token,
+          realTimeToken: responsePayload.data.realtime_token,
           accessTokenExpiresIn: responsePayload.data.expires_in,
           accessTokenExpiresAt: responsePayload.data.expires_at
         });
@@ -391,6 +393,7 @@ export default {
         let responsePayload = res.data;
         commit('LOGIN', {
           accessToken: responsePayload.data.access_token,
+          realTimeToken: responsePayload.data.realtime_token,
           accessTokenExpiresIn: responsePayload.data.expires_in,
           accessTokenExpiresAt: responsePayload.data.expires_at
         });
@@ -442,6 +445,8 @@ export default {
         domain: window.location.hostname
       });
       Cookies.remove('token');
+      Cookies.remove('croxxapp_realtimeDB');
+      localStorage.removeItem('realtimeToken');
       toastify({
         text: `Logged Out`,
         className: 'info',
