@@ -76,7 +76,9 @@ import paperClipIcon from "@/modules/talent/views/messaging/components/paperClip
 import ThreeDotVertical from "@/modules/talent/views/messaging/components/three_dot_vertical.vue";
 import searchIcon from "@/modules/talent/views/messaging/components/searchIcon.vue";
 import { useChat } from "@/firebase";
-const { messages, sendMessage, displayMessage, allMessages } = useChat();
+// const { messages, sendMessage, displayMessage, allMessages } = useChat();
+import { mapActions, mapState } from "vuex";
+
 import {
   getFirestore,
   collection,
@@ -96,7 +98,9 @@ export default {
   data() {
     return {
       newMessage: "",
-      messagesList: messages,
+      // messagesList: messages,
+      content: "",
+      receiver: "",
     };
   },
   components: {
@@ -108,22 +112,35 @@ export default {
     micIcon,
   },
   mounted() {
-    console.log(this.newMessage);
-    console.log(this.messages);
-    console.log(this.messagesList);
-    displayMessage().then((updatedMessages) => {
-      this.messagesList = updatedMessages;
-    });
+    // displayMessage().then((updatedMessages) => {
+    //   this.messagesList = updatedMessages;
+    // });
   },
 
   methods: {
+    // send() {
+    //   this.$store.dispatch("messagesModule/sendMessage", id);
+    //   console.log(this.chats);
+    // },
+    ...mapActions("messagesModule", ["sendMessage"]),
     send() {
-      sendMessage(this.newMessage);
+      const receiverId = this.message.length > 0 ? this.message[0].receiver_id : null;
+      let formData = new FormData();
+      formData.append("content", this.newMessage);
+      formData.append("receiver", receiverId);
+      // this.sendMessage(formData);
+      this.$store.dispatch("messagesModule/sendMessage", formData);
+      this.$store.getters["messagesModule/chats"];
       this.newMessage = "";
-      displayMessage().then((updatedMessages) => {
-        this.messagesList = updatedMessages;
-      });
     },
+
+    // send() {
+    //   sendMessage(this.newMessage);
+    //   this.newMessage = "";
+    //   displayMessage().then((updatedMessages) => {
+    //     this.messagesList = updatedMessages;
+    //   });
+    // },
   },
 };
 </script>

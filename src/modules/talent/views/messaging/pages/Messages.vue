@@ -25,12 +25,6 @@
         </div>
       </div>
       <div class="view_message_container">
-        <!-- <div v-for="message in chats?.data" :key="message.id">
-          {{ message.message }}
-        </div>
-        <div v-for="message in selectedMessages" :key="message.id">
-          {{ message.message }}
-        </div> -->
         <ChatScreen :message="chatsMessages?.data" @go-back="goBack" @send="send" />
       </div>
     </div>
