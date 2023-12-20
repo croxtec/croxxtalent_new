@@ -31,7 +31,6 @@
         <div v-for="message in selectedMessages" :key="message.id">
           {{ message.message }}
         </div> -->
-        {{ (selectedMessages, chatsMessages?.data) }}
         <ChatScreen :message="chatsMessages?.data" @go-back="goBack" @send="send" />
       </div>
     </div>
