@@ -21,7 +21,6 @@
           <input class="search_bar" type="search" placeholder="Search" />
         </div>
         <div class="message_list_section">
-          {{ selectedMessages }}
           <messageCard @select-message="selectMessage" />
         </div>
       </div>
@@ -134,7 +133,7 @@ export default {
   },
 
   methods: {
-    selectMessage(index) {
+    selectMessage(id) {
       // this.loadSelectedMessages();
       // this.selectedMessages = this.messages[index];
     },

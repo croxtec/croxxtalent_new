@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-for="(message, index) in messages"
+      v-for="(message, index) in messages.data"
       :key="message.id"
       role="button"
       @click="$emit('select-message', index)"
@@ -20,7 +20,6 @@
           <h3>{{ message.first_name }}</h3>
           <span>{{ message.type }}</span>
         </div>
-        ll
         <p class="sender_message">{{ message.company_name }}</p>
       </div>
     </div>

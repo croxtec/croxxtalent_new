@@ -15,7 +15,8 @@ const $axios = axios.create({
   }
 });
 // Add access token to header if any
-const accessToken = Cookies.get(config.accessRealTimeToken);
+const accessToken = localStorage.getItem('realtimeToken')
+//  Cookies.get(config.accessRealTimeToken);
 
 if (accessToken) {
   $axios.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -28,7 +29,7 @@ if (accessToken) {
 $axios.interceptors.request.use(
   function (axiosConfig) {
     // Add access token to header before request is sent if any
-    const accessToken = Cookies.get(config.accessRealTimeToken);
+const accessToken = localStorage.getItem('realtimeToken');
     if (accessToken) {
       axiosConfig.headers.Authorization = 'Bearer ' + accessToken;
     } else {
