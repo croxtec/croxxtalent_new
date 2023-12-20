@@ -101,6 +101,35 @@ const messagesModule = {
       } finally {
         NProgress.done();
       }
+    },
+    async sendMessage({ commit }, payload) {
+      NProgress.start();
+      commit('SET_LOADING', true);
+      const accessToken = localStorage.getItem('realtimeToken');
+      try {
+        let res = await axios.post(`/messages`,payload, {
+          headers: {
+            Authorization: 'Bearer ' + accessToken
+          }
+        });
+        console.log(res?.data?.data);
+        commit('SET_CHATS', res.data); // Pass the messages data to the mutation
+        toastify({
+          text: `${res?.data?.message}`,
+          className: 'info',
+          style: {
+            background: 'green',
+            fontSize: '12px',
+            borderRadius: '5px'
+          }
+        }).showToast();
+        return Promise.resolve(res.data);
+      } catch (errors) {
+        commit('SET_ERROR', errors);
+        console.log(errors);
+      } finally {
+        NProgress.done();
+      }
     }
   }
 };
