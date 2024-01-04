@@ -10,7 +10,7 @@
       <h1 class="">{{ savedJobsLength }}</h1>
     </div>
 
-    <div class="bordered sidebar-card linker icon-text" @click.prevent="gotoJobsInvite">
+    <div class="bordered sidebar-card linker icon-text" @click.prevent="gotoProfileViews">
       <h6>Profile View</h6>
       <h1 class="">{{ jobInvitationsLength }}</h1>
     </div>
@@ -35,6 +35,9 @@ export default {
   methods: {
     gotoAppliedJobs() {
       this.updateActivetab("1"); // Update activetab to '1' (In Applied Jobs) and navigate
+    },
+    gotoProfileViews() {
+      this.$router.push({ name: "profile-views" }); // Navigate to the "my-jobs" route
     },
     gotoSavedJobs() {
       this.updateActivetab("2"); // Update activetab to '2' (In Saved Jobs) and navigate

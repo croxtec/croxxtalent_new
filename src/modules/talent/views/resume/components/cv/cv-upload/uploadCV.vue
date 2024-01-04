@@ -250,4 +250,9 @@ export default {
 .image_container {
   width: 60%;
 }
+@media (max-width: 990px) {
+  .upload {
+    width: 1000%;
+  }
+}
 </style>

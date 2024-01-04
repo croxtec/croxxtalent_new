@@ -32,10 +32,14 @@ export default {
     isLoggedIn(state) {
       return state.loggedIn
         ? state.loggedIn
-        : !!Cookies.get(config.accessTokenStorageKey);
+        : !!Cookies.get(config.accessTokenStorageKey) ||
+            !!Cookies.get(config.accessRealTimeToken);
     },
     getAccessToken() {
       return Cookies.get(config.accessTokenStorageKey);
+    },
+    getRealTimeAccessToken() {
+      return Cookies.get(config.accessRealTimeToken);
     },
     getAccessTokenExpiresAt() {
       return Cookies.get(config.accessTokenExpiresAtStorageKey);
@@ -43,7 +47,7 @@ export default {
     getAccessTokenExpiresIn() {
       return Cookies.get(config.accessTokenExpiresInStorageKey);
     },
-    getUser: (state) => state.user,
+    getUser: (state) => state.user
   },
 
   mutations: {
@@ -89,23 +93,30 @@ export default {
     LOGIN(state, payload) {
       state.loading = false;
       state.loggedIn = true;
-
+      localStorage.setItem('realtimeToken', payload.realTimeToken);
+      Cookies.set(config.accessRealTimeToken, payload.realTimeToken, {
+        expires: new Date(payload.accessTokenExpiresAt),
+        path: 'home/',
+        domain: window.location.hostname,
+        sameSite: 'lax',
+        secure: process.env.NODE_ENV === 'production'
+      });
       Cookies.set(config.accessTokenStorageKey, payload.accessToken, {
         expires: new Date(payload.accessTokenExpiresAt),
-        path: "home/",
+        path: 'home/',
         domain: window.location.hostname,
-        sameSite: "lax",
-        secure: process.env.NODE_ENV === "production",
+        sameSite: 'lax',
+        secure: process.env.NODE_ENV === 'production'
       });
       Cookies.set(
         config.accessTokenExpiresInStorageKey,
         payload.accessTokenExpiresIn,
         {
           expires: new Date(payload.accessTokenExpiresAt),
-          path: "/home",
+          path: '/home',
           domain: window.location.hostname,
-          sameSite: "lax",
-          secure: process.env.NODE_ENV === "production",
+          sameSite: 'lax',
+          secure: process.env.NODE_ENV === 'production'
         }
       );
       Cookies.set(
@@ -113,10 +124,10 @@ export default {
         payload.accessTokenExpiresAt,
         {
           expires: new Date(payload.accessTokenExpiresAt),
-          path: "/home",
+          path: '/home',
           domain: window.location.hostname,
-          sameSite: "lax",
-          secure: process.env.NODE_ENV === "production",
+          sameSite: 'lax',
+          secure: process.env.NODE_ENV === 'production'
         }
       );
     },
@@ -128,7 +139,7 @@ export default {
     async LOGOUT(state) {
       state.user = null;
       state.token = null;
-      localStorage.removeItem("vuex");
+      localStorage.removeItem('vuex');
       localStorage.clear();
     },
 
@@ -136,7 +147,7 @@ export default {
       Object.keys(state).forEach((key) => {
         Object.assign(state[key], null);
       });
-    },
+    }
   },
   actions: {
     // Authenticate Session action
@@ -149,17 +160,17 @@ export default {
         config.accessTokenExpiresAtStorageKey
       );
       if (accessToken) {
-        commit("LOGIN", {
+        commit('LOGIN', {
           accessToken: accessToken,
           accessTokenExpiresIn: accessTokenExpiresIn,
-          accessTokenExpiresAt: accessTokenExpiresAt,
+          accessTokenExpiresAt: accessTokenExpiresAt
         });
         // fetch authenticated user's profile
         try {
-          let response = await $http.get("/auth/user");
+          let response = await $http.get('/auth/user');
           let responsePayload = response.data;
           // console.log(responsePayload);
-          commit("SET_USER", responsePayload.data);
+          commit('SET_USER', responsePayload.data);
           // monitor and refresh token before expiry
           setInterval(function () {
             let nowTs = Vue.moment().unix();
@@ -172,7 +183,7 @@ export default {
               config.accessTokenExpiryTimeLeftForFrontendAutoRefresh
             ) {
               if (getters.isLoading === false) {
-                dispatch("refreshToken").then(() => {
+                dispatch('refreshToken').then(() => {
                   //
                 });
               }
@@ -180,15 +191,15 @@ export default {
           }, 5000);
         } catch (error) {
           if (error.status && error.status === 401) {
-            commit("LOGOUT");
+            commit('LOGOUT');
           }
-          if (toRoute.name !== "login") {
+          if (toRoute.name !== 'login') {
             location.replace(toRoute.fullPath);
           }
         }
       } else {
-        commit("LOGOUT");
-        if (toRoute.name !== "login") {
+        commit('LOGOUT');
+        if (toRoute.name !== 'login') {
           location.replace(toRoute.fullPath);
         }
       }
@@ -196,28 +207,29 @@ export default {
     // Login request
     async loginUser({ commit }, payload) {
       NProgress.start();
-      commit("SET_LOADING", true);
+      commit('SET_LOADING', true);
       try {
         let res = await $request.post(`/auth/login`, payload);
-        Cookies.set("token", res.data.data);
+        Cookies.set('token', res.data.data);
         console.log(res.data);
         let responsePayload = res.data;
-        commit("LOGIN", {
+        commit('LOGIN', {
           accessToken: responsePayload.data.access_token,
+          realTimeToken: responsePayload.data.realtime_token,
           accessTokenExpiresIn: responsePayload.data.expires_in,
-          accessTokenExpiresAt: responsePayload.data.expires_at,
+          accessTokenExpiresAt: responsePayload.data.expires_at
         });
-        commit("SET_USER", responsePayload.data.user);
-        commit("SET_SUCCESS", responsePayload.message);
+        commit('SET_USER', responsePayload.data.user);
+        commit('SET_SUCCESS', responsePayload.message);
 
         toastify({
           text: `${responsePayload.message}`,
-          className: "info",
+          className: 'info',
           style: {
-            background: "green",
-            fontSize: "12px",
-            borderRadius: "5px",
-          },
+            background: 'green',
+            fontSize: '12px',
+            borderRadius: '5px'
+          }
         }).showToast();
         return res;
       } catch (error) {
@@ -225,15 +237,15 @@ export default {
         if (error.data) {
           let errorPayload = error.data;
           if (errorPayload.message) {
-            commit("SET_ERROR", errorPayload.message);
+            commit('SET_ERROR', errorPayload.message);
             if (errorPayload.errors) {
               console.log(errorPayload.errors);
-              commit("SET_VALIDATION_ERRORS", errorPayload.errors);
+              commit('SET_VALIDATION_ERRORS', errorPayload.errors);
             }
             return;
           }
         }
-        commit("SET_ERROR", "Internal connection error, please try again.");
+        commit('SET_ERROR', 'Internal connection error, please try again.');
         return error.response;
       } finally {
         NProgress.done();
@@ -242,206 +254,209 @@ export default {
 
     // Register request
     async registerUser({ commit }, payload) {
-      commit("SET_LOADING");
+      commit('SET_LOADING');
       try {
-        let response = await $request.post("/auth/register", payload);
+        let response = await $request.post('/auth/register', payload);
         let responsePayload = response.data;
-        commit("LOGIN", {
+        commit('LOGIN', {
           accessToken: responsePayload.data.access_token,
+          realTimeToken: responsePayload.data.realtime_token,
           accessTokenExpiresIn: responsePayload.data.expires_in,
-          accessTokenExpiresAt: responsePayload.data.expires_at,
+          accessTokenExpiresAt: responsePayload.data.expires_at
         });
         toastify({
           text: `${responsePayload.message}`,
-          className: "info",
+          className: 'info',
           style: {
-            background: "green",
-            fontSize: "12px",
-            borderRadius: "5px",
-          },
+            background: 'green',
+            fontSize: '12px',
+            borderRadius: '5px'
+          }
         }).showToast();
         // commit("SET_USER", responsePayload.data.user);
-        commit("SET_SUCCESS", responsePayload.message);
+        commit('SET_SUCCESS', responsePayload.message);
       } catch (error) {
         if (error && error.data) {
           let errorPayload = error.data;
           if (errorPayload.message) {
-            commit("SET_ERROR", errorPayload.message);
+            commit('SET_ERROR', errorPayload.message);
             if (errorPayload.errors) {
-              commit("SET_VALIDATION_ERRORS", errorPayload.errors);
+              commit('SET_VALIDATION_ERRORS', errorPayload.errors);
             }
             return;
           }
         }
-        commit("SET_ERROR", "Internal connection error, please try again.");
+        commit('SET_ERROR', 'Internal connection error, please try again.');
       }
     },
 
     // signInWithGoogle request
-  async signInWithGoogle({ commit }) {
-          NProgress.start();
-      commit("SET_LOADING", true);
+    async signInWithGoogle({ commit }) {
+      NProgress.start();
+      commit('SET_LOADING', true);
 
-    try {
-      const provider = new GoogleAuthProvider()
-      const userCredential = await signInWithPopup(auth, provider);
-      const user = userCredential.user;
+      try {
+        const provider = new GoogleAuthProvider();
+        const userCredential = await signInWithPopup(auth, provider);
+        const user = userCredential.user;
 
-          // Send user data to your login endpoint
+        // Send user data to your login endpoint
         const res = await $request.post('/auth/login', {
           password: user.uid,
-          login: user.email,
+          login: user.email
         });
-        Cookies.set("token", res.data.data);
+        Cookies.set('token', res.data.data);
         console.log(res.data);
         let responsePayload = res.data;
-        commit("LOGIN", {
+        commit('LOGIN', {
           accessToken: responsePayload.data.access_token,
+          realTimeToken: responsePayload.data.realtime_token,
           accessTokenExpiresIn: responsePayload.data.expires_in,
-          accessTokenExpiresAt: responsePayload.data.expires_at,
+          accessTokenExpiresAt: responsePayload.data.expires_at
         });
-        commit("SET_USER", responsePayload.data.user);
-        commit("SET_SUCCESS", responsePayload.message);
-                  console.log(responsePayload,"omor"); 
-          const url = window.location.search;
-          const params = new URLSearchParams(url);
-          const d = params.get("redirectFrom");
-          if (d !== null) {
-            router.replace(d);
+        commit('SET_USER', responsePayload.data.user);
+        commit('SET_SUCCESS', responsePayload.message);
+        console.log(responsePayload, 'omor');
+        const url = window.location.search;
+        const params = new URLSearchParams(url);
+        const d = params.get('redirectFrom');
+        if (d !== null) {
+          router.replace(d);
+        } else {
+          if (responsePayload.data.user.type === 'talent') {
+            router.replace({
+              name: 'talent-home'
+            });
           } else {
-            if (responsePayload.data.user.type === "talent") {
-              router.replace({
-                name: "talent-home",
-              });
-            } else {
-              let type = responsePayload.data.user.type;
-              let company = responsePayload.data.user.company_name;
-              let sessionId = window.btoa(user.uid);
-              let UserId = window.btoa(user.email);
-              window.open(
-                `https://croxxtalent-employers-yc63o.ondigitalocean.app/redirecting?userType=${type}&sessionId=${sessionId}&userID=${UserId}&company=${company}`,
-                "_blank"
-              );
-              // window.open(`https://croxxtalent-employers.netlify.app/redirecting?userType=${type}&sessionId=${sessionId}&userID=${UserId}&company=${company}`, "_blank");
-            }
-        } 
-               toastify({
-          text: `${responsePayload.message}`,
-          className: "info",
-          style: {
-            background: "green",
-            fontSize: "12px",
-            borderRadius: "5px",
-          },
-        }).showToast();
-
-        return res;
-
-    } catch (error) {
-        console.log(error);
-        if (error.data) {
-          let errorPayload = error.data;
-          if (errorPayload.message) {
-            commit("SET_ERROR", errorPayload.message);
-            if (errorPayload.errors) {
-              console.log(errorPayload.errors);
-              commit("SET_VALIDATION_ERRORS", errorPayload.errors);
-            }
-            return;
+            let type = responsePayload.data.user.type;
+            let company = responsePayload.data.user.company_name;
+            let sessionId = window.btoa(user.uid);
+            let UserId = window.btoa(user.email);
+            window.open(
+              `https://croxxtalent-employers-yc63o.ondigitalocean.app/redirecting?userType=${type}&sessionId=${sessionId}&userID=${UserId}&company=${company}`,
+              '_blank'
+            );
+            // window.open(`https://croxxtalent-employers.netlify.app/redirecting?userType=${type}&sessionId=${sessionId}&userID=${UserId}&company=${company}`, "_blank");
           }
         }
-        commit("SET_ERROR", "Internal connection error, please try again.");
-        return error.response;
-      } finally {
-        NProgress.done();
-      }
-  },
-
-  // sign Up with google 
-      // signInWithGoogle request
-  async signUpWithGoogle({ commit }) {
-          NProgress.start();
-      commit("SET_LOADING", true);
-
-    try {
-      const provider = new GoogleAuthProvider()
-      const userCredential = await signInWithPopup(auth, provider);
-      const user = userCredential.user;
-          // Send user data to your login endpoint
-      const res = await $request.post('/auth/register', {
-        type: "talent",
-        first_name: userCredential._tokenResponse.firstName,
-        last_name: userCredential._tokenResponse.lastName,
-        email: user.email,
-        password: user.uid,
-      });
-        Cookies.set("token", res.data.data);
-        console.log(res.data);
-        let responsePayload = res.data;
-        commit("LOGIN", {
-          accessToken: responsePayload.data.access_token,
-          accessTokenExpiresIn: responsePayload.data.expires_in,
-          accessTokenExpiresAt: responsePayload.data.expires_at,
-        });
-        commit("SET_USER", responsePayload.data.user);
-        commit("SET_SUCCESS", responsePayload.message);
-        if (responsePayload.status === true ) {
-          router.push({ name: "cvBuilder" });
-        }else if (responsePayload.status === false) { 
-          console.log(responsePayload.message); 
-        }      
         toastify({
           text: `${responsePayload.message}`,
-          className: "info",
+          className: 'info',
           style: {
-            background: "green",
-            fontSize: "12px",
-            borderRadius: "5px",
-          },
+            background: 'green',
+            fontSize: '12px',
+            borderRadius: '5px'
+          }
         }).showToast();
 
         return res;
-
-    } catch (error) {
+      } catch (error) {
         console.log(error);
         if (error.data) {
           let errorPayload = error.data;
           if (errorPayload.message) {
-            commit("SET_ERROR", errorPayload.message);
+            commit('SET_ERROR', errorPayload.message);
             if (errorPayload.errors) {
               console.log(errorPayload.errors);
-              commit("SET_VALIDATION_ERRORS", errorPayload.errors);
+              commit('SET_VALIDATION_ERRORS', errorPayload.errors);
             }
             return;
           }
         }
-        commit("SET_ERROR", "Internal connection error, please try again.");
+        commit('SET_ERROR', 'Internal connection error, please try again.');
         return error.response;
       } finally {
         NProgress.done();
       }
-  },
+    },
+
+    // sign Up with google
+    // signInWithGoogle request
+    async signUpWithGoogle({ commit }) {
+      NProgress.start();
+      commit('SET_LOADING', true);
+
+      try {
+        const provider = new GoogleAuthProvider();
+        const userCredential = await signInWithPopup(auth, provider);
+        const user = userCredential.user;
+        // Send user data to your login endpoint
+        const res = await $request.post('/auth/register', {
+          type: 'talent',
+          first_name: userCredential._tokenResponse.firstName,
+          last_name: userCredential._tokenResponse.lastName,
+          email: user.email,
+          password: user.uid
+        });
+        Cookies.set('token', res.data.data);
+        console.log(res.data);
+        let responsePayload = res.data;
+        commit('LOGIN', {
+          accessToken: responsePayload.data.access_token,
+          realTimeToken: responsePayload.data.realtime_token,
+          accessTokenExpiresIn: responsePayload.data.expires_in,
+          accessTokenExpiresAt: responsePayload.data.expires_at
+        });
+        commit('SET_USER', responsePayload.data.user);
+        commit('SET_SUCCESS', responsePayload.message);
+        if (responsePayload.status === true) {
+          router.push({ name: 'cvBuilder' });
+        } else if (responsePayload.status === false) {
+          console.log(responsePayload.message);
+        }
+        toastify({
+          text: `${responsePayload.message}`,
+          className: 'info',
+          style: {
+            background: 'green',
+            fontSize: '12px',
+            borderRadius: '5px'
+          }
+        }).showToast();
+
+        return res;
+      } catch (error) {
+        console.log(error);
+        if (error.data) {
+          let errorPayload = error.data;
+          if (errorPayload.message) {
+            commit('SET_ERROR', errorPayload.message);
+            if (errorPayload.errors) {
+              console.log(errorPayload.errors);
+              commit('SET_VALIDATION_ERRORS', errorPayload.errors);
+            }
+            return;
+          }
+        }
+        commit('SET_ERROR', 'Internal connection error, please try again.');
+        return error.response;
+      } finally {
+        NProgress.done();
+      }
+    },
 
     // Logout
     // Logout Request
     async logout({ commit }) {
-      commit("RESET");
+      commit('RESET');
       localStorage.clear();
       Cookies.set(config.accessTokenStorageKey, {
-        path: "/",
-        domain: window.location.hostname,
+        path: '/',
+        domain: window.location.hostname
       });
-      Cookies.remove("token");
+      Cookies.remove('token');
+      Cookies.remove('croxxapp_realtimeDB');
+      localStorage.removeItem('realtimeToken');
       toastify({
         text: `Logged Out`,
-        className: "info",
+        className: 'info',
         style: {
-          background: "green",
-          fontSize: "12px",
-          borderRadius: "5px",
-        },
+          background: 'green',
+          fontSize: '12px',
+          borderRadius: '5px'
+        }
       }).showToast();
-      router.push("/login");
-    },
-  },
+      router.push('/login');
+    }
+  }
 };

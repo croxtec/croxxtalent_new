@@ -1,20 +1,27 @@
 <template>
-  <div
-    role="button"
-    :class="[content.status === 'now' ? 'unread_message' : 'read_message']"
-    class="message_card"
-  >
-    <div class="user_profile_container">
-      <activeIcon v-if="content.active" class="active_state_icon" />
-      <img class="user_profile_image" src="@/assets/img/user_message_image.png" alt="" />
-    </div>
-    <div class="message_details">
-      <div class="sender_name">
-        <h3>{{ content.user }}</h3>
-        <span>{{ content.status }}</span>
+  <div>
+    <div
+      v-for="(message, index) in messages.data"
+      :key="message.id"
+      role="button"
+      @click="$emit('select-message', message.id)"
+      class="message_card"
+    >
+      <div class="user_profile_container">
+        <activeIcon v-if="message" class="active_state_icon" />
+        <img
+          class="user_profile_image"
+          src="@/assets/img/user_message_image.png"
+          alt=""
+        />
       </div>
-
-      <p class="sender_message">{{ content.msg }}</p>
+      <div class="message_details">
+        <div class="sender_name">
+          <h3>{{ message.first_name }}</h3>
+          <span>{{ message.type }}</span>
+        </div>
+        <p class="sender_message">{{ message.company_name }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -24,12 +31,21 @@ import activeIcon from "@/modules/talent/views/messaging/components/activeIcon";
 export default {
   components: { activeIcon },
   props: {
-    content: Object,
+    // messages: Array,
   },
   data() {
     return {};
   },
   methods: {},
+  computed: {
+    messages() {
+      return this.$store.getters["messagesModule/messages"];
+    },
+  },
+  mounted() {
+    this.$store.dispatch("messagesModule/getMessages");
+    console.log(this.messages);
+  },
 };
 </script>
 <style scoped>
@@ -42,8 +58,12 @@ export default {
 }
 .message_card {
   border-bottom: 1.026px solid #282929;
-  width: 60%;
-  margin: 0 auto;
+  /* width: 60%; */
+  /* margin: 0 auto; */
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .sender_message {
   color: #282929b1;
@@ -78,23 +98,5 @@ export default {
   height: 58.486px;
   flex-shrink: 0;
   border-radius: 100%;
-}
-.unread_message {
-  width: 100%;
-  background: #f5f5f5;
-  height: 102.557px;
-  flex-shrink: 0;
-  padding: 19px;
-  display: flex;
-  gap: 10px;
-}
-.read_message {
-  width: 100%;
-  background: #ffffff;
-  height: 102.557px;
-  flex-shrink: 0;
-  padding: 19px;
-  display: flex;
-  gap: 10px;
 }
 </style>
